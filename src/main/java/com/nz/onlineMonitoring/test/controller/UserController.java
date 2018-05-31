@@ -1,4 +1,4 @@
-package com.nz.onlineMonitoring.controller;
+package com.nz.onlineMonitoring.test.controller;
 
 import com.nz.onlineMonitoring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +23,5 @@ public class UserController {
 		System.out.println("测试");
 		return "user";
 	}
+
 }
