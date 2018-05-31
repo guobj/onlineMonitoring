@@ -21,6 +21,6 @@ public class UserController {
 		System.out.println(list);
 		
 		System.out.println("测试");
-		return "user";
+		return "index_1";
 	}
 }

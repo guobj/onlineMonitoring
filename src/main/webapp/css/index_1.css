@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ list-style:none; text-decoration:none; padding:0; margin:0; border:none;}
+body{ background:#1c8914;}
+
+#tit{ width:100%; height:93px; background:url(../img/tit.jpg) no-repeat; background-size:cover; border-bottom:7px #1bb11c solid;}
+#tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:34px; margin-left:3%; color:#3d9d18; font-weight:bold; text-shadow:4px 2px 3px #ffffff; font-family: '宋体';}
+
+#tit ul{ width:28%; height:93px; float:left; margin-left:24%;}
+#tit ul li{ width:91%; height:30px; margin-top:20px; line-height:30px; font-size:12px; color:#FFF; float:left; overflow:hidden;}
+#tit ul li .three{ width:90%; margin-left:8%; height:32px;}
+#tit ul li .three a{ width:28%; float:left; margin-top:0px; height:32px; line-height:32px; color:#FFF;}
+#tit ul li .three a img{ margin-top:5px; float:left;}
+#tit ul li .three a:hover{ color:#F00;}
+
+
+#caidan{ width:17%; height:700px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
+#caidan ul{ width:100%;}
+#caidan ul .tit{ height:30px; background:url(../img/gl.jpg); font-size:13px; color:#FFF; line-height:30px;}
+#caidan ul .tit img{ margin-left:4.6%; margin-top:9px; float:left;}
+
+#caidan ul .cdq{ height:37px; width:100%; background:url(../img/cdq.jpg);}
+#caidan ul .cdq img{ margin-left:2.9%; margin-top:9px; width:8.4%; float:left;}
+#caidan ul .cdq a{ line-height:37px; width:63%; float:left; margin-left:4%; color:#5a5a5b; font-size:12px;}
+
+#caidan ul .cd_4{ width:100%;}
+#caidan ul .cd_4 .a_1{ height:33px; background:url(../img/cdbg.jpg); display:block; margin-top:3px; font-size:12px; color:#FFF; line-height:33px; overflow:hidden;}
+#caidan ul .cd_4 .a_1 img{ margin-left:6.3%; margin-top:8px; float:left;}
+#caidan ul .cd_4 .zdgl{ width:100%; background:#FFF;}
+#caidan ul .cd_4 .zdgl .a_2{ width:100%; height:27px; font-size:12px; line-height:27px; display:block; margin-top:0px; color:#000; background:#eaeaea; overflow:hidden;}
+#caidan ul .cd_4 .zdgl .a_2:hover{ background:#d7dce2;}
+#caidan ul .cd_4 .zdgl .a_2 img{ margin-left:7%; margin-top:9px; float:left;}
+
+
+#caidan ul .cd_4 .zdgl .ul .a_3{ width:100%; height:27px; background:#eaeaea; display:block;}
+
+
+#content{ width:80%; height:700px; background:#FFF; float:left; margin-top:3px; margin-left:0.4%;}
+#content .tit3{ width:100%; height:45px; background:#e2e2e2; float:left; border-bottom:2px #d4d4d4 solid; margin-bottom: 5px;}
+#content .tit3 p{ font-size:16px; height:45px; line-height:45px; margin-left:1.8%; font-weight:bold;}
+#content .menu{width: 100%; height: 80px; float: left;}
+#content .echars{float: left; width: 100%;height: 570px; }
+#content .echars .echars1{width: 50%;height: 285px;float: left; background: #000000; display: none; }
+
+#footer{ width:100%; height:26px; float:left; background:#1b8a14; margin-top:10px;}
+#footer li{ text-align:center; line-height:26px; font-size:12px;}
+#footer li a{ color:#000;}
+#footer li a:hover{ color:#F00;}
