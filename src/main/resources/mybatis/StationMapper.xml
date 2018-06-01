@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nz.onlineMonitoring.stationInfo.mapper.StationMapper" >
+    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.stationInfo.model.Station" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="ms_name" property="ms_name" jdbcType="VARCHAR" />
+        <result column="ms_code" property="ms_code" jdbcType="VARCHAR" />
+        <result column="ms_date" property="ms_date" jdbcType="DATE" />
+        <result column="ms_dev" property="ms_dev" jdbcType="VARCHAR" />
+        <result column="ms_type" property="ms_type" jdbcType="INTEGER" />
+        <result column="ms_fp" property="ms_fp" jdbcType="INTEGER" />
+        <result column="ms_place" property="ms_place" jdbcType="VARCHAR" />
+        <result column="ms_position" property="ms_position" jdbcType="DECIMAL" />
+        <result column="ms_user" property="ms_user" jdbcType="VARCHAR" />
+        <result column="ms_builder" property="ms_builder" jdbcType="VARCHAR" />
+        <result column="ms_net" property="ms_net" jdbcType="INTEGER" />
+        <result column="ms_gate" property="ms_gate" jdbcType="INTEGER" />
+        <result column="ms_desc" property="ms_desc" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="t_station_columns" >
+        id, ms_name, ms_code, ms_date, ms_dev, ms_type, ms_fp, ms_place, ms_position, ms_user, 
+        ms_builder, ms_net, ms_gate, ms_desc
+    </sql>
+    <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="t_station_columns" />
+        from t_station
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from t_station
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="add" parameterType="com.nz.onlineMonitoring.stationInfo.model.Station" >
+        insert into t_station
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="ms_name != null" >
+                ms_name,
+            </if>
+            <if test="ms_code != null" >
+                ms_code,
+            </if>
+            <if test="ms_date != null" >
+                ms_date,
+            </if>
+            <if test="ms_dev != null" >
+                ms_dev,
+            </if>
+            <if test="ms_type != null" >
+                ms_type,
+            </if>
+            <if test="ms_fp != null" >
+                ms_fp,
+            </if>
+            <if test="ms_place != null" >
+                ms_place,
+            </if>
+            <if test="ms_position != null" >
+                ms_position,
+            </if>
+            <if test="ms_user != null" >
+                ms_user,
+            </if>
+            <if test="ms_builder != null" >
+                ms_builder,
+            </if>
+            <if test="ms_net != null" >
+                ms_net,
+            </if>
+            <if test="ms_gate != null" >
+                ms_gate,
+            </if>
+            <if test="ms_desc != null" >
+                ms_desc,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="ms_name != null" >
+                #{ms_name,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_code != null" >
+                #{ms_code,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_date != null" >
+                #{ms_date,jdbcType=DATE},
+            </if>
+            <if test="ms_dev != null" >
+                #{ms_dev,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_type != null" >
+                #{ms_type,jdbcType=INTEGER},
+            </if>
+            <if test="ms_fp != null" >
+                #{ms_fp,jdbcType=INTEGER},
+            </if>
+            <if test="ms_place != null" >
+                #{ms_place,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_position != null" >
+                #{ms_position,jdbcType=DECIMAL},
+            </if>
+            <if test="ms_user != null" >
+                #{ms_user,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_builder != null" >
+                #{ms_builder,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_net != null" >
+                #{ms_net,jdbcType=INTEGER},
+            </if>
+            <if test="ms_gate != null" >
+                #{ms_gate,jdbcType=INTEGER},
+            </if>
+            <if test="ms_desc != null" >
+                #{ms_desc,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.nz.onlineMonitoring.stationInfo.model.Station" >
+        update t_station
+        <set >
+            <if test="ms_name != null" >
+                ms_name = #{ms_name,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_code != null" >
+                ms_code = #{ms_code,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_date != null" >
+                ms_date = #{ms_date,jdbcType=DATE},
+            </if>
+            <if test="ms_dev != null" >
+                ms_dev = #{ms_dev,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_type != null" >
+                ms_type = #{ms_type,jdbcType=INTEGER},
+            </if>
+            <if test="ms_fp != null" >
+                ms_fp = #{ms_fp,jdbcType=INTEGER},
+            </if>
+            <if test="ms_place != null" >
+                ms_place = #{ms_place,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_position != null" >
+                ms_position = #{ms_position,jdbcType=DECIMAL},
+            </if>
+            <if test="ms_user != null" >
+                ms_user = #{ms_user,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_builder != null" >
+                ms_builder = #{ms_builder,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_net != null" >
+                ms_net = #{ms_net,jdbcType=INTEGER},
+            </if>
+            <if test="ms_gate != null" >
+                ms_gate = #{ms_gate,jdbcType=INTEGER},
+            </if>
+            <if test="ms_desc != null" >
+                ms_desc = #{ms_desc,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

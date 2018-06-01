@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nz.onlineMonitoring.deviceInfo.mapper.DeviceMapper" >
+    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.deviceInfo.model.Device" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="ms_name" property="ms_name" jdbcType="VARCHAR" />
+        <result column="ms_code" property="ms_code" jdbcType="VARCHAR" />
+        <result column="dev_code" property="dev_code" jdbcType="VARCHAR" />
+        <result column="dev_protocol" property="dev_protocol" jdbcType="INTEGER" />
+        <result column="dev_interface" property="dev_interface" jdbcType="INTEGER" />
+        <result column="dev_regad" property="dev_regad" jdbcType="INTEGER" />
+        <result column="dev_ip" property="dev_ip" jdbcType="VARCHAR" />
+        <result column="dev_port" property="dev_port" jdbcType="INTEGER" />
+        <result column="dev_warraty" property="dev_warraty" jdbcType="INTEGER" />
+        <result column="dev_mfrs" property="dev_mfrs" jdbcType="VARCHAR" />
+        <result column="dev_desc" property="dev_desc" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="t_device_columns" >
+        id, ms_name, ms_code, dev_code, dev_protocol, dev_interface, dev_regad, dev_ip, dev_port, 
+        dev_warraty, dev_mfrs, dev_desc
+    </sql>
+    <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="t_device_columns" />
+        from t_device
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from t_device
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="add" parameterType="com.nz.onlineMonitoring.deviceInfo.model.Device" >
+        insert into t_device
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="ms_name != null" >
+                ms_name,
+            </if>
+            <if test="ms_code != null" >
+                ms_code,
+            </if>
+            <if test="dev_code != null" >
+                dev_code,
+            </if>
+            <if test="dev_protocol != null" >
+                dev_protocol,
+            </if>
+            <if test="dev_interface != null" >
+                dev_interface,
+            </if>
+            <if test="dev_regad != null" >
+                dev_regad,
+            </if>
+            <if test="dev_ip != null" >
+                dev_ip,
+            </if>
+            <if test="dev_port != null" >
+                dev_port,
+            </if>
+            <if test="dev_warraty != null" >
+                dev_warraty,
+            </if>
+            <if test="dev_mfrs != null" >
+                dev_mfrs,
+            </if>
+            <if test="dev_desc != null" >
+                dev_desc,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="ms_name != null" >
+                #{ms_name,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_code != null" >
+                #{ms_code,jdbcType=VARCHAR},
+            </if>
+            <if test="dev_code != null" >
+                #{dev_code,jdbcType=VARCHAR},
+            </if>
+            <if test="dev_protocol != null" >
+                #{dev_protocol,jdbcType=INTEGER},
+            </if>
+            <if test="dev_interface != null" >
+                #{dev_interface,jdbcType=INTEGER},
+            </if>
+            <if test="dev_regad != null" >
+                #{dev_regad,jdbcType=INTEGER},
+            </if>
+            <if test="dev_ip != null" >
+                #{dev_ip,jdbcType=VARCHAR},
+            </if>
+            <if test="dev_port != null" >
+                #{dev_port,jdbcType=INTEGER},
+            </if>
+            <if test="dev_warraty != null" >
+                #{dev_warraty,jdbcType=INTEGER},
+            </if>
+            <if test="dev_mfrs != null" >
+                #{dev_mfrs,jdbcType=VARCHAR},
+            </if>
+            <if test="dev_desc != null" >
+                #{dev_desc,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.nz.onlineMonitoring.deviceInfo.model.Device" >
+        update t_device
+        <set >
+            <if test="ms_name != null" >
+                ms_name = #{ms_name,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_code != null" >
+                ms_code = #{ms_code,jdbcType=VARCHAR},
+            </if>
+            <if test="dev_code != null" >
+                dev_code = #{dev_code,jdbcType=VARCHAR},
+            </if>
+            <if test="dev_protocol != null" >
+                dev_protocol = #{dev_protocol,jdbcType=INTEGER},
+            </if>
+            <if test="dev_interface != null" >
+                dev_interface = #{dev_interface,jdbcType=INTEGER},
+            </if>
+            <if test="dev_regad != null" >
+                dev_regad = #{dev_regad,jdbcType=INTEGER},
+            </if>
+            <if test="dev_ip != null" >
+                dev_ip = #{dev_ip,jdbcType=VARCHAR},
+            </if>
+            <if test="dev_port != null" >
+                dev_port = #{dev_port,jdbcType=INTEGER},
+            </if>
+            <if test="dev_warraty != null" >
+                dev_warraty = #{dev_warraty,jdbcType=INTEGER},
+            </if>
+            <if test="dev_mfrs != null" >
+                dev_mfrs = #{dev_mfrs,jdbcType=VARCHAR},
+            </if>
+            <if test="dev_desc != null" >
+                dev_desc = #{dev_desc,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

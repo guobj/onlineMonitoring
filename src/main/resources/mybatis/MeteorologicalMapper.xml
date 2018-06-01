@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nz.onlineMonitoring.realData.mapper.MeteorologicalMapper" >
+    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.realData.model.Meteorological" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="ms_name" property="ms_name" jdbcType="VARCHAR" />
+        <result column="ms_code" property="ms_code" jdbcType="VARCHAR" />
+        <result column="dev_code" property="dev_code" jdbcType="VARCHAR" />
+        <result column="air_t" property="air_t" jdbcType="DECIMAL" />
+        <result column="air_h" property="air_h" jdbcType="DECIMAL" />
+        <result column="wind_s" property="wind_s" jdbcType="DECIMAL" />
+        <result column="wind_d" property="wind_d" jdbcType="DECIMAL" />
+        <result column="dew_p" property="dew_p" jdbcType="DECIMAL" />
+        <result column="rain_f" property="rain_f" jdbcType="DECIMAL" />
+        <result column="sunshine_h" property="sunshine_h" jdbcType="DECIMAL" />
+        <result column="atmo_s" property="atmo_s" jdbcType="DECIMAL" />
+        <result column="soil_t1" property="soil_t1" jdbcType="DECIMAL" />
+        <result column="soil_t2" property="soil_t2" jdbcType="DECIMAL" />
+        <result column="soil_t3" property="soil_t3" jdbcType="DECIMAL" />
+        <result column="soil_h1" property="soil_h1" jdbcType="DECIMAL" />
+        <result column="soil_h2" property="soil_h2" jdbcType="DECIMAL" />
+        <result column="soil_h3" property="soil_h3" jdbcType="DECIMAL" />
+        <result column="soil_ec" property="soil_ec" jdbcType="DECIMAL" />
+        <result column="time" property="time" jdbcType="TIMESTAMP" />
+        <result column="dev_status" property="dev_status" jdbcType="INTEGER" />
+    </resultMap>
+    <sql id="t_meteorological_columns" >
+        id, ms_name, ms_code, dev_code, air_t, air_h, wind_s, wind_d, dew_p, rain_f, sunshine_h, 
+        atmo_s, soil_t1, soil_t2, soil_t3, soil_h1, soil_h2, soil_h3, soil_ec, time, dev_status
+    </sql>
+    <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="t_meteorological_columns" />
+        from t_meteorological
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from t_meteorological
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="add" parameterType="com.nz.onlineMonitoring.realData.model.Meteorological" >
+        insert into t_meteorological
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="ms_name != null" >
+                ms_name,
+            </if>
+            <if test="ms_code != null" >
+                ms_code,
+            </if>
+            <if test="dev_code != null" >
+                dev_code,
+            </if>
+            <if test="air_t != null" >
+                air_t,
+            </if>
+            <if test="air_h != null" >
+                air_h,
+            </if>
+            <if test="wind_s != null" >
+                wind_s,
+            </if>
+            <if test="wind_d != null" >
+                wind_d,
+            </if>
+            <if test="dew_p != null" >
+                dew_p,
+            </if>
+            <if test="rain_f != null" >
+                rain_f,
+            </if>
+            <if test="sunshine_h != null" >
+                sunshine_h,
+            </if>
+            <if test="atmo_s != null" >
+                atmo_s,
+            </if>
+            <if test="soil_t1 != null" >
+                soil_t1,
+            </if>
+            <if test="soil_t2 != null" >
+                soil_t2,
+            </if>
+            <if test="soil_t3 != null" >
+                soil_t3,
+            </if>
+            <if test="soil_h1 != null" >
+                soil_h1,
+            </if>
+            <if test="soil_h2 != null" >
+                soil_h2,
+            </if>
+            <if test="soil_h3 != null" >
+                soil_h3,
+            </if>
+            <if test="soil_ec != null" >
+                soil_ec,
+            </if>
+            <if test="time != null" >
+                time,
+            </if>
+            <if test="dev_status != null" >
+                dev_status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="ms_name != null" >
+                #{ms_name,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_code != null" >
+                #{ms_code,jdbcType=VARCHAR},
+            </if>
+            <if test="dev_code != null" >
+                #{dev_code,jdbcType=VARCHAR},
+            </if>
+            <if test="air_t != null" >
+                #{air_t,jdbcType=DECIMAL},
+            </if>
+            <if test="air_h != null" >
+                #{air_h,jdbcType=DECIMAL},
+            </if>
+            <if test="wind_s != null" >
+                #{wind_s,jdbcType=DECIMAL},
+            </if>
+            <if test="wind_d != null" >
+                #{wind_d,jdbcType=DECIMAL},
+            </if>
+            <if test="dew_p != null" >
+                #{dew_p,jdbcType=DECIMAL},
+            </if>
+            <if test="rain_f != null" >
+                #{rain_f,jdbcType=DECIMAL},
+            </if>
+            <if test="sunshine_h != null" >
+                #{sunshine_h,jdbcType=DECIMAL},
+            </if>
+            <if test="atmo_s != null" >
+                #{atmo_s,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_t1 != null" >
+                #{soil_t1,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_t2 != null" >
+                #{soil_t2,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_t3 != null" >
+                #{soil_t3,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_h1 != null" >
+                #{soil_h1,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_h2 != null" >
+                #{soil_h2,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_h3 != null" >
+                #{soil_h3,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_ec != null" >
+                #{soil_ec,jdbcType=DECIMAL},
+            </if>
+            <if test="time != null" >
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dev_status != null" >
+                #{dev_status,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.nz.onlineMonitoring.realData.model.Meteorological" >
+        update t_meteorological
+        <set >
+            <if test="ms_name != null" >
+                ms_name = #{ms_name,jdbcType=VARCHAR},
+            </if>
+            <if test="ms_code != null" >
+                ms_code = #{ms_code,jdbcType=VARCHAR},
+            </if>
+            <if test="dev_code != null" >
+                dev_code = #{dev_code,jdbcType=VARCHAR},
+            </if>
+            <if test="air_t != null" >
+                air_t = #{air_t,jdbcType=DECIMAL},
+            </if>
+            <if test="air_h != null" >
+                air_h = #{air_h,jdbcType=DECIMAL},
+            </if>
+            <if test="wind_s != null" >
+                wind_s = #{wind_s,jdbcType=DECIMAL},
+            </if>
+            <if test="wind_d != null" >
+                wind_d = #{wind_d,jdbcType=DECIMAL},
+            </if>
+            <if test="dew_p != null" >
+                dew_p = #{dew_p,jdbcType=DECIMAL},
+            </if>
+            <if test="rain_f != null" >
+                rain_f = #{rain_f,jdbcType=DECIMAL},
+            </if>
+            <if test="sunshine_h != null" >
+                sunshine_h = #{sunshine_h,jdbcType=DECIMAL},
+            </if>
+            <if test="atmo_s != null" >
+                atmo_s = #{atmo_s,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_t1 != null" >
+                soil_t1 = #{soil_t1,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_t2 != null" >
+                soil_t2 = #{soil_t2,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_t3 != null" >
+                soil_t3 = #{soil_t3,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_h1 != null" >
+                soil_h1 = #{soil_h1,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_h2 != null" >
+                soil_h2 = #{soil_h2,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_h3 != null" >
+                soil_h3 = #{soil_h3,jdbcType=DECIMAL},
+            </if>
+            <if test="soil_ec != null" >
+                soil_ec = #{soil_ec,jdbcType=DECIMAL},
+            </if>
+            <if test="time != null" >
+                time = #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dev_status != null" >
+                dev_status = #{dev_status,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

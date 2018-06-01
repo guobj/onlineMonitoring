@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nz.onlineMonitoring.data.mapper.DataMapper" >
+    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.data.model.Data" >
+        <result column="data_type" property="data_type" jdbcType="VARCHAR" />
+        <result column="data_value" property="data_value" jdbcType="INTEGER" />
+        <result column="data_name" property="data_name" jdbcType="VARCHAR" />
+        <result column="data_order" property="data_order" jdbcType="INTEGER" />
+    </resultMap>
+    <insert id="add" parameterType="com.nz.onlineMonitoring.data.model.Data" >
+        insert into t_data
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="data_type != null" >
+                data_type,
+            </if>
+            <if test="data_value != null" >
+                data_value,
+            </if>
+            <if test="data_name != null" >
+                data_name,
+            </if>
+            <if test="data_order != null" >
+                data_order,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="data_type != null" >
+                #{data_type,jdbcType=VARCHAR},
+            </if>
+            <if test="data_value != null" >
+                #{data_value,jdbcType=INTEGER},
+            </if>
+            <if test="data_name != null" >
+                #{data_name,jdbcType=VARCHAR},
+            </if>
+            <if test="data_order != null" >
+                #{data_order,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+</mapper>
