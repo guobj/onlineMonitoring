@@ -7,6 +7,8 @@
  **/
 package com.nz.onlineMonitoring.stationManage.model;
 
+import com.nz.onlineMonitoring.stationInfo.model.Station;
+
 /**
  * t_manage 类
  * @Description : 
@@ -17,18 +19,35 @@ public class Manage {
 
     /**序号-主键、自增、不可见,所属表字段为 t_manage.id  */
     private Integer id;
+
     /**监测站名称-与t_station ms_name关联,所属表字段为 t_manage.ms_name  */
     private String ms_name;
+
     /**监测站编码-与t_station ms_code关联,所属表字段为 t_manage.ms_code  */
     private String ms_code;
+
     /**上传地址,所属表字段为 t_manage.server_ip  */
     private String server_ip;
+
     /**端口号,所属表字段为 t_manage.server_port  */
     private String server_port;
+
     /**上传频率-按分钟计算,所属表字段为 t_manage.data_upload  */
     private Integer data_upload;
+
     /**存储周期-按天计算,所属表字段为 t_manage.data_storage  */
     private Integer data_storage;
+
+    //存储t_station相关字段
+    private Station station;
+
+    public Station getStation() {
+        return station;
+    }
+
+    public void setStation(Station station) {
+        this.station = station;
+    }
 
     /**
      * 获取 序号-主键、自增、不可见 字段:t_manage.id

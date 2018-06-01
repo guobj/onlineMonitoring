@@ -1,13 +1,32 @@
 @charset "utf-8";
 /* CSS Document */
+
+@media screen and (max-width:1920px){
+	*{ list-style:none; text-decoration:none; padding:0; margin:0; border:none;}
+    body{ width: 100%;}
+    #content .tit p{ top: 6px; }
+}  
+@media screen and (max-width:1366px){    
+	*{ list-style:none; text-decoration:none; padding:0; margin:0; border:none;}
+	body{ width: 100%; }
+	#content .tit p{ top: 10px; }
+	#content form .btn{ margin-top:5px; }
+}
+@media screen and (max-width:768px){
+
+}
+@media screen and (max-width:360px){
+   
+}
+
 *{ list-style:none; text-decoration:none;}
-body{ background:url(../img/bg.jpg) no-repeat; background-size:cover;}
+body{ background:url(../img/bg.jpg) no-repeat; background-size:cover; background-position: center center; background-attachment: fixed;}
 
 #tit{ margin-top:7%; text-align:center; margin-left:12%; width:75%; font-size:40px; letter-spacing:15px;}
 
-#content{ width:405px; height:250px; margin-left:35%; background:none; position:relative; margin-top: 150px;}
+#content{ width:27%; height:250px; margin-left:35%; background:none; position:relative; margin-top: 150px;}
 #content .tit{ width:40%; height:70px; background:url(../img/bto2.png); background-size:100% 100%; margin-left:30%; position:absolute;}
-#content .tit p{ font-size:14px; color:#087600; font-weight:bold; letter-spacing:5px; margin-left:63px; padding-top:30px; z-index:2;}
+#content .tit p{ font-size:14px; color:#087600; font-weight:bold; letter-spacing:5px; margin-left:63px;  z-index:2;  position: relative; line-height: 78px; }
 
 #content .tou{ width:98%; height:195px; background:none; margin-top:50px; float:left; margin-left:0.5%; border:1px #FFFFFF solid;
 border-radius:2px; box-shadow:5px 5px 3px #000;}
@@ -15,7 +34,7 @@ border-radius:2px; box-shadow:5px 5px 3px #000;}
 #content form p span{margin-left: 12px;}
 #content form p{ height:35px; line-height:35px; margin-left:20%;  color:#FFF; font-size:13px; text-shadow:2px 2px 2px #000;}
 #content form p input{ margin-left:5%; background:#ecf2ee;}
-#content form .btn{ width:70px; height:25px; margin-left:120px; background:url(../img/an1.png); background-size:70px 25px; border:none;
-    color:#087600;  font-size:14px; line-height:25px; font-weight:bold; letter-spacing:7px;}
+#content form .btn{ width:70px; height:25px; margin-left:35%; background:url(../img/an1.png); background-size:70px 25px; border:none;
+    color:#087600;  font-size:0.8em; line-height:25px; font-weight:bold; letter-spacing:7px;}
 
 

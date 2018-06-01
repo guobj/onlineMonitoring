@@ -9,6 +9,9 @@ package com.nz.onlineMonitoring.stationManage.mapper;
 
 import com.nz.onlineMonitoring.stationManage.model.Manage;
 
+import java.util.List;
+import java.util.Map;
+
 public interface ManageMapper {
     /**
      * t_manage
@@ -53,4 +56,12 @@ public interface ManageMapper {
      * 
      **/
     int update(Manage manage);
+
+    /**
+     * 通过监测站名称、监测站编码、监测站类型、资金来源、网关类型综合查询（支持模糊查询）
+     * @author guobj
+     * @param
+     * @return
+     */
+    List<Map<String, Object>> queryStationInfo(Map<String, Object> map);
 }

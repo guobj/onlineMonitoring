@@ -27,6 +27,13 @@
         from t_station
         where id = #{id,jdbcType=INTEGER}
     </select>
+
+    <select id="loadByMscode" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="t_station_columns" />
+        from t_station
+        where ms_code = #{ms_code,jdbcType=INTEGER}
+    </select>
     <delete id="delete" parameterType="java.lang.Integer" >
         delete from t_station
         where id = #{id,jdbcType=INTEGER}

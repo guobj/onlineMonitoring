@@ -11,11 +11,11 @@
 <html>
 <head>
     <base href="${basePath }">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>山东省病虫害物联网检测系统</title>
-<link href="css/index_1.css" type="text/css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>山东省病虫害物联网检测系统</title>
+    <link href="css/index_1.css" type="text/css" rel="stylesheet">
     <script src="js/jquery.js"></script>
-<script src="js/index_1.js" type="text/javascript" ></script>
+    <script src="js/index_1.js" type="text/javascript" ></script>
 
 </head>
 

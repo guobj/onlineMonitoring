@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.nz.onlineMonitoring.stationManage.mapper.ManageMapper" >
-    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.stationManage.model.Manage" >
+    <resultMap id="ManageBaseResultMap" type="com.nz.onlineMonitoring.stationManage.model.Manage" >
         <id column="id" property="id" jdbcType="INTEGER" />
         <result column="ms_name" property="ms_name" jdbcType="VARCHAR" />
         <result column="ms_code" property="ms_code" jdbcType="VARCHAR" />
@@ -9,15 +9,52 @@
         <result column="server_port" property="server_port" jdbcType="VARCHAR" />
         <result column="data_upload" property="data_upload" jdbcType="INTEGER" />
         <result column="data_storage" property="data_storage" jdbcType="INTEGER" />
+        <association property="station" column="ms_code" select="com.nz.onlineMonitoring.stationInfo.mapper.StationMapper.loadByMscode"/>
     </resultMap>
     <sql id="t_manage_columns" >
         id, ms_name, ms_code, server_ip, server_port, data_upload, data_storage
     </sql>
-    <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    
+    <!--load方法查询一条数据-->
+    <select id="load" resultMap="ManageBaseResultMap" parameterType="java.lang.Integer" >
         select 
         <include refid="t_manage_columns" />
         from t_manage
         where id = #{id,jdbcType=INTEGER}
+    </select>
+    
+    <!--关联查询-->
+    <select id="queryStationInfo" resultMap="ManageBaseResultMap" parameterType="map">
+        SELECT
+          *
+        FROM
+          t_manage tm
+        LEFT JOIN
+          t_station ts
+        ON
+          tm.ms_code=ts.ms_code
+        LEFT JOIN
+          t_data td
+        ON
+          ts.ms_type=td.data_value
+        <where>
+            td.data_type='ms_type'
+            <if test="manage.ms_name!=null and manage.ms_name.trim()!=''">
+                AND tm.ms_name LIKE concat("%",#{manage.ms_name},"%")
+            </if>
+            <if test="manage.ms_code!=null and manage.ms_code.trim()!=''">
+                AND tm.ms_code LIKE concat("%",#{manage.ms_code},"%")
+            </if>
+            <if test="manage.station!=null and manage.station.trim()!=''">
+                AND ts.ms_type LIKE concat("%",#{manage.station.ms_type},"%")
+            </if>
+            <if test="manage.station!=null and manage.station.trim()!=''">
+                AND ts.ms_fp LIKE concat("%",#{manage.station.ms_fp},"%")
+            </if>
+            <if test="manage.station!=null and manage.station.trim()!=''">
+                AND ts.ms_net LIKE concat("%",#{manage.station.ms_net},"%")
+            </if>
+        </where>
     </select>
     <delete id="delete" parameterType="java.lang.Integer" >
         delete from t_manage
