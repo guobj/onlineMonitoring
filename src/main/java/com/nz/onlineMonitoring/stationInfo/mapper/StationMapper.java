@@ -15,7 +15,7 @@ import com.nz.onlineMonitoring.stationInfo.model.Station;
 public interface StationMapper {
     /**
      * t_station
-     * 方法描述:
+     * 方法描述:根据id，删除监测站
      * @param  
      * @return 
      * @throws 
@@ -48,7 +48,7 @@ public interface StationMapper {
 
     /**
      * t_station
-     * 方法描述:
+     * 方法描述:根据id，修改监测站的信息
      * @param  
      * @return 
      * @throws 

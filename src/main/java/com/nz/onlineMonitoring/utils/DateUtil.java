@@ -34,7 +34,7 @@ public class DateUtil {
 	}
 	
 	//生成日期
-	public String creatDate(){
+	public static String creatDate(){
         
         LocalDate localDate = LocalDate.now();
         
