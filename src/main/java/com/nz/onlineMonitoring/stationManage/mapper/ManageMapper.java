@@ -1,5 +1,5 @@
 /**
- * Manage.java
+ * ManageMapper.java
  * 济南农智信息科技有限公司所有
  * Create By guobj
  * 创建于: 2018-06-01 11:08:33

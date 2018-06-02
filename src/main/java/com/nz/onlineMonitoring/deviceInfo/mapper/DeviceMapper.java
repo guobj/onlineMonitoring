@@ -1,19 +1,21 @@
 /**
  * DeviceMapper.java
- * ©2006-2016 四海兴唐科技有限公司 
- * All rights reserved.
- * <link>胖先生作品</link>
+ * 济南农智信息科技有限公司所有
+ * Create By guobj
  * 创建于: 2018-06-01 11:08:33
  **/
 package com.nz.onlineMonitoring.deviceInfo.mapper;
 
 import com.nz.onlineMonitoring.deviceInfo.model.Device;
 
+import java.util.List;
+import java.util.Map;
+
 public interface DeviceMapper {
     /**
      * t_device
      * 方法描述:
-     * @param  
+     * @param  id
      * @return 
      * @throws 
      * @date 2018-06-01 11:08:33
@@ -24,7 +26,7 @@ public interface DeviceMapper {
     /**
      * t_device
      * 方法描述:
-     * @param  
+     * @param  device
      * @return 
      * @throws 
      * @date 2018-06-01 11:08:33
@@ -35,7 +37,7 @@ public interface DeviceMapper {
     /**
      * t_device
      * 方法描述:
-     * @param  
+     * @param  id
      * @return 
      * @throws 
      * @date 2018-06-01 11:08:33
@@ -46,11 +48,21 @@ public interface DeviceMapper {
     /**
      * t_device
      * 方法描述:
-     * @param  
+     * @param device
      * @return 
      * @throws 
      * @date 2018-06-01 11:08:33
      * 
      **/
     int update(Device device);
+
+    /**
+     * t_device
+     * 方法描述: 设备信息查询
+     * @param map
+     * @return
+     * @throws
+     *
+     **/
+    List<Map<String, Object>> queryDeviceInfo(Map<String, Object> map);
 }

@@ -7,6 +7,9 @@
  **/
 package com.nz.onlineMonitoring.deviceInfo.model;
 
+import com.nz.onlineMonitoring.data.model.Data;
+import com.nz.onlineMonitoring.stationInfo.model.Station;
+
 /**
  * t_device 类
  * @Description : 
@@ -39,6 +42,50 @@ public class Device {
     private String dev_mfrs;
     /**设备描述,所属表字段为 t_device.dev_desc  */
     private String dev_desc;
+
+    //存储站点信息 与t_station关联
+    private Station station;
+
+    //存储数据字典data_type="dev_protocol"的相关信息
+    private Data dataProtocol;
+
+    //存储数据字典data_type="dev_interface"的相关信息
+    private Data dataInterface;
+
+    //存储数据字典data_type="dev_port"的相关信息
+    private Data dataPort;
+
+    public Station getStation() {
+        return station;
+    }
+
+    public void setStation(Station station) {
+        this.station = station;
+    }
+
+    public Data getDataProtocol() {
+        return dataProtocol;
+    }
+
+    public void setDataProtocol(Data dataProtocol) {
+        this.dataProtocol = dataProtocol;
+    }
+
+    public Data getDataInterface() {
+        return dataInterface;
+    }
+
+    public void setDataInterface(Data dataInterface) {
+        this.dataInterface = dataInterface;
+    }
+
+    public Data getDataPort() {
+        return dataPort;
+    }
+
+    public void setDataPort(Data dataPort) {
+        this.dataPort = dataPort;
+    }
 
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_device.id

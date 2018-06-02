@@ -14,6 +14,10 @@
         <result column="dev_warraty" property="dev_warraty" jdbcType="INTEGER" />
         <result column="dev_mfrs" property="dev_mfrs" jdbcType="VARCHAR" />
         <result column="dev_desc" property="dev_desc" jdbcType="VARCHAR" />
+        <association property="station" column="ms_code" select="com.nz.onlineMonitoring.stationInfo.mapper.StationMapper.loadByMscode"/>
+        <association property="dataProtocol" column="dev_protocol" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadByDevProtocol"/>
+        <association property="dataInterface" column="dev_interface" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadByDevInterface"/>
+        <association property="dataPort" column="dev_port" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadByDevPort"/>
     </resultMap>
     <sql id="t_device_columns" >
         id, ms_name, ms_code, dev_code, dev_protocol, dev_interface, dev_regad, dev_ip, dev_port, 
@@ -24,6 +28,22 @@
         <include refid="t_device_columns" />
         from t_device
         where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!--设备信息查询-->
+    <select id="queryDeviceInfo" resultMap="BaseResultMap" parameterType="map">
+        SELECT * FROM t_device td
+        <where>
+            <if test="device.ms_name!=null and device.ms_name.trim()!=''">
+                AND td.ms_name LIKE concat("%",#{device.ms_name},"%")
+            </if>
+            <if test="device.ms_code!=null and device.ms_code.trim()!=''">
+                AND td.ms_code LIKE concat("%",#{device.ms_code},"%")
+            </if>
+            <if test="device.dev_code!=null and device.dev_code.trim()!=''">
+                AND td.dev_code LIKE concat("%",#{device.dev_code},"%")
+            </if>
+        </where>
     </select>
     <delete id="delete" parameterType="java.lang.Integer" >
         delete from t_device
