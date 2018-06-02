@@ -174,4 +174,14 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+    <select id="listStation" resultMap="BaseResultMap" parameterType="map">
+        select 
+        <include refid="t_station_columns" />
+        from t_station
+    </select>
+    <select id="countStation" resultType ="int" parameterType="map">
+        select 
+            count(*)
+        from t_station
+    </select>
 </mapper>
