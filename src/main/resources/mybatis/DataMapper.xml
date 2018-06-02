@@ -7,6 +7,10 @@
         <result column="data_name" property="data_name" jdbcType="VARCHAR" />
         <result column="data_order" property="data_order" jdbcType="INTEGER" />
     </resultMap>
+
+    <select id="loadByDataValue" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from t_data where data_type="ms_type" and data_value=#{data_value,jdbcType=INTEGER}
+    </select>
     <insert id="add" parameterType="com.nz.onlineMonitoring.data.model.Data" >
         insert into t_data
         <trim prefix="(" suffix=")" suffixOverrides="," >

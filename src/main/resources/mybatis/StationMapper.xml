@@ -16,6 +16,7 @@
         <result column="ms_net" property="ms_net" jdbcType="INTEGER" />
         <result column="ms_gate" property="ms_gate" jdbcType="INTEGER" />
         <result column="ms_desc" property="ms_desc" jdbcType="VARCHAR" />
+        <association property="data" column="ms_type" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadByDataValue"></association>
     </resultMap>
     <sql id="t_station_columns" >
         id, ms_name, ms_code, ms_date, ms_dev, ms_type, ms_fp, ms_place, ms_position, ms_user, 

@@ -5,7 +5,6 @@ import com.nz.onlineMonitoring.stationManage.service.ManageService;
 import com.nz.onlineMonitoring.utils.JacksonData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +20,7 @@ public class ManageController {
 
 	@RequestMapping(value = "/queryStationInfo", method = RequestMethod.POST)
 	@ResponseBody
-	public JacksonData queryStationInfo(Map<String, Object> map, @RequestBody Manage manage){
+	public JacksonData queryStationInfo(Map<String, Object> map,Manage manage){
 
 		JacksonData jacksonData = new JacksonData();
 		try {
@@ -43,7 +42,7 @@ public class ManageController {
 
 	@RequestMapping(value = "/updateById",method = RequestMethod.POST)
 	@ResponseBody
-	public JacksonData updateById(Map<String, Object> map,@RequestBody Manage manage){
+	public JacksonData updateById(Map<String, Object> map,Manage manage){
 		JacksonData jacksonData = new JacksonData();
 
 		try {
@@ -56,12 +55,12 @@ public class ManageController {
 	}
 	@RequestMapping(value = "/foreward")
 	public String foreward(){
-		return "test/index_1";
+		return "test/sjck";
 	}
 
 	@RequestMapping(value = "/foreward2")
 	public String foreward2(){
-		return "test/index";
+		return "test/index_1";
 	}
 
 }

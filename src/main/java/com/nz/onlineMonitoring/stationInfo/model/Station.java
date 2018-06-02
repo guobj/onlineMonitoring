@@ -7,6 +7,8 @@
  **/
 package com.nz.onlineMonitoring.stationInfo.model;
 
+import com.nz.onlineMonitoring.data.model.Data;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -46,6 +48,16 @@ public class Station {
     private Integer ms_gate;
     /**监测站描述,所属表字段为 t_station.ms_desc  */
     private String ms_desc;
+
+    private Data data;
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
+    }
 
     /**
      * 获取 序号-主键、自增 字段:t_station.id

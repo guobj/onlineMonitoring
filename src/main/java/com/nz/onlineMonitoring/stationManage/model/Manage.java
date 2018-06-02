@@ -7,6 +7,7 @@
  **/
 package com.nz.onlineMonitoring.stationManage.model;
 
+import com.nz.onlineMonitoring.data.model.Data;
 import com.nz.onlineMonitoring.stationInfo.model.Station;
 
 /**
@@ -40,6 +41,17 @@ public class Manage {
 
     //存储t_station相关字段
     private Station station;
+
+    //数据字典的字段
+    private Data data;
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
+    }
 
     public Station getStation() {
         return station;

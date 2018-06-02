@@ -20,4 +20,15 @@ public interface DataMapper {
      * 
      **/
     int add(Data data);
+
+    /**
+     * t_data
+     * 方法描述:
+     * @param
+     * @return
+     * @throws
+     * @date 2018-06-01 11:08:33
+     *
+     **/
+    Data loadByDataValue(Integer data_value);
 }
