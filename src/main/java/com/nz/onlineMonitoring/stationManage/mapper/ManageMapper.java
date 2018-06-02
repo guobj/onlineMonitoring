@@ -1,8 +1,7 @@
 /**
- * ManageMapper.java
- * ©2006-2016 四海兴唐科技有限公司 
- * All rights reserved.
- * <link>胖先生作品</link>
+ * Manage.java
+ * 济南农智信息科技有限公司所有
+ * Create By guobj
  * 创建于: 2018-06-01 11:08:33
  **/
 package com.nz.onlineMonitoring.stationManage.mapper;
@@ -16,31 +15,20 @@ public interface ManageMapper {
     /**
      * t_manage
      * 方法描述:删除监测站相关信息。
+     * @author guobj
      * @param  
      * @return 
-     * @throws 
      * @date 2018-06-01 11:08:33
      * 
      **/
-    int deleteById(Integer id);
+    Integer deleteById(Integer id);
 
     /**
      * t_manage
-     * 方法描述:
-     * @param  
+     * 方法描述:通过id查查询一条数据
+     * @author guobj
+     * @param
      * @return 
-     * @throws 
-     * @date 2018-06-01 11:08:33
-     * 
-     **/
-    int add(Manage manage);
-
-    /**
-     * t_manage
-     * 方法描述:
-     * @param  
-     * @return 
-     * @throws 
      * @date 2018-06-01 11:08:33
      * 
      **/
@@ -49,9 +37,9 @@ public interface ManageMapper {
     /**
      * t_manage
      * 方法描述:修改监测站属性信息
+     * @author guobj
      * @param  
      * @return 
-     * @throws 
      * @date 2018-06-01 11:08:33
      * 
      **/

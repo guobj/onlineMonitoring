@@ -1,8 +1,7 @@
 /**
  * Manage.java
- * ©2006-2016 四海兴唐科技有限公司 
- * All rights reserved.
- * <link>胖先生作品</link>
+ * 济南农智信息科技有限公司所有
+ * Create By guobj
  * 创建于: 2018-06-01 11:08:33
  **/
 package com.nz.onlineMonitoring.stationManage.model;

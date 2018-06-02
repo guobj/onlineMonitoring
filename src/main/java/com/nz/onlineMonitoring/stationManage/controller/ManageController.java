@@ -53,6 +53,19 @@ public class ManageController {
 		}
 		return jacksonData;
 	}
+
+	@RequestMapping(value = "/deleteById",method = RequestMethod.GET)
+	@ResponseBody
+	public JacksonData deleteById(Integer id){
+		JacksonData jacksonData = new JacksonData();
+		try {
+			Integer res = manageService.deleteById(id);
+			jacksonData.success(res);
+		}catch (Exception e){
+			jacksonData.failure(e.getMessage());
+		}
+		return jacksonData;
+	}
 	@RequestMapping(value = "/foreward")
 	public String foreward(){
 		return "test/sjck";

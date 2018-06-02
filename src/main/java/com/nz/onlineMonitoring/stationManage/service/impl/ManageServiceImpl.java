@@ -52,4 +52,22 @@ public class ManageServiceImpl implements ManageService {
 		}
 		return res;
 	}
+
+	/**
+	 * t_manage
+	 * 方法描述:删除监测站相关信息。
+	 * @author guobj
+	 * @param
+	 * @return
+	 **/
+	@Override
+	public Integer deleteById(Integer id) {
+
+		Integer res = manageMapper.deleteById(id);
+
+		if(res <= 0){
+			throw new RuntimeException("删除失败！");
+		}
+		return res;
+	}
 }

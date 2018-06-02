@@ -24,4 +24,13 @@ public interface ManageService {
 	 * @return
 	 */
 	public Integer updateById(Map<String, Object> map, Manage manage);
+
+	/**
+	 * t_manage
+	 * 方法描述:删除监测站相关信息。
+	 * @author guobj
+	 * @param
+	 * @return
+	 **/
+	public Integer deleteById(Integer id);
 }

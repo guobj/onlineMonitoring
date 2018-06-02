@@ -23,7 +23,7 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     
-    <!--关联查询-->
+    <!--关联查询 查询监测站相关信息-->
     <select id="queryStationInfo" resultMap="ManageBaseResultMap" parameterType="map">
         SELECT
           *
@@ -60,55 +60,55 @@
         delete from t_manage
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <insert id="add" parameterType="com.nz.onlineMonitoring.stationManage.model.Manage" >
-        insert into t_manage
-        <trim prefix="(" suffix=")" suffixOverrides="," >
-            <if test="id != null" >
-                id,
-            </if>
-            <if test="ms_name != null" >
-                ms_name,
-            </if>
-            <if test="ms_code != null" >
-                ms_code,
-            </if>
-            <if test="server_ip != null" >
-                server_ip,
-            </if>
-            <if test="server_port != null" >
-                server_port,
-            </if>
-            <if test="data_upload != null" >
-                data_upload,
-            </if>
-            <if test="data_storage != null" >
-                data_storage,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides="," >
-            <if test="id != null" >
-                #{id,jdbcType=INTEGER},
-            </if>
-            <if test="ms_name != null" >
-                #{ms_name,jdbcType=VARCHAR},
-            </if>
-            <if test="ms_code != null" >
-                #{ms_code,jdbcType=VARCHAR},
-            </if>
-            <if test="server_ip != null" >
-                #{server_ip,jdbcType=VARCHAR},
-            </if>
-            <if test="server_port != null" >
-                #{server_port,jdbcType=VARCHAR},
-            </if>
-            <if test="data_upload != null" >
-                #{data_upload,jdbcType=INTEGER},
-            </if>
-            <if test="data_storage != null" >
-                #{data_storage,jdbcType=INTEGER},
-            </if>
-        </trim>
-    </insert>
+    <!--<insert id="add" parameterType="com.nz.onlineMonitoring.stationManage.model.Manage" >-->
+        <!--insert into t_manage-->
+        <!--<trim prefix="(" suffix=")" suffixOverrides="," >-->
+            <!--<if test="id != null" >-->
+                <!--id,-->
+            <!--</if>-->
+            <!--<if test="ms_name != null" >-->
+                <!--ms_name,-->
+            <!--</if>-->
+            <!--<if test="ms_code != null" >-->
+                <!--ms_code,-->
+            <!--</if>-->
+            <!--<if test="server_ip != null" >-->
+                <!--server_ip,-->
+            <!--</if>-->
+            <!--<if test="server_port != null" >-->
+                <!--server_port,-->
+            <!--</if>-->
+            <!--<if test="data_upload != null" >-->
+                <!--data_upload,-->
+            <!--</if>-->
+            <!--<if test="data_storage != null" >-->
+                <!--data_storage,-->
+            <!--</if>-->
+        <!--</trim>-->
+        <!--<trim prefix="values (" suffix=")" suffixOverrides="," >-->
+            <!--<if test="id != null" >-->
+                <!--#{id,jdbcType=INTEGER},-->
+            <!--</if>-->
+            <!--<if test="ms_name != null" >-->
+                <!--#{ms_name,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test="ms_code != null" >-->
+                <!--#{ms_code,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test="server_ip != null" >-->
+                <!--#{server_ip,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test="server_port != null" >-->
+                <!--#{server_port,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test="data_upload != null" >-->
+                <!--#{data_upload,jdbcType=INTEGER},-->
+            <!--</if>-->
+            <!--<if test="data_storage != null" >-->
+                <!--#{data_storage,jdbcType=INTEGER},-->
+            <!--</if>-->
+        <!--</trim>-->
+    <!--</insert>-->
     <update id="updateById" parameterType="com.nz.onlineMonitoring.stationManage.model.Manage" >
         update t_manage
         <set >
