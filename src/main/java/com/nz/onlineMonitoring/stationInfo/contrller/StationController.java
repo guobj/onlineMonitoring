@@ -33,9 +33,22 @@ public class StationController {
         map = PageBean.serverMap(map , station , pages);
         List<Station> listStation = stationService.listStation(map);
         map = PageBean.clientMap(map ,pages,request);
-        map.put("url" , "station/listStation");
-        System.out.println("ceshi");
+        map.put("listStation", listStation);
         return "station/listStation";
+    }
+    /**
+     * 
+     * 方法描述：根据id，查询单个监测站
+     * @param id
+     * @param map
+     * @return
+     * @date 2018年6月2日 下午7:51:31
+     */
+    @RequestMapping("/loadStation")
+    public String loadStation(Integer id,Map<String , Object> map) {
+        Station station = stationService.load(id);
+        map.put("station", station);
+        return "station/loadStation";
     }
     
 }

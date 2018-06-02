@@ -20,4 +20,45 @@ public interface DataMapper {
      * 
      **/
     int add(Data data);
+    /**
+     * 
+     * 方法描述：获取单个监测站所拥有的监测设备编号的值
+     * @param data_value
+     * @return
+     * @date 2018年6月2日 上午11:58:41
+     */
+    Data loadDev(int data_value);
+    /**
+     * 
+     * 方法描述：获取单个监测站的类型(重点、普通、新建、改建)
+     * @param data_value
+     * @return
+     * @date 2018年6月2日 上午11:59:17
+     */
+    Data loadType(int data_value);
+    /**
+     * 
+     * 方法描述：获取单个监测站的资金来源(省、国家)
+     * @param data_value
+     * @return
+     * @date 2018年6月2日 下午12:00:13
+     */
+    Data loadFp(int data_value);
+    /**
+     * 
+     * 方法描述：获取单个监测站网络类型（有线、无线）
+     * @param data_value
+     * @return
+     * @date 2018年6月2日 下午12:00:16
+     */
+    Data loadNet(int data_value);
+    /**
+     * 
+     * 方法描述：获取单个监测站网络类型
+     * @param data_value
+     * @return
+     * @date 2018年6月2日 下午12:00:19
+     */
+    Data loadGate(int data_value);
+    
 }

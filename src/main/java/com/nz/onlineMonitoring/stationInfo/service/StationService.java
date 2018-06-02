@@ -25,4 +25,14 @@ public interface StationService {
     * @date 2018年6月2日 上午9:57:22
     */
    Integer countStation(Map<String , Object> map);
+   
+   /**
+    * 
+    * 方法描述：查询单条数据
+    * @param id
+    * @return
+    * @date 2018年6月2日 下午6:56:43
+    */
+   Station load(Integer id);
+   
 }

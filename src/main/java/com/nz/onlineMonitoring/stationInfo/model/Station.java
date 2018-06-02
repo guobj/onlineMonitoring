@@ -10,6 +10,8 @@ package com.nz.onlineMonitoring.stationInfo.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.nz.onlineMonitoring.data.model.Data;
+
 /**
  * t_station 类
  * @Description : 
@@ -46,7 +48,16 @@ public class Station {
     private Integer ms_gate;
     /**监测站描述,所属表字段为 t_station.ms_desc  */
     private String ms_desc;
-
+    /**与ms_dev关联，是数据字典中的值 */
+    private String ms_dev_value;
+    /**与ms_type关联，是数据字典中的值 */
+    private Data ms_type_value;
+    /**与ms_fp关联，是数据字典中的值 */
+    private Data ms_fp_value;
+    /**与ms_net关联，是数据字典中的值 */
+    private Data ms_net_value;
+    /**与ms_gate关联，是数据字典中的值 */
+    private Data ms_gate_value;
     /**
      * 获取 序号-主键、自增 字段:t_station.id
      *
@@ -298,4 +309,95 @@ public class Station {
     public void setMs_desc(String ms_desc) {
         this.ms_desc = ms_desc == null ? null : ms_desc.trim();
     }
+    /**
+     * 
+     * 方法描述：与ms_dev关联，是数据字典中的值 
+     * @return
+     * @date 2018年6月2日 下午7:03:45
+     */
+    public String getMs_dev_value() {
+        return ms_dev_value;
+    }
+    /**
+     * 
+     * 方法描述：与ms_dev关联，是数据字典中的值 
+     * @param ms_dev_value
+     * @date 2018年6月2日 下午7:05:10
+     */
+    public void setMs_dev_value(String ms_dev_value) {
+        this.ms_dev_value = ms_dev_value;
+    }
+    /**
+     * 
+     * 方法描述：与ms_type关联，是数据字典中的值
+     * @return
+     * @date 2018年6月2日 下午7:05:22
+     */
+    public Data getMs_type_value() {
+        return ms_type_value;
+    }
+    /**
+     * 
+     * 方法描述：与ms_type关联，是数据字典中的值
+     * @param ms_type_value
+     * @date 2018年6月2日 下午7:05:30
+     */
+    public void setMs_type_value(Data ms_type_value) {
+        this.ms_type_value = ms_type_value;
+    }
+    /**
+     * 
+     * 方法描述：与ms_fp关联，是数据字典中的值
+     * @return
+     * @date 2018年6月2日 下午7:05:34
+     */
+    public Data getMs_fp_value() {
+        return ms_fp_value;
+    }
+    /**
+     * 
+     * 方法描述：与ms_fp关联，是数据字典中的值
+     * @param ms_fp_value
+     * @date 2018年6月2日 下午7:05:37
+     */
+    public void setMs_fp_value(Data ms_fp_value) {
+        this.ms_fp_value = ms_fp_value;
+    }
+    /**
+     * 
+     * 方法描述：与ms_net关联，是数据字典中的值
+     * @return
+     * @date 2018年6月2日 下午7:05:41
+     */
+    public Data getMs_net_value() {
+        return ms_net_value;
+    }
+    /**
+     * 
+     * 方法描述：与ms_net关联，是数据字典中的值
+     * @param ms_net_value
+     * @date 2018年6月2日 下午7:05:45
+     */
+    public void setMs_net_value(Data ms_net_value) {
+        this.ms_net_value = ms_net_value;
+    }
+    /**
+     * 
+     * 方法描述：与ms_gate关联，是数据字典中的值
+     * @return
+     * @date 2018年6月2日 下午7:05:48
+     */
+    public Data getMs_gate_value() {
+        return ms_gate_value;
+    }
+    /**
+     * 
+     * 方法描述：与ms_gate关联，是数据字典中的值
+     * @param ms_gate_value
+     * @date 2018年6月2日 下午7:05:54
+     */
+    public void setMs_gate_value(Data ms_gate_value) {
+        this.ms_gate_value = ms_gate_value;
+    }
+    
 }

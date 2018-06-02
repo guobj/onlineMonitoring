@@ -7,6 +7,9 @@
         <result column="data_name" property="data_name" jdbcType="VARCHAR" />
         <result column="data_order" property="data_order" jdbcType="INTEGER" />
     </resultMap>
+    <sql id="t_data_columns" >
+        data_type, data_value, data_name, data_order
+    </sql>
     <insert id="add" parameterType="com.nz.onlineMonitoring.data.model.Data" >
         insert into t_data
         <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -38,4 +41,37 @@
             </if>
         </trim>
     </insert>
+    
+     <select id="loadDev" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="t_data_columns" />
+        from t_data
+        where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_dev'
+    </select>
+     <select id="loadType" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="t_data_columns" />
+        from t_data
+        where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_type'
+    </select>
+     <select id="loadFp" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="t_data_columns" />
+        from t_data
+        where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_fp'
+    </select>
+     <select id="loadNet" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="t_data_columns" />
+        from t_data
+        where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_net'
+    </select>
+     <select id="loadGate" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="t_data_columns" />
+        from t_data
+        where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_gate'
+    </select>
+    
+    
 </mapper>

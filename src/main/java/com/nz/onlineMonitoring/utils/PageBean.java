@@ -1,7 +1,8 @@
 package com.nz.onlineMonitoring.utils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class PageBean {
     public static Map<String , Object> serverMap(Map<String , Object> map,Object obj,Integer pages){
@@ -11,6 +12,7 @@ public class PageBean {
         //将类名全部转为小写
         String type = t.toLowerCase();
         map.put(type , obj);
+        //record mapper.xml中根据他进行选择从哪开始显示
         map.put("record" , (pages-1)*4);
         return map;
     }
@@ -20,6 +22,7 @@ public class PageBean {
         map.put("pages" , pages);
         map.put("sumPage" , sumPage);
         map.put("url" , request.getServletPath());
+        System.out.println(request.getServletPath());
         return map;
     }
 }
