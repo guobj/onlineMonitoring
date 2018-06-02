@@ -56,7 +56,7 @@
             </if>
         </where>
     </select>
-    <delete id="delete" parameterType="java.lang.Integer" >
+    <delete id="deleteById" parameterType="java.lang.Integer" >
         delete from t_manage
         where id = #{id,jdbcType=INTEGER}
     </delete>
@@ -109,7 +109,7 @@
             </if>
         </trim>
     </insert>
-    <update id="update" parameterType="com.nz.onlineMonitoring.stationManage.model.Manage" >
+    <update id="updateById" parameterType="com.nz.onlineMonitoring.stationManage.model.Manage" >
         update t_manage
         <set >
             <if test="ms_name != null" >

@@ -1,5 +1,6 @@
 package com.nz.onlineMonitoring.stationManage.service;
 
+import com.nz.onlineMonitoring.stationManage.model.Manage;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,4 +16,12 @@ public interface ManageService {
 	 * @return
 	 */
 	public List<Map<String, Object>> queryStationInfo(Map<String, Object> map);
+
+	/**
+	 * 修改监测站属性信息
+	 * @author guobj
+	 * @param
+	 * @return
+	 */
+	public Integer updateById(Map<String, Object> map, Manage manage);
 }

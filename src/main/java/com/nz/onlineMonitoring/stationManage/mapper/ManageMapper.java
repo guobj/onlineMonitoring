@@ -15,14 +15,14 @@ import java.util.Map;
 public interface ManageMapper {
     /**
      * t_manage
-     * 方法描述:
+     * 方法描述:删除监测站相关信息。
      * @param  
      * @return 
      * @throws 
      * @date 2018-06-01 11:08:33
      * 
      **/
-    int delete(Integer id);
+    int deleteById(Integer id);
 
     /**
      * t_manage
@@ -48,14 +48,14 @@ public interface ManageMapper {
 
     /**
      * t_manage
-     * 方法描述:
+     * 方法描述:修改监测站属性信息
      * @param  
      * @return 
      * @throws 
      * @date 2018-06-01 11:08:33
      * 
      **/
-    int update(Manage manage);
+    Integer updateById(Manage manage);
 
     /**
      * 通过监测站名称、监测站编码、监测站类型、资金来源、网关类型综合查询（支持模糊查询）
