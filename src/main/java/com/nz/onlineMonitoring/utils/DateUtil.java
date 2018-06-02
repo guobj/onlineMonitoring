@@ -1,5 +1,6 @@
 package com.nz.onlineMonitoring.utils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -31,4 +32,17 @@ public class DateUtil {
 		
 		return dateTime;
 	}
+	
+	//生成日期
+	public String creatDate(){
+        
+        LocalDate localDate = LocalDate.now();
+        
+        //格式化日期
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        
+        String date = localDate.format(format);
+        
+        return date;
+    }
 }

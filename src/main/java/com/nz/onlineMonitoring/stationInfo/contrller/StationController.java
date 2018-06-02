@@ -32,7 +32,6 @@ public class StationController {
     public String listStation(HttpServletRequest request, Station station,Map<String , Object> map,@RequestParam(required=false,defaultValue="1") int pages) {
         map = PageBean.serverMap(map , station , pages);
         List<Station> listStation = stationService.listStation(map);
-        Integer count = stationService.countStation(map);
         map = PageBean.clientMap(map ,pages,request);
         map.put("url" , "station/listStation");
         System.out.println("ceshi");
