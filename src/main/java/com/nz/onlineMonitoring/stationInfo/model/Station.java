@@ -58,6 +58,8 @@ public class Station {
     private Data ms_net_value;
     /**与ms_gate关联，是数据字典中的值 */
     private Data ms_gate_value;
+    /**是否删除 默认为0未删除，1为已删除*/
+    private Boolean dr;
     /**
      * 获取 序号-主键、自增 字段:t_station.id
      *
@@ -399,5 +401,24 @@ public class Station {
     public void setMs_gate_value(Data ms_gate_value) {
         this.ms_gate_value = ms_gate_value;
     }
-    
+    /**
+     * 
+     * 方法描述：是否删除 默认为0未删除，1为已删除
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午1:12:03
+     */
+    public Boolean getDr() {
+        return dr;
+    }
+    /**
+     * 
+     * 方法描述：是否删除 默认为0未删除，1为已删除
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午1:12:03
+     */
+    public void setDr(Boolean dr) {
+        this.dr = dr;
+    }
 }

@@ -39,7 +39,8 @@ public class Device {
     private String dev_mfrs;
     /**设备描述,所属表字段为 t_device.dev_desc  */
     private String dev_desc;
-
+    /**是否删除 默认为0未删除，1为已删除*/
+    private Boolean dr;
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_device.id
      *
@@ -254,5 +255,25 @@ public class Device {
      */
     public void setDev_desc(String dev_desc) {
         this.dev_desc = dev_desc == null ? null : dev_desc.trim();
+    }
+    /**
+     * 
+     * 方法描述：是否删除 默认为0未删除，1为已删除
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午1:12:03
+     */
+    public Boolean getDr() {
+        return dr;
+    }
+    /**
+     * 
+     * 方法描述：是否删除 默认为0未删除，1为已删除
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午1:12:03
+     */
+    public void setDr(Boolean dr) {
+        this.dr = dr;
     }
 }

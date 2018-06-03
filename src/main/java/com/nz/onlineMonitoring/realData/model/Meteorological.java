@@ -60,7 +60,8 @@ public class Meteorological {
     private Date time;
     /**设备状态-关联表，见数据字典,所属表字段为 t_meteorological.dev_status  */
     private Integer dev_status;
-
+    /**是否删除 默认为0未删除，1为已删除*/
+    private Boolean dr;
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_meteorological.id
      *
@@ -437,5 +438,25 @@ public class Meteorological {
      */
     public void setDev_status(Integer dev_status) {
         this.dev_status = dev_status;
+    }
+    /**
+     * 
+     * 方法描述：是否删除 默认为0未删除，1为已删除
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午1:12:03
+     */
+    public Boolean getDr() {
+        return dr;
+    }
+    /**
+     * 
+     * 方法描述：是否删除 默认为0未删除，1为已删除
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午1:12:03
+     */
+    public void setDr(Boolean dr) {
+        this.dr = dr;
     }
 }

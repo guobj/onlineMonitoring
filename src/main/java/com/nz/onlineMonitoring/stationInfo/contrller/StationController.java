@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nz.onlineMonitoring.stationInfo.model.Station;
 import com.nz.onlineMonitoring.stationInfo.service.StationService;
@@ -83,5 +84,18 @@ public class StationController {
         String result = stationService.update(station);
         map.put("result", result);
         return "station/updateStation";
+    }
+    /**
+     * 
+     * 方法描述：修改编码时，判断是否有重复的编码
+     * @param ms_code
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 上午10:35:49
+     */
+    @PostMapping("/existMsCode")
+    @ResponseBody
+    public Integer existMsCode(String ms_code) {
+        return stationService.existMsCode(ms_code);
     }
 }

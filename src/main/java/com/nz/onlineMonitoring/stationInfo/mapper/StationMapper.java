@@ -74,4 +74,14 @@ public interface StationMapper {
     * @date 2018年6月2日 上午9:54:59
     */
    int countStation(Map<String , Object> map);
+   
+   /**
+    * 
+    * 方法描述：修改编码时，判断是否有重复的编码
+    * @param ms_code
+    * @return
+    * @author ssh
+    * @date 2018年6月3日 上午10:17:15
+    */
+   Integer existMsCode(String ms_code);
 }

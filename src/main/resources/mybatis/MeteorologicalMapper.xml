@@ -26,7 +26,7 @@
     </resultMap>
     <sql id="t_meteorological_columns" >
         id, ms_name, ms_code, dev_code, air_t, air_h, wind_s, wind_d, dew_p, rain_f, sunshine_h, 
-        atmo_s, soil_t1, soil_t2, soil_t3, soil_h1, soil_h2, soil_h3, soil_ec, time, dev_status
+        atmo_s, soil_t1, soil_t2, soil_t3, soil_h1, soil_h2, soil_h3, soil_ec, time, dev_status,dr
     </sql>
     <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select 
@@ -233,6 +233,9 @@
             </if>
             <if test="dev_status != null" >
                 dev_status = #{dev_status,jdbcType=INTEGER},
+            </if>
+            <if test="dr != null" >
+                dr = #{dr},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}

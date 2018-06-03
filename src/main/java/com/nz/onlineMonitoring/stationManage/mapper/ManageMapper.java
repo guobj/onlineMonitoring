@@ -7,10 +7,10 @@
  **/
 package com.nz.onlineMonitoring.stationManage.mapper;
 
-import com.nz.onlineMonitoring.stationManage.model.Manage;
-
 import java.util.List;
 import java.util.Map;
+
+import com.nz.onlineMonitoring.stationManage.model.Manage;
 
 public interface ManageMapper {
     /**
@@ -64,4 +64,5 @@ public interface ManageMapper {
      * @return
      */
     List<Map<String, Object>> queryStationInfo(Map<String, Object> map);
+    
 }

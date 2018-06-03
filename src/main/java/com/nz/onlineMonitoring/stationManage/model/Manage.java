@@ -37,7 +37,9 @@ public class Manage {
 
     /**存储周期-按天计算,所属表字段为 t_manage.data_storage  */
     private Integer data_storage;
-
+    
+    /**是否删除 默认为0未删除，1为已删除*/
+    private Boolean dr;
     //存储t_station相关字段
     private Station station;
 
@@ -173,5 +175,25 @@ public class Manage {
      */
     public void setData_storage(Integer data_storage) {
         this.data_storage = data_storage;
+    }
+    /**
+     * 
+     * 方法描述：是否删除 默认为0未删除，1为已删除
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午1:12:03
+     */
+    public Boolean getDr() {
+        return dr;
+    }
+    /**
+     * 
+     * 方法描述：是否删除 默认为0未删除，1为已删除
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午1:12:03
+     */
+    public void setDr(Boolean dr) {
+        this.dr = dr;
     }
 }

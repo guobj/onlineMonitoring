@@ -191,6 +191,9 @@
             <if test="ms_desc != null" >
                 ms_desc = #{ms_desc,jdbcType=VARCHAR},
             </if>
+            <if test="dr != null" >
+                dr = #{dr},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -203,5 +206,10 @@
         select 
             count(*)
         from t_station
+    </select>
+    <select id="existMsCode" resultType ="int" parameterType="java.lang.String">
+        select 
+            count(*)
+        from t_station where ms_code = #{ms_code}
     </select>
 </mapper>

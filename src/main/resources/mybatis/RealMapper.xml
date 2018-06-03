@@ -9,9 +9,13 @@
         <result column="real_data" property="real_data" jdbcType="VARCHAR" />
         <result column="real_time" property="real_time" jdbcType="TIMESTAMP" />
         <result column="dev_stauts" property="dev_stauts" jdbcType="INTEGER" />
+        <association column="ms_name" property="" select=""></association>
+        <association column="ms_code" property="" select=""></association>
+        <association column="dev_code" property="" select=""></association>
+        <association column="dev_sta" property="" select=""></association>
     </resultMap>
     <sql id="t_real_columns" >
-        id, ms_name, ms_code, dev_code, real_data, real_time, dev_stauts
+        id, ms_name, ms_code, dev_code, real_data, real_time, dev_stauts,dr
     </sql>
     <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select 
@@ -92,6 +96,9 @@
             </if>
             <if test="dev_stauts != null" >
                 dev_stauts = #{dev_stauts,jdbcType=INTEGER},
+            </if>
+            <if test="dr != null" >
+                dr = #{dr},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}

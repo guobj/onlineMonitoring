@@ -102,5 +102,17 @@ public class StationServiceImpl implements StationService{
         }
         return "修改失败";
     }
+    /**
+     * 
+     * 方法描述：修改编码时，判断是否有重复的编码
+     * @param ms_code
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 上午10:17:15
+     */
+    @Override
+    public Integer existMsCode(String ms_code) {
+        return stationMapper.existMsCode(ms_code);
+    }
 
 }

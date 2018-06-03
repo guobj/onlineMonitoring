@@ -31,7 +31,8 @@ public class Real {
     private Date real_time;
     /**设备状态-关联表，见数据字典,所属表字段为 t_real.dev_stauts  */
     private Integer dev_stauts;
-
+    /**是否删除 默认为0未删除，1为已删除*/
+    private Boolean dr;
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_real.id
      *
@@ -156,5 +157,25 @@ public class Real {
      */
     public void setDev_stauts(Integer dev_stauts) {
         this.dev_stauts = dev_stauts;
+    }
+    /**
+     * 
+     * 方法描述：是否删除 默认为0未删除，1为已删除
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午1:12:03
+     */
+    public Boolean getDr() {
+        return dr;
+    }
+    /**
+     * 
+     * 方法描述：是否删除 默认为0未删除，1为已删除
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午1:12:03
+     */
+    public void setDr(Boolean dr) {
+        this.dr = dr;
     }
 }
