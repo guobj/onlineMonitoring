@@ -9,10 +9,9 @@
         <result column="real_data" property="real_data" jdbcType="VARCHAR" />
         <result column="real_time" property="real_time" jdbcType="TIMESTAMP" />
         <result column="dev_stauts" property="dev_stauts" jdbcType="INTEGER" />
-        <association column="ms_name" property="" select=""></association>
-        <association column="ms_code" property="" select=""></association>
-        <association column="dev_code" property="" select=""></association>
-        <association column="dev_sta" property="" select=""></association>
+      <!--   <association column="ms_code" property="ms_code_value" select=""></association>
+        <association column="dev_code" property="dev_code_value" select=""></association>
+        <association column="dev_stauts" property="dev_stauts_value" select=""></association> -->
     </resultMap>
     <sql id="t_real_columns" >
         id, ms_name, ms_code, dev_code, real_data, real_time, dev_stauts,dr
@@ -103,4 +102,26 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+    <select id="listReal" resultMap="BaseResultMap" parameterType="map">
+        select 
+        <include refid="t_real_columns" />
+        from t_real
+        <where>
+            <if test="real.ms_name != null and real.ms_name != ''" >
+                ms_name like concat("%",#{real.ms_name},"%")
+            </if>
+            <if test="real.ms_code != null and real.ms_code != ''" >
+                and ms_code like concat(#{real.ms_code},"%")
+            </if>
+            <if test="real.device_type != null and real.device_type != ''" >
+                and dev_code like concat("%",#{real.device_type})
+            </if>
+            <if test="real.device_object != null and real.device_object != ''" >
+                and dev_code like concat(#{real.device_object},"%")
+            </if>
+            <if test="real.dev_stauts != null and real.dev_stauts != ''" >
+                and dev_stauts = #{real.dev_stauts}
+            </if>
+        </where>
+    </select>
 </mapper>

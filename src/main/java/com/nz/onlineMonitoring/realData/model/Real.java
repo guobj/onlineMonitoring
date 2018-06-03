@@ -33,6 +33,10 @@ public class Real {
     private Integer dev_stauts;
     /**是否删除 默认为0未删除，1为已删除*/
     private Boolean dr;
+    /**根据设备的类型查询数据 */
+    private String device_type;
+    /**根据设备监测对象的查询数据 */
+    private String device_object;
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_real.id
      *
@@ -178,4 +182,45 @@ public class Real {
     public void setDr(Boolean dr) {
         this.dr = dr;
     }
+    /**
+     * 
+     * 方法描述：根据设备的类型查询数据
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午2:25:43
+     */
+    public String getDevice_type() {
+        return device_type;
+    }
+    /**
+     * 
+     * 方法描述：根据设备的类型查询数据
+     * @param device_type
+     * @author ssh
+     * @date 2018年6月3日 下午2:25:55
+     */
+    public void setDevice_type(String device_type) {
+        this.device_type = device_type;
+    }
+    /**
+     * 
+     * 方法描述：根据设备监测对象的查询数据
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午2:26:11
+     */
+    public String getDevice_object() {
+        return device_object;
+    }
+    /**
+     * 
+     * 方法描述：根据设备监测对象的查询数据
+     * @param device_object
+     * @author ssh
+     * @date 2018年6月3日 下午2:26:19
+     */
+    public void setDevice_object(String device_object) {
+        this.device_object = device_object;
+    }
+    
 }
