@@ -66,4 +66,13 @@ public interface RealMapper {
      * @date 2018年6月3日 下午2:36:02
      */
     List<Real> listReal(Map<String, Object> map);
+    /**
+     * 
+     * 方法描述：查询数据数量
+     * @param map
+     * @return
+     * @author ssh
+     * @date 2018年6月5日 上午11:14:52
+     */
+    Integer countReal(Map<String, Object> map);
 }

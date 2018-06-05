@@ -3,13 +3,17 @@ package com.nz.onlineMonitoring.realData.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nz.onlineMonitoring.realData.model.Real;
 import com.nz.onlineMonitoring.realData.service.RealService;
+import com.nz.onlineMonitoring.utils.PageBean;
 
 @Controller
 @RequestMapping("/real")
@@ -29,9 +33,25 @@ public class RealController {
      */
     @RequestMapping("/listReal")
     @ResponseBody
-    public List<Real> listReal(Map<String, Object> map,Real real){
-        System.out.println("----"+real.getDevice_object());
-        map.put("real", real);
-        return realService.listReal(map);
+    public List<Real> listReal(Map<String, Object> map,Real real,HttpServletRequest request,@RequestParam(required=false,defaultValue="1") int pages,@RequestParam(required=false,name="city")String[] citys){
+        if (citys != null) {
+            int n = citys.length;
+            switch (n) {
+            case 1:
+                real.setMs_code(citys[0]);
+                break;
+            case 2:
+                real.setMs_code(citys[1]);
+                break;
+            default: 
+                real.setMs_code("37");
+                break;
+            }
+        }
+        map = PageBean.serverMap(map , real , pages);
+        List<Real> listReal = realService.listReal(map);
+        map = PageBean.clientMap(map ,pages,request);
+        map.put("listReal", listReal);
+        return listReal;
     }
 }

@@ -42,13 +42,13 @@
         </trim>
     </insert>
     
-     <select id="loadDev" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <select id="loadDev" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select 
         <include refid="t_data_columns" />
         from t_data
         where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_dev'
     </select>
-     <select id="loadType" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <select id="loadType" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select 
         <include refid="t_data_columns" />
         from t_data
@@ -60,18 +60,30 @@
         from t_data
         where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_fp'
     </select>
-     <select id="loadNet" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <select id="loadNet" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select 
         <include refid="t_data_columns" />
         from t_data
         where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_net'
     </select>
-     <select id="loadGate" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <select id="loadGate" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select 
         <include refid="t_data_columns" />
         from t_data
         where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_gate'
     </select>
-    
+    <select id="listCity" resultMap="BaseResultMap">
+        select 
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type ='ms_city' and data_value like '%00' and data_value not like '%00__'
+    </select>
+    <!-- 根据市的id，查询市的区，会把市的长度取前四位，然后模糊查询 -->
+    <select id="listArea" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type ='ms_city' and data_value like concat(#{data_value},"%") and data_value not like '%00'
+    </select>
     
 </mapper>
