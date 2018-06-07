@@ -137,137 +137,25 @@ pageContext.setAttribute("basePath", basePath);
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2" ></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2"></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
-
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2"></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2"></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"> <input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2"></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2"></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2"></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2"></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2"></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2"></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2"></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2"></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
-            <tr>
-                <td class="t3">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t4">建设内容</td>
-                <td class="t5">监测站类型</td>
-                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                <td class="t7"><input type="button" value="删除"  class="input2"></td>
-                <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-                <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
-            </tr>
+            <c:if test="${stationInfoList eq null}" >
+                <tr>
+                <tr><td colspan="8"  style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
+                </tr>
+            </c:if>
+            <c:if test="${stationInfoList != null}">
+                <c:forEach var="list" items="${stationInfoList}">
+                    <tr>
+                        <td class="t3">${list.ms_name}</td>
+                        <td class="t2">${list.ms_code}</td>
+                        <td class="t4">${list.station.dev}</td>
+                        <td class="t5">${list.station.data.ms_type}</td>
+                        <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
+                        <td class="t7"><input type="button" value="删除"  class="input2"></td>
+                        <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
+                        <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
+                    </tr>
+                </c:forEach>
+            </c:if>
             </tbody>
         </table>
         <div  id="page">

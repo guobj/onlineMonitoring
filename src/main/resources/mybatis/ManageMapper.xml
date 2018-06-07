@@ -54,6 +54,7 @@
             <if test="manage.station!=null and manage.station.trim()!=''">
                 AND ts.ms_net LIKE concat("%",#{manage.station.ms_net},"%")
             </if>
+            AND ts.dr = false AND tm.dr = false
         </where>
         LIMIT #{record},4
     </select>
@@ -88,6 +89,7 @@
             <if test="manage.station!=null and manage.station.trim()!=''">
                 AND ts.ms_net LIKE concat("%",#{manage.station.ms_net},"%")
             </if>
+            AND ts.dr = false AND tm.dr = false
         </where>
     </select>
    <!-- <delete id="deleteById" parameterType="java.lang.Integer" >

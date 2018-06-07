@@ -1,6 +1,6 @@
 // JavaScript Document
 $(function(){
-    //ÈÕÆÚ
+    //æ—¥æœŸ
     var date=new Date();
     $("#year").html(date.getFullYear());
     $("#month").html(date.getMonth()+1);
@@ -9,25 +9,25 @@ $(function(){
     var day=date.getDay();
 
     if(day=="1"){
-        $("#day").html("Ò»");
+        $("#day").html("ä¸€");
     }else if((day=="2")){
-        $("#day").html("¶ş");
+        $("#day").html("äºŒ");
     }else if(day=="3"){
-        $("#day").html("Èı");
+        $("#day").html("ä¸‰");
     }
     else if(day=="4"){
-        $("#day").html("ËÄ");
+        $("#day").html("å››");
     }
     else if(day=="5"){
-        $("#day").html("Îå");
+        $("#day").html("äº”");
     }
     else if(day=="6"){
-        $("#day").html("Áù");
+        $("#day").html("å…­");
     }
     else if(day=="0"){
-        $("#day").html("ÈÕ");
+        $("#day").html("æ—¥");
     }
-    //²Ëµ¥
+    //èœå•
     $("#a_1").click(function(){
         $("#c1").toggle()
     })
@@ -49,9 +49,9 @@ $(function(){
 });
 $(function(){
     $("#page").Page({
-        totalPages: 10,//·ÖÒ³×ÜÊı
-        liNums: 7,//·ÖÒ³µÄÊı×Ö°´Å¥Êı(½¨ÒéÈ¡ÆæÊı)
-        activeClass: 'activP', //active ÀàÑùÊ½¶¨Òå
+        totalPages: 10,//åˆ†é¡µæ€»æ•°
+        liNums: 7,//åˆ†é¡µçš„æ•°å­—æŒ‰é’®æ•°(å»ºè®®å–å¥‡æ•°)
+        activeClass: 'activP', //active ç±»æ ·å¼å®šä¹‰
         callBack : function(page){
             //console.log(page)
         }
