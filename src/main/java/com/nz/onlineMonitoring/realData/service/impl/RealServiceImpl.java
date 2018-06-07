@@ -27,7 +27,8 @@ public class RealServiceImpl implements RealService {
     public List<Real> listReal(Map<String, Object> map) {
         Integer count = RealMapper.countReal(map);
         map.put("count", count);
-        return RealMapper.listReal(map);
+        List<Real> realList = RealMapper.listReal(map);
+        return realList;
     }
 
 }

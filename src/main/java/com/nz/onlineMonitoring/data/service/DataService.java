@@ -23,4 +23,28 @@ public interface DataService {
      * @date 2018年6月5日 上午9:24:52
      */
     List<Data> listArea(int data_value);
+    /**
+     * 
+     * 方法描述：查询设备的全部状态
+     * @return 
+     * @author ssh
+     * @date 2018年6月6日 下午9:27:03
+     */
+    List<Data> listDevStauts();
+    /**
+     * 
+     * 方法描述：查询设备监测的对象
+     * @return
+     * @author ssh
+     * @date 2018年6月6日 下午9:27:28
+     */
+    List<Data> listDevType();
+    /**
+     * 
+     * 方法描述：查询设备的类型
+     * @return
+     * @author ssh
+     * @date 2018年6月6日 下午9:27:51
+     */
+    List<Data> listDevType1();
 }

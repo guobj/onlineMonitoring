@@ -42,5 +42,38 @@ public class DataServiceImpl implements DataService {
     public List<Data> listArea(int data_value) {
         return dataMapper.listArea(data_value);
     }
+    /**
+     * 
+     * 方法描述：查询设备的全部状态
+     * @return 
+     * @author ssh
+     * @date 2018年6月6日 下午9:27:03
+     */
+    @Override
+    public List<Data> listDevStauts() {
+        return dataMapper.listDevStauts();
+    }
+    /**
+     * 
+     * 方法描述：查询设备监测的对象
+     * @return
+     * @author ssh
+     * @date 2018年6月6日 下午9:27:28
+     */
+    @Override
+    public List<Data> listDevType() {
+        return dataMapper.listDevType();
+    }
+    /**
+     * 
+     * 方法描述：查询设备的类型
+     * @return
+     * @author ssh
+     * @date 2018年6月6日 下午9:27:51
+     */
+    @Override
+    public List<Data> listDevType1() {
+        return dataMapper.listDevType1();
+    }
 
 }
