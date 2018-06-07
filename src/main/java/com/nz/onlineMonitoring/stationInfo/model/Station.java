@@ -7,6 +7,8 @@
  **/
 package com.nz.onlineMonitoring.stationInfo.model;
 
+import com.nz.onlineMonitoring.data.model.Data;
+
 import java.math.BigDecimal;
 import java.util.Date;
 

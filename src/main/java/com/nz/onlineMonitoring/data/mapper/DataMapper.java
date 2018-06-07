@@ -9,6 +9,8 @@ package com.nz.onlineMonitoring.data.mapper;
 
 import com.nz.onlineMonitoring.data.model.Data;
 
+import java.util.List;
+
 public interface DataMapper {
     /**
      * t_data

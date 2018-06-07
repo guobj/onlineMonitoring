@@ -7,6 +7,9 @@
  **/
 package com.nz.onlineMonitoring.deviceInfo.model;
 
+import com.nz.onlineMonitoring.data.model.Data;
+import com.nz.onlineMonitoring.stationInfo.model.Station;
+
 /**
  * t_device 类
  * @Description : 

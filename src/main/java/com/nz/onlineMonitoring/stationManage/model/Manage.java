@@ -38,8 +38,6 @@ public class Manage {
     /**存储周期-按天计算,所属表字段为 t_manage.data_storage  */
     private Integer data_storage;
     
-    /**是否删除 默认为0未删除，1为已删除*/
-    private Boolean dr;
     //存储t_station相关字段
     private Station station;
 
@@ -48,14 +46,6 @@ public class Manage {
 
     //数据字典的字段
     private Data data;
-
-    public Boolean getDr() {
-        return dr;
-    }
-
-    public void setDr(Boolean dr) {
-        this.dr = dr;
-    }
 
     public Data getData() {
         return data;

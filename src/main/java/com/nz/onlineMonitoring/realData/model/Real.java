@@ -40,13 +40,6 @@ public class Real {
 	private String device_type;
 	/**根据设备监测对象的查询数据 */
 	private String device_object;
-	public Boolean getDr() {
-		return dr;
-	}
-
-	public void setDr(Boolean dr) {
-		this.dr = dr;
-	}
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_real.id
      *
