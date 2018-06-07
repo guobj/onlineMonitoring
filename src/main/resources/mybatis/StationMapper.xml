@@ -10,7 +10,7 @@
         <result column="ms_type" property="ms_type" jdbcType="INTEGER" />
         <result column="ms_fp" property="ms_fp" jdbcType="INTEGER" />
         <result column="ms_place" property="ms_place" jdbcType="VARCHAR" />
-        <result column="ms_position" property="ms_position" jdbcType="DECIMAL" />
+        <result column="ms_position" property="ms_position" jdbcType="DOUBLE" />
         <result column="ms_user" property="ms_user" jdbcType="VARCHAR" />
         <result column="ms_builder" property="ms_builder" jdbcType="VARCHAR" />
         <result column="ms_net" property="ms_net" jdbcType="INTEGER" />
@@ -27,7 +27,7 @@
         <result column="ms_type" property="ms_type" jdbcType="INTEGER" />
         <result column="ms_fp" property="ms_fp" jdbcType="INTEGER" />
         <result column="ms_place" property="ms_place" jdbcType="VARCHAR" />
-        <result column="ms_position" property="ms_position" jdbcType="DECIMAL" />
+        <result column="ms_position" property="ms_position" jdbcType="DOUBLE" />
         <result column="ms_user" property="ms_user" jdbcType="VARCHAR" />
         <result column="ms_builder" property="ms_builder" jdbcType="VARCHAR" />
         <result column="ms_net" property="ms_net" jdbcType="INTEGER" />
@@ -131,7 +131,7 @@
                 #{ms_place,jdbcType=VARCHAR},
             </if>
             <if test="ms_position != null" >
-                #{ms_position,jdbcType=DECIMAL},
+                #{ms_position,jdbcType=DOUBLE},
             </if>
             <if test="ms_user != null" >
                 #{ms_user,jdbcType=VARCHAR},
@@ -175,7 +175,7 @@
                 ms_place = #{ms_place,jdbcType=VARCHAR},
             </if>
             <if test="ms_position != null" >
-                ms_position = #{ms_position,jdbcType=DECIMAL},
+                ms_position = #{ms_position,jdbcType=DOUBLE},
             </if>
             <if test="ms_user != null" >
                 ms_user = #{ms_user,jdbcType=VARCHAR},

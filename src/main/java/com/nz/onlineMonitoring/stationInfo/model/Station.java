@@ -7,10 +7,9 @@
  **/
 package com.nz.onlineMonitoring.stationInfo.model;
 
-import com.nz.onlineMonitoring.data.model.Data;
-
-import java.math.BigDecimal;
 import java.util.Date;
+
+import com.nz.onlineMonitoring.data.model.Data;
 
 /**
  * t_station 类
@@ -37,7 +36,7 @@ public class Station {
     /**监测站位置-手动输入位置信息,所属表字段为 t_station.ms_place  */
     private String ms_place;
     /**经纬度-5位小数，由c/s系统写入,所属表字段为 t_station.ms_position  */
-    private BigDecimal ms_position;
+    private Double ms_position;
     /**使用单位、联系人、联系方式-直接输入，用逗号隔开,所属表字段为 t_station.ms_user  */
     private String ms_user;
     /**施工单位、联系人、联系方式-直接输入，用逗号隔开,所属表字段为 t_station.ms_builder  */
@@ -229,7 +228,7 @@ public class Station {
      *
      * @return  t_station.ms_position  ,经纬度-5位小数，由c/s系统写入
      */
-    public BigDecimal getMs_position() {
+    public Double getMs_position() {
         return ms_position;
     }
 
@@ -238,7 +237,7 @@ public class Station {
      *
      * @param ms_position  t_station.ms_position,经纬度-5位小数，由c/s系统写入
      */
-    public void setMs_position(BigDecimal ms_position) {
+    public void setMs_position(Double ms_position) {
         this.ms_position = ms_position;
     }
 
