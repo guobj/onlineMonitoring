@@ -26,11 +26,13 @@ public class ManageServiceImpl implements ManageService {
 
 		//查询站点配置的相关信息
 		List<Map<String, Object>> stationInfoList = manageMapper.queryStationInfo(map);
-
+		//查询记录总数
+		Integer count = manageMapper.count(map);
 		if(stationInfoList == null || stationInfoList.size() <= 0){
 			throw new RuntimeException("暂无相关数据！");
 		}else{
 			map.put("stationInfoList",stationInfoList);
+			map.put("count",count);
 		}
 
 		return stationInfoList;

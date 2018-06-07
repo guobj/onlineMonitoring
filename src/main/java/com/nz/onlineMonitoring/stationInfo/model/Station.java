@@ -49,6 +49,17 @@ public class Station {
     /**监测站描述,所属表字段为 t_station.ms_desc  */
     private String ms_desc;
 
+    //是否删除 1删除0未删除
+    private Boolean dr = false;
+
+    public Boolean getDr() {
+        return dr;
+    }
+
+    public void setDr(Boolean dr) {
+        this.dr = dr;
+    }
+
     private Data data;
 
     public Data getData() {

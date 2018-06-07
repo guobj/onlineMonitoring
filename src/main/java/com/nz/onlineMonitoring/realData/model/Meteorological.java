@@ -61,6 +61,17 @@ public class Meteorological {
     /**设备状态-关联表，见数据字典,所属表字段为 t_meteorological.dev_status  */
     private Integer dev_status;
 
+    //是否删除 1删除0未删除
+    private Boolean dr = false;
+
+    public Boolean getDr() {
+        return dr;
+    }
+
+    public void setDr(Boolean dr) {
+        this.dr = dr;
+    }
+
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_meteorological.id
      *

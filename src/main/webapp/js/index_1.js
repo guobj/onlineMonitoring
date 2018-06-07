@@ -1,12 +1,31 @@
-﻿// JavaScript Document
+// JavaScript Document
 $(function(){
-    //Ê±¼ä
+    //日期
     var date=new Date();
-    $("#year").html(date.getFullYear())
-    $("#month").html(date.getMonth()+1)
-    $("#dat").html(date.getDate()+1)
-    $("#day").html(date.getDay())
-    //²Ëµ¥ÊÕÆð
+    $("#year").html(date.getFullYear());
+    $("#month").html(date.getMonth()+1);
+    $("#dat").html(date.getDate()+1);
+    $("#day").html(date.getDay());
+    if($("#day").html("1")){
+        $("#day").html("一");
+    }else if(($("#day").html("2"))){
+        $("#day").html("二");
+    }else if(($("#day").html("3"))){
+        $("#day").html("三");
+    }
+    else if(($("#day").html("4"))){
+        $("#day").html("四");
+    }
+    else if(($("#day").html("5"))){
+        $("#day").html("五");
+    }
+    else if(($("#day").html("6"))){
+        $("#day").html("六");
+    }
+    else if(($("#day").html("0"))){
+        $("#day").html("日");
+    }
+    //菜单
     $("#a_1").click(function(){
         $("#c1").toggle()
     })
@@ -16,7 +35,9 @@ $(function(){
     $("#a_3").click(function(){
         $("#c3").toggle()
     })
-
+    $("#a_4").click(function(){
+        $("#c4").toggle()
+    })
 
     $("#ceNav li a").click(function(){
         $(this).siblings().toggle();
@@ -55,7 +76,7 @@ function change(v){
     if(++v<s.length){change(v);}
   }//End with
 }
-
+//级联操作
 var dsy = new Dsy();
 
 dsy.add("0",["济南市","青岛市","淄博市","枣庄市","东营市","烟台市","潍坊市","济宁市","泰安市","威海市","日照市","莱芜市","临沂市","德州市","聊城市","滨州市","菏泽市"]);

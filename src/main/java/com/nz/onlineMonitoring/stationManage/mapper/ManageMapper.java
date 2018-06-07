@@ -52,4 +52,13 @@ public interface ManageMapper {
      * @return
      */
     List<Map<String, Object>> queryStationInfo(Map<String, Object> map);
+
+    /**
+     * 通过监测站名称、监测站编码、监测站类型、资金来源、网关类型综合查询（支持模糊查询）
+     * 查询记录总数
+     * @author guobj
+     * @param
+     * @return
+     */
+    Integer count(Map<String, Object> map);
 }

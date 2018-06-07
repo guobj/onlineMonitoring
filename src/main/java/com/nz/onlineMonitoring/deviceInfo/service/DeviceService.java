@@ -15,5 +15,5 @@ public interface DeviceService {
 	 * @throws
 	 *
 	 **/
-	public List<Map<String, Object>> queryDeviceInfo(Map<String, Object> map, Device device);
+	public List<Device> queryDeviceInfo(Map<String, Object> map, Device device);
 }

@@ -3,12 +3,15 @@ package com.nz.onlineMonitoring.stationManage.controller;
 import com.nz.onlineMonitoring.stationManage.model.Manage;
 import com.nz.onlineMonitoring.stationManage.service.ManageService;
 import com.nz.onlineMonitoring.utils.JacksonData;
+import com.nz.onlineMonitoring.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -18,26 +21,21 @@ public class ManageController {
 	@Autowired
 	private ManageService manageService;
 
-	@RequestMapping(value = "/queryStationInfo", method = RequestMethod.POST)
-	@ResponseBody
-	public JacksonData queryStationInfo(Map<String, Object> map,Manage manage){
-
-		JacksonData jacksonData = new JacksonData();
+	@RequestMapping(value = "/queryStationInfo")
+	public String queryStationInfo(Map<String, Object> map, Manage manage,
+										@RequestParam(required=false,defaultValue="1")Integer pages, HttpServletRequest request){
 		try {
 			//存储前台传过来的值
-			map.put("manage",manage);
-
+			map = PageBean.serverMap(map,manage,pages);
 			//将数据返回前端
 			List<Map<String, Object>> list = manageService.queryStationInfo(map);
-
-			//成功返回数据u
-
-			jacksonData.success(list);
+			//返回前端页面的值
+			map = PageBean.clientMap(map,pages,request);
 		}catch (Exception e){
-			jacksonData.failure(e.getMessage());
+			map.put("message",e.getMessage());
 		}
 
-		return jacksonData;
+		return "stationManage/stationManage_list";
 	}
 
 	@RequestMapping(value = "/updateById",method = RequestMethod.POST)

@@ -23,6 +23,10 @@
     <select id="loadByDevPort" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select * from t_data where data_type="dev_port" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
+
+    <select id="loadByDevType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from t_data where data_type="dev_type" and data_value=#{data_value,jdbcType=INTEGER}
+    </select>
     <insert id="add" parameterType="com.nz.onlineMonitoring.data.model.Data" >
         insert into t_data
         <trim prefix="(" suffix=")" suffixOverrides="," >

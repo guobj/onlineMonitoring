@@ -55,11 +55,50 @@
                 AND ts.ms_net LIKE concat("%",#{manage.station.ms_net},"%")
             </if>
         </where>
+        LIMIT #{record},4
     </select>
-    <delete id="deleteById" parameterType="java.lang.Integer" >
+    <!--关联查询 查询共有多少条记录-->
+    <select id="count" resultType="integer" parameterType="map">
+        SELECT
+          count(*)
+        FROM
+          t_manage tm
+        LEFT JOIN
+          t_station ts
+        ON
+          tm.ms_code=ts.ms_code
+        LEFT JOIN
+          t_data td
+        ON
+          ts.ms_type=td.data_value
+        <where>
+            td.data_type='ms_type'
+            <if test="manage.ms_name!=null and manage.ms_name.trim()!=''">
+                AND tm.ms_name LIKE concat("%",#{manage.ms_name},"%")
+            </if>
+            <if test="manage.ms_code!=null and manage.ms_code.trim()!=''">
+                AND tm.ms_code LIKE concat("%",#{manage.ms_code},"%")
+            </if>
+            <if test="manage.station!=null and manage.station.trim()!=''">
+                AND ts.ms_type LIKE concat("%",#{manage.station.ms_type},"%")
+            </if>
+            <if test="manage.station!=null and manage.station.trim()!=''">
+                AND ts.ms_fp LIKE concat("%",#{manage.station.ms_fp},"%")
+            </if>
+            <if test="manage.station!=null and manage.station.trim()!=''">
+                AND ts.ms_net LIKE concat("%",#{manage.station.ms_net},"%")
+            </if>
+        </where>
+    </select>
+   <!-- <delete id="deleteById" parameterType="java.lang.Integer" >
         delete from t_manage
         where id = #{id,jdbcType=INTEGER}
-    </delete>
+    </delete>-->
+
+    <update id="deleteById" parameterType="java.lang.Integer">
+        update t_manage
+        set dr = true where id = #{id,jdbcType=INTEGER}
+    </update>
     <!--<insert id="add" parameterType="com.nz.onlineMonitoring.stationManage.model.Manage" >-->
         <!--insert into t_manage-->
         <!--<trim prefix="(" suffix=")" suffixOverrides="," >-->

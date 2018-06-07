@@ -64,5 +64,15 @@ public interface DeviceMapper {
      * @throws
      *
      **/
-    List<Map<String, Object>> queryDeviceInfo(Map<String, Object> map);
+    List<Device> queryDeviceInfo(Map<String, Object> map);
+
+    /**
+     * t_device
+     * 方法描述: 设备信息查询,记录总数
+     * @param map
+     * @return
+     * @throws
+     *
+     **/
+    Integer count(Map<String, Object> map);
 }

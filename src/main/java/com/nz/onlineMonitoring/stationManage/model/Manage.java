@@ -41,8 +41,19 @@ public class Manage {
     //存储t_station相关字段
     private Station station;
 
+    //是否删除 1删除0未删除
+    private Boolean dr = false;
+
     //数据字典的字段
     private Data data;
+
+    public Boolean getDr() {
+        return dr;
+    }
+
+    public void setDr(Boolean dr) {
+        this.dr = dr;
+    }
 
     public Data getData() {
         return data;
