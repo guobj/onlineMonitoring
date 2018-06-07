@@ -12,11 +12,12 @@ pageContext.setAttribute("basePath", basePath);
 <head lang="en">
     <base href="${basePath }">
     <meta charset="UTF-8">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
     <title></title>
     <link href="css/xinxi.css" rel="stylesheet" type="text/css">
     <script src="js/jquery.js"></script>
     <script src="js/xinxi.js" ></script>
-    <script src="js/jilian.js" type="text/javascript"></script>
+    <script src="js/jilian.js" type="text/javascript" charset="UTF-8"></script>
 </head>
 <body>
 <div id="tit">

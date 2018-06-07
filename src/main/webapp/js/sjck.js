@@ -1,4 +1,4 @@
-// JavaScript Document
+﻿// JavaScript Document
 $(function(){
     //日期
     var date=new Date();
