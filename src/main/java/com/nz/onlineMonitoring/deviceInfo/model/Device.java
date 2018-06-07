@@ -7,9 +7,6 @@
  **/
 package com.nz.onlineMonitoring.deviceInfo.model;
 
-import com.nz.onlineMonitoring.data.model.Data;
-import com.nz.onlineMonitoring.stationInfo.model.Station;
-
 /**
  * t_device 类
  * @Description : 
@@ -20,95 +17,84 @@ public class Device {
 
     /**序号-主键、自增、界面不可见,所属表字段为 t_device.id  */
     private Integer id;
-
     /**监测站名称-与t_station ms_name关联,所属表字段为 t_device.ms_name  */
     private String ms_name;
-
     /**监测站编码-与t_station ms_code关联,所属表字段为 t_device.ms_code  */
     private String ms_code;
-
     /**设备编码-由网关设备写入数据库,所属表字段为 t_device.dev_code  */
     private String dev_code;
-
     /**通信协议-关联表，见数据字典,所属表字段为 t_device.dev_protocol  */
     private Integer dev_protocol;
-
     /**通讯接口-关联表，见数据字典,所属表字段为 t_device.dev_interface  */
     private Integer dev_interface;
-
     /**从机地址-手动输入,所属表字段为 t_device.dev_regad  */
     private Integer dev_regad;
-
     /**ip地址-设备ip地址,所属表字段为 t_device.dev_ip  */
     private String dev_ip;
-
     /**通信端口-关联表，见数据字典,所属表字段为 t_device.dev_port  */
     private Integer dev_port;
-
     /**质保期限-年,所属表字段为 t_device.dev_warraty  */
     private Integer dev_warraty;
-
     /**设备厂家、品牌、型号、服务电话,所属表字段为 t_device.dev_mfrs  */
     private String dev_mfrs;
-
     /**设备描述,所属表字段为 t_device.dev_desc  */
     private String dev_desc;
 
-    //是否删除 1删除0未删除
-    private Boolean dr = false;
 
-    //存储站点信息 与t_station关联
-    private Station station;
+	//是否删除 1删除0未删除
+	private Boolean dr = false;
 
-    //存储数据字典data_type="dev_protocol"的相关信息
-    private Data dataProtocol;
+	//存储站点信息 与t_station关联
+	private Station station;
 
-    //存储数据字典data_type="dev_interface"的相关信息
-    private Data dataInterface;
+	//存储数据字典data_type="dev_protocol"的相关信息
+	private Data dataProtocol;
 
-    //存储数据字典data_type="dev_port"的相关信息
-    private Data dataPort;
+	//存储数据字典data_type="dev_interface"的相关信息
+	private Data dataInterface;
 
-    public Station getStation() {
-        return station;
-    }
+	//存储数据字典data_type="dev_port"的相关信息
+	private Data dataPort;
 
-    public void setStation(Station station) {
-        this.station = station;
-    }
+	public Station getStation() {
+		return station;
+	}
 
-    public Data getDataProtocol() {
-        return dataProtocol;
-    }
+	public void setStation(Station station) {
+		this.station = station;
+	}
 
-    public void setDataProtocol(Data dataProtocol) {
-        this.dataProtocol = dataProtocol;
-    }
+	public Data getDataProtocol() {
+		return dataProtocol;
+	}
 
-    public Data getDataInterface() {
-        return dataInterface;
-    }
+	public void setDataProtocol(Data dataProtocol) {
+		this.dataProtocol = dataProtocol;
+	}
 
-    public void setDataInterface(Data dataInterface) {
-        this.dataInterface = dataInterface;
-    }
+	public Data getDataInterface() {
+		return dataInterface;
+	}
 
-    public Data getDataPort() {
-        return dataPort;
-    }
+	public void setDataInterface(Data dataInterface) {
+		this.dataInterface = dataInterface;
+	}
 
-    public void setDataPort(Data dataPort) {
-        this.dataPort = dataPort;
-    }
+	public Data getDataPort() {
+		return dataPort;
+	}
 
-    public Boolean getDr() {
-        return dr;
-    }
+	public void setDataPort(Data dataPort) {
+		this.dataPort = dataPort;
+	}
 
-    public void setDr(Boolean dr) {
-        this.dr = dr;
-    }
+	public Boolean getDr() {
+		return dr;
+	}
 
+	public void setDr(Boolean dr) {
+		this.dr = dr;
+	}
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_device.id
      *

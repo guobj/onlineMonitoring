@@ -7,11 +7,13 @@
         <result column="data_name" property="data_name" jdbcType="VARCHAR" />
         <result column="data_order" property="data_order" jdbcType="INTEGER" />
     </resultMap>
-
+    <sql id="t_data_columns" >
+        data_type, data_value, data_name, data_order
+    </sql>
     <select id="loadByDataValue" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select * from t_data where data_type="ms_type" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
-    
+
     <select id="loadByDevProtocol" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select * from t_data where data_type="dev_protocol" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
@@ -58,4 +60,66 @@
             </if>
         </trim>
     </insert>
+
+    <select id="loadDev" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_dev'
+    </select>
+    <select id="loadType" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_type'
+    </select>
+    <select id="loadFp" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_fp'
+    </select>
+    <select id="loadNet" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_net'
+    </select>
+    <select id="loadGate" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_gate'
+    </select>
+    <select id="listCity" resultMap="BaseResultMap">
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type ='ms_city' and data_value like '%00' and data_value not like '%00__'
+    </select>
+    <!-- 根据市的id，查询市的区，会把市的长度取前四位，然后模糊查询 -->
+    <select id="listArea" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type ='ms_city' and data_value like concat(#{data_value},"%") and data_value not like '%00'
+    </select>
+    <select id="listDevStauts" resultMap="BaseResultMap">
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type ='dev_stauts'
+    </select>
+    <select id="listDevType" resultMap="BaseResultMap">
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type ='dev_type'
+    </select>
+    <select id="listDevType1" resultMap="BaseResultMap">
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type ='dev_type1'
+    </select>
 </mapper>

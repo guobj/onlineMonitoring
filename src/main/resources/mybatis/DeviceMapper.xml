@@ -21,7 +21,7 @@
     </resultMap>
     <sql id="t_device_columns" >
         id, ms_name, ms_code, dev_code, dev_protocol, dev_interface, dev_regad, dev_ip, dev_port, 
-        dev_warraty, dev_mfrs, dev_desc
+        dev_warraty, dev_mfrs, dev_desc, dr
     </sql>
     <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select 
@@ -180,6 +180,9 @@
             </if>
             <if test="dev_desc != null" >
                 dev_desc = #{dev_desc,jdbcType=VARCHAR},
+            </if>
+            <if test="dr != null" >
+                dr = #{dr},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}

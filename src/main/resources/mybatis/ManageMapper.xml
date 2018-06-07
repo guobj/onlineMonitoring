@@ -12,7 +12,7 @@
         <association property="station" column="ms_code" select="com.nz.onlineMonitoring.stationInfo.mapper.StationMapper.loadByMscode"/>
     </resultMap>
     <sql id="t_manage_columns" >
-        id, ms_name, ms_code, server_ip, server_port, data_upload, data_storage
+        id, ms_name, ms_code, server_ip, server_port, data_upload, data_storage, dr
     </sql>
     
     <!--load方法查询一条数据-->
@@ -170,6 +170,9 @@
             </if>
             <if test="data_storage != null" >
                 data_storage = #{data_storage,jdbcType=INTEGER},
+            </if>
+            <if test="dr != null" >
+                dr = #{dr},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}

@@ -18,11 +18,31 @@
         <result column="ms_desc" property="ms_desc" jdbcType="VARCHAR" />
         <association property="data" column="ms_type" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadByDataValue"></association>
     </resultMap>
+    <resultMap id="BaseResultMap01" type="com.nz.onlineMonitoring.stationInfo.model.Station" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="ms_name" property="ms_name" jdbcType="VARCHAR" />
+        <result column="ms_code" property="ms_code" jdbcType="VARCHAR" />
+        <result column="ms_date" property="ms_date" jdbcType="DATE" />
+        <result column="ms_dev" property="ms_dev" jdbcType="VARCHAR" />
+        <result column="ms_type" property="ms_type" jdbcType="INTEGER" />
+        <result column="ms_fp" property="ms_fp" jdbcType="INTEGER" />
+        <result column="ms_place" property="ms_place" jdbcType="VARCHAR" />
+        <result column="ms_position" property="ms_position" jdbcType="DECIMAL" />
+        <result column="ms_user" property="ms_user" jdbcType="VARCHAR" />
+        <result column="ms_builder" property="ms_builder" jdbcType="VARCHAR" />
+        <result column="ms_net" property="ms_net" jdbcType="INTEGER" />
+        <result column="ms_gate" property="ms_gate" jdbcType="INTEGER" />
+        <result column="ms_desc" property="ms_desc" jdbcType="VARCHAR" />
+        <association property="ms_type_value" column="ms_type" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadType"></association>
+        <association property="ms_fp_value" column="ms_fp" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadFp"></association>
+        <association property="ms_net_value" column="ms_net" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadNet"></association>
+        <association property="ms_gate_value" column="ms_gate" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadGate"></association>
+    </resultMap>
     <sql id="t_station_columns" >
         id, ms_name, ms_code, ms_date, ms_dev, ms_type, ms_fp, ms_place, ms_position, ms_user, 
         ms_builder, ms_net, ms_gate, ms_desc
     </sql>
-    <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <select id="load" resultMap="BaseResultMap01" parameterType="java.lang.Integer" >
         select 
         <include refid="t_station_columns" />
         from t_station
@@ -172,6 +192,9 @@
             <if test="ms_desc != null" >
                 ms_desc = #{ms_desc,jdbcType=VARCHAR},
             </if>
+            <if test="dr != null" >
+                dr = #{dr},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -184,5 +207,10 @@
         select 
             count(*)
         from t_station
+    </select>
+    <select id="existMsCode" resultType ="int" parameterType="java.lang.String">
+        select 
+            count(*)
+        from t_station where ms_code = #{ms_code}
     </select>
 </mapper>

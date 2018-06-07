@@ -23,7 +23,8 @@ public class Data {
     private String data_name;
     /**排序,所属表字段为 t_data.data_order  */
     private Integer data_order;
-
+    /**是否删除 默认为0未删除，1为已删除*/
+    private Boolean dr;
     /**
      * 获取 数据类型 字段:t_data.data_type
      *
@@ -95,4 +96,25 @@ public class Data {
     public void setData_order(Integer data_order) {
         this.data_order = data_order;
     }
+    /**
+     * 
+     * 方法描述：是否删除 默认为0未删除，1为已删除
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午1:12:03
+     */
+    public Boolean getDr() {
+        return dr;
+    }
+    /**
+     * 
+     * 方法描述：是否删除 默认为0未删除，1为已删除
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午1:12:03
+     */
+    public void setDr(Boolean dr) {
+        this.dr = dr;
+    }
+    
 }
