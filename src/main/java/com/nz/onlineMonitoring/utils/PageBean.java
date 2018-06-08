@@ -1,8 +1,7 @@
 package com.nz.onlineMonitoring.utils;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 public class PageBean {
     public static Map<String , Object> serverMap(Map<String , Object> map,Object obj,Integer pages){
