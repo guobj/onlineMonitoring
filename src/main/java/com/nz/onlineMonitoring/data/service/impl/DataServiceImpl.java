@@ -100,5 +100,10 @@ public class DataServiceImpl implements DataService {
         // TODO Auto-generated method stub
         return dataMapper.loadByDevType1(data_value);
     }
+    @Override
+    public List<Data> listMsNet() {
+        // TODO Auto-generated method stub
+        return dataMapper.listMsNet();
+    }
 
 }

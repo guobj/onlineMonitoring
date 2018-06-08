@@ -4,7 +4,7 @@
     margin-right: 0%;
 }
 #page form{
-    margin-left: 60%;
+    margin-left: 45%;
     float: left;
     width: 70%;
 }
@@ -14,6 +14,10 @@
     height: 30px;
     border-radius: 3px;
     border: 1px solid #bfbfbf;
+    background: #ffffff;
+    color: #000000;
 
 }
 #page input:hover{background: #087600;color: #ffffff;}
+
+#page .butt{background: #087600;color: #ffffff;}

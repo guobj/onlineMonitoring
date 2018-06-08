@@ -88,6 +88,26 @@ public class StationController {
     }
     /**
      * 
+     * 方法描述：根据id，查询一个监测站的信息以及字典表中的数据
+     * @param station
+     * @param map
+     * @return
+     * @author ssh 
+     * @date 2018年6月2日 下午9:18:29
+     */
+    @GetMapping("/idStation")
+    @ResponseBody
+    public Station idStation(Integer id,Map<String , Object> map) {
+        Station station = stationService.load(id);
+        map.put("msType", dataService.listMsType());
+        map.put("msFp", dataService.listMsFp());
+        map.put("msGate", dataService.listMsGate());
+        map.put("msNet", dataService.listMsNet());
+        map.put("station", station);
+        return station;
+    }
+    /**
+     * 
      * 方法描述：根据id，修改一个监测站的信息
      * @param station
      * @param map
@@ -95,7 +115,8 @@ public class StationController {
      * @author ssh 
      * @date 2018年6月2日 下午9:18:29
      */
-    @PostMapping("/updateStation")
+    @GetMapping("/updateStation")
+    @ResponseBody
     public String updateStation(Station station,Map<String , Object> map) {
         String result = stationService.update(station);
         map.put("result", result);

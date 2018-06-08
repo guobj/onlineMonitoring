@@ -47,7 +47,7 @@ $(function(){
 
     $("#img").hide();
 });
-$(function(){
+/*$(function(){
     $("#page").Page({
         totalPages: 10,//分页总数
         liNums: 7,//分页的数字按钮数(建议取奇数)
@@ -56,7 +56,7 @@ $(function(){
             //console.log(page)
         }
     });
-})
+})*/
 function look(){
     $("#img").show()
 }

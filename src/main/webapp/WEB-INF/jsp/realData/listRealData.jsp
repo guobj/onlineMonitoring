@@ -13,8 +13,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>实时数据</title>
 <script src="js/jquery.js"></script>
+    <link href="css/page.css" rel="stylesheet" type="text/css">
     <link href="css/sjck.css" rel="stylesheet" type="text/css">
-    <script src="js/jquery.page.js" type="text/javascript"></script>
+    <script src="js/pageNav.js" type="text/javascript"></script>
     <script src="js/sjck.js" type="text/javascript"></script>
     <script src="js/jilian.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -183,11 +184,8 @@
 	        </c:forEach>
         </tbody>
     </table>
+    <jsp:include page="../common/pages.jsp"></jsp:include>
 
-    <div id="page">
-        
-    
-    </div>
     <div id="img">
         <div id="imga"></div>
         <form>
@@ -201,16 +199,11 @@
     <li>济南农智信息科技有限公司所有&copy; &nbsp;电话：12345677  &nbsp;<a href="#">关于我们</a> &nbsp;<a href="#">售后服务</a></li>
 </div>
 <script>
-    $(function(){
-    	var page = $("#pages").val();
-        $("#page").Page({
-            totalPages: page,//分页总数
-            liNums: (page/2)-1,//分页的数字按钮数(建议取奇数)
-            activeClass: 'activP', //active 类样式定义
-            callBack : function(page){
-            }
-        });
-    })
+$("#page").children().children().click(function(){
+    $("#page").children().children(0).removeClass("butt");
+    $(this).addClass("butt");
+})
+
 </script>
 </body>
 </html>

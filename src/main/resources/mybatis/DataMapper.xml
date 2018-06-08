@@ -156,5 +156,10 @@
         from t_data
         where data_type='ms_gate'
     </select>
-    
+    <select id="listMsNet" resultMap="BaseResultMap">
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type='ms_net'
+    </select>
 </mapper>
