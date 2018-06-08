@@ -22,6 +22,7 @@ public class PageBean {
         map.put("pages" , pages);
         map.put("sumPage" , sumPage);
         map.put("url" , request.getServletPath());
+        System.out.println(request.getServletPath());
         return map;
     }
 }

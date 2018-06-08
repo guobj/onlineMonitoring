@@ -109,7 +109,6 @@
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">数据管理</span> > <span id="zb3">实时数据查询</span></p></li>
     <div class="menu">
         <form action="realData/listRealData" method="post">
-            <input type="hidden" value="${pages }" name="pages">
             <span>监测站名称：<input type="text" name="ms_name"/></span>
             <span>设备类型：
 	            <select class="select1" name="device_type">
@@ -198,12 +197,6 @@
 <div id="footer">
     <li>济南农智信息科技有限公司所有&copy; &nbsp;电话：12345677  &nbsp;<a href="#">关于我们</a> &nbsp;<a href="#">售后服务</a></li>
 </div>
-<script>
-$("#page").children().children().click(function(){
-    $("#page").children().children(0).removeClass("butt");
-    $(this).addClass("butt");
-})
 
-</script>
 </body>
 </html>
