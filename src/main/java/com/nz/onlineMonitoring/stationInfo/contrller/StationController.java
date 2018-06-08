@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.nz.onlineMonitoring.data.service.DataService;
 import com.nz.onlineMonitoring.stationInfo.model.Station;
 import com.nz.onlineMonitoring.stationInfo.service.StationService;
 import com.nz.onlineMonitoring.utils.PageBean;
@@ -22,6 +23,9 @@ import com.nz.onlineMonitoring.utils.PageBean;
 public class StationController {
     @Autowired
     private StationService stationService;
+    @Autowired
+    private DataService dataService;
+    
    /**
     * 
     * 方法描述：分页查询全部，并根据查询条件进行查询
@@ -33,11 +37,23 @@ public class StationController {
     * @date 2018年6月2日 上午10:27:10
     */
     @RequestMapping("/listStation")
-    public String listStation(HttpServletRequest request, Station station,Map<String , Object> map,@RequestParam(required=false,defaultValue="1") int pages) {
+    public String listStation(HttpServletRequest request, Station station,Map<String , Object> map,@RequestParam(required=false,defaultValue="1") int pages,@RequestParam(required=false,name="city")String[] citys) {
+        if (citys != null) {
+            if (citys[1] != null && citys[1] != "") {
+                station.setMs_code(citys[1]);
+            }else if (citys[0] != null && citys[0] != "") {
+                station.setMs_code(citys[0]);
+            }else {
+                station.setMs_code("37");
+            }
+        }
         map = PageBean.serverMap(map , station , pages);
         List<Station> listStation = stationService.listStation(map);
         map = PageBean.clientMap(map ,pages,request);
         map.put("listStation", listStation);
+        map.put("msType", dataService.listMsType());
+        map.put("msFp", dataService.listMsFp());
+        map.put("msGate", dataService.listMsGate());
         return "station/listStation";
     }
     /**
@@ -49,11 +65,11 @@ public class StationController {
      * @author ssh
      * @date 2018年6月2日 下午7:51:31
      */
-    @GetMapping("/loadStation")
-    public String loadStation(Integer id,Map<String , Object> map) {
+    @PostMapping("/loadStation")
+    @ResponseBody
+    public Station loadStation(Integer id,Map<String , Object> map) {
         Station station = stationService.load(id);
-        map.put("station", station);
-        return "station/loadStation";
+        return station;
     }
     /**
      * 

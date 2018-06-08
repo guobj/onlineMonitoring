@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -107,6 +108,7 @@
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">数据管理</span> > <span id="zb3">实时数据查询</span></p></li>
     <div class="menu">
         <form action="realData/listRealData" method="post">
+            <input type="hidden" value="${pages }" name="pages">
             <span>监测站名称：<input type="text" name="ms_name"/></span>
             <span>设备类型：
 	            <select class="select1" name="device_type">
@@ -175,14 +177,17 @@
 		            <td class="t1">${real.ms_name }</td>
 		            <td class="t2">${real.ms_code }</td>
 		            <td class="t3">${real.dev_code }</td>
-		            <td class="t5">${real.real_time }</td>
+		            <td class="t5"><fmt:formatDate value="${real.real_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>  </td>
 		            <td class="t6">${real.real_data }<!-- <input type="button" value="查看" onclick="look()"/> --></td>
 		        </tr>
 	        </c:forEach>
         </tbody>
     </table>
 
-    <div id="page"></div>
+    <div id="page">
+        
+    
+    </div>
     <div id="img">
         <div id="imga"></div>
         <form>
@@ -197,9 +202,10 @@
 </div>
 <script>
     $(function(){
+    	var page = $("#pages").val();
         $("#page").Page({
-            totalPages: 10,//分页总数
-            liNums: 7,//分页的数字按钮数(建议取奇数)
+            totalPages: page,//分页总数
+            liNums: (page/2)-1,//分页的数字按钮数(建议取奇数)
             activeClass: 'activP', //active 类样式定义
             callBack : function(page){
             }

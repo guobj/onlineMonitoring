@@ -18,7 +18,31 @@
     <script src="js/delete.js" type="text/javascript"></script>
     <script src="js/xinxi.js"  type="text/javascript"></script>
     <script src="js/jilian.js" type="text/javascript"></script>
-
+    <script type="text/javascript">
+	    $(function(){
+	        city();
+	        $("#s_city").change(function city(){
+	            var city_id = $(this).val();
+	            $("#s_area").html("<option value=''>地级市</option>");
+	            $.post("data/listArea",{city_id:city_id},function(data){
+	                if(data!=null&&data.length>0){
+	                    for(var i=0;i<data.length;i++){
+	                        $("#s_area").append("<option value="+data[i].data_value+">"+data[i].data_name+"</option>");
+	                    }
+	                }
+	            });
+	        });
+	    })
+	    function city(){
+	        $.post("data/listCity",function(data){
+	            if(data!=null&&data.length>0){
+	                for(var i=0;i<data.length;i++){
+	                    $("#s_city").append("<option value="+data[i].data_value+">"+data[i].data_name+"</option>");
+	                }
+	            }
+	        })
+	    }
+    </script>
 </head>
 <body>
 <div id="tit">
@@ -84,39 +108,42 @@
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
     <div class="gn">
-        <form>
-            <span class="span1">监测站名称：<input type="text" placeholder="不限" ></span>
+        <form action="station/listStation" method="post">
+            <span class="span1">监测站名称：<input type="text" name="ms_name" placeholder="不限" ></span>
             <span class="span1">资金来源：
-                <select class="select1">
-                    <option>不限</option>
-                    <option value="">省资金</option>
-                    <option value="国家资金">国家资金</option>
-                    <option value="其他">其他</option>
+                <select class="select1" name="ms_fp">
+                    <option value="">不限</option>
+                    <c:forEach items="${msFp }" var="fp">
+                        <option value="${fp.data_value }">${fp.data_name }</option>
+                    </c:forEach>
                 </select>
             </span>
             <span class="span1">监测站类型：
-                <select class="select1">
-                    <option>不限</option>
-                    <option value="新建重点监测站">新建重点监测站</option>
-                    <option value="改建重点监测站">改建重点监测站</option>
-                    <option value="新建普通监测站">新建普通监测站</option>
-                    <option value="改建普通监测站">改建普通监测站</option>
+                <select class="select1" name="ms_type">
+                    <option value="">不限</option>
+                    <c:forEach items="${msType }" var="type">
+                        <option value="${type.data_value }">${type.data_name }</option>
+                    </c:forEach>
                 </select>
             </span>
             <span  class="span1">监测站区域：
-                        <select id="s_province" name="s_province"></select>
-                        <select id="s_city" name="s_city" ></select>
-                        <script type="text/javascript">_init_area();</script>
+                <select id="s_city" name="city">
+                    <option value="">市区</option>
+                </select>
+                <select id="s_area" name="city" >
+                    <option value="">地级市</option>
+                </select>
                 </span>
             <span class="span1">网关类型：
-                <select class="select1">
-                    <option>不限</option>
-                    <option value="NZ2000">NZ2000</option>
-                    <option value="NZ1000">NZ1000</option>
+                <select class="select1" name="ms_gate">
+                    <option value="">不限</option>
+                    <c:forEach items="${msGate }" var="gate">
+                        <option value="${gate.data_value }">${gate.data_name }</option>
+                    </c:forEach>
                 </select>
             </span>
 
-            <input type="button"  value="查询" class="cx"> <input type="button" value="添加监测站" class="btn1" onclick="tianjia()"/>
+            <input type="submit"  value="查询" class="cx"> <input type="button" value="添加监测站" class="btn1" onclick="tianjia()"/>
         </form>
     </div>
 
@@ -142,10 +169,10 @@
 	                    <tr>
 	                        <td class="t3">${station.ms_name }</td>
 	                        <td class="t2">${station.ms_code }</td>
-	                        <td class="t4">${station.ms_dev }</td>
-	                        <td class="t5">${station.ms_type }</td>
-	                        <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-	                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="del()" ></td>
+	                        <td class="t4">${station.ms_dev_value }</td>
+	                        <td class="t5">${station.ms_type_value.data_name }</td>
+	                        <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this,${station.id})"></td>
+	                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="del(this)" ></td>
 	                        <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
 	                        <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
 	                    </tr>
@@ -155,65 +182,8 @@
         <div  id="page">
         </div>
 
-        <div id="chakan">
-           <table id="bg1">
-               <tr>
-                   <td class="s1">监测站名称</td>
-                   <td class="s2"></td>
-               </tr>
-               <tr>
-                   <td class="s1">监测站编码</td>
-                   <td class="s2"></td>
-               </tr>
-               <tr>
-                   <td class="s1">建设时间</td>
-                   <td class="s2"></td>
-               </tr>
-               <tr>
-                   <td class="s1">建设内容</td>
-                   <td class="s2"></td>
-               </tr>
-               <tr>
-                   <td class="s1">监测站类型</td>
-                   <td class="s2"></td>
-               </tr>
-               <tr>
-                   <td class="s1">资金来源</td>
-                   <td class="s2"></td>
-               </tr>
-               <tr>
-                   <td class="s1">监测站位置</td>
-                   <td class="s2"></td>
-               </tr>
-               <tr>
-                   <td class="s1">经纬度</td>
-                   <td class="s2"></td>
-               </tr>
-               <tr>
-                   <td class="s1">使用单位，联系人，联系方式</td>
-                   <td class="s2"></td>
-               </tr >
-               <tr>
-                   <td class="s1">施工单位，联系人，联系方式</td>
-                   <td class="s2"></td>
-               </tr>
-               <tr>
-                   <td class="s1">网络类型</td>
-                   <td class="s2"></td>
-               </tr>
-               <tr>
-                   <td class="s1">网关类型</td>
-                   <td class="s2"></td>
-               </tr>
-               <tr>
-                   <td class="s1">监测站描述</td>
-                   <td class="s2"></td>
-               </tr>
-           </table>
-            <form>
-                <input type="button" value="关闭" onclick="guanbi()" />
-            </form>
-        </div>
+        <div id="chakan"></div>
+           
         <div id="xiugai">
             <form>
                 <span>监测站名称:</span>

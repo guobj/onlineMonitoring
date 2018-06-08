@@ -47,4 +47,45 @@ public interface DataService {
      * @date 2018年6月6日 下午9:27:51
      */
     List<Data> listDevType1();
+    /**
+     * 
+     * 方法描述：设备编码
+     * @return
+     * @author ssh
+     * @date 2018年6月8日 下午4:55:53
+     */
+    List<Data> listMsDev();
+    /**
+     * 
+     * 方法描述：查询全部资金来源
+     * @return
+     * @author ssh
+     * @date 2018年6月8日 上午10:08:59
+     */
+    List<Data> listMsFp();
+    /**
+     * 
+     * 方法描述：查询全部监测站类型
+     * @return
+     * @author ssh
+     * @date 2018年6月8日 上午10:08:59
+     */
+    List<Data> listMsType();
+    /**
+     * 
+     * 方法描述：查询全部网关类型
+     * @return
+     * @author ssh
+     * @date 2018年6月8日 上午10:08:59
+     */
+    List<Data> listMsGate();
+    /**
+     * 
+     * 方法描述：设备类型
+     * @param data_value
+     * @return
+     * @author ssh
+     * @date 2018年6月8日 下午4:37:31
+     */
+    Data loadByDevType1(Integer data_value);
 }

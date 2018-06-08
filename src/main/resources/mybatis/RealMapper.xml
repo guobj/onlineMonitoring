@@ -136,6 +136,7 @@
                 and dev_stauts = #{real.dev_stauts}
             </if>
         </where>
+        limit #{record},4
     </select>
      <!-- 查询数据的数量 -->
     <select id="countReal" resultType ="int" parameterType="map">

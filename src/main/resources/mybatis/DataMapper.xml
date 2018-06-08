@@ -29,6 +29,9 @@
     <select id="loadByDevType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select * from t_data where data_type="dev_type" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
+    <select id="loadByDevType1" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from t_data where data_type="dev_type1" and data_value=#{data_value,jdbcType=INTEGER}
+    </select>
     <insert id="add" parameterType="com.nz.onlineMonitoring.data.model.Data" >
         insert into t_data
         <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -91,6 +94,12 @@
         from t_data
         where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_gate'
     </select>
+    <select id="loadCity" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type='ms_city' and data_value= #{data_value}
+    </select>
     <select id="listCity" resultMap="BaseResultMap">
         select
         <include refid="t_data_columns" />
@@ -122,4 +131,30 @@
         from t_data
         where data_type ='dev_type1'
     </select>
+    
+    <select id="listMsDev" resultMap="BaseResultMap">
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type='ms_dev'
+    </select>
+     <select id="listMsFp" resultMap="BaseResultMap">
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type='ms_fp'
+    </select>
+    <select id="listMsType" resultMap="BaseResultMap">
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type='ms_type'
+    </select>
+    <select id="listMsGate" resultMap="BaseResultMap">
+        select
+        <include refid="t_data_columns" />
+        from t_data
+        where data_type='ms_gate'
+    </select>
+    
 </mapper>
