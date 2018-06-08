@@ -45,14 +45,14 @@
             <if test="manage.ms_code!=null and manage.ms_code.trim()!=''">
                 AND tm.ms_code LIKE concat("%",#{manage.ms_code},"%")
             </if>
-            <if test="manage.station!=null and manage.station.trim()!=''">
-                AND ts.ms_type LIKE concat("%",#{manage.station.ms_type},"%")
+            <if test="manage.station != null and manage.station.ms_type != null">
+                AND ts.ms_type = #{manage.station.ms_type}
             </if>
-            <if test="manage.station!=null and manage.station.trim()!=''">
-                AND ts.ms_fp LIKE concat("%",#{manage.station.ms_fp},"%")
+            <if test="manage.station != null and manage.station.ms_fp != null">
+                AND ts.ms_fp = #{manage.station.ms_fp}
             </if>
-            <if test="manage.station!=null and manage.station.trim()!=''">
-                AND ts.ms_net LIKE concat("%",#{manage.station.ms_net},"%")
+            <if test="manage.station != null and manage.station.ms_net != null">
+                AND ts.ms_net = #{manage.station.ms_net}
             </if>
             AND ts.dr = false AND tm.dr = false
         </where>
@@ -74,20 +74,20 @@
           ts.ms_type=td.data_value
         <where>
             td.data_type='ms_type'
-            <if test="manage.ms_name!=null and manage.ms_name.trim()!=''">
+            <if test="manage.ms_name != null and manage.ms_name.trim() != ''">
                 AND tm.ms_name LIKE concat("%",#{manage.ms_name},"%")
             </if>
-            <if test="manage.ms_code!=null and manage.ms_code.trim()!=''">
+            <if test="manage.ms_code != null and manage.ms_code.trim() != ''">
                 AND tm.ms_code LIKE concat("%",#{manage.ms_code},"%")
             </if>
-            <if test="manage.station!=null and manage.station.trim()!=''">
-                AND ts.ms_type LIKE concat("%",#{manage.station.ms_type},"%")
+            <if test="manage.station != null and manage.station.ms_type != null">
+                AND ts.ms_type = #{manage.station.ms_type}
             </if>
-            <if test="manage.station!=null and manage.station.trim()!=''">
-                AND ts.ms_fp LIKE concat("%",#{manage.station.ms_fp},"%")
+            <if test="manage.station != null and manage.station.ms_fp != null">
+                AND ts.ms_fp = #{manage.station.ms_fp}
             </if>
-            <if test="manage.station!=null and manage.station.trim()!=''">
-                AND ts.ms_net LIKE concat("%",#{manage.station.ms_net},"%")
+            <if test="manage.station != null and manage.station.ms_net != null">
+                AND ts.ms_net = #{manage.station.ms_net}
             </if>
             AND ts.dr = false AND tm.dr = false
         </where>

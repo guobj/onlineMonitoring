@@ -18,6 +18,23 @@ pageContext.setAttribute("basePath", basePath);
     <script src="js/jquery.js"></script>
     <script src="js/xinxi.js" ></script>
     <script src="js/jilian.js" type="text/javascript" charset="UTF-8"></script>
+    <script type="text/javascript">
+        function submit() {
+            var form = new FormData(document.getElementById("like"));
+           // console.log(text);
+           //  form.append("content",text);
+            $.ajax({
+                type:"post",
+                url:"queryStationInfo",
+                data:form,
+                processData:false,
+                contentType:false,
+                success:function (data) {
+                    window.location.reload();
+                }
+            })
+        }
+    </script>
 </head>
 <body>
 <div id="tit">
@@ -84,39 +101,39 @@ pageContext.setAttribute("basePath", basePath);
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
     <div class="gn">
-        <form>
-            <span class="span1">监测站名称：<input type="text" placeholder="不限" ></span>
+        <form id="like" method="post">
+            <span class="span1">监测站名称：<input name="ms_name" type="text" placeholder="不限" ></span>
             <span class="span1">资金来源：
-                <select class="select1">
-                    <option>不限</option>
-                    <option value="">省资金</option>
-                    <option value="国家资金">国家资金</option>
-                    <option value="其他">其他</option>
+                <select class="select1" name="station.ms_fp">
+                    <option value="">不限</option>
+                    <option value="1">省资金</option>
+                    <option value="2">国家资金</option>
+                    <option value="3">其他</option>
                 </select>
             </span>
             <span class="span1">监测站类型：
-                <select class="select1">
-                    <option>不限</option>
-                    <option value="新建重点监测站">新建重点监测站</option>
-                    <option value="改建重点监测站">改建重点监测站</option>
-                    <option value="新建普通监测站">新建普通监测站</option>
-                    <option value="改建普通监测站">改建普通监测站</option>
+                <select class="select1" name="station.ms_type">
+                    <option value="">不限</option>
+                    <option value="1">新建重点监测站</option>
+                    <option value="2">改建重点监测站</option>
+                    <option value="3">新建普通监测站</option>
+                    <option value="4">改建普通监测站</option>
                 </select>
             </span>
-            <span  class="span1">监测站区域：
+           <%-- <span  class="span1">监测站区域：
                         <select id="s_province" name="s_province"></select>
                         <select id="s_city" name="s_city" ></select>
                         <script type="text/javascript">_init_area();</script>
-                </span>
+                </span>--%>
             <span class="span1">网关类型：
-                <select class="select1">
-                    <option>不限</option>
-                    <option value="NZ2000">NZ2000</option>
-                    <option value="NZ1000">NZ1000</option>
+                <select class="select1" name="station.ms_gate">
+                    <option value="">不限</option>
+                    <option value="1">NZ2000</option>
+                    <option value="2">NZ1000</option>
                 </select>
             </span>
 
-            <input type="button"  value="查询" class="cx"> <input type="button" value="添加监测站" class="btn1" onclick="tianjia()"/>
+            <input type="button"  value="查询" class="cx" onclick="submit()">
         </form>
     </div>
 
@@ -148,8 +165,8 @@ pageContext.setAttribute("basePath", basePath);
                     <tr>
                         <td class="t3">${list.ms_name}</td>
                         <td class="t2">${list.ms_code}</td>
-                        <td class="t4">${list.station.dev}</td>
-                        <td class="t5">${list.station.data.ms_type}</td>
+                        <td class="t4">${list.station.ms_dev}</td>
+                        <td class="t5">${list.station.data.data_name}</td>
                         <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
                         <td class="t7"><input type="button" value="删除"  class="input2"></td>
                         <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
