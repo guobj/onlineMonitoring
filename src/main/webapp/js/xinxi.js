@@ -140,6 +140,6 @@ $(function(){
         }
     });
 })
-function del(){
-    $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () { alert("删除成功"); });
-}
+// function del(){
+//     $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () { alert("删除成功"); });
+// }

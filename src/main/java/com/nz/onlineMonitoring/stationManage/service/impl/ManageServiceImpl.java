@@ -72,4 +72,21 @@ public class ManageServiceImpl implements ManageService {
 		}
 		return res;
 	}
+
+	/**
+	 * t_manage
+	 * 方法描述:通过id查看配置信息
+	 * @author guobj
+	 * @param
+	 * @return
+	 **/
+	@Override
+	public Manage load(Map<String, Object> map, Integer id) {
+		Manage manage = manageMapper.load(id);
+		if(manage == null){
+			throw new RuntimeException("数据不存在");
+		}
+		map.put("manage", manage);
+		return manage;
+	}
 }

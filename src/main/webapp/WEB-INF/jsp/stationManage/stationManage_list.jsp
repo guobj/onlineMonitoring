@@ -18,7 +18,9 @@ pageContext.setAttribute("basePath", basePath);
     <script src="js/jquery.js"></script>
     <script src="js/xinxi.js" ></script>
     <script src="js/jilian.js" type="text/javascript" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/jquery.page.js" charset="UTF-8"></script>
     <script type="text/javascript">
+        //模糊查询调用方法
         function submit() {
             var form = new FormData(document.getElementById("like"));
            // console.log(text);
@@ -33,6 +35,48 @@ pageContext.setAttribute("basePath", basePath);
                     window.location.reload();
                 }
             })
+        }
+        //查看调用
+        function look(obj,id){
+            $(obj).parent().parent().parent().parent().hide();
+            $("#chakan").show();
+            $("#page").hide();
+            $.ajax({
+                type:"get",
+                url:"load",
+                data:{id:id},
+                success:function (data) {
+                    $("#ms_name").html(data.data.ms_name);
+                    $("#ms_code").html(data.data.ms_code);
+                    $("#ms_date").html(data.data.station.ms_date);
+                    $("#ms_dev").html(data.data.station.ms_dev);
+                    $("#ms_type").html(data.data.station.data.data_name);
+                    $("#ms_fp").html(data.data.station.ms_fp_value.data_name);
+                    $("#ms_place").html(data.data.station.ms_place);
+                    $("#ms_position").html(data.data.station.ms_position);
+                    $("#ms_user").html(data.data.station.ms_user);
+                    $("#ms_builder").html(data.data.station.ms_builder);
+                    $("#ms_net").html(data.data.station.ms_net_value.data_name);
+                    $("#ms_gate").html(data.data.station.ms_gate_value.data_name);
+                    $("#ms_desc").html(data.data.station.ms_desc);
+                }
+            })
+        }
+        //删除方法
+        function del(id) {
+            // $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () { alert("删除成功"); });
+            $.ajax({
+                type:"get",
+                url:"deleteById",
+                data:{id:id},
+                success:function (data) {
+                    window.location.reload();
+                }
+            })
+        }
+        //修改方法
+        function update(obj,id) {
+
         }
     </script>
 </head>
@@ -167,8 +211,8 @@ pageContext.setAttribute("basePath", basePath);
                         <td class="t2">${list.ms_code}</td>
                         <td class="t4">${list.station.ms_dev}</td>
                         <td class="t5">${list.station.data.data_name}</td>
-                        <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this)"></td>
-                        <td class="t7"><input type="button" value="删除"  class="input2"></td>
+                        <td class="t6"><input type="button" value="查看" class="input1" onclick="look(this,${list.id})"></td>
+                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="del(${list.id})"></td>
                         <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
                         <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
                     </tr>
@@ -183,55 +227,55 @@ pageContext.setAttribute("basePath", basePath);
             <table id="bg1">
                 <tr>
                     <td class="s1">监测站名称</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_name"></td>
                 </tr>
                 <tr>
                     <td class="s1">监测站编码</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_code"></td>
                 </tr>
                 <tr>
                     <td class="s1">建设时间</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_date"></td>
                 </tr>
                 <tr>
                     <td class="s1">建设内容</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_dev"></td>
                 </tr>
                 <tr>
                     <td class="s1">监测站类型</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_type"></td>
                 </tr>
                 <tr>
                     <td class="s1">资金来源</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_fp"></td>
                 </tr>
                 <tr>
                     <td class="s1">监测站位置</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_place"></td>
                 </tr>
                 <tr>
                     <td class="s1">经纬度</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_position"></td>
                 </tr>
                 <tr>
                     <td class="s1">使用单位，联系人，联系方式</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_user"></td>
                 </tr >
                 <tr>
                     <td class="s1">施工单位，联系人，联系方式</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_builder"></td>
                 </tr>
                 <tr>
                     <td class="s1">网络类型</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_net"></td>
                 </tr>
                 <tr>
                     <td class="s1">网关类型</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_gate"></td>
                 </tr>
                 <tr>
                     <td class="s1">监测站描述</td>
-                    <td class="s2"></td>
+                    <td class="s2" id="ms_desc"></td>
                 </tr>
             </table>
             <form>

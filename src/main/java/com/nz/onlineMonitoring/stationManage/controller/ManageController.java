@@ -38,6 +38,18 @@ public class ManageController {
 		return "stationManage/stationManage_list";
 	}
 
+	@RequestMapping("/load")
+	@ResponseBody
+	public JacksonData load(Map<String, Object> map,@RequestParam Integer id){
+		JacksonData jacksonData = new JacksonData();
+		try {
+			Manage manage = manageService.load(map,id);
+			jacksonData.success(manage);
+		}catch (Exception e){
+			jacksonData.failure(e.getMessage());
+		}
+		return jacksonData;
+	}
 	@RequestMapping(value = "/updateById",method = RequestMethod.POST)
 	@ResponseBody
 	public JacksonData updateById(Map<String, Object> map,Manage manage){
@@ -66,7 +78,7 @@ public class ManageController {
 	}
 	@RequestMapping(value = "/foreward")
 	public String foreward(){
-		return "test/sjck";
+		return "test/";
 	}
 
 	@RequestMapping(value = "/foreward2")

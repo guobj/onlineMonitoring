@@ -33,4 +33,12 @@ public interface ManageService {
 	 * @return
 	 **/
 	public Integer deleteById(Integer id);
+
+	/**
+	 * 通过id查看配置信息
+	 * @author guobj
+	 * @param
+	 * @return
+	 */
+	public Manage load(Map<String, Object> map,Integer id);
 }
