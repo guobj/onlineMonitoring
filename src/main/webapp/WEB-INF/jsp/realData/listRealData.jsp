@@ -60,51 +60,7 @@
         </li>
     </ul>
 </div>
-<div id="caidan">
-    <ul>
-        <li class="tit">
-            <img src="img/gl1.png">
-            &nbsp;管理菜单
-        </li>
-        <li class="cdq">
-            <img src="img/bf.png">
-            <a>功能菜单区</a>
-        </li>
-        <div class="cd_4">
-            <ul id="ceNav">
-                <li>
-                    <a href="#" class="a_1"> <img src="img/xt3.png">&nbsp;站点管理</a>
-                    <ul class="zdgl" id="c1">
-                        <li><a href="#" class="a_2"><img src="img/xxtb.jpg">&nbsp;站点信息查询</a></li>
-                        <li><a href="#" class="a_2"><img src="img/xxtb.jpg">&nbsp;站点配置管理</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="a_1"><img src="img/xt3.png">&nbsp;监测设备管理</a>
-                    <ul class="zdgl" id="c2">
-                        <li><a href="#" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备信息管理</a></li>
-                        <li><a href="#" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备状态查看</a></li>
-                        <li><a href="#" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备信息查询</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="a_1"><img src="img/xt3.png">&nbsp;监测数据管理</a>
-                    <ul class="zdgl" id="c3">
-                        <li><a href="#" class="a_2"><img src="img/xxtb.jpg">&nbsp;实时数据查看</a></li>
-                        <li><a href="#" class="a_2"><img src="img/xxtb.jpg">&nbsp;历史数据查询功能</a></li>
-                    </ul>
-                </li>
-                <!--<li>-->
-                <!--<a href="#" class="a_1"><img src="img/xt3.png">&nbsp;系统管理</a>-->
-                <!--<ul class="zdgl" id="c4">-->
-                <!--<li><a href="#" class="a_2"><img src="img/xxtb.jpg">&nbsp;用户管理</a></li>-->
-                <!--<li><a href="#" class="a_2"><img src="img/xxtb.jpg">&nbsp;权限管理</a></li>-->
-                <!--</ul>-->
-                <!--</li>-->
-            </ul>
-        </div>
-    </ul>
-</div>
+<jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">数据管理</span> > <span id="zb3">实时数据查询</span></p></li>
     <div class="menu">
