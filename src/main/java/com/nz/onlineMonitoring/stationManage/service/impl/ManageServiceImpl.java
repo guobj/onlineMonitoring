@@ -1,11 +1,15 @@
 package com.nz.onlineMonitoring.stationManage.service.impl;
 
+import com.nz.onlineMonitoring.data.mapper.DataMapper;
+import com.nz.onlineMonitoring.data.model.Data;
+import com.nz.onlineMonitoring.stationInfo.model.Station;
 import com.nz.onlineMonitoring.stationManage.mapper.ManageMapper;
 import com.nz.onlineMonitoring.stationManage.model.Manage;
 import com.nz.onlineMonitoring.stationManage.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +19,8 @@ public class ManageServiceImpl implements ManageService {
 	@Autowired
 	private ManageMapper manageMapper;
 
+	@Autowired
+	private DataMapper dataMapper;
 	/**
 	 * 通过监测站名称、监测站编码、监测站类型、资金来源、网关类型综合查询（支持模糊查询）
 	 * @author guobj
