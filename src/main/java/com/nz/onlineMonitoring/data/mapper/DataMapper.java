@@ -125,6 +125,15 @@ public interface DataMapper {
 	 */
 	Data loadGate(int data_value);
 	/**
+     * 
+     * 方法描述：获取单个城市的name，用来解析编码
+     * @param ms_city
+     * @return
+     * @author ssh
+     * @date 2018年6月8日 下午5:28:10
+     */
+    Data loadCity(Integer data_value);
+	/**
 	 *
 	 * 方法描述：查询山东省的所有市
 	 * @param data_value
@@ -199,12 +208,12 @@ public interface DataMapper {
      */
 	List<Data> listMsGate();
 	/**
-	 * 
-	 * 方法描述：获取单个城市的name，用来解析编码
-	 * @param ms_city
-	 * @return
-	 * @author ssh
-	 * @date 2018年6月8日 下午5:28:10
-	 */
-	Data loadCity(Integer data_value);
+     * 
+     * 方法描述：查询全部网络类型
+     * @return
+     * @author ssh
+     * @date 2018年6月8日 上午10:08:59
+     */
+    List<Data> listMsNet();
+	
 }

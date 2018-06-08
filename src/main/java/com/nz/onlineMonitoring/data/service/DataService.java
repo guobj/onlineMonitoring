@@ -7,6 +7,15 @@ import com.nz.onlineMonitoring.data.model.Data;
 public interface DataService {
     /**
      * 
+     * 方法描述：设备类型
+     * @param data_value
+     * @return
+     * @author ssh
+     * @date 2018年6月8日 下午4:37:31
+     */
+    Data loadByDevType1(Integer data_value);
+    /**
+     * 
      * 方法描述：查询山东省的所有市
      * @param data_value
      * @return
@@ -81,11 +90,11 @@ public interface DataService {
     List<Data> listMsGate();
     /**
      * 
-     * 方法描述：设备类型
-     * @param data_value
+     * 方法描述：查询全部网络类型
      * @return
      * @author ssh
-     * @date 2018年6月8日 下午4:37:31
+     * @date 2018年6月8日 上午10:08:59
      */
-    Data loadByDevType1(Integer data_value);
+    List<Data> listMsNet();
+   
 }

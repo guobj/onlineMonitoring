@@ -42,6 +42,96 @@
 	            }
 	        })
 	    }
+	    
+	    function chakan(obj,id){
+	        $(obj).parent().parent().parent().parent().hide();
+	        $("#chakan").show();
+	        $("#page").hide();
+	        $("#chakan").html("");
+	        $.post("station/loadStation",{id:id},function(data){
+	            if(data!=null){
+	                $("#chakan").append("<table id='bg1'>" +
+	                        "<tr><td class='s1'>监测站名称</td><td class='s2'>"+data.ms_name+"</td></tr>" +
+	                        "<tr><td class='s1'>监测站</td><td class='s2'>"+data.ms_code+"</td></tr>" +
+	                        "<tr><td class='s1'>建设时间</td><td class='s2'>"+data.ms_date+"</td></tr>" +
+	                        "<tr><td class='s1'>建设内容</td><td class='s2'>"+data.ms_dev_value+"</td></tr>" +
+	                        "<tr><td class='s1'>监测站类型</td><td class='s2'>"+data.ms_type_value.data_name+"</td></tr>" +
+	                        "<tr><td class='s1'>资金来源</td><td class='s2'>"+data.ms_fp_value.data_name+"</td></tr>" +
+	                        "<tr><td class='s1'>监测站位置</td><td class='s2'>"+data.ms_place+"</td></tr>" +
+	                        "<tr><td class='s1'>经纬度</td><td class='s2'>"+data.ms_position+"</td></tr>" +
+	                        "<tr><td class='s1'>使用单位，联系人，联系方式</td><td class='s2'>"+data.ms_user+"</td></tr>" +
+	                        "<tr><td class='s1'>施工单位，联系人，联系方式</td><td class='s2'>"+data.ms_builder+"</td></tr>" +
+	                        "<tr><td class='s1'>网络类型</td><td class='s2'>"+data.ms_net_value.data_name+"</td></tr>" +
+	                        "<tr><td class='s1'>网关类型</td><td class='s2'>"+data.ms_gate_value.data_name+"</td></tr>" +
+	                        "<tr><td class='s1'>监测站描述</td><td class='s2'>"+data.ms_desc+"</td></tr>" +
+	                        "</table><form><input type='button' value='关闭' onclick='guanbi()' /></form>");
+	            }
+	        });
+	    }
+	    
+	    function xiugai(obj,id){
+            $(obj).parent().parent().parent().parent().hide();
+            $("#xiugai").show();
+            $("h4").html("修改信息");
+            $("#caidan").css("height",height)
+            $("#page").hide();
+            $("#caidan").css("height","840px");
+            $("#xiugai").html("");
+            $.post("station/loadStation",{id:id},function(data){
+                if(data!=null){
+                    $("#xiugai").append("<form action='station/loadStation' method='post'>"+
+                            "<span>监测站名称:</span><input name='ms_name' type='text' value='"+data.ms_name+"'><br/>" +
+                            "<span>监测站编码:</span><input name='ms_code' type='text' value='"+data.ms_code+"'><br/>" +
+                            "<span>建设时间:</span><input name='ms_date' type='text' value='"+data.ms_date+"' style='margin-left: 28px;'><br/>" +
+                            "<span>使用单位，联系人，联系方式:</span><input name='ms_user' type='text' value='"+data.ms_user+"' class='lxfs'><br/>" +
+                            "<span>施工单位，联系人，联系方式:</span><input name='ms_builder' type='text' value='"+data.ms_builder+"' class='lxfs'><br/>" +
+                            "<span >监测站类型:</span>" +
+                            "<select name='ms_type' style='margin-left: 1%;'>"+ 
+                                "<option value='"+data.ms_type+"'>"+data.ms_type_value.data_name+"</option>" + 
+                                "<option value='1'>新建重点监测站</option>" +
+                                "<option value='2'>改建重点监测站</option>" +
+                                "<option value='3'>新建普通监测站</option>" +
+                                "<option value='4'>改建普通监测站</option>" +
+                            "</select><br/>" +
+                            "<span>资金来源:</span>" +
+                            "<select name='ms_fp'>"+
+                                "<option value='"+data.ms_fp+"'>"+data.ms_fp_value.data_name+"</option>" +
+                                "<option value='1'>省资金</option>" +
+                                "<option value='2'>国家资金</option>" +
+                                "<option value='3'>其他</option>" +
+                            "</select><br/>" +
+                            "<span>网络类型:</span>" +
+                            "<select name='ms_net'>" +
+                                "<option value='"+data.ms_net+"'>"+data.ms_net_value.data_name+"</option>" +
+                                "<option value='1'>无线</option>" +
+                                "<option value='2'>有线</option>" +
+                            "</select><br/>" +
+                            "<span>网关类型:</span>" +
+                            "<select name='ms_gate'>" +
+                                "<option value='"+data.ms_gate+"'>"+data.ms_gate_value.data_name+"</option>" +
+                                "<option value='1'>NZ2000</option>" +
+                                "<option value='2'>NZ1000</option>" +
+                            "</select><br/>" +
+                            "<span>建设内容:</span>" +
+                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='1'>病害监测孢子捕捉仪" +
+                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='2'>害虫监测测报灯" +
+                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='3'>害虫监测性诱监测仪" +
+                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='4'>鼠情监测鼠害监测仪" +
+                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='5'>环境因子监测气象监测仪" +
+                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='6'>环境因子监测土壤监测仪" +
+                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='7'>视频图像监测高清摄像头<br/>" +
+                            "<span >监测站描述:</span>" +
+                                "<textarea name='ms_desc'>"+data.ms_desc+"</textarea>" +
+                            "<input class='xg' type='button' value='修改' onclick='xg()'>" +
+                            "</form>"
+                    );
+                }
+            });
+        }
+        
+        
+        
+    
     </script>
 </head>
 <body>
@@ -172,78 +262,17 @@
 	                        <td class="t4">${station.ms_dev_value }</td>
 	                        <td class="t5">${station.ms_type_value.data_name }</td>
 	                        <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this,${station.id})"></td>
-	                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="del(this)" ></td>
+	                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="del(this,${station.id})" ></td>
 	                        <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-	                        <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
+	                        <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this,${station.id})"></td>
 	                    </tr>
                     </c:forEach>
                 </tbody>
             </table>
         <div  id="page">
         </div>
-
         <div id="chakan"></div>
-           
-        <div id="xiugai">
-            <form>
-                <span>监测站名称:</span>
-                <input type="text" >
-                <br/>
-                <span>监测站编码:</span>
-                <input type="text" >
-                <br/>
-                <span>建设时间:</span>
-                <input type="text" style="margin-left: 28px;">
-                <br/>
-                <span>使用单位，联系人，联系方式:</span>
-                <input type="text" class="lxfs">
-                <br/>
-                <span>施工单位，联系人，联系方式:</span>
-                <input type="text" class="lxfs">
-                <br/>
-                <span >监测站类型:</span>
-                <select style="margin-left: 1%;">
-                    <option>新建重点监测站</option>
-                    <option>改建重点监测站</option>
-                    <option>新建普通监测站</option>
-                    <option>改建普通监测站</option>
-                </select>
-                <br/>
-                <span>资金来源:</span>
-                <select>
-                    <option>省资金</option>
-
-                    <option>国家资金</option>
-                    <option>其他</option>
-                </select>
-                <br/>
-                <span>网络类型:</span>
-                <select>
-                    <option>无线</option>
-
-                    <option>有线</option>
-                </select>
-                <br/>
-                <span>网关类型:</span>
-                <select>
-                    <option>NZ2000</option>
-
-                    <option>NZ1000</option>
-                </select>
-                <br/>
-                <span>监测性质:</span>
-                <input type="checkbox" name="gn" class="gn">病害监测
-                <input type="checkbox" name="gn"  class="gn">害虫监测
-                <input type="checkbox" name="gn"  class="gn"> 鼠情监测
-                <input type="checkbox" name="gn"  class="gn">环境因子监测
-                <input type="checkbox" name="gn"  class="gn">视频图像监测
-                <input type="checkbox" name="gn"  class="gn">其他监测
-                <br/>
-                <span >监测站描述:</span>
-                <textarea></textarea>
-                <input class="xg" type="button" value="修改" onclick="xg()">
-            </form>
-        </div>
+        <div id="xiugai"></div>
     <div id="tianjia">
         <form>
             <span>监测站名称:</span>
@@ -305,24 +334,6 @@
             <input class="tj" type="button" value="添加" onclick="tj()">
         </form>
     </div>
-    <div id="peizhi">
-        <form>
-            <span>监测站名称:</span><input type="text"/>
-            <br/>
-            <span>监测站编码:</span><input type="text"/>
-            <br/>
-            <span style="margin-right: 16px;">上传地址:</span><input type="text">
-            <br/>
-            <span style="margin-right: 16px;">上传频率:</span><input type="text"/>
-            <br/>
-            <span style="margin-right: 28px;">端口号:</span> <input type="text"/>
-            <br/>
-            <span style="margin-right: 16px;">存储周期:</span><input type="text"/>
-            <br/>
-            <input class="pz" type="button" value="配置" onclick="pz()">
-        </form>
-    </div>
-
     </div>
 
 </div>
