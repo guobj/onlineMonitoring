@@ -15,10 +15,14 @@ pageContext.setAttribute("basePath", basePath);
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
     <title></title>
     <link href="css/xinxi.css" rel="stylesheet" type="text/css">
+    <link href="css/simplePaging.css" rel="stylesheet" type="text/css">
+
     <script src="js/jquery.js"></script>
     <script src="js/xinxi.js" ></script>
     <script src="js/jilian.js" type="text/javascript" charset="UTF-8"></script>
-    <script type="text/javascript" src="js/jquery.page.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/simplePaging.js" charset="UTF-8"></script>
+    <script src="js/delete.js"></script>
+    <script src="js/cascading.js"></script>
     <script type="text/javascript">
         //模糊查询调用方法
         function submit() {
@@ -64,15 +68,15 @@ pageContext.setAttribute("basePath", basePath);
         }
         //删除方法
         function del(id) {
-            // $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () { alert("删除成功"); });
-            $.ajax({
-                type:"get",
-                url:"deleteById",
-                data:{id:id},
-                success:function (data) {
-                    window.location.reload();
-                }
-            })
+            $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () { alert("删除成功"); });
+            // $.ajax({
+            //     type:"get",
+            //     url:"deleteById",
+            //     data:{id:id},
+            //     success:function (data) {
+            //         window.location.reload();
+            //     }
+            // })
         }
         //修改方法
         function update(obj,id) {
@@ -164,11 +168,14 @@ pageContext.setAttribute("basePath", basePath);
                     <option value="4">改建普通监测站</option>
                 </select>
             </span>
-           <%-- <span  class="span1">监测站区域：
-                        <select id="s_province" name="s_province"></select>
-                        <select id="s_city" name="s_city" ></select>
-                        <script type="text/javascript">_init_area();</script>
-                </span>--%>
+           <span  class="span1">监测站区域：
+                        <select id="s_city" name="city">
+                            <option value="">市区</option>
+                        </select>
+                        <select id="s_area" name="city">
+                            <option value="">地级市</option>
+                        </select>
+            </span>
             <span class="span1">网关类型：
                 <select class="select1" name="station.ms_gate">
                     <option value="">不限</option>
@@ -200,9 +207,7 @@ pageContext.setAttribute("basePath", basePath);
             </thead>
             <tbody>
             <c:if test="${stationInfoList eq null}" >
-                <tr>
-                <tr><td colspan="8"  style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
-                </tr>
+                <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
             </c:if>
             <c:if test="${stationInfoList != null}">
                 <c:forEach var="list" items="${stationInfoList}">
@@ -220,8 +225,13 @@ pageContext.setAttribute("basePath", basePath);
             </c:if>
             </tbody>
         </table>
-        <div  id="page">
+        <div class="part part1">
+            <div class="simplePaging"></div>
+            <script>
+                $(".simplePaging").simplePaging();
+            </script>
         </div>
+
 
         <div id="chakan">
             <table id="bg1">

@@ -38,7 +38,6 @@ public class DeviceServiceImpl implements DeviceService {
 			throw new  RuntimeException("暂无数据！");
 		}else{
 			for (Device dev : queryList) {
-
 				//获取设备编码进行解析
 //			String dev_code = dbmap.get("dev_code").toString();
 				String dev_code = dev.getDev_code();

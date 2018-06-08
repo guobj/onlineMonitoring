@@ -23,8 +23,18 @@ public class ManageController {
 
 	@RequestMapping(value = "/queryStationInfo")
 	public String queryStationInfo(Map<String, Object> map, Manage manage,
-										@RequestParam(required=false,defaultValue="1")Integer pages, HttpServletRequest request){
+										@RequestParam(required=false,defaultValue="1")Integer pages,
+								   @RequestParam(required=false,name="city")String[] citys, HttpServletRequest request){
 		try {
+			if (citys != null) {
+				if (citys[1] != null && citys[1] != "") {
+					manage.setMs_code(citys[1]);
+				}else if (citys[0] != null && citys[0] != "") {
+					manage.setMs_code(citys[0]);
+				}else {
+					manage.setMs_code("37");
+				}
+			}
 			//存储前台传过来的值
 			map = PageBean.serverMap(map,manage,pages);
 			//将数据返回前端
