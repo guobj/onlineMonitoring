@@ -75,5 +75,30 @@ public class DataServiceImpl implements DataService {
     public List<Data> listDevType1() {
         return dataMapper.listDevType1();
     }
+    @Override
+    public List<Data> listMsDev() {
+        // TODO Auto-generated method stub
+        return dataMapper.listMsDev();
+    }
+    @Override
+    public List<Data> listMsFp() {
+        // TODO Auto-generated method stub
+        return dataMapper.listMsFp();
+    }
+    @Override
+    public List<Data> listMsType() {
+        // TODO Auto-generated method stub
+        return dataMapper.listMsType();
+    }
+    @Override
+    public List<Data> listMsGate() {
+        // TODO Auto-generated method stub
+        return dataMapper.listMsGate();
+    }
+    @Override
+    public Data loadByDevType1(Integer data_value) {
+        // TODO Auto-generated method stub
+        return dataMapper.loadByDevType1(data_value);
+    }
 
 }

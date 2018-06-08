@@ -7,9 +7,9 @@
  **/
 package com.nz.onlineMonitoring.data.mapper;
 
-import com.nz.onlineMonitoring.data.model.Data;
-
 import java.util.List;
+
+import com.nz.onlineMonitoring.data.model.Data;
 
 public interface DataMapper {
     /**
@@ -76,6 +76,15 @@ public interface DataMapper {
 	 **/
 	Data loadByDevType(Integer data_value);
 	/**
+	 * 
+	 * 方法描述：设备类型
+	 * @param data_value
+	 * @return
+	 * @author ssh
+	 * @date 2018年6月8日 下午4:37:31
+	 */
+	Data loadByDevType1(Integer data_value);
+	/**
 	 *
 	 * 方法描述：获取单个监测站所拥有的监测设备编号的值
 	 * @param data_value
@@ -132,7 +141,7 @@ public interface DataMapper {
 	 * @author ssh
 	 * @date 2018年6月5日 上午9:24:52
 	 */
-	List<Data> listArea(int data_value);
+	List<Data> listArea(Integer data_value);
 	/**
 	 *
 	 * 方法描述：查询设备的全部状态
@@ -157,4 +166,45 @@ public interface DataMapper {
 	 * @date 2018年6月6日 下午9:27:51
 	 */
 	List<Data> listDevType1();
+	/**
+	 * 
+	 * 方法描述：查询全部设备编码
+	 * @return
+	 * @author ssh
+	 * @date 2018年6月8日 上午9:28:18
+	 */
+	List<Data> listMsDev();
+	/**
+	 * 
+	 * 方法描述：查询全部资金来源
+	 * @return
+	 * @author ssh
+	 * @date 2018年6月8日 上午10:08:59
+	 */
+	List<Data> listMsFp();
+	/**
+     * 
+     * 方法描述：查询全部监测站类型
+     * @return
+     * @author ssh
+     * @date 2018年6月8日 上午10:08:59
+     */
+	List<Data> listMsType();
+	/**
+     * 
+     * 方法描述：查询全部网关类型
+     * @return
+     * @author ssh
+     * @date 2018年6月8日 上午10:08:59
+     */
+	List<Data> listMsGate();
+	/**
+	 * 
+	 * 方法描述：获取单个城市的name，用来解析编码
+	 * @param ms_city
+	 * @return
+	 * @author ssh
+	 * @date 2018年6月8日 下午5:28:10
+	 */
+	Data loadCity(Integer data_value);
 }

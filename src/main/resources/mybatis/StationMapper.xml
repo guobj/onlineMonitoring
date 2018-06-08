@@ -198,15 +198,64 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <select id="listStation" resultMap="BaseResultMap" parameterType="map">
+    <select id="listStation" resultMap="BaseResultMap01" parameterType="map">
         select 
         <include refid="t_station_columns" />
         from t_station
+        <where>
+            <!-- 监测站名字  -->
+            <if test="station.ms_name != null and station.ms_name != ''" >
+                ms_name like concat("%",#{station.ms_name},"%")
+            </if>
+            <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
+                                                    传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
+             -->
+            <if test="station.ms_code != null and station.ms_code != ''" >
+                and ms_code like concat(#{station.ms_code},"%")
+            </if>
+            <!-- 根据资金类型 -->
+            <if test="station.ms_fp != null and station.ms_fp != ''" >
+                and ms_fp = #{station.ms_fp}
+            </if>
+            <!--  监测站类型-->
+            <if test="station.ms_type != null and station.ms_type != ''" >
+                and ms_type = #{station.ms_type}
+            </if>
+            <!-- 网关类型 -->
+            <if test="station.ms_gate != null and station.ms_gate != ''" >
+                and ms_gate = #{station.ms_gate}
+            </if>
+        </where>
+        limit #{record},4
     </select>
     <select id="countStation" resultType ="int" parameterType="map">
         select 
             count(*)
         from t_station
+        <where>
+            <!-- 监测站名字  -->
+            <if test="station.ms_name != null and station.ms_name != ''" >
+                and ms_name like concat("%",#{station.ms_name},"%")
+            </if>
+            <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
+                                                    传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
+             -->
+            <if test="station.ms_code != null and station.ms_code != ''" >
+                and ms_code like concat(#{station.ms_code},"%")
+            </if>
+            <!-- 根据资金类型 -->
+            <if test="station.ms_fp != null and station.ms_fp != ''" >
+                and ms_fp = #{station.ms_fp}
+            </if>
+           <!--  监测站类型-->
+            <if test="station.ms_type != null and station.ms_type != ''" >
+                and ms_type = #{station.ms_type}
+            </if>
+            <!-- 网关类型 -->
+            <if test="station.ms_gate != null and station.ms_gate != ''" >
+                and ms_gate = #{station.ms_gate}
+            </if>
+        </where>
     </select>
     <select id="existMsCode" resultType ="int" parameterType="java.lang.String">
         select 

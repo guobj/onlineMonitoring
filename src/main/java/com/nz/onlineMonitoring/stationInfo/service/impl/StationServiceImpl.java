@@ -1,5 +1,6 @@
 package com.nz.onlineMonitoring.stationInfo.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +32,29 @@ public class StationServiceImpl implements StationService{
     public List<Station> listStation(Map<String, Object> map) {
         Integer count = stationMapper.countStation(map);
         map.put("count", count);
-        return stationMapper.listStation(map);
+        List<Station> listStation = stationMapper.listStation(map);
+        List<Data> listData = dataMapper.listMsDev();
+        Map<String, String> mapDev = new HashMap<>();
+        //将data中的ms_code的value作为键，name作为值
+        for (Data d : listData) {
+            mapDev.put(String.valueOf(d.getData_value()), d.getData_name());
+        }
+        //循环listStation,将ms_code中的值，一一取出，然后通过值去mapdev中比较，拿到具体的名字，然后拼接到ms_dev_value中
+        for (Station s : listStation) {
+            if (s.getMs_dev() != null && s.getMs_dev() != "") {
+                String[] temp = s.getMs_dev().split(",");
+                for (int i = 0,n = temp.length; i < n; i++) {
+                    temp[i] = mapDev.get(temp[i]);
+                    //将设备编码解析成具体的name
+                    StringBuffer sb = new StringBuffer();
+                    sb.append(dataMapper.loadByDevType(Integer.parseInt(temp[i].substring(3, 4))).getData_name());
+                    sb.append(dataMapper.loadByDevType1(Integer.parseInt(temp[i].substring(3, 6))).getData_name());
+                    temp[i] = sb.toString();
+                }
+                s.setMs_dev_value(String.join(",", temp));
+            }
+        }
+        return listStation;
         
     }
     /**
@@ -59,15 +82,42 @@ public class StationServiceImpl implements StationService{
     public Station load(Integer id) {
         Station station = stationMapper.load(id);
         String dev = station.getMs_dev();
+        List<Data> listData = dataMapper.listMsDev();
+        Map<String, String> mapDev = new HashMap<>();
+        //将data中的ms_code的value作为键，name作为值
+        for (Data d : listData) {
+            mapDev.put(String.valueOf(d.getData_value()), d.getData_name());
+        }
         //因为ms_dev中的数据是用，分开的多个数据，所以没法用mapper直接查询，如果ms_dev不等于空，那么循环其中的数据，把从字典表中拿到的name值，拼接成字符串，传到ms_dev_value,用，隔开
-        if (dev != null || dev != "") {
+        if (dev != null && dev != "") {
             String[] temp = dev.split(",");
             for (int i = 0, n = temp.length; i < n; i++) {
-                Data data = dataMapper.loadDev(Integer.parseInt(temp[i]));
-                temp[i] = data.getData_name();
+                temp[i] = mapDev.get(temp[i]);
+                StringBuffer sb = new StringBuffer();
+                sb.append(dataMapper.loadByDevType(Integer.parseInt(temp[i].substring(3, 4))).getData_name());
+                sb.append(dataMapper.loadByDevType1(Integer.parseInt(temp[i].substring(3, 6))).getData_name());
+                temp[i] = sb.toString();
             }
             station.setMs_dev_value(String.join(",", temp));
         }
+        //解析监测站编码
+        String ms_code = station.getMs_code();
+        String code01 = ms_code.substring(0, 6);
+        String code02 = ms_code.substring(4, 6);
+        
+        String code2 = ms_code.substring(6, 8);
+        if (code02.equals("00")) {
+            String name1= dataMapper.loadCity(Integer.parseInt(code01)).getData_name();
+            station.setMs_code(name1 + "第" + code2 +"个");
+        }else {
+            String code03 = ms_code.substring(0, 4);
+            code03 += "00";
+            String name2= dataMapper.loadCity(Integer.parseInt(code03)).getData_name();
+            String name1= dataMapper.loadCity(Integer.parseInt(code01)).getData_name();
+            station.setMs_code(name2+name1 + "第" + code2 +"个");
+        }
+        
+        
         return station;
     }
     /**
