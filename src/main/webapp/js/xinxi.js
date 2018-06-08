@@ -150,16 +150,6 @@ function pz(){
     $("#caidan").css("height","1020px");
 
 }
-$(function(){
-    $("#page").Page({
-        totalPages: 10,//分页总数
-        liNums: 7,//分页的数字按钮数(建议取奇数)
-        activeClass: 'activP', //active 类样式定义
-        callBack : function(page){
-            //console.log(page)
-        }
-    });
-})
 // function del(){
 //     $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () { alert("删除成功"); });
 // }

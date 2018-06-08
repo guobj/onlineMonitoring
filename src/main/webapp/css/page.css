@@ -1,0 +1,19 @@
+#page{
+    float: right;
+    width: 70%;
+    margin-right: 0%;
+}
+#page form{
+    margin-left: 60%;
+    float: left;
+    width: 70%;
+}
+#page input{
+    width:10%;
+    margin-right: 3%;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid #bfbfbf;
+
+}
+#page input:hover{background: #087600;color: #ffffff;}

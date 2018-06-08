@@ -43,6 +43,7 @@
             <if test="device.dev_code!=null and device.dev_code.trim()!=''">
                 AND td.dev_code LIKE concat("%",#{device.dev_code},"%")
             </if>
+            AND td.dr = false
         </where>
         LIMIT #{record},4
     </select>
@@ -60,6 +61,7 @@
             <if test="device.dev_code!=null and device.dev_code.trim()!=''">
                 AND td.dev_code LIKE concat("%",#{device.dev_code},"%")
             </if>
+            AND td.dr = false
         </where>
     </select>
     <delete id="delete" parameterType="java.lang.Integer" >

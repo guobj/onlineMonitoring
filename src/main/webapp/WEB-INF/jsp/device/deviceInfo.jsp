@@ -120,7 +120,6 @@
     <table>
         <thead>
             <tr>
-                <td class="t1" >序号</td>
                 <td class="t2" >监测站名称</td>
                 <td class="t3" >监测站编码</td>
                 <td class="t4">设备编码</td>
@@ -135,174 +134,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="t1" >序号</td>
-                <td class="t2" >监测站名称</td>
-                <td class="t3" >监测站编码</td>
-                <td class="t4">设备编码</td>
-                <td class="t5">通信协议</td>
-                <td class="t6">通信接口</td>
-                <td class="t7">从机地址</td>
-                <td class="t8">IP地址</td>
-                <td class="t9">通信端口</td>
-                <td class="t10">质保期限</td>
-                <td class="t11">设备厂家、品牌、型号、服务电话</td>
-                <td class="t12">设备描述</td>
-            </tr>
-            <tr>
-                <td class="t1" >序号</td>
-                <td class="t2" >监测站名称</td>
-                <td class="t3" >监测站编码</td>
-                <td class="t4">设备编码</td>
-                <td class="t5">通信协议</td>
-                <td class="t6">通信接口</td>
-                <td class="t7">从机地址</td>
-                <td class="t8">IP地址</td>
-                <td class="t9">通信端口</td>
-                <td class="t10">质保期限</td>
-                <td class="t11">设备厂家、品牌、型号、服务电话</td>
-                <td class="t12">设备描述</td>
-            </tr>
-            <tr>
-                <td class="t1" >序号</td>
-                <td class="t2" >监测站名称</td>
-                <td class="t3" >监测站编码</td>
-                <td class="t4">设备编码</td>
-                <td class="t5">通信协议</td>
-                <td class="t6">通信接口</td>
-                <td class="t7">从机地址</td>
-                <td class="t8">IP地址</td>
-                <td class="t9">通信端口</td>
-                <td class="t10">质保期限</td>
-                <td class="t11">设备厂家、品牌、型号、服务电话</td>
-                <td class="t12">设备描述</td>
-            </tr>
-            <tr>
-                <td class="t1" >序号</td>
-                <td class="t2" >监测站名称</td>
-                <td class="t3" >监测站编码</td>
-                <td class="t4">设备编码</td>
-                <td class="t5">通信协议</td>
-                <td class="t6">通信接口</td>
-                <td class="t7">从机地址</td>
-                <td class="t8">IP地址</td>
-                <td class="t9">通信端口</td>
-                <td class="t10">质保期限</td>
-                <td class="t11">设备厂家、品牌、型号、服务电话</td>
-                <td class="t12">设备描述</td>
-            </tr>
-            <tr>
-                <td class="t1" >序号</td>
-                <td class="t2" >监测站名称</td>
-                <td class="t3" >监测站编码</td>
-                <td class="t4">设备编码</td>
-                <td class="t5">通信协议</td>
-                <td class="t6">通信接口</td>
-                <td class="t7">从机地址</td>
-                <td class="t8">IP地址</td>
-                <td class="t9">通信端口</td>
-                <td class="t10">质保期限</td>
-                <td class="t11">设备厂家、品牌、型号、服务电话</td>
-                <td class="t12">设备描述</td>
-            </tr>
-            <tr>
-                <td class="t1" >序号</td>
-                <td class="t2" >监测站名称</td>
-                <td class="t3" >监测站编码</td>
-                <td class="t4">设备编码</td>
-                <td class="t5">通信协议</td>
-                <td class="t6">通信接口</td>
-                <td class="t7">从机地址</td>
-                <td class="t8">IP地址</td>
-                <td class="t9">通信端口</td>
-                <td class="t10">质保期限</td>
-                <td class="t11">设备厂家、品牌、型号、服务电话</td>
-                <td class="t12">设备描述</td>
-            </tr>
-            <tr>
-                <td class="t1" >序号</td>
-                <td class="t2" >监测站名称</td>
-                <td class="t3" >监测站编码</td>
-                <td class="t4">设备编码</td>
-                <td class="t5">通信协议</td>
-                <td class="t6">通信接口</td>
-                <td class="t7">从机地址</td>
-                <td class="t8">IP地址</td>
-                <td class="t9">通信端口</td>
-                <td class="t10">质保期限</td>
-                <td class="t11">设备厂家、品牌、型号、服务电话</td>
-                <td class="t12">设备描述</td>
-            </tr>
-            <tr>
-                <td class="t1" >序号</td>
-                <td class="t2" >监测站名称</td>
-                <td class="t3" >监测站编码</td>
-                <td class="t4">设备编码</td>
-                <td class="t5">通信协议</td>
-                <td class="t6">通信接口</td>
-                <td class="t7">从机地址</td>
-                <td class="t8">IP地址</td>
-                <td class="t9">通信端口</td>
-                <td class="t10">质保期限</td>
-                <td class="t11">设备厂家、品牌、型号、服务电话</td>
-                <td class="t12">设备描述</td>
-            </tr>
-            <tr>
-                <td class="t1" >序号</td>
-                <td class="t2" >监测站名称</td>
-                <td class="t3" >监测站编码</td>
-                <td class="t4">设备编码</td>
-                <td class="t5">通信协议</td>
-                <td class="t6">通信接口</td>
-                <td class="t7">从机地址</td>
-                <td class="t8">IP地址</td>
-                <td class="t9">通信端口</td>
-                <td class="t10">质保期限</td>
-                <td class="t11">设备厂家、品牌、型号、服务电话</td>
-                <td class="t12">设备描述</td>
-            </tr>
-            <tr>
-                <td class="t1" >序号</td>
-                <td class="t2" >监测站名称</td>
-                <td class="t3" >监测站编码</td>
-                <td class="t4">设备编码</td>
-                <td class="t5">通信协议</td>
-                <td class="t6">通信接口</td>
-                <td class="t7">从机地址</td>
-                <td class="t8">IP地址</td>
-                <td class="t9">通信端口</td>
-                <td class="t10">质保期限</td>
-                <td class="t11">设备厂家、品牌、型号、服务电话</td>
-                <td class="t12">设备描述</td>
-            </tr>
-            <tr>
-                <td class="t1" >序号</td>
-                <td class="t2" >监测站名称</td>
-                <td class="t3" >监测站编码</td>
-                <td class="t4">设备编码</td>
-                <td class="t5">通信协议</td>
-                <td class="t6">通信接口</td>
-                <td class="t7">从机地址</td>
-                <td class="t8">IP地址</td>
-                <td class="t9">通信端口</td>
-                <td class="t10">质保期限</td>
-                <td class="t11">设备厂家、品牌、型号、服务电话</td>
-                <td class="t12">设备描述</td>
-            </tr>
-            <tr>
-                <td class="t1" >序号</td>
-                <td class="t2" >监测站名称</td>
-                <td class="t3" >监测站编码</td>
-                <td class="t4">设备编码</td>
-                <td class="t5">通信协议</td>
-                <td class="t6">通信接口</td>
-                <td class="t7">从机地址</td>
-                <td class="t8">IP地址</td>
-                <td class="t9">通信端口</td>
-                <td class="t10">质保期限</td>
-                <td class="t11">设备厂家、品牌、型号、服务电话</td>
-                <td class="t12">设备描述</td>
-            </tr>
+            <c:if test="${list eq null}">
+                <tr><td colspan="11" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
+            </c:if>
+            <c:forEach var="list" items="${list}">
+                <tr>
+                    <td class="t2" >${list.ms_name}</td>
+                    <td class="t3" >${list.ms_code}</td>
+                    <td class="t4">${list.dev_code}</td>
+                    <td class="t5">${list.dataProtocol.data_value}</td>
+                    <td class="t6">${list.dataInterface.data_value}</td>
+                    <td class="t7">${list.dev_regad}</td>
+                    <td class="t8">${list.dev_ip}</td>
+                    <td class="t9">${list.dataPort.data_name}</td>
+                    <td class="t10">${list.dev_warraty}</td>
+                    <td class="t11">${list.dev_mfrs}</td>
+                    <td class="t12">${list.dev_desc}</td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
     <div id="page"></div>

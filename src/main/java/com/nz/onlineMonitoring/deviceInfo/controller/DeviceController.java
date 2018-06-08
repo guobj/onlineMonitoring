@@ -6,7 +6,6 @@ import com.nz.onlineMonitoring.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,7 @@ public class DeviceController {
 	@Autowired
 	private DeviceService deviceService;
 
-	@RequestMapping(value = "/queryDeviceInfo",method = RequestMethod.POST)
+	@RequestMapping(value = "/queryDeviceInfo")
 	public String queryDeviceInfo(Map<String, Object> map, Device device,
 									   @RequestParam(required=false,defaultValue="1")Integer pages, HttpServletRequest request) {
 

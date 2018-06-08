@@ -15,15 +15,38 @@ pageContext.setAttribute("basePath", basePath);
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
     <title></title>
     <link href="css/xinxi.css" rel="stylesheet" type="text/css">
-    <link href="css/simplePaging.css" rel="stylesheet" type="text/css">
+    <link href="css/page.css" rel="stylesheet" type="text/css">
 
     <script src="js/jquery.js"></script>
     <script src="js/xinxi.js" ></script>
-    <script src="js/jilian.js" type="text/javascript" charset="UTF-8"></script>
-    <script type="text/javascript" src="js/simplePaging.js" charset="UTF-8"></script>
     <script src="js/delete.js"></script>
-    <script src="js/cascading.js"></script>
+    <%--<script src="js/cascading.js"></script>--%>
     <script type="text/javascript">
+        $(function() {
+            $.post(
+                "data/listCity",
+                function(data) {
+                    for(var city in data){
+                        $("#s_city").append("<option value="+data[city].data_value+">"+data[city].data_name+"</option>");
+                    }
+                },
+                "json"
+            )
+            $("#s_city").change(function() {
+                // $("#city").html("<option value=''>市区</option>");
+                $.post(
+                    "data/listArea",
+                    {city_id:$("#s_city").val()},
+                    function(data) {
+                        for(var area in data){
+                            $("#s_area").append("<option value="+data[area].data_value+">"+data[area].data_name+"</option>");
+                        }
+
+                    },
+                    "json"
+                )
+            })
+        });
         //模糊查询调用方法
         function submit() {
             var form = new FormData(document.getElementById("like"));
@@ -53,7 +76,7 @@ pageContext.setAttribute("basePath", basePath);
                     $("#ms_name").html(data.data.ms_name);
                     $("#ms_code").html(data.data.ms_code);
                     $("#ms_date").html(data.data.station.ms_date);
-                    $("#ms_dev").html(data.data.station.ms_dev);
+                    $("#ms_dev").html(data.data.station.ms_dev_value);
                     $("#ms_type").html(data.data.station.data.data_name);
                     $("#ms_fp").html(data.data.station.ms_fp_value.data_name);
                     $("#ms_place").html(data.data.station.ms_place);
@@ -168,13 +191,13 @@ pageContext.setAttribute("basePath", basePath);
                     <option value="4">改建普通监测站</option>
                 </select>
             </span>
-           <span  class="span1">监测站区域：
-                        <select id="s_city" name="city">
-                            <option value="">市区</option>
-                        </select>
-                        <select id="s_area" name="city">
-                            <option value="">地级市</option>
-                        </select>
+           <span class="span1">监测站区域：
+                <select id="s_city" name="city">
+                    <option value="">市区</option>
+                </select>
+                <select id="s_area" name="city">
+                    <option value="">地级市</option>
+                </select>
             </span>
             <span class="span1">网关类型：
                 <select class="select1" name="station.ms_gate">
@@ -214,7 +237,7 @@ pageContext.setAttribute("basePath", basePath);
                     <tr>
                         <td class="t3">${list.ms_name}</td>
                         <td class="t2">${list.ms_code}</td>
-                        <td class="t4">${list.station.ms_dev}</td>
+                        <td class="t4">${list.station.ms_dev_value}</td>
                         <td class="t5">${list.station.data.data_name}</td>
                         <td class="t6"><input type="button" value="查看" class="input1" onclick="look(this,${list.id})"></td>
                         <td class="t7"><input type="button" value="删除"  class="input2" onclick="del(${list.id})"></td>
@@ -225,12 +248,15 @@ pageContext.setAttribute("basePath", basePath);
             </c:if>
             </tbody>
         </table>
-        <div class="part part1">
-            <div class="simplePaging"></div>
-            <script>
-                $(".simplePaging").simplePaging();
-            </script>
+        <div id="page">
+            <form>
+                <input type="button" value="首页"/>
+                <input type="button" value="上一页"/>
+                <input type="button" value="下一页"/>
+                <input type="button" value="末页"/>
+            </form>
         </div>
+
 
 
         <div id="chakan">
@@ -432,6 +458,7 @@ pageContext.setAttribute("basePath", basePath);
         </div>
 
     </div>
+
 </div>
 <div id="footer">
     <li>济南农智信息科技有限公司所有&copy; &nbsp;电话：12345677  &nbsp;<a href="#">关于我们</a> &nbsp;<a href="#">售后服务</a></li>

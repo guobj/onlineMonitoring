@@ -51,7 +51,7 @@ public interface ManageMapper {
 	 * @param
 	 * @return
 	 */
-	List<Map<String, Object>> queryStationInfo(Map<String, Object> map);
+	List<Manage> queryStationInfo(Map<String, Object> map);
 
 	/**
 	 * 通过监测站名称、监测站编码、监测站类型、资金来源、网关类型综合查询（支持模糊查询）

@@ -38,7 +38,7 @@ public class ManageController {
 			//存储前台传过来的值
 			map = PageBean.serverMap(map,manage,pages);
 			//将数据返回前端
-			List<Map<String, Object>> list = manageService.queryStationInfo(map);
+			List<Manage> list = manageService.queryStationInfo(map);
 			//返回前端页面的值
 			map = PageBean.clientMap(map,pages,request);
 		}catch (Exception e){

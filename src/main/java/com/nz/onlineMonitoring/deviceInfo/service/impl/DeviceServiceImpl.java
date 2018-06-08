@@ -41,10 +41,14 @@ public class DeviceServiceImpl implements DeviceService {
 				//获取设备编码进行解析
 //			String dev_code = dbmap.get("dev_code").toString();
 				String dev_code = dev.getDev_code();
+				//取得第四位编码检测对象编码
 				char c = dev_code.charAt(3);
-				Data data = dataMapper.loadByDevType(Character.getNumericValue(c));
+				StringBuilder sb = new StringBuilder();
+				sb.append(dataMapper.loadByDevType(Character.getNumericValue(c)).getData_name());
+				//监测类型编码
+				sb.append(dataMapper.loadByDevType1(Integer.parseInt(dev_code.substring(3, 6))).getData_name());
 //			dbmap.put("dev_code",data.getData_name());
-				dev.setDev_code(data.getData_name());
+				dev.setDev_code(sb.toString());
 			}
 			map.put("list",queryList);
 			map.put("count",count);

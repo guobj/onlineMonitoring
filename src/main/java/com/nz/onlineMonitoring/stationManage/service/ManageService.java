@@ -15,7 +15,7 @@ public interface ManageService {
 	 * @param
 	 * @return
 	 */
-	public List<Map<String, Object>> queryStationInfo(Map<String, Object> map);
+	public List<Manage> queryStationInfo(Map<String, Object> map);
 
 	/**
 	 * 修改监测站属性信息
