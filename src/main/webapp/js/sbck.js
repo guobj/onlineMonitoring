@@ -67,12 +67,3 @@ $(function(){
 
 
 })
-$(function(){
-    $("#page").Page({
-        totalPages: 10,//分页总数
-        liNums: 7,//分页的数字按钮数(建议取奇数)
-        activeClass: 'activP', //active 类样式定义
-        callBack : function(page){
-        }
-    });
-})

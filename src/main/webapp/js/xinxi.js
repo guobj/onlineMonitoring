@@ -128,6 +128,14 @@ function pz(){
         }
     });
 })*/
+function xiugai(obj){
+    $(obj).parent().parent().parent().parent().hide();
+    $("#xiugai").show();
+    $("h4").html("修改信息");
+    $("#caidan").css("height",height)
+    $("#page").hide();
+    $("#caidan").css("height","840px");
+}
 function del(){
     $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () { alert("删除成功"); });
 }

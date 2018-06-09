@@ -3,12 +3,12 @@ a{ text-decoration: none;}
 
 
 #tit{ width:100%; height:93px; background:url(../img/tit.jpg) no-repeat; background-size:cover; border-bottom:7px #1bb11c solid;}
-#tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:2.1em; margin-left:3%; color:#3d9d18; font-weight:bold; text-shadow:4px 2px 3px #ffffff; font-family: '����';}
+#tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:2.1em; margin-left:3%; color:#3d9d18; font-weight:bold; text-shadow:4px 2px 3px #ffffff; font-family: 'ËÎÌå';}
 
 #tit ul{ width:28%; height:93px; float:left; margin-left:24%;}
 #tit ul li{ width:91%; height:30px; margin-top:20px; line-height:30px; font-size:0.75em; color:#FFF; float:left; overflow:hidden;}
-#tit ul li .three{ width:90%; margin-left:8%; height:32px;}
-#tit ul li .three a{ width:28%; float:left; margin-top:0px; height:32px; line-height:32px; color:#FFF;}
+#tit ul li .three{ width:90%; margin-left:5%; height:32px;}
+#tit ul li .three a{ width:23%; float:left; margin-top:0px; height:32px; line-height:32px; color:#FFF;}
 #tit ul li .three a img{ margin-top:5px; float:left; max-width: 100%;}
 #tit ul li .three a:hover{ color:#F00;}
 
@@ -44,14 +44,26 @@ a{ text-decoration: none;}
 #content_r .menu{width: 90%; height: 159px;}
 #content_r .menu span{width: 30%; font-size: 12px; color: #595959;margin:10px 0 0 5%;}
 #content_r .menu input{width: 30%; height: 30px; border: 1px solid #bfbfbf;margin:10px 0 0 1%; border-radius: 5px;}
-#content_r .menu .search{width: 5%; background: #3497db;  text-align: center; color: #ffffff; margin-left: 40%; margin-top: 20px;}
-#content_r .menu .reset{width: 5%; background: #f98e1a; text-align: center; color: #ffffff;margin-top: 20px;}
+#content_r .menu .search{width: 6%;/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
+background: rgb(238,238,238); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+  text-align: center;  margin-left: 40%; margin-top: 20px;}
+#content_r .menu .reset{width: 6%; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
+background: rgb(238,238,238); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+ text-align: center; margin-top: 20px;}
 #content_r .title{font-size: 16px; margin-left: 2%;color: #646464;}
 #content_r .menu span select {width: 14.3% !important ; margin-right: 1%; border: 1px solid #bfbfbf; height: 40px; border-radius: 5px;}
 #content_r .menu span .select1{width: 30% !important; margin-top: 3px; border-radius: 5px;}
 #content_r table{margin-left: 2%; width: 98%;}
-#content_r table thead tr{background: #bee2f4; color:#707d83;height: 42px;text-align: center; }
-#content_r table tr{color:#707d83;height: 42px;text-align: center;}
+#content_r table thead tr{background: #bee2f4; height: 42px;text-align: center; }
+#content_r table tr{height: 42px;text-align: center;}
 #content_r table .t1{width: 8%;}
 #content_r table .t2{width: 20%;}
 #content_r table .t3{width: 20%;}
@@ -143,6 +155,6 @@ a{ text-decoration: none;}
 .last:hover,
 .pagingUl li a:hover,
 .activP {
-    background-color: #4c9d5f!important;
-    color: #fff!important;
+    background-color: #d7dce2!important;
+    
 }

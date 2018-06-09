@@ -18,6 +18,7 @@ public class DeviceController {
 	@Autowired
 	private DeviceService deviceService;
 
+	//设备信息管理查询
 	@RequestMapping(value = "/queryDeviceInfo")
 	public String queryDeviceInfo(Map<String, Object> map, Device device,
 									   @RequestParam(required=false,defaultValue="1")Integer pages, HttpServletRequest request) {
@@ -32,5 +33,33 @@ public class DeviceController {
 			map.put("message", e.getMessage());
 		}
 		return  "device/deviceInfo";
+	}
+
+	//设备信息查询（设备采集数据图片再次接口上写）
+	@RequestMapping(value = "/queryDeviceInfoList")
+	public String queryDeviceInfoList(Map<String, Object> map, Device device,
+								  @RequestParam(required=false,defaultValue="1")Integer pages,
+								  @RequestParam(required=false,name="city")String[] citys,
+									  String dev_type,String dev_target,HttpServletRequest request) {
+
+		try {
+			if (citys != null) {
+				if (citys[1] != null && citys[1] != "") {
+					device.setMs_code(citys[1]);
+				}else if (citys[0] != null && citys[0] != "") {
+					device.setMs_code(citys[0]);
+				}else {
+					device.setMs_code("37");
+				}
+			}
+			//存储前端传来的数据
+			map = PageBean.serverMap(map, device, pages);
+			List<Device> list = deviceService.queryDeviceInfo(map,device);
+			//返回给前端的数据
+			map = PageBean.clientMap(map, pages, request);
+		}catch (Exception e){
+			map.put("message", e.getMessage());
+		}
+		return  "device/deviceInfo_list";
 	}
 }

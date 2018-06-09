@@ -3,12 +3,12 @@
 
 
 #tit{ width:100%; height:93px; background:url(../img/tit.jpg) no-repeat; background-size:cover; border-bottom:7px #1bb11c solid;}
-#tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:2.1em; margin-left:3%; color:#3d9d18; font-weight:bold; text-shadow:4px 2px 3px #ffffff; font-family: 'ï¿½ï¿½ï¿½ï¿½';}
+#tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:2.1em; margin-left:3%; color:#3d9d18; font-weight:bold; text-shadow:4px 2px 3px #ffffff; font-family: 'ËÎÌå';}
 
 #tit ul{ width:28%; height:93px; float:left; margin-left:24%;}
 #tit ul li{ width:91%; height:30px; margin-top:20px; line-height:30px; font-size:0.75em; color:#FFF; float:left; overflow:hidden;}
-#tit ul li .three{ width:90%; margin-left:8%; height:32px;}
-#tit ul li .three a{ width:28%; float:left; margin-top:0px; height:32px; line-height:32px; color:#FFF;}
+#tit ul li .three{ width:90%; margin-left:5%; height:32px;}
+#tit ul li .three a{ width:23%; float:left; margin-top:0px; height:32px; line-height:32px; color:#FFF;}
 #tit ul li .three a img{ margin-top:5px; float:left; max-width: 100%;}
 #tit ul li .three a:hover{ color:#F00;}
 
@@ -47,9 +47,9 @@
 #content_r table{margin-left: 2%; width: 98%;}
 #content_r table thead tr{background: #bee2f4; color:#707d83;height: 42px;text-align: center; }
 #content_r table tr{color:#707d83;height: 42px;text-align: center;}
-#content_r table{width: 96%; float: left; height: 440px; margin-left: 2%;  margin-bottom: 10px; border-collapse:collapse;}
+#content_r table{width: 97%;float: left; height: 440px; margin-left: 2%;  margin-bottom: 10px; border-collapse:collapse;}
 #content_r table tbody .tr1{ border-bottom: 1px solid #adadad; width: 100%; height: 48px; }
-#content_r table tbody{font-size: 12px; line-height: 48px; color: #4e4f4f;}
+#content_r table tbody{font-size: 12px; line-height: 3em; color: #4e4f4f;}
 #content_r table .t1{width: 5%;}
 #content_r table .t2{width: 8%;}
 #content_r table .t3{width: 8%;}
@@ -60,7 +60,7 @@
 #content_r table .t8{width: 8%;}
 #content_r table .t9{width: 8%;}
 #content_r table .t10{width: 8%;}
-#content_r table .t11{width: 15%;}
+#content_r table .t11{width: 17%;}
 #content_r table .t12{width: 15%;}
 #content_r .name{ width:100%; margin-top:10px; height:48px; background:#bee2f4; margin-left:2%; font-size:12px; color:#4e4f4f; text-align:center; line-height:48px; overflow:hidden; !important;}
 
@@ -148,8 +148,7 @@
 .last:hover,
 .pagingUl li a:hover,
 .activP {
-    background-color: #4c9d5f!important;
-    color: #fff!important;
+    background-color: #d7dce2!important;
 }
 #content_r #img{position: absolute; top: 100px; margin-left: 10%; background: #bee2f4; width: 70%; height: 700px;}
 #content_r #img #imga{ width: 65%;margin-left: 3%;margin-top: 20px; height: 600px;}

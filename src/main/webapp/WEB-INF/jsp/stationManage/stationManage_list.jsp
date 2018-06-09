@@ -12,41 +12,15 @@ pageContext.setAttribute("basePath", basePath);
 <head lang="en">
     <base href="${basePath }">
     <meta charset="UTF-8">
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
     <title></title>
     <link href="css/xinxi.css" rel="stylesheet" type="text/css">
     <link href="css/page.css" rel="stylesheet" type="text/css">
-
     <script src="js/jquery.js"></script>
+    <script src="js/delete.js" type="text/javascript"></script>
     <script src="js/xinxi.js" ></script>
-    <script src="js/delete.js"></script>
-    <%--<script src="js/cascading.js"></script>--%>
-    <script type="text/javascript">
-        $(function() {
-            $.post(
-                "data/listCity",
-                function(data) {
-                    for(var city in data){
-                        $("#s_city").append("<option value="+data[city].data_value+">"+data[city].data_name+"</option>");
-                    }
-                },
-                "json"
-            )
-            $("#s_city").change(function() {
-                // $("#city").html("<option value=''>市区</option>");
-                $.post(
-                    "data/listArea",
-                    {city_id:$("#s_city").val()},
-                    function(data) {
-                        for(var area in data){
-                            $("#s_area").append("<option value="+data[area].data_value+">"+data[area].data_name+"</option>");
-                        }
 
-                    },
-                    "json"
-                )
-            })
-        });
+    <script src="js/cascading.js"></script>
+    <script type="text/javascript">
         //模糊查询调用方法
         function submit() {
             var form = new FormData(document.getElementById("like"));
@@ -90,7 +64,7 @@ pageContext.setAttribute("basePath", basePath);
             })
         }
         //删除方法
-        function del(id) {
+        function deleteById(){
             $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () { alert("删除成功"); });
             // $.ajax({
             //     type:"get",
@@ -194,7 +168,7 @@ pageContext.setAttribute("basePath", basePath);
                         <td class="t4">${list.station.ms_dev_value}</td>
                         <td class="t5">${list.station.data.data_name}</td>
                         <td class="t6"><input type="button" value="查看" class="input1" onclick="look(this,${list.id})"></td>
-                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="del(${list.id})"></td>
+                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="del()"></td>
                         <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
                         <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
                     </tr>
