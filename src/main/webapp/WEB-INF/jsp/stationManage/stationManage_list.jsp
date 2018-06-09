@@ -64,16 +64,19 @@ pageContext.setAttribute("basePath", basePath);
             })
         }
         //删除方法
-        function deleteById(){
-            $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () { alert("删除成功"); });
-            // $.ajax({
-            //     type:"get",
-            //     url:"deleteById",
-            //     data:{id:id},
-            //     success:function (data) {
-            //         window.location.reload();
-            //     }
-            // })
+        function deleteById(id){
+            $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () {
+                $.ajax({
+                    type:"get",
+                    url:"deleteById",
+                    data:{id:id},
+                    success:function (data) {
+                        window.location.reload();
+                    }
+                })
+                alert("删除成功");
+            });
+
         }
         //修改方法
         function update(obj,id) {
@@ -168,7 +171,7 @@ pageContext.setAttribute("basePath", basePath);
                         <td class="t4">${list.station.ms_dev_value}</td>
                         <td class="t5">${list.station.data.data_name}</td>
                         <td class="t6"><input type="button" value="查看" class="input1" onclick="look(this,${list.id})"></td>
-                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="del()"></td>
+                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="deleteById(${list.id})"></td>
                         <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
                         <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this)"></td>
                     </tr>

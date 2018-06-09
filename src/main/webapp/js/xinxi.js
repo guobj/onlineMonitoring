@@ -106,11 +106,13 @@ function peizhi(obj){
     $(obj).parent().parent().parent().parent().hide();
     $("#peizhi").show();
     $("h4").html("配置");
+    $("#Paging").hide();
     $("#caidan").css("height","700px");
     $("#page").hide();
 
 }
 function pz(){
+    $("#Paging").hide();
     $("#peizhi").hide();
     $("#bg").show();
     $("h4").html("数据列表");
@@ -133,6 +135,7 @@ function xiugai(obj){
     $("#xiugai").show();
     $("h4").html("修改信息");
     $("#caidan").css("height",height)
+    $("#Paging").hide();
     $("#page").hide();
     $("#caidan").css("height","840px");
 }

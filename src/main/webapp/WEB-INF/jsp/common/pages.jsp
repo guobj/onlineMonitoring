@@ -12,7 +12,7 @@
 </script>
     <c:if test="${pages != null}">
         <div>
-            <div>当前第<font color="red">${pages }</font>页，共 <font color="red">${sumPage }</font>页</div>
+            <div id="Paging">当前第<font color="red">${pages }</font>页，共 <font color="red">${sumPage }</font>页</div>
         </div>
     </c:if>
     <form target="_self" id="pageForm">
