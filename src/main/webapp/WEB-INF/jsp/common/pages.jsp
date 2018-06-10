@@ -17,7 +17,18 @@
     </c:if>
     <form target="_self" id="pageForm">
         <input type="hidden" id="pages" name="pages">
-        
+        <c:if test="${manage.ms_code!=null and manage.ms_code.trim()!='' }">
+            <input type="hidden" id="ms_code" name="ms_code" value="${manage.ms_code }">
+        </c:if>
+        <c:if test="${manage.station != null and manage.station.ms_type != null }">
+            <input type="hidden" id="station.ms_type" name="station.ms_type" value="${manage.station.ms_type}">
+        </c:if>
+        <c:if test="${manage.station != null and manage.station.ms_fp != null }">
+            <input type="hidden" id="station.ms_fp" name="station.ms_fp" value="${manage.station.ms_fp }">
+        </c:if>
+        <c:if test="${manage.station != null and manage.station.ms_net != null }">
+            <input type="hidden" id="station.ms_net" name="station.ms_net" value="${manage.station.ms_net }">
+        </c:if>
             <div id="page">
                 <input onclick="jumpPage(1)" type="button" value="首页"/>
                 <input onclick="jumpPage(${(pages-1<1)?1:(pages-1)})" type="button" value="上一页"/>

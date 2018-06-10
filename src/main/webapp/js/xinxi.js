@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Created by DELL on 2018/6/2.
  */
 var height=$("#content_r").height();
@@ -70,8 +70,20 @@ $(function(){
     $("#tianjia").hide()
     $("#peizhi").hide();
 })
+function chakan(obj){
+    $(obj).parent().parent().parent().parent().hide();
+    $("#chakan").show();
+    $("h4").html("");
+    $("#page").hide();
 
-
+}
+function xiugai(obj){
+    $(obj).parent().parent().parent().parent().hide();
+    $("#xiugai").show();
+    $("h4").html("");
+    $("#page").hide();
+    $("#caidan").css("height","840px");
+}
 
 function guanbi(){
    $("#chakan").hide();
@@ -84,9 +96,14 @@ function xg(){
     $("#xiugai").hide();
     $("#bg").show();
     $("h4").html("数据列表");
-    $("#caidan").css("height",height);
     $("#page").show();
     $("#caidan").css("height","1020px");
+}
+function xg1(){
+    $("#xiugai").hide();
+    $("#bg").show();
+    $("h4").html("数据列表");
+    $("#page").show();
 }
 
 function tianjia(){
@@ -100,45 +117,31 @@ function tj(){
     $("#tianjia").hide();
     $("#bg").show();
     $("#page").show();
-
+    $("h4").html("数据列表");
+}
+function tj1(){
+    $("#tianjia").hide();
+    $("#bg").show();
+    $("#page").show();
+    $("h4").html("数据列表");
 }
 function peizhi(obj){
     $(obj).parent().parent().parent().parent().hide();
     $("#peizhi").show();
-    $("h4").html("配置");
-    $("#Paging").hide();
+    $("h4").html("");
     $("#caidan").css("height","700px");
     $("#page").hide();
 
 }
 function pz(){
-    $("#Paging").hide();
     $("#peizhi").hide();
     $("#bg").show();
-    $("h4").html("数据列表");
+    $("h4").html("");
     $("#page").show();
     $("#caidan").css("height","1020px");
 
 }
-/*$(function(){
-    $("#page").Page({
-        totalPages: 10,//分页总数
-        liNums: 7,//分页的数字按钮数(建议取奇数)
-        activeClass: 'activP', //active 类样式定义
-        callBack : function(page){
-            //console.log(page)
-        }
-    });
-})*/
-function xiugai(obj){
-    $(obj).parent().parent().parent().parent().hide();
-    $("#xiugai").show();
-    $("h4").html("修改信息");
-    $("#caidan").css("height",height)
-    $("#Paging").hide();
-    $("#page").hide();
-    $("#caidan").css("height","840px");
-}
+
 function del(){
     $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () { alert("删除成功"); });
 }
