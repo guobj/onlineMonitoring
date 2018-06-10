@@ -15,7 +15,11 @@
         <result column="ms_net" property="ms_net" jdbcType="INTEGER" />
         <result column="ms_gate" property="ms_gate" jdbcType="INTEGER" />
         <result column="ms_desc" property="ms_desc" jdbcType="VARCHAR" />
-        <association property="data" column="ms_type" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDataValue"></association>
+        <association property="dict" column="ms_type" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDataValue"></association>
+        <association property="ms_type_value" column="ms_type" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadType"></association>
+        <association property="ms_fp_value" column="ms_fp" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadFp"></association>
+        <association property="ms_net_value" column="ms_net" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadNet"></association>
+        <association property="ms_gate_value" column="ms_gate" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadGate"></association>
     </resultMap>
     <resultMap id="BaseResultMap01" type="com.nz.onlineMonitoring.stationInfo.model.Station" >
         <id column="id" property="id" jdbcType="INTEGER" />

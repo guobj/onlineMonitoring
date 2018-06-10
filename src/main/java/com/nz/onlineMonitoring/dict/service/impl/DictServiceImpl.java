@@ -82,27 +82,22 @@ public class DictServiceImpl implements DictService {
     }
     @Override
     public List<Dict> listMsFp() {
-        // TODO Auto-generated method stub
         return dictMapper.listMsFp();
     }
     @Override
     public List<Dict> listMsType() {
-        // TODO Auto-generated method stub
         return dictMapper.listMsType();
     }
     @Override
     public List<Dict> listMsGate() {
-        // TODO Auto-generated method stub
         return dictMapper.listMsGate();
     }
     @Override
     public Dict loadByDevType1(Integer data_value) {
-        // TODO Auto-generated method stub
         return dictMapper.loadByDevType1(data_value);
     }
     @Override
     public List<Dict> listMsNet() {
-        // TODO Auto-generated method stub
         return dictMapper.listMsNet();
     }
 

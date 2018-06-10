@@ -22,15 +22,13 @@
         select * from t_dict where data_type="dev_interface" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
 
-    <select id="loadByDevPort" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select * from t_dict where data_type="dev_port" and data_value=#{data_value,jdbcType=INTEGER}
-    </select>
-
+    <!--//查询设备对象-->
     <select id="loadByDevType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select * from t_dict where data_type="dev_type" and data_value=#{data_value,jdbcType=INTEGER}
+        select * from t_dict where data_type="dev_object" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
+    <!--查询设备类型-->
     <select id="loadByDevType1" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select * from t_dict where data_type="dev_type1" and data_value=#{data_value,jdbcType=INTEGER}
+        select * from t_dict where data_type="dev_type" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
     <insert id="add" parameterType="com.nz.onlineMonitoring.dict.model.Dict" >
         insert into t_dict
@@ -123,13 +121,13 @@
         select
         <include refid="t_dict_columns" />
         from t_dict
-        where data_type ='dev_type'
+        where data_type ='dev_object'
     </select>
     <select id="listDevType1" resultMap="BaseResultMap">
         select
         <include refid="t_dict_columns" />
         from t_dict
-        where data_type ='dev_type1'
+        where data_type ='dev_type'
     </select>
     
     <select id="listMsDev" resultMap="BaseResultMap">

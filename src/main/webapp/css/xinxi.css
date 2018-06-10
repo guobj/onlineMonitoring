@@ -7,8 +7,8 @@ a{ text-decoration: none;}
 
 #tit ul{ width:28%; height:93px; float:left; margin-left:24%;}
 #tit ul li{ width:91%; height:30px; margin-top:20px; line-height:30px; font-size:0.75em; color:#FFF; float:left; overflow:hidden;}
-#tit ul li .three{ width:90%; margin-left:8%; height:32px;}
-#tit ul li .three a{ width:28%; float:left; margin-top:0px; height:32px; line-height:32px; color:#FFF;}
+#tit ul li .three{ width:90%; margin-left:5%; height:32px;}
+#tit ul li .three a{ width:23%; float:left; margin-top:0px; height:32px; line-height:32px; color:#FFF;}
 #tit ul li .three a img{ margin-top:5px; float:left; max-width: 100%;}
 #tit ul li .three a:hover{ color:#F00;}
 
@@ -40,14 +40,31 @@ a{ text-decoration: none;}
 #content_r .gn form{ height: 184px;}
 #content_r .gn form .span1{font-size: 14px; color: #000000; font-weight: bolder; margin-top: 37px; margin-left: 3%; float: left; width: 25%;}
 #content_r .gn form input{height: 38px; width: 50%; border: 1px solid #c6c5c5; margin-right: 10%; text-align: center;}
-#content_r .gn form .cx{width: 10%; background:#1c8735; color: #FFFFFF; float: left; margin-right: 0; margin-top: 37px; margin-left: 2%; }
-#content_r  .btn1{width: 13%!important;height: 44px; background: #4c9d5f url("../img/coin1.jpg") no-repeat 8px 8px; border-radius: 2px; border: 1px solid #bfbfbf; color: #FFFFFF; float: left; margin:37px 0 0 1%;}
+#content_r .gn form .cx{width: 10%; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfff4+0,dfe5d7+40,b3bead+100;Wax+3D+%233 */
+background: rgb(252,255,244); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(252,255,244,1) 0%, rgba(223,229,215,1) 40%, rgba(179,190,173,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 ); /* IE6-9 */
+ border-radius:4px; border:1px #b2b2b2 solid;  cursor: pointer;  float: left; margin-right: 0; margin-top: 37px; margin-left: 2%; }
+#content_r .gn form .cx:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+#content_r  .btn1{width: 10%!important;height: 48px; border-radius:4px;  cursor: pointer; 
+background: rgb(180,227,145); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(180,227,145,1) 0%, rgba(97,196,25,1) 50%, rgba(180,227,145,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391',GradientType=0 ); /* IE6-9 */
+ border-radius: 4px; border: 1px solid #bfbfbf; color: #FFFFFF; float: left; margin:37px 0 0 1%;}
+#content_r .btn1:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 #content_r .gn span select{width: 25% !important ; margin-right: 1%; border: 1px solid #bfbfbf; height: 40px;}
 #content_r .gn span .select1{width: 50%!important;}
-h4{ padding-bottom: 10px; padding-top: 5px; padding-left:5%; }
 #content_r #bg{margin-left: 3%; margin-top: 10px;background: url("../img/bg3.jpg") repeat-x;border: 1px solid #bfbfbf;width: 90%;}
-#content_r .input1{background: none; color:#269dc9; }
-#content_r .input2{background: none; color:#da0000; }
+#content_r .input1{background: none;  }
+#content_r .input2{background: none;  }
 #content_r .t2{width: 7%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
 #content_r .t3{width: 16%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
 #content_r .t4{width: 16%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
@@ -56,7 +73,6 @@ h4{ padding-bottom: 10px; padding-top: 5px; padding-left:5%; }
 #content_r .t7{width: 7%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
 #content_r .t8{width: 7%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
 #content_r .t9{width: 7%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
-/*#content_r table tr{background:#}*/
 #bg {
     margin-top:10px;
     margin-left:20px;
@@ -67,6 +83,8 @@ h4{ padding-bottom: 10px; padding-top: 5px; padding-left:5%; }
     border-collapse:collapse;
     font: 12px  "宋体";
 }
+#content_r table tbody{font-size: 12px; line-height: 48px; color: #4e4f4f;}
+#content_r table thead{font-size: 12px; line-height: 48px; color: #4e4f4f;}
 #bg thead{font-size: 14px;}
 #bg thead tr{
     background:#7CB8E2;
@@ -78,12 +96,22 @@ h4{ padding-bottom: 10px; padding-top: 5px; padding-left:5%; }
     color:#000;
 }
 
-#chakan{width: 90%; margin-left: 3%;float: left; display: none; height: 700px;}
-#content_r #bg1{margin-left: 3%; margin-top: 10px;background: url("../img/bg3.jpg") repeat-x;border: 1px solid #bfbfbf;width: 80%; border-right:1px #b9b9b9 solid;}
-#chakan .s1{height: 50px; width: 30%; text-align: center; border: 1px solid #bfbfbf;}
-#chakan .s2{height: 50px; width: 70%; text-align: center; border: 1px solid #bfbfbf;}
-#chakan form{margin-left: 35%;float: left; margin-top: 20px; width: 100%}
-#chakan form input{background: #1c8735;color: #FFFFFF; border-radius: 2px; width:10%;height: 44px;}
+#chakan{width: 90%; margin-left: 3%;float: left; display: none; height: 800px;}
+#content_r #bg1{margin-left: 15%; margin-top: 10px;background: url("../img/bg3.jpg") repeat-x;border: 1px solid #bfbfbf;width: 70%; border-right:1px #b9b9b9 solid; box-shadow: 10px 10px 5px #888888; }
+#chakan .s1{height: 50px; width: 30%; text-align: center;  color:#383838; border-bottom: 1px solid #bfbfbf;}
+#chakan .s2{height: 50px; width: 70%; text-align: center; border-bottom: 1px solid #bfbfbf;}
+#content_r #bg1 caption{
+    height: 50px;
+    line-height: 50px;
+    font:bold 2em;
+    background: #f0f7ff; 
+    border:1px solid #bfbfbf; 
+    box-shadow: 10px 10px 5px #888888;  
+    border-bottom: none;
+    margin-bottom: -1px;
+}
+#chakan form{margin-left: 35%;float: left; margin-top: 20px; width: 100%;}
+#chakan form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 44px; margin-left: 8%;}
 
 
 #bg {
@@ -118,126 +146,101 @@ h4{ padding-bottom: 10px; padding-top: 5px; padding-left:5%; }
     margin-left:20px;
     margin-right:20px;
     margin-bottom:5px;
-    background:#EEF4F9;
+    background: #F8F8F8;
     border: none;
     border-collapse:collapse;
     font: 14px  "宋体";
 }
 #bg1  tr{
-    background:#7CB8E2;
+    background: #F8F8F8;
     color:#fff;
     text-align:center;
 }
 #bg1 tr td{
-    background:#C7DDEE none repeat-x scroll center left;
+    background: #F8F8F8 none repeat-x scroll center left;
     color:#000;
 }
-#xiugai{ width: 90%;}
-#xiugai span{margin-left: 20%;margin-top: 10px; }
-#xiugai input{margin-left: 1%;width: 20%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 15px;}
+#xiugai{ width: 80%; 
+        margin-left: 8%;
+        height: 680px;
+background: rgb(248,248,248); 
+box-shadow: 10px 0 10px -10px rgba(0,0,0,.6),-10px 0  10px -10px rgba(0,0,0,.6);
+border-radius: 8px;
+}
+#xiugai h5{
+    height: 30px;
+    line-height: 30px;
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+}
+#xiugai span{margin-left: 20%;margin-top: 10px;}
+#xiugai input{margin-left: 1%;width: 40%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 15px; border-radius: 4px;}
 #xiugai .lxfs{width: 40%; margin-right: 0;}
-#xiugai textarea{width: 40%; height: 60px; border: 1px solid #bfbfbf; margin-top: 15px; resize: none;}
+#xiugai textarea{width: 50%; height: 90px; border: 1px solid #bfbfbf; margin-left: 30%; resize: none;}
 #xiugai select{width: 15%;height: 30px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 15px;}
 #xiugai .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 15px;}
-#xiugai .xg{width: 10%; height: 30px; line-height: 30px; margin-left: 50%; background:#1c8735; color: #ffffff; }
+#xiugai .xg{width: 80px; height: 40px; line-height: 40px; margin-left: 40%; background:#ffffff;}
 
-#tianjia{ width: 90%;}
-#tianjia span{margin-left: 20%;margin-top: 10px; }
-#tianjia input{margin-left: 1%;width: 20%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 5px;}
+#tianjia{ width: 85%; background: #e4ecef; height: 700px; padding-top: 50px; border: 1px solid #cccccc; border-radius: 8px; margin-left: 5%;}
+#tianjia form{
+    background: #fffffd;
+    width: 90%;
+    margin-left:5%;
+    padding-bottom: 40px;
+    padding-top:40px;
+    border: 6px solid #ecf5f4; 
+    outline: solid 1px #ccd6d8;
+    border-radius: 8px;
+}
+#tianjia span{margin-left: 15%;margin-top: 10px; }
+#tianjia input{margin-left: 1%;width: 30%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 15px; border-radius: 4px;}
 #tianjia .lxfs{width: 40%; margin-right: 0;}
-#tianjia textarea{width: 40%; height: 60px; border: 1px solid #bfbfbf; margin-top: 5px; resize: none;}
+#tianjia textarea{width: 50%; height: 80px; border: 1px solid #bfbfbf; margin-top: 5px; resize: none; margin-left:26%;}
 #tianjia select{width: 15%;height: 30px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 5px;}
 #tianjia .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 5px;}
-#tianjia .tj{width: 10%; height: 30px; line-height: 30px; margin-left: 50%; background:#1c8735; color: #ffffff; }
+#tianjia .tj{width: 80px; height: 40px; line-height: 40px; margin-left: 40%; background: #ffffff; border-radius: 4px; }
 #ts{
     width: 30%;height: 30%;
 }
 #peizhi{
-    width: 100%;margin-left: 5%;
+    width: 60%;margin-left: 16%;
+    border: 1px solid #bfbfbf;
+    height: 500px;
+    border-radius: 8px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfff4+0,e9e9ce+100;Wax+3D+%232 */
+background: rgb(252,255,244); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(252,255,244,1) 0%, rgba(233,233,206,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(252,255,244,1) 0%,rgba(233,233,206,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(252,255,244,1) 0%,rgba(233,233,206,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#e9e9ce',GradientType=0 ); /* IE6-9 */
+box-shadow:inset 0 0 10px #000000;
+margin-bottom: 20px;
+margin-top: 10px;
+}
+#peizhi h5{
+    height: 30px;
+    line-height: 30px;
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
 }
 #peizhi span{margin-left: 20%;margin-top: 10px; }
-#peizhi input{margin-left: 1%;width: 20%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 30px;}
-#peizhi .pz{width: 10%; height: 30px; line-height: 30px; margin-left: 30%; background:#1c8735; color: #ffffff; }
+#peizhi input{margin-left: 1%;width: 40%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 30px; border-radius: 4px;}
+#peizhi .pz{width: 80px; height: 40px; line-height: 40px; margin-left: 45%; background:#ffffff; border-radius: 4px; }
 #footer{ width:100%; height:26px; float:left; background:#1b8a14; margin-top: 3px;}
 #footer li{ text-align:center; line-height:26px; font-size:0.75em;}
 #footer li a{ color:#000;}
 #footer li a:hover{ color:#F00;}
-#page {
-    height: 30px;
-    display: table;
-    margin-left: 55%;
-    margin-top: 10px;
-}
-.page {
-    text-align: center;
-}
-.fl {
-    float: left;
-}
-.fr {
-    float: right;
-}
-.pagingUl {
-    float: right;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    height: 30px;
-}
-.pagingUl li {
-    float: left;
-    width: 30px;
-    height: 30px;
-    background: #F00;
-    text-align: center;
-    margin-right: 5px;
-    border-radius: 5px
-}
-.pagingUl li a {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 28px;
-    color: #666;
-    font-size: 12px;
-    border-radius: 5px
-}
-.prv,
-.next {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    cursor: pointer;
-    background: #F00;
-    padding: 0 5px;
-    border-radius: 5px;
-}
-.prv {
-    margin-right: 10px;
-}
-.first,
-.last {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
-    text-align: center;
-    line-height: 30px;
-    /*border: 1px solid #ddd;*/
-    cursor: pointer;
-    background: #F00;
-    padding: 0 5px;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-.prv:hover,
-.next:hover,
-.first:hover,
-.last:hover,
-.pagingUl li a:hover,
-.activP {
-    background-color: #4c9d5f!important;
-    color: #fff!important;
-}
-
+#tip_1{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
+#tip_2{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
+#tip_3{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
+#tip_4{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
+#tip_5{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
+#tj_tip_1{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
+#tj_tip_2{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
+#tj_tip_3{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
+#tj_tip_4{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
+#tj_tip_5{margin-left: 2px!important;  color: #da0000; font-size: 12px;}

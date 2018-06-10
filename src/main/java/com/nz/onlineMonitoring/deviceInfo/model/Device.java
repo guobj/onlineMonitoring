@@ -58,8 +58,8 @@ public class Device {
 	//存储数据字典data_type="dev_interface"的相关信息
 	private Dict dataInterface;
 
-	//存储数据字典data_type="dev_port"的相关信息
-	private Dict dataPort;
+	//存储数据字典data_type="dev_type"的相关信息 设备类型
+	private Dict dataType;
 
 	public Station getStation() {
 		return station;
@@ -83,14 +83,6 @@ public class Device {
 
 	public void setDataInterface(Dict dataInterface) {
 		this.dataInterface = dataInterface;
-	}
-
-	public Dict getDataPort() {
-		return dataPort;
-	}
-
-	public void setDataPort(Dict dataPort) {
-		this.dataPort = dataPort;
 	}
 
 	public Boolean getDr() {

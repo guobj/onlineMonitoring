@@ -18,9 +18,27 @@ pageContext.setAttribute("basePath", basePath);
     <script src="js/jquery.js"></script>
     <script src="js/delete.js" type="text/javascript"></script>
     <script src="js/xinxi.js" ></script>
-
+    <script type="text/javascript" src="js/queryLike.js"></script>
     <script src="js/cascading.js"></script>
     <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type:"post",
+                url:"data/queryTypeAndFpAndGate",
+                dataType: "JSON",
+                success:function (data) {
+                    for(var type in data.data.msTypes){
+                        $("#ms_type").append("<option value="+data.data.msTypes[type].data_value+">"+data.data.msTypes[type].data_name+"</option>");
+                    }
+                    for(var fp in data.data.msFps){
+                        $("#ms_fp").append("<option value="+data.data.msFps[fp].data_value+">"+data.data.msFps[fp].data_name+"</option>");
+                    }
+                    for(var gate in data.data.msGates){
+                        $("#ms_gate").append("<option value="+data.data.msGates[gate].data_value+">"+data.data.msGates[gate].data_name+"</option>");
+                    }
+                }
+            });
+        })
         //模糊查询调用方法
         function submit() {
             var form = new FormData(document.getElementById("like"));
@@ -47,18 +65,18 @@ pageContext.setAttribute("basePath", basePath);
                 url:"load",
                 data:{id:id},
                 success:function (data) {
-                    $("#ms_name").html(data.data.ms_name);
+                    console.log("测试："+data.data.station.ms_fp_value.data_name);
                     $("#ms_code").html(data.data.ms_code);
                     $("#ms_date").html(data.data.station.ms_date);
                     $("#ms_dev").html(data.data.station.ms_dev_value);
-                    $("#ms_type").html(data.data.station.data.data_name);
-                    $("#ms_fp").html(data.data.station.ms_fp_value.data_name);
+                    $("#ms_type1").html(data.data.station.dict.data_name);
+                    $("#ms_fp1").html(data.data.station.ms_fp_value.data_name);
                     $("#ms_place").html(data.data.station.ms_place);
-                    $("#ms_position").html(data.data.station.ms_position);
+                    $("#ms_position").html(data.data.station.ms_longitude+","+data.data.station.ms_latitude);
                     $("#ms_user").html(data.data.station.ms_user);
                     $("#ms_builder").html(data.data.station.ms_builder);
-                    $("#ms_net").html(data.data.station.ms_net_value.data_name);
-                    $("#ms_gate").html(data.data.station.ms_gate_value.data_name);
+                    $("#ms_net1").html(data.data.station.ms_net_value.data_name);
+                    $("#ms_gate1").html(data.data.station.ms_gate_value.data_name);
                     $("#ms_desc").html(data.data.station.ms_desc);
                 }
             })
@@ -106,20 +124,13 @@ pageContext.setAttribute("basePath", basePath);
         <form id="like" method="post">
             <span class="span1">监测站名称：<input name="ms_name" type="text" placeholder="不限" ></span>
             <span class="span1">资金来源：
-                <select class="select1" name="station.ms_fp">
-                    <option value="">不限</option>
-                    <option value="1">省资金</option>
-                    <option value="2">国家资金</option>
-                    <option value="3">其他</option>
+                <select class="select1" id="ms_fp" name="station.ms_fp">
+                    <option value="">资金来源</option>
                 </select>
             </span>
             <span class="span1">监测站类型：
-                <select class="select1" name="station.ms_type">
-                    <option value="">不限</option>
-                    <option value="1">新建重点监测站</option>
-                    <option value="2">改建重点监测站</option>
-                    <option value="3">新建普通监测站</option>
-                    <option value="4">改建普通监测站</option>
+                <select class="select1" id="ms_type" name="station.ms_type">
+                    <option value="">监测站类型</option>
                 </select>
             </span>
            <span class="span1">监测站区域：
@@ -131,10 +142,8 @@ pageContext.setAttribute("basePath", basePath);
                 </select>
             </span>
             <span class="span1">网关类型：
-                <select class="select1" name="station.ms_gate">
-                    <option value="">不限</option>
-                    <option value="1">NZ2000</option>
-                    <option value="2">NZ1000</option>
+                <select class="select1" id="ms_gate" name="station.ms_gate">
+                    <option value="">网关类型</option>
                 </select>
             </span>
 
@@ -149,7 +158,6 @@ pageContext.setAttribute("basePath", basePath);
         <table  id="bg">
             <thead>
             <tr>
-                <td class="t3">监测站名称</td>
                 <td class="t2">监测站编码</td>
                 <td class="t4">建设内容</td>
                 <td class="t5">监测站类型</td>
@@ -166,10 +174,9 @@ pageContext.setAttribute("basePath", basePath);
             <c:if test="${stationInfoList != null}">
                 <c:forEach var="list" items="${stationInfoList}">
                     <tr>
-                        <td class="t3">${list.ms_name}</td>
                         <td class="t2">${list.ms_code}</td>
                         <td class="t4">${list.station.ms_dev_value}</td>
-                        <td class="t5">${list.station.data.data_name}</td>
+                        <td class="t5">${list.station.dict.data_name}</td>
                         <td class="t6"><input type="button" value="查看" class="input1" onclick="look(this,${list.id})"></td>
                         <td class="t7"><input type="button" value="删除"  class="input2" onclick="deleteById(${list.id})"></td>
                         <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
@@ -200,11 +207,11 @@ pageContext.setAttribute("basePath", basePath);
                 </tr>
                 <tr>
                     <td class="s1">监测站类型</td>
-                    <td class="s2" id="ms_type"></td>
+                    <td class="s2" id="ms_type1"></td>
                 </tr>
                 <tr>
                     <td class="s1">资金来源</td>
-                    <td class="s2" id="ms_fp"></td>
+                    <td class="s2" id="ms_fp1"></td>
                 </tr>
                 <tr>
                     <td class="s1">监测站位置</td>
@@ -224,11 +231,11 @@ pageContext.setAttribute("basePath", basePath);
                 </tr>
                 <tr>
                     <td class="s1">网络类型</td>
-                    <td class="s2" id="ms_net"></td>
+                    <td class="s2" id="ms_net1"></td>
                 </tr>
                 <tr>
                     <td class="s1">网关类型</td>
-                    <td class="s2" id="ms_gate"></td>
+                    <td class="s2" id="ms_gate1"></td>
                 </tr>
                 <tr>
                     <td class="s1">监测站描述</td>

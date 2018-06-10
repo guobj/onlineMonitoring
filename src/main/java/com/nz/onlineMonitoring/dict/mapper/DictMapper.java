@@ -58,16 +58,6 @@ public interface DictMapper {
 
 	/**
 	 * t_data
-	 * 方法描述: 在data_type="dev_port"时，查询一条记录
-	 * @param
-	 * @return
-	 * @date 2018-06-01 11:08:33
-	 *
-	 **/
-	Dict loadByDevPort(Integer data_value);
-
-	/**
-	 * t_data
 	 * 方法描述: 在data_type="dev_type"时，通过data_value查询一条记录
 	 * @param
 	 * @return

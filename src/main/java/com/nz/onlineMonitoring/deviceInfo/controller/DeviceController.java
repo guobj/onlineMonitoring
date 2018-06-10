@@ -32,7 +32,7 @@ public class DeviceController {
 		}catch (Exception e){
 			map.put("message", e.getMessage());
 		}
-		return  "device/deviceInfo";
+		return  "device/devInfoManage_list";
 	}
 
 	//设备信息查询（设备采集数据图片再次接口上写）

@@ -43,7 +43,10 @@ public class DeviceServiceImpl implements DeviceService {
 				//获取设备编码进行解析
 //			String dev_code = dbmap.get("dev_code").toString();
 				String dev_code = dev.getDev_code();
-				char c = dev_code.charAt(3);
+				char c = '0';
+				if(dev_code != null && dev_code != ""){
+					c = dev_code.charAt(3);
+				}
 				Dict data = dictMapper.loadByDevType(Character.getNumericValue(c));
 //			dbmap.put("dev_code",data.getData_name());
 				dev.setDev_code(data.getData_name());

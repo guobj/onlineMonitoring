@@ -13,28 +13,9 @@
     <base href="${basePath }">
     <meta charset="UTF-8">
     <title></title>
-    <link href="css/sbxxcx.css" rel="stylesheet" type="text/css">
-    <link href="css/page.css" rel="stylesheet" type="text/css">
+    <link href="css/sbxxgl.css" rel="stylesheet" type="text/css">
     <script src="js/jquery.js"></script>
-    <script src="js/sbck.js" ></script>
-    <script src="js/cascading.js" ></script>
-    <script type="text/javascript">
-        $(function () {
-            $.ajax({
-                type:"post",
-                url:"data/queryDevType",
-                dataType: "JSON",
-                success:function (data) {
-                    for(var o in data.data.devObject){
-                        $("#dev_object").append("<option value="+data.data.devObject[o].data_value+">"+data.data.devObject[o].data_name+"</option>");
-                    }
-                    for(var type in data.data.devType){
-                        $("#dev_type").append("<option value="+data.data.devType[type].data_value+">"+data.data.devType[type].data_name+"</option>");
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="js/sbgl.js" ></script>
 </head>
 
 <body>
@@ -100,73 +81,110 @@
 
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
-    <div class="menu">
-        <form action="queryDeviceInfoList" method="post">
-            <span>监测站名称：<input name="ms_name" type="text"/></span>
-            <span>设备类型： <select class="select1" name="dev_type" id="dev_type">
-                <option value="">设备类型</option>
-
-            </select></span>
-            <br/>
-            <span>监测站编码：
-                <select id="s_city" name="city">
-                    <option value="">市区</option>
-                </select>
-                <select id="s_area" name="city" >
-                    <option value="">区县</option>
-                </select>
-            </span>
-            <span>监测对象：
-                <select class="select1" name="dev_object" id="dev_object">
-                    <option value="">监测对象</option>
-
-                </select>
-            </span>
-            <br/>
-            <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
-
-        </form>
-    </div>
-    <span class="title">查询列表</span>
-    <table>
+    <h4>信息列表</h4>
+    <br/>
+    <table id="xx">
         <thead>
-        <tr>
-            <td class="t2">监测站名称</td>
-            <td class="t3">监测站编码</td>
-            <td class="t4">设备类型</td>
-            <td class="t5">设备采集数据</td>
-            <td class="t6">图片</td>
-        </tr>
+            <tr>
+                <%--<td>监测站名称</td>--%>
+                <td>监测站编码</td>
+                <td>设备编码</td>
+                <td>通信协议</td>
+                <td>通讯接口</td>
+                <td>从机地址</td>
+                <td>IP地址</td>
+                <td>更多</td>
+            </tr>
         </thead>
         <tbody>
-        <c:choose>
-            <c:when test="${list eq null}">
-                <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
-            </c:when>
-            <c:otherwise>
-                <c:forEach var="list" items="${list}">
-                    <tr>
-                        <td class="t2">${list.ms_name}</td>
-                        <td class="t3">${list.ms_code}</td>
-                        <td class="t4">${list.dev_code}</td>
-                        <td class="t5">设备采集数据</td>
-                        <td class="t6"><input type="button" value="查看" onclick="check(this)"/></td>
-                    </tr>
-                </c:forEach>
-            </c:otherwise>
-        </c:choose>
+            <c:if test="${list eq null}">
+                <tr><td colspan="11" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
+            </c:if>
+            <c:forEach var="list" items="${list}">
+                <tr>
+                    <%--<td class="t2" >${list.ms_name}</td>--%>
+                    <td class="t3" >${list.ms_code}</td>
+                    <td class="t4">${list.dev_code}</td>
+                    <td class="t5">${list.dataProtocol.data_value}</td>
+                    <td class="t6">${list.dataInterface.data_value}</td>
+                    <td class="t7">${list.dev_regad}</td>
+                    <td class="t8">${list.dev_ip}</td>
+                    <%--<td class="t9">${list.dataPort.data_name}</td>--%>
+                    <%--<td class="t10">${list.dev_warraty}</td>--%>
+                    <%--<td class="t11">${list.dev_mfrs}</td>--%>
+                    <%--<td class="t12">${list.dev_desc}</td>--%>
+                    <td><input type="button" onclick="moreInfo()" value="更多"/></td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
-    <jsp:include page="../common/pages.jsp"></jsp:include>
-    <div id="img">
-        <div id="imga"></div>
-        <form>
-            <input type="button" value="关闭" onclick="clos()"/>
-        </form>
+    <div id="detail">
+        <table id="bg1">
+            <tr>
+                <td class="s1">监测站名称</td>
+                <td class="s2"></td>
+            </tr>
+            <tr>
+                <td class="s1">监测站编码</td>
+                <td class="s2"></td>
+            </tr>
+            <tr>
+                <td class="s1">设备编码</td>
+                <td class="s2"></td>
+            </tr>
+            <tr>
+                <td class="s1">通信协议</td>
+                <td class="s2"></td>
+            </tr>
+            <tr>
+                <td class="s1">通讯接口</td>
+                <td class="s2"></td>
+            </tr>
+            <tr>
+                <td class="s1">从机地址</td>
+                <td class="s2"></td>
+            </tr>
+            <tr>
+                <td class="s1">IP地址</td>
+                <td class="s2"></td>
+            </tr>
+            <tr>
+                <td class="s1">通信端口</td>
+                <td class="s2"></td>
+            </tr>
+            <tr>
+                <td class="s1">质保期限</td>
+                <td class="s2"></td>
+            </tr>
+            <tr>
+                <td class="s1">设备厂家、品牌、服务型号</td>
+                <td class="s2"></td>
+            </tr>
+            <tr>
+                <td class="s1">设备描述</td>
+                <td class="s2"></td>
+            </tr>
+        </table>
+        <form action=""><input type="button" value="关闭" id="cl"/></form>
+
     </div>
 </div>
+
 <div id="footer">
     <li>济南农智信息科技有限公司所有&copy; &nbsp;电话：12345677  &nbsp;<a href="#">关于我们</a> &nbsp;<a href="#">售后服务</a></li>
 </div>
+<script>
+    $(function(){
+
+        $("#xx input[type='button']").click(function(){
+            $(this).parent().parent().parent().parent().hide();
+            $("#detail").show();
+        })
+        $("#cl").click(function(){
+            $("#detail").hide();
+            $("#xx").show();
+        })
+    })
+</script>
 </body>
 </html>
