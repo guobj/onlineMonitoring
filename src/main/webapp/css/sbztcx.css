@@ -43,7 +43,7 @@ a{ text-decoration: none;}
 #content_r  .btn1{width: 13%!important;height: 44px; background: #4c9d5f url("../img/coin1.jpg") no-repeat 8px 8px; border-radius: 2px; border: 1px solid #bfbfbf; color: #FFFFFF; float: left; margin:37px 0 0 1%;}
 #content_r .menu{width: 90%; height: 159px;}
 #content_r .menu span{width: 30%; font-size: 12px; color: #595959;margin:10px 0 0 5%;}
-#content_r .menu input{width: 30%; height: 30px; border: 1px solid #bfbfbf;margin:10px 0 0 1%; border-radius: 5px;}
+#content_r .menu input{width: 30%; height: 40px; border: 1px solid #bfbfbf;margin:10px 0 0 1%; border-radius: 5px;}
 #content_r .menu .search{width: 6%;/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
     background: rgb(238,238,238); /* Old browsers */
     background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
@@ -62,40 +62,26 @@ a{ text-decoration: none;}
 #content_r .menu span select {width: 14.3% !important ; margin-right: 1%; border: 1px solid #bfbfbf; height: 40px; border-radius: 5px;}
 #content_r .menu span .select1{width: 30% !important; margin-top: 3px; border-radius: 5px;}
 #content_r table{margin-left: 2%; width: 98%;}
-#content_r table thead tr{background: #bee2f4; height: 42px;text-align: center; color:#4e4f4f; font-size:12px; }
-#content_r table tr{height: 42px;text-align: center; color:#4e4f4f; font-size:12px;}
-#content_r table .t1{width: 8%;}
+#content_r table thead tr{background: #bee2f4; color:#707d83;height: 42px;text-align: center; }
+#content_r table tr{color:#707d83;height: 42px;text-align: center;}
 #content_r table .t2{width: 20%;}
 #content_r table .t3{width: 20%;}
 #content_r table .t4{width: 17%;}
 #content_r table .t5{width: 22%;}
 #content_r table .t6{width: 13%;}
-#content_r table input{background: none}
-#content_r #img{position: absolute; top: 100px; margin-left: 10%; background: #bee2f4; width: 70%; height: 700px;}
+#content_r table input{background: none;}
+#content_r #img{position: absolute; top: 100px; margin-left: 10%; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f6f6f6+47,ededed+100;White+3D+%231 */
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+    width: 70%; height: 700px; box-shadow: 10px 10px 5px #888888; border: 1px solid #d3d3d3;}
 #content_r #img #imga{ width: 65%;margin-left: 3%;margin-top: 20px; height: 600px;}
 #content_r #img input{margin-left: 45%; width: 10%; height: 30px; margin-top: 10px; border: 1px solid #bfbfbf; border-radius: 5px; }
 
-#detail{width: 90%; margin-left: 3%;float: left;  height: 800px; display: none;}
-#content_r #bg1{margin-left: 15%; margin-top: 10px;background: url("../img/bg3.jpg") repeat-x;border: 1px solid #bfbfbf;width: 70%; border-right:1px #b9b9b9 solid; box-shadow: 10px 10px 5px #888888; }
-#detail .s1{height: 50px; width: 30%; text-align: center;  color:#383838; border-bottom: 1px solid #bfbfbf;}
-#detail .s2{height: 50px; width: 70%; text-align: center; border-bottom: 1px solid #bfbfbf;}
-#content_r #bg1 caption{
-    height: 50px;
-    line-height: 50px;
-    font: bold 2emS;
-    background: #f0f7ff;
-    border:1px solid #bfbfbf;
-    box-shadow: 10px 10px 5px #888888;
-    border-bottom: none;
-    margin-bottom: -1px;
-}
-#detail form{margin-left: 35%;float: left; margin-top: 20px; width: 100%;}
-#detail form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 44px; margin-left: 8%;}
 
-
-#footer{ width:100%; height:26px; float:left; background:#1b8a14;}
+#footer{ width:100%; height:26px; float:left; background:#1b8a14; margin-top: 3px;}
 #footer li{ text-align:center; line-height:26px; font-size:0.75em;}
 #footer li a{ color:#000;}
 #footer li a:hover{ color:#F00;}
-
-

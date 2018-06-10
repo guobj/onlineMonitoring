@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by DELL on 2018/6/2.
  */
 var height=$("#content_r").height();
@@ -53,22 +53,19 @@ $(function(){
 });
 
 $(function(){
-    $("#chakan").hide();
     $("#bg tbody tr").mouseover(function(){
-        $(this).css("background","#ffff66");
+        $(this).css("background","#fff4e5");
     })
     $("#bg tbody tr").mouseout(function(){
         $(this).css("background","#EEF4F9");
     })
     $("#bg1 tr").mouseover(function(){
-        $(this).css("background","#ffff66");
+        $(this).css("background","#fff4e5");
     })
     $("#bg1 tr").mouseout(function(){
         $(this).css("background","#EEF4F9");
     })
-    $("#xiugai").hide();
-    $("#tianjia").hide()
-    $("#peizhi").hide();
+
 })
 function chakan(obj){
     $(obj).parent().parent().parent().parent().hide();
@@ -82,7 +79,6 @@ function xiugai(obj){
     $("#xiugai").show();
     $("h4").html("");
     $("#page").hide();
-    $("#caidan").css("height","840px");
 }
 
 function guanbi(){

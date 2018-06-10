@@ -1,6 +1,6 @@
 ﻿// JavaScript Document
 $(function(){
-    //日期
+    //����
     var date=new Date();
     $("#year").html(date.getFullYear());
     $("#month").html(date.getMonth()+1);
@@ -27,7 +27,7 @@ $(function(){
     else if(day=="0"){
         $("#day").html("日");
     }
-    //菜单
+    //�˵�
     $("#a_1").click(function(){
         $("#c1").toggle()
     })
@@ -47,16 +47,16 @@ $(function(){
 
     $("#img").hide();
 });
-/*$(function(){
-    $("#page").Page({
-        totalPages: 10,//分页总数
-        liNums: 7,//分页的数字按钮数(建议取奇数)
-        activeClass: 'activP', //active 类样式定义
-        callBack : function(page){
-            //console.log(page)
-        }
-    });
-})*/
+$(function(){
+    $(" tbody tr").mouseover(function(){
+        $(this).css("background","#fff4e5");
+    })
+    $(" tbody tr").mouseout(function(){
+        $(this).css("background","#EEF4F9");
+    })
+
+
+})
 function look(){
     $("#img").show()
 }

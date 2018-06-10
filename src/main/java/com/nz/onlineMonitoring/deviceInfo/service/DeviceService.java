@@ -16,4 +16,14 @@ public interface DeviceService {
 	 *
 	 **/
 	public List<Device> queryDeviceInfo(Map<String, Object> map, Device device);
+
+	/**
+	 * t_device
+	 * 方法描述: 设备信息查询  查询一条数据
+	 * @param id
+	 * @return
+	 * @throws
+	 *
+	 **/
+	public Device deviceLoad(Integer id);
 }

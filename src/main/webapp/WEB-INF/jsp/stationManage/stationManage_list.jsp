@@ -48,6 +48,7 @@ pageContext.setAttribute("basePath", basePath);
                 data:{id:id},
                 success:function (data) {
                     console.log("测试："+data.data.station.ms_fp_value.data_name);
+                    $("#ms_name").html(data.data.station.ms_name);
                     $("#ms_code").html(data.data.ms_code);
                     $("#ms_date").html(data.data.station.ms_date);
                     $("#ms_dev").html(data.data.station.ms_dev_value);
@@ -140,6 +141,7 @@ pageContext.setAttribute("basePath", basePath);
         <table  id="bg">
             <thead>
             <tr>
+                <td class="t3">监测站名称</td>
                 <td class="t2">监测站编码</td>
                 <td class="t4">建设内容</td>
                 <td class="t5">监测站类型</td>
@@ -156,6 +158,7 @@ pageContext.setAttribute("basePath", basePath);
             <c:if test="${stationInfoList != null}">
                 <c:forEach var="list" items="${stationInfoList}">
                     <tr>
+                        <td class="t3">${list.station.ms_name}</td>
                         <td class="t2">${list.ms_code}</td>
                         <td class="t4">${list.station.ms_dev_value}</td>
                         <td class="t5">${list.station.dict.data_name}</td>

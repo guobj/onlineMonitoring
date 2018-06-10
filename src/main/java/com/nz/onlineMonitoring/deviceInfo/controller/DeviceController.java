@@ -2,11 +2,13 @@ package com.nz.onlineMonitoring.deviceInfo.controller;
 
 import com.nz.onlineMonitoring.deviceInfo.model.Device;
 import com.nz.onlineMonitoring.deviceInfo.service.DeviceService;
+import com.nz.onlineMonitoring.utils.JacksonData;
 import com.nz.onlineMonitoring.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -63,5 +65,18 @@ public class DeviceController {
 			map.put("message", e.getMessage());
 		}
 		return  "device/deviceInfo_list";
+	}
+
+	@RequestMapping(value = "/deviceLoad")
+	@ResponseBody
+	public JacksonData deviceLoad(Integer id){
+		JacksonData jacksonData = new JacksonData();
+		try{
+			Device device = deviceService.deviceLoad(id);
+			jacksonData.success(device);
+		}catch (Exception e){
+			jacksonData.failure(e.getMessage());
+		}
+		return jacksonData;
 	}
 }

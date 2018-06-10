@@ -15,23 +15,23 @@ $(function(){
     var day=date.getDay();
 
     if(day=="1"){
-        $("#day").html("һ");
+        $("#day").html("一");
     }else if((day=="2")){
-        $("#day").html("��");
+        $("#day").html("二");
     }else if(day=="3"){
-        $("#day").html("��");
+        $("#day").html("三");
     }
     else if(day=="4"){
-        $("#day").html("��");
+        $("#day").html("四");
     }
     else if(day=="5"){
-        $("#day").html("��");
+        $("#day").html("五");
     }
     else if(day=="6"){
-        $("#day").html("��");
+        $("#day").html("六");
     }
     else if(day=="0"){
-        $("#day").html("��");
+        $("#day").html("日");
     }
     //�˵�
     $("#a_1").click(function(){

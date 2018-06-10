@@ -30,7 +30,7 @@
                 <ul class="zdgl" id="c2">
                     <li><a href="queryDeviceInfo" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备信息管理</a></li>
                     <li><a href="#" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备状态查看</a></li>
-                    <li><a href="#" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备信息查询</a></li>
+                    <li><a href="queryDeviceInfoList" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备信息查询</a></li>
                 </ul>
             </li>
             <li>

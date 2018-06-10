@@ -3,7 +3,7 @@
  */
 $(function(){
     var height=$("#content_r").height();
-    //日期
+    //����
     var date=new Date();
     $("#year").html(date.getFullYear());
     $("#month").html(date.getMonth()+1);
@@ -30,7 +30,7 @@ $(function(){
     else if(day=="0"){
         $("#day").html("日");
     }
-    //菜单
+    //�˵�
     $("#a_1").click(function(){
         $("#c1").toggle()
     })
@@ -50,6 +50,7 @@ $(function(){
     })
     $("#img").hide();
 });
+
 function check(obj){
     $("#img").show();
 }
@@ -64,6 +65,5 @@ $(function(){
     $(" tbody tr").mouseout(function(){
         $(this).css("background","#EEF4F9");
     })
-
-
 })
+
