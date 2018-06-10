@@ -82,12 +82,12 @@
                 if(data!=null){
                     $("#xiugai").append("<form action='station/updateStation' method='post'>"+
                     		"<input name='id' type='hidden' value='"+data.id+"'><br/>" +
-                            "<span>监测站名称:</span><input name='ms_name' type='text' id="text_1" value='"+data.ms_name+"'   >+<span id="tip_1">请输入2-50位字符</span><br/>" +
-                            "<span>监测站编码:</span><input name='ms_code' type='text' id="text_2" value='"+data.ms_code+"'><span id="tip_2"> 请输入8位数字</span><br/>" +
+                            "<span>监测站名称:</span><input name='ms_name' type='text' id='text_1' value='"+data.ms_name+"'   >+<span id='tip_1'>请输入2-50位字符</span><br/>" +
+                            "<span>监测站编码:</span><input name='ms_code' type='text' id='text_2' value='"+data.ms_code+"'><span id='tip_2'> 请输入8位数字</span><br/>" +
                             "<span>建设时间:</span><input name='ms_date1' type='date' value='"+data.ms_date+"' style='margin-left: 28px;'><br/>" +
                             "<span>监测站位置:</span><input name='ms_code' type='text' value='"+data.ms_place+"'><br/>" +
-                            "<span>使用单位，联系人，联系方式:</span><input name='ms_user' type='text' id="text_3" value='"+data.ms_user+"' class='lxfs'><span id="tip_3">请输入0-100位字符</span><br/>" +
-                            "<span>施工单位，联系人，联系方式:</span><input name='ms_builder' type='text' id="text_4" value='"+data.ms_builder+"' class='lxfs'><span id="tip_4">请输入0-100位字符</span><br/>" +
+                            "<span>使用单位，联系人，联系方式:</span><input name='ms_user' type='text' id='text_3' value='"+data.ms_user+"' class='lxfs'><span id='tip_3'>请输入0-100位字符</span><br/>" +
+                            "<span>施工单位，联系人，联系方式:</span><input name='ms_builder' type='text' id='text_4' value='"+data.ms_builder+"' class='lxfs'><span id='tip_4'>请输入0-100位字符</span><br/>" +
                             "<span >监测站类型:</span>" +
                             "<select name='ms_type' style='margin-left: 1%;'>"+ 
                                 "<option value='"+data.ms_type+"'>"+data.ms_type_value.data_name+"</option>" + 
@@ -124,7 +124,7 @@
                                 "<input name='ms_dev' type='checkbox' id='msDev6' class='gn' value='6'>环境因子监测土壤监测仪" +
                                 "<input name='ms_dev' type='checkbox' id='msDev7' class='gn' value='7'>视频图像监测高清摄像头<br/>" +
                             "<span >监测站描述:</span>" +
-                                "<textarea name='ms_desc' id="text_5">"+data.ms_desc+"</textarea><span id="tip_3">请输入0-100位字符</span>" +
+                                "<textarea name='ms_desc' id='text_5'>"+data.ms_desc+"</textarea><span id='tip_3'>请输入0-100位字符</span>" +
                             "<input class='xg' type='submit' value='修改' onclick='xg()'>" +
                             "<input class='xg' type='button' value='取消'  onclick='xg1()' style='margin-left: 5%;'>"+
                             "</form>"

@@ -26,7 +26,7 @@ public class StationController {
     @Autowired
     private StationService stationService;
     @Autowired
-    private DictService dataService;
+    private DictService dictService;
     
    /**
     * 
@@ -53,9 +53,9 @@ public class StationController {
         List<Station> listStation = stationService.listStation(map);
         map = PageBean.clientMap(map ,pages,request);
         map.put("listStation", listStation);
-        map.put("msType", dataService.listMsType());
-        map.put("msFp", dataService.listMsFp());
-        map.put("msGate", dataService.listMsGate());
+        map.put("msType", dictService.listMsType());
+        map.put("msFp", dictService.listMsFp());
+        map.put("msGate", dictService.listMsGate());
         return "station/listStation";
     }
     /**
@@ -101,10 +101,10 @@ public class StationController {
     @ResponseBody
     public Station idStation(Integer id,Map<String , Object> map) {
         Station station = stationService.load(id);
-        map.put("msType", dataService.listMsType());
-        map.put("msFp", dataService.listMsFp());
-        map.put("msGate", dataService.listMsGate());
-        map.put("msNet", dataService.listMsNet());
+        map.put("msType", dictService.listMsType());
+        map.put("msFp", dictService.listMsFp());
+        map.put("msGate", dictService.listMsGate());
+        map.put("msNet", dictService.listMsNet());
         map.put("station", station);
         return station;
     }

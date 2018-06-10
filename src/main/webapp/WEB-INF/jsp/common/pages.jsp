@@ -15,7 +15,7 @@
             <div id="Paging">当前第<font color="red">${pages }</font>页，共 <font color="red">${sumPage }</font>页</div>
         </div>
     </c:if>
-    <form target="_self" id="pageForm">
+    <form target="_self" id="pageForm" method="post">
         <input type="hidden" id="pages" name="pages">
         <c:if test="${manage.ms_code!=null and manage.ms_code.trim()!='' }">
             <input type="hidden" id="ms_code" name="ms_code" value="${manage.ms_code }">
