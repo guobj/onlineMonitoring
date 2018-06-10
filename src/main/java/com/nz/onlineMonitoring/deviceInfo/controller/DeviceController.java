@@ -40,8 +40,10 @@ public class DeviceController {
 	public String queryDeviceInfoList(Map<String, Object> map, Device device,
 								  @RequestParam(required=false,defaultValue="1")Integer pages,
 								  @RequestParam(required=false,name="city")String[] citys,
-									  String dev_type,String dev_target,HttpServletRequest request) {
-
+								  String dev_object,HttpServletRequest request) {
+		if(dev_object != null && !dev_object.equals("")){
+			device.setDev_code("dev"+dev_object);
+		}
 		try {
 			if (citys != null) {
 				if (citys[1] != null && citys[1] != "") {

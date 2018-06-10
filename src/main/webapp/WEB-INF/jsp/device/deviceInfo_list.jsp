@@ -146,7 +146,7 @@
             <c:otherwise>
                 <c:forEach var="list" items="${list}">
                     <tr>
-                        <td class="t2">${list.ms_name}</td>
+                        <td class="t2">${list.station.ms_name}</td>
                         <td class="t3">${list.ms_code}</td>
                         <td class="t4">${list.dev_code}</td>
                         <td class="t5">设备采集数据</td>

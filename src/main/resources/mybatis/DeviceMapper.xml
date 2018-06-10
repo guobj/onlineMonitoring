@@ -40,6 +40,9 @@
             <if test="device.dev_code!=null and device.dev_code.trim()!=''">
                 AND td.dev_code LIKE concat("%",#{device.dev_code},"%")
             </if>
+            <if test="device.dev_type!=null and device.dev_type.trim()!=''">
+                AND td.dev_type = concat("%",#{device.dev_type},"%")
+            </if>
             AND td.dr = false
         </where>
         LIMIT #{record},4

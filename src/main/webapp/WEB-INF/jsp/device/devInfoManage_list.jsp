@@ -15,6 +15,7 @@
     <title></title>
     <link href="css/sbxxgl.css" rel="stylesheet" type="text/css">
     <script src="js/jquery.js"></script>
+    <script src="js/delete.js"></script>
     <script src="js/sbgl.js" ></script>
 </head>
 
@@ -154,18 +155,19 @@
             </tr>
             <tr>
                 <td class="s1">质保期限</td>
-                <td class="s2"></td>
+                <td class="s2" id="zbqx"></td>
             </tr>
             <tr>
                 <td class="s1">设备厂家、品牌、服务型号</td>
-                <td class="s2"></td>
+                <td class="s2" id="sbcj"></td>
             </tr>
             <tr>
                 <td class="s1">设备描述</td>
-                <td class="s2"></td>
+                <td class="s2" id="sbms"></td>
             </tr>
         </table>
-        <form action=""><input type="button" value="关闭" id="cl"/></form>
+        <form action=""><input type="button" value="修改" id="update"/><input type="button" value="关闭" id="cl"/>
+            <input type="button" value="保存" id="save" style="display: none"/><input type="button" value="取消" id="esc" style="display: none"/></form>
 
     </div>
 </div>
@@ -185,6 +187,70 @@
             $("#xx").show();
         })
     })
+    $(function(){
+
+        $("#xx input[type='button']").click(function(){
+            $(this).parent().parent().parent().parent().hide();
+            $("#detail").show();
+        })
+        $("#cl").click(function(){
+            $("#detail").hide();
+            $("#xx").show();
+        })
+        $("#update").click(function(){
+            var tr=document.getElementById("zbqx")
+            con=tr.innerHTML;
+            con="<input type='text' autofocus id='in' value='"+con+"' class='s3'>";
+            tr.innerHTML=con;
+            var tr1=document.getElementById("sbcj")
+            con1=tr1.innerHTML;
+            con1="<input type='text' id='in1' value='"+con+"' class='s3'>";
+            tr1.innerHTML=con;
+            var tr2=document.getElementById("sbms");
+            con2=tr2.innerHTML;
+            con2="<input type='text' id='in2' value='"+con+"' class='s3'>";
+            tr2.innerHTML=con;
+            $("#update").hide()
+            $("#cl").hide()
+            $("#save").show()
+            $("#esc").show()
+
+        })
+        $("#save").click(function(){
+            var inp=document.getElementById("in").value;
+            var p=document.getElementById("zbqx");
+            p.innerHTML=inp;
+            var inp1=document.getElementById("in").value;
+            var p1=document.getElementById("sbcj");
+            p1.innerHTML=inp;
+            var inp2=document.getElementById("in").value;
+            var p2=document.getElementById("sbms");
+            p2.innerHTML=inp;
+            $.MsgBox.Confirm("温馨提示", "确认保存？温馨提示", function () {  $.MsgBox.Alert("消息", "保存成功");});
+            $("#update").show()
+            $("#cl").show()
+            $("#save").hide()
+            $("#esc").hide()
+        })
+        $("#esc").click(function(){
+            var inp=document.getElementById("in").value;
+            var p=document.getElementById("zbqx");
+            p.innerHTML=inp;
+            var inp1=document.getElementById("in").value;
+            var p1=document.getElementById("sbcj");
+            p1.innerHTML=inp;
+            var inp2=document.getElementById("in").value;
+            var p2=document.getElementById("sbms");
+            p2.innerHTML=inp;
+            $("#update").show()
+            $("#cl").show()
+            $("#save").hide()
+            $("#esc").hide()
+
+        })
+
+    })
+
 </script>
 </body>
 </html>
