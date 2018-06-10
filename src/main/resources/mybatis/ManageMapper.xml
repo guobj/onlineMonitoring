@@ -3,7 +3,6 @@
 <mapper namespace="com.nz.onlineMonitoring.stationManage.mapper.ManageMapper" >
     <resultMap id="ManageBaseResultMap" type="com.nz.onlineMonitoring.stationManage.model.Manage" >
         <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="ms_name" property="ms_name" jdbcType="VARCHAR" />
         <result column="ms_code" property="ms_code" jdbcType="VARCHAR" />
         <result column="server_ip" property="server_ip" jdbcType="VARCHAR" />
         <result column="server_port" property="server_port" jdbcType="VARCHAR" />
@@ -12,7 +11,7 @@
         <association property="station" column="ms_code" select="com.nz.onlineMonitoring.stationInfo.mapper.StationMapper.loadByMscode"/>
     </resultMap>
     <sql id="t_manage_columns" >
-        id, ms_name, ms_code, server_ip, server_port, data_upload, data_storage, dr
+        id,  ms_code, server_ip, server_port, data_upload, data_storage, dr
     </sql>
     
     <!--load方法查询一条数据-->
@@ -39,9 +38,6 @@
           ts.ms_type=td.data_value
         <where>
             td.data_type='ms_type'
-            <if test="manage.ms_name!=null and manage.ms_name.trim()!=''">
-                AND tm.ms_name LIKE concat("%",#{manage.ms_name},"%")
-            </if>
             <if test="manage.ms_code!=null and manage.ms_code.trim()!=''">
                 AND tm.ms_code LIKE concat("%",#{manage.ms_code},"%")
             </if>
@@ -74,9 +70,6 @@
           ts.ms_type=td.data_value
         <where>
             td.data_type='ms_type'
-            <if test="manage.ms_name!=null and manage.ms_name.trim()!=''">
-                AND tm.ms_name LIKE concat("%",#{manage.ms_name},"%")
-            </if>
             <if test="manage.ms_code!=null and manage.ms_code.trim()!=''">
                 AND tm.ms_code LIKE concat("%",#{manage.ms_code},"%")
             </if>
@@ -152,10 +145,7 @@
     <!--</insert>-->
     <update id="updateById" parameterType="com.nz.onlineMonitoring.stationManage.model.Manage" >
         update t_manage
-        <set >
-            <if test="ms_name != null" >
-                ms_name = #{ms_name,jdbcType=VARCHAR},
-            </if>
+        <set>
             <if test="ms_code != null" >
                 ms_code = #{ms_code,jdbcType=VARCHAR},
             </if>

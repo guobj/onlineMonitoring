@@ -70,84 +70,84 @@
 #footer li{ text-align:center; line-height:26px; font-size:0.75em;}
 #footer li a{ color:#000;}
 #footer li a:hover{ color:#F00;}
-#page {
-    height: 30px;
-    display: table;
-    margin-left: 55%;
-    margin-top: 10px;
-}
-.page {
-    text-align: center;
-}
-.fl {
-    float: left;
-}
-.fr {
-    float: right;
-}
-.pagingUl {
-    float: right;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    height: 30px;
-}
-.pagingUl li {
-    float: left;
-    width: 30px;
-    height: 30px;
-    background: #fff;
-    text-align: center;
-    margin-right: 5px;
-    border-radius: 5px
-}
-.pagingUl li a {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 28px;
-    color: #666;
-    font-size: 12px;
-    border-radius: 5px
-}
-.prv,
-.next {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    cursor: pointer;
-    background: #fff;
-    padding: 0 5px;
-    border-radius: 5px;
-}
-.prv {
-    margin-right: 10px;
-}
-.first,
-.last {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
-    text-align: center;
-    line-height: 30px;
-    /*border: 1px solid #ddd;*/
-    cursor: pointer;
-    background: #fff;
-    padding: 0 5px;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-.prv:hover,
-.next:hover,
-.first:hover,
-.last:hover,
-.pagingUl li a:hover,
-.activP {
-    background-color: #4c9d5f!important;
-    color: #fff!important;
-}
+/*#page {*/
+    /*height: 30px;*/
+    /*display: table;*/
+    /*margin-left: 55%;*/
+    /*margin-top: 10px;*/
+/*}*/
+/*.page {*/
+    /*text-align: center;*/
+/*}*/
+/*.fl {*/
+    /*float: left;*/
+/*}*/
+/*.fr {*/
+    /*float: right;*/
+/*}*/
+/*.pagingUl {*/
+    /*float: right;*/
+    /*padding: 0;*/
+    /*margin: 0;*/
+    /*list-style: none;*/
+    /*height: 30px;*/
+/*}*/
+/*.pagingUl li {*/
+    /*float: left;*/
+    /*width: 30px;*/
+    /*height: 30px;*/
+    /*background: #fff;*/
+    /*text-align: center;*/
+    /*margin-right: 5px;*/
+    /*border-radius: 5px*/
+/*}*/
+/*.pagingUl li a {*/
+    /*display: inline-block;*/
+    /*width: 30px;*/
+    /*height: 30px;*/
+    /*text-align: center;*/
+    /*line-height: 28px;*/
+    /*color: #666;*/
+    /*font-size: 12px;*/
+    /*border-radius: 5px*/
+/*}*/
+/*.prv,*/
+/*.next {*/
+    /*width: 30px;*/
+    /*height: 30px;*/
+    /*text-align: center;*/
+    /*line-height: 30px;*/
+    /*cursor: pointer;*/
+    /*background: #fff;*/
+    /*padding: 0 5px;*/
+    /*border-radius: 5px;*/
+/*}*/
+/*.prv {*/
+    /*margin-right: 10px;*/
+/*}*/
+/*.first,*/
+/*.last {*/
+    /*width: 30px;*/
+    /*height: 30px;*/
+    /*font-size: 12px;*/
+    /*text-align: center;*/
+    /*line-height: 30px;*/
+    /*/!*border: 1px solid #ddd;*!/*/
+    /*cursor: pointer;*/
+    /*background: #fff;*/
+    /*padding: 0 5px;*/
+    /*border-radius: 5px;*/
+    /*margin-right: 10px;*/
+/*}*/
+/*.prv:hover,*/
+/*.next:hover,*/
+/*.first:hover,*/
+/*.last:hover,*/
+/*.pagingUl li a:hover,*/
+/*.activP {*/
+    /*background-color: #4c9d5f!important;*/
+    /*color: #fff!important;*/
+/*}*/
 #content_r #img{position: absolute; top: 100px; margin-left: 10%; background: #bee2f4; width: 70%; height: 700px;}
 #content_r #img #imga{ width: 65%;margin-left: 3%;margin-top: 20px; height: 600px;}
 #content_r #img input{margin-left: 45%; width: 10%; height: 30px; margin-top: 10px; border: 1px solid #bfbfbf; border-radius: 5px; }

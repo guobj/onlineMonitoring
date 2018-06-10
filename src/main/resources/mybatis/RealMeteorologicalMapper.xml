@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.nz.onlineMonitoring.realData.mapper.MeteorologicalMapper" >
-    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.realData.model.Meteorological" >
+<mapper namespace="com.nz.onlineMonitoring.realData.mapper.RealMeteorologicalMapper" >
+    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.realData.model.RealMeteorological" >
         <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="ms_name" property="ms_name" jdbcType="VARCHAR" />
         <result column="ms_code" property="ms_code" jdbcType="VARCHAR" />
         <result column="dev_code" property="dev_code" jdbcType="VARCHAR" />
         <result column="air_t" property="air_t" jdbcType="DOUBLE" />
@@ -21,31 +20,28 @@
         <result column="soil_h2" property="soil_h2" jdbcType="DOUBLE" />
         <result column="soil_h3" property="soil_h3" jdbcType="DOUBLE" />
         <result column="soil_ec" property="soil_ec" jdbcType="DOUBLE" />
-        <result column="time" property="time" jdbcType="TIMESTAMP" />
+        <result column="data_time" property="data_time" jdbcType="TIMESTAMP" />
         <result column="dev_status" property="dev_status" jdbcType="INTEGER" />
     </resultMap>
-    <sql id="t_meteorological_columns" >
-        id, ms_name, ms_code, dev_code, air_t, air_h, wind_s, wind_d, dew_p, rain_f, sunshine_h, 
-        atmo_s, soil_t1, soil_t2, soil_t3, soil_h1, soil_h2, soil_h3, soil_ec, time, dev_status,dr
+    <sql id="t_real_meteorological_columns" >
+        id, ms_code, dev_code, air_t, air_h, wind_s, wind_d, dew_p, rain_f, sunshine_h, 
+        atmo_s, soil_t1, soil_t2, soil_t3, soil_h1, soil_h2, soil_h3, soil_ec, data_time, dev_status,dr
     </sql>
     <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select 
-        <include refid="t_meteorological_columns" />
-        from t_meteorological
+        <include refid="t_real_meteorological_columns" />
+        from t_real_meteorological
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="delete" parameterType="java.lang.Integer" >
-        delete from t_meteorological
+        delete from t_real_meteorological
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <insert id="add" parameterType="com.nz.onlineMonitoring.realData.model.Meteorological" >
-        insert into t_meteorological
+    <insert id="add" parameterType="com.nz.onlineMonitoring.realData.model.RealMeteorological" >
+        insert into t_real_meteorological
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="id != null" >
                 id,
-            </if>
-            <if test="ms_name != null" >
-                ms_name,
             </if>
             <if test="ms_code != null" >
                 ms_code,
@@ -98,8 +94,8 @@
             <if test="soil_ec != null" >
                 soil_ec,
             </if>
-            <if test="time != null" >
-                time,
+            <if test="data_time != null" >
+                data_time,
             </if>
             <if test="dev_status != null" >
                 dev_status,
@@ -108,9 +104,6 @@
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="id != null" >
                 #{id,jdbcType=INTEGER},
-            </if>
-            <if test="ms_name != null" >
-                #{ms_name,jdbcType=VARCHAR},
             </if>
             <if test="ms_code != null" >
                 #{ms_code,jdbcType=VARCHAR},
@@ -163,20 +156,17 @@
             <if test="soil_ec != null" >
                 #{soil_ec,jdbcType=DOUBLE},
             </if>
-            <if test="time != null" >
-                #{time,jdbcType=TIMESTAMP},
+            <if test="data_time != null" >
+                #{data_time,jdbcType=TIMESTAMP},
             </if>
             <if test="dev_status != null" >
                 #{dev_status,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>
-    <update id="update" parameterType="com.nz.onlineMonitoring.realData.model.Meteorological" >
-        update t_meteorological
+    <update id="update" parameterType="com.nz.onlineMonitoring.realData.model.RealMeteorological" >
+        update t_real_meteorological
         <set >
-            <if test="ms_name != null" >
-                ms_name = #{ms_name,jdbcType=VARCHAR},
-            </if>
             <if test="ms_code != null" >
                 ms_code = #{ms_code,jdbcType=VARCHAR},
             </if>
@@ -228,8 +218,8 @@
             <if test="soil_ec != null" >
                 soil_ec = #{soil_ec,jdbcType=DOUBLE},
             </if>
-            <if test="time != null" >
-                time = #{time,jdbcType=TIMESTAMP},
+            <if test="data_time != null" >
+                data_time = #{data_time,jdbcType=TIMESTAMP},
             </if>
             <if test="dev_status != null" >
                 dev_status = #{dev_status,jdbcType=INTEGER},
@@ -243,35 +233,31 @@
      <!-- 查询气象数据 -->
     <select id="listMeteorological" resultMap="BaseResultMap" parameterType="map">
         select 
-        <include refid="t_meteorological_columns" />
-        from t_meteorological
+        <include refid="t_real_meteorological_columns" />
+        from t_real_meteorological
         <where>
             <!-- 最大时间 -->
-            time = (select max(time) from t_meteorological)
-            <!-- 监测站名字  -->
-            <if test="meteorological.ms_name != null and meteorological.ms_name != ''" >
-                and ms_name like concat("%",#{meteorological.ms_name},"%")
-            </if>
+            time = (select max(time) from t_real_meteorological)
             <!-- 监测站编码，例如输入济南，济南下所有监测站的气象数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
              -->
-            <if test="meteorological.ms_code != null and meteorological.ms_code != ''" >
-                and ms_code like concat(#{meteorological.ms_code},"%")
+            <if test="realMeteorological.ms_code != null and realMeteorological.ms_code != ''" >
+                and ms_code like concat(#{realMeteorological.ms_code},"%")
             </if>
             <!-- 设备类型，即设备编码第5-6位 
-                 meteorological.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
+                 realMeteorological.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
                                                     前面3个，后面两个下划线
             -->
-            <if test="meteorological.device_type != null and meteorological.device_type != ''" >
-                and dev_code like concat("___",#{meteorological.device_type},"__")
+            <if test="realMeteorological.device_type != null and realMeteorological.device_type != ''" >
+                and dev_code like concat("___",#{realMeteorological.device_type},"__")
             </if>
            <!--  设备监测对象，即设备编码第4位 ,传过来的是4位，例如dev1，后面4个下划线-->
-            <if test="meteorological.device_object != null and meteorological.device_object != ''" >
-                and dev_code like concat(#{meteorological.device_object},"____")
+            <if test="realMeteorological.device_object != null and realMeteorological.device_object != ''" >
+                and dev_code like concat(#{realMeteorological.device_object},"____")
             </if>
             <!-- 设备运行状态 -->
-            <if test="meteorological.dev_status != null and meteorological.dev_status != ''" >
-                and dev_status = #{meteorological.dev_status}
+            <if test="realMeteorological.dev_status != null and realMeteorological.dev_status != ''" >
+                and dev_status = #{realMeteorological.dev_status}
             </if>
         </where>
     </select>
@@ -279,34 +265,30 @@
     <select id="countMeteorological" resultType ="int" parameterType="map">
         select 
             count(*)
-        from t_meteorological
+        from t_real_meteorological
         <where>
             <!-- 最大时间 -->
-            time = (select max(time) from t_meteorological)
-            <!-- 监测站名字  -->
-            <if test="meteorological.ms_name != null and meteorological.ms_name != ''" >
-                and ms_name like concat("%",#{meteorological.ms_name},"%")
-            </if>
+            time = (select max(time) from t_real_meteorological)
             <!-- 监测站编码，例如输入济南，济南下所有监测站的气象数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
              -->
-            <if test="meteorological.ms_code != null and meteorological.ms_code != ''" >
-                and ms_code like concat(#{meteorological.ms_code},"%")
+            <if test="realMeteorological.ms_code != null and realMeteorological.ms_code != ''" >
+                and ms_code like concat(#{realMeteorological.ms_code},"%")
             </if>
             <!-- 设备类型，即设备编码第5-6位 
-                 meteorological.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
+                 realMeteorological.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
                                                     前面3个，后面两个下划线
             -->
-            <if test="meteorological.device_type != null and meteorological.device_type != ''" >
-                and dev_code like concat("___",#{meteorological.device_type},"__")
+            <if test="realMeteorological.device_type != null and realMeteorological.device_type != ''" >
+                and dev_code like concat("___",#{realMeteorological.device_type},"__")
             </if>
            <!--  设备监测对象，即设备编码第4位 ,传过来的是4位，例如dev1，后面4个下划线-->
-            <if test="meteorological.device_object != null and meteorological.device_object != ''" >
-                and dev_code like concat(#{meteorological.device_object},"____")
+            <if test="realMeteorological.device_object != null and realMeteorological.device_object != ''" >
+                and dev_code like concat(#{realMeteorological.device_object},"____")
             </if>
             <!-- 设备运行状态 -->
-            <if test="meteorological.dev_status != null and meteorological.dev_status != ''" >
-                and dev_status = #{meteorological.dev_status}
+            <if test="realMeteorological.dev_status != null and realMeteorological.dev_status != ''" >
+                and dev_status = #{realMeteorological.dev_status}
             </if>
         </where>
     </select>

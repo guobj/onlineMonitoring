@@ -56,6 +56,7 @@ h4{ padding-bottom: 10px; padding-top: 5px; padding-left:5%; }
 #content_r .t7{width: 7%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
 #content_r .t8{width: 7%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
 #content_r .t9{width: 7%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
+/*#content_r table tr{background:#}*/
 #bg {
     margin-top:10px;
     margin-left:20px;
@@ -187,7 +188,7 @@ h4{ padding-bottom: 10px; padding-top: 5px; padding-left:5%; }
     float: left;
     width: 30px;
     height: 30px;
-    background: #fff;
+    background: #F00;
     text-align: center;
     margin-right: 5px;
     border-radius: 5px
@@ -209,7 +210,7 @@ h4{ padding-bottom: 10px; padding-top: 5px; padding-left:5%; }
     text-align: center;
     line-height: 30px;
     cursor: pointer;
-    background: #fff;
+    background: #F00;
     padding: 0 5px;
     border-radius: 5px;
 }
@@ -225,7 +226,7 @@ h4{ padding-bottom: 10px; padding-top: 5px; padding-left:5%; }
     line-height: 30px;
     /*border: 1px solid #ddd;*/
     cursor: pointer;
-    background: #fff;
+    background: #F00;
     padding: 0 5px;
     border-radius: 5px;
     margin-right: 10px;
@@ -239,3 +240,4 @@ h4{ padding-bottom: 10px; padding-top: 5px; padding-left:5%; }
     background-color: #4c9d5f!important;
     color: #fff!important;
 }
+

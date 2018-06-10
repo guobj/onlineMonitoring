@@ -223,20 +223,33 @@ pageContext.setAttribute("basePath", basePath);
         </div>
         <div id="xiugai">
             <form>
+            <h5>修改</h5>
                 <span>监测站名称:</span>
-                <input type="text" >
+                <input type="text" id="text_1" >
+                <span id="tip_1">
+                    请输入2-50位字符
+                </span>
                 <br/>
                 <span>监测站编码:</span>
-                <input type="text" >
+                <input type="text" id="text_2" >
+                <span id="tip_2">
+                    请输入8位数字
+                </span>
                 <br/>
                 <span>建设时间:</span>
                 <input type="text" style="margin-left: 28px;">
                 <br/>
                 <span>使用单位，联系人，联系方式:</span>
-                <input type="text" class="lxfs">
+                <input type="text" class="lxfs" id="text_3">
+                <span id="tip_3">
+                    请输入0-100位字符
+                </span>
                 <br/>
                 <span>施工单位，联系人，联系方式:</span>
-                <input type="text" class="lxfs">
+                <input type="text" class="lxfs " id="text_4">
+                <span id="tip_4">
+                    请输入0-100位字符
+                </span>
                 <br/>
                 <span >监测站类型:</span>
                 <select style="margin-left: 1%;">
@@ -277,71 +290,94 @@ pageContext.setAttribute("basePath", basePath);
                 <input type="checkbox" name="gn"  class="gn">其他监测
                 <br/>
                 <span >监测站描述:</span>
-                <textarea></textarea>
+                <textarea id="text_5"></textarea>
+                <span id="tip_5">
+                    请输入0-300位字符
+                </span>
                 <input class="xg" type="button" value="修改" onclick="xg()">
+                <input class="xg" type="button" value="取消"  onclick="xg1()" style="margin-left: 5%;">
             </form>
         </div>
+
         <div id="tianjia">
-            <form>
-                <span>监测站名称:</span>
-                <input type="text" >
-                <br/>
-                <span>监测站编码:</span>
-                <input type="text" >
-                <br/>
-                <span>建设时间:</span>
-                <input type="text" style="margin-left: 28px;">
-                <br/>
-                <span>使用单位，联系人，联系方式:</span>
+        <form>
+            <span>监测站名称:</span>
+            <input type="text" id="tj_text_1">
+            <span id="tj_tip_1">
+                    请输入2-50位字符
+                </span>
+            <br/>
+            <span>监测站编码:</span>
+            <input type="text" id="tj_text_2" >
+            <span id="tj_tip_2">
+                    请输入8位数字
+                </span>
+            <br/>
+            <span>建设时间:</span>
+            <input type="text" style="margin-left: 28px;">
 
-                <input type="text" class="lxfs">
-                <br/>
-                <span>施工单位，联系人，联系方式:</span>
-                <input type="text" class="lxfs">
-                <br/>
-                <span >监测站类型:</span>
-                <select style="margin-left: 1%;">
-                    <option>新建重点监测站</option>
-                    <option>改建重点监测站</option>
-                    <option>新建普通监测站</option>
-                    <option>改建普通监测站</option>
-                </select>
-                <br/>
-                <span>资金来源:</span>
-                <select>
-                    <option>省资金</option>
+            <br/>
+            <span>使用单位，联系人，联系方式:</span>
 
-                    <option>国家资金</option>
-                    <option>其他</option>
-                </select>
-                <br/>
-                <span>网络类型:</span>
-                <select>
-                    <option>无线</option>
+            <input type="text" class="lxfs" id="tj_text_3">
+             <span id="tj_tip_3">
+                    请输入0-100位字符
+                </span>
+            <br/>
+            <span>施工单位，联系人，联系方式:</span>
+            <input type="text" class="lxfs" id="tj_text_4">
+             <span id="tj_tip_4">
+                    请输入0-100位字符
+                </span>
+            <br/>
+            <span >监测站类型:</span>
+            <select style="margin-left: 1%;">
+                <option>新建重点监测站</option>
+                <option>改建重点监测站</option>
+                <option>新建普通监测站</option>
+                <option>改建普通监测站</option>
+            </select>
+            <br/>
+            <span>资金来源:</span>
+            <select>
+                <option>省资金</option>
 
-                    <option>有线</option>
-                </select>
-                <br/>
-                <span>网关类型:</span>
-                <select>
-                    <option>NZ2000</option>
+                <option>国家资金</option>
+                <option>其他</option>
+            </select>
+            <br/>
+            <span>网络类型:</span>
+            <select>
+                <option>无线</option>
 
-                    <option>NZ1000</option>
-                </select>
-                <br/>
-                <span>监测性质:</span>
-                <input type="checkbox" name="gn" class="gn">病害监测
-                <input type="checkbox" name="gn"  class="gn">害虫监测
-                <input type="checkbox" name="gn"  class="gn"> 鼠情监测
-                <input type="checkbox" name="gn"  class="gn">环境因子监测
-                <input type="checkbox" name="gn"  class="gn">视频图像监测
-                <input type="checkbox" name="gn"  class="gn">其他监测
-                <br/>
-                <span >监测站描述:</span>
-                <textarea></textarea>
-                <input class="tj" type="button" value="添加" onclick="tj()">
-            </form>
-        </div>
+                <option>有线</option>
+            </select>
+            <br/>
+            <span>网关类型:</span>
+            <select>
+                <option>NZ2000</option>
+
+                <option>NZ1000</option>
+            </select>
+            <br/>
+            <span>监测性质:</span>
+            <input type="checkbox" name="gn" class="gn">病害监测
+            <input type="checkbox" name="gn"  class="gn">害虫监测
+            <input type="checkbox" name="gn"  class="gn"> 鼠情监测
+            <input type="checkbox" name="gn"  class="gn">环境因子监测
+            <input type="checkbox" name="gn"  class="gn">视频图像监测
+            <input type="checkbox" name="gn"  class="gn">其他监测
+            <br/>
+            <span >监测站描述:</span>
+            <textarea id="tj_text_5"></textarea>
+             <span id="tj_tip_5">
+                    请输入0-300位字符
+                </span>
+            <input class="tj" type="button" value="添加" onclick="tj()">
+            <input class="tj" type="button" value="取消"  onclick="tj1()" style="margin-left: 3%;">
+        </form>
+    </div>
+
         <div id="peizhi">
             <form>
                 <span>监测站名称:</span><input type="text"/>
@@ -365,5 +401,80 @@ pageContext.setAttribute("basePath", basePath);
 <div id="footer">
     <li>济南农智信息科技有限公司所有&copy; &nbsp;电话：12345677  &nbsp;<a href="#">关于我们</a> &nbsp;<a href="#">售后服务</a></li>
 </div>
+<script>
+    var reg2 =/^(\d{8})$/;
+    var reg1=/^.{2,50}$/;
+    var reg3=/^.{0,100}$/;
+    var reg4=/^.{0,100}$/;
+    var reg5=/^.{0,300}$/;
+    $("#xiugai").children().change(function(){
+
+        var str1=reg1.test($("#text_1").val());
+        var str2=reg2.test($("#text_2").val());
+        var str3=reg3.test($("#text_3").val());
+        var str4=reg4.test($("#text_4").val());
+        var str5=reg5.test($("#text_5").val());
+
+        if(str1==true){
+            $("#tip_1").html("格式正确")
+        }else{
+            $("#tip_1").html("请输入2-50位字符");
+        }
+        if(str2==true){
+            $("#tip_2").html("格式正确")
+        }else{
+            $("#tip_2").html("请输入8位数字");
+        }
+        if(str3==true){
+            $("#tip_3").html("格式正确")
+        }else{
+            $("#tip_3").html("请输入0-100位字符");
+        }
+        if(str4==true){
+            $("#tip_4").html("格式正确")
+        }else{
+            $("#tip_4").html("请输入0-100位字符");
+        }
+        if(str5==true){
+            $("#tip_5").html("格式正确")
+        }else{
+            $("#tip_5").html("请输入0-300位字符");
+        }
+    })
+    $("#tianjia").children().change(function(){
+        var str1=reg1.test($("#tj_text_1").val());
+        var str2=reg2.test($("#tj_text_2").val());
+        var str3=reg3.test($("#tj_text_3").val());
+        var str4=reg4.test($("#tj_text_4").val());
+        var str5=reg5.test($("#tj_text_5").val());
+
+        if(str1==true){
+            $("#tj_tip_1").html("格式正确")
+        }else{
+            $("#tj_tip_1").html("请输入2-50位字符");
+        }
+        if(str2==true){
+            $("#tj_tip_2").html("格式正确")
+        }else{
+            $("#tj_tip_2").html("请输入8位数字");
+        }
+        if(str3==true){
+            $("#tj_tip_3").html("格式正确")
+        }else{
+            $("#tj_tip_3").html("请输入0-100位字符");
+        }
+        if(str4==true){
+            $("#tj_tip_4").html("格式正确")
+        }else{
+            $("#tj_tip_4").html("请输入0-100位字符");
+        }
+        if(str5==true){
+            $("#tj_tip_5").html("格式正确")
+        }else{
+            $("#tj_tip_5").html("请输入0-300位字符");
+        }
+    })
+</script>
+
 </body>
 </html>

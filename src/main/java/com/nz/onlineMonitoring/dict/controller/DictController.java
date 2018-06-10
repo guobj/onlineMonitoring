@@ -1,4 +1,4 @@
-package com.nz.onlineMonitoring.data.controller;
+package com.nz.onlineMonitoring.dict.controller;
 
 import java.util.List;
 
@@ -7,15 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.nz.onlineMonitoring.data.model.Data;
-import com.nz.onlineMonitoring.data.service.DataService;
+import com.nz.onlineMonitoring.dict.model.Dict;
+import com.nz.onlineMonitoring.dict.service.DictService;
 
 @Controller
-@RequestMapping("/data")
-public class DataController {
+@RequestMapping("/dict")
+public class DictController {
     
     @Autowired
-    private DataService dataService;
+    private DictService dictService;
     /**
      * 
      * 方法描述：查询山东省的所有市,使用ajax获取
@@ -25,8 +25,8 @@ public class DataController {
      */
     @RequestMapping("/listCity")
     @ResponseBody
-    public List<Data> listCity() {
-        return dataService.listCity();
+    public List<Dict> listCity() {
+        return dictService.listCity();
     }
     
     /**
@@ -38,11 +38,11 @@ public class DataController {
      */
     @RequestMapping("/listArea")
     @ResponseBody
-    public List<Data> listArea(Integer city_id) {
+    public List<Dict> listArea(Integer city_id) {
         if (city_id == null) {
             return null;
         }
-        return dataService.listArea(city_id);
+        return dictService.listArea(city_id);
     }
     
     
