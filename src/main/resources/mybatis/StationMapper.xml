@@ -10,16 +10,12 @@
         <result column="ms_type" property="ms_type" jdbcType="INTEGER" />
         <result column="ms_fp" property="ms_fp" jdbcType="INTEGER" />
         <result column="ms_place" property="ms_place" jdbcType="VARCHAR" />
-        <result column="ms_position" property="ms_position" jdbcType="DOUBLE" />
         <result column="ms_user" property="ms_user" jdbcType="VARCHAR" />
         <result column="ms_builder" property="ms_builder" jdbcType="VARCHAR" />
         <result column="ms_net" property="ms_net" jdbcType="INTEGER" />
         <result column="ms_gate" property="ms_gate" jdbcType="INTEGER" />
         <result column="ms_desc" property="ms_desc" jdbcType="VARCHAR" />
-        <association property="data" column="ms_type" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadByDataValue"></association>
-        <association property="ms_fp_value" column="ms_fp" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadFp"></association>
-        <association property="ms_net_value" column="ms_net" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadNet"></association>
-        <association property="ms_gate_value" column="ms_gate" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadGate"></association>
+        <association property="data" column="ms_type" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDataValue"></association>
     </resultMap>
     <resultMap id="BaseResultMap01" type="com.nz.onlineMonitoring.stationInfo.model.Station" >
         <id column="id" property="id" jdbcType="INTEGER" />
@@ -30,19 +26,18 @@
         <result column="ms_type" property="ms_type" jdbcType="INTEGER" />
         <result column="ms_fp" property="ms_fp" jdbcType="INTEGER" />
         <result column="ms_place" property="ms_place" jdbcType="VARCHAR" />
-        <result column="ms_position" property="ms_position" jdbcType="DOUBLE" />
         <result column="ms_user" property="ms_user" jdbcType="VARCHAR" />
         <result column="ms_builder" property="ms_builder" jdbcType="VARCHAR" />
         <result column="ms_net" property="ms_net" jdbcType="INTEGER" />
         <result column="ms_gate" property="ms_gate" jdbcType="INTEGER" />
         <result column="ms_desc" property="ms_desc" jdbcType="VARCHAR" />
-        <association property="ms_type_value" column="ms_type" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadType"></association>
-        <association property="ms_fp_value" column="ms_fp" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadFp"></association>
-        <association property="ms_net_value" column="ms_net" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadNet"></association>
-        <association property="ms_gate_value" column="ms_gate" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadGate"></association>
+        <association property="ms_type_value" column="ms_type" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadType"></association>
+        <association property="ms_fp_value" column="ms_fp" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadFp"></association>
+        <association property="ms_net_value" column="ms_net" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadNet"></association>
+        <association property="ms_gate_value" column="ms_gate" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadGate"></association>
     </resultMap>
     <sql id="t_station_columns" >
-        id, ms_name, ms_code, ms_date, ms_dev, ms_type, ms_fp, ms_place, ms_position, ms_user, 
+        id, ms_name, ms_code, ms_date, ms_dev, ms_type, ms_fp, ms_place, ms_longitude,ms_latitude, ms_user, 
         ms_builder, ms_net, ms_gate, ms_desc
     </sql>
     <select id="load" resultMap="BaseResultMap01" parameterType="java.lang.Integer" >
@@ -89,9 +84,6 @@
             <if test="ms_place != null" >
                 ms_place,
             </if>
-            <if test="ms_position != null" >
-                ms_position,
-            </if>
             <if test="ms_user != null" >
                 ms_user,
             </if>
@@ -133,9 +125,6 @@
             <if test="ms_place != null" >
                 #{ms_place,jdbcType=VARCHAR},
             </if>
-            <if test="ms_position != null" >
-                #{ms_position,jdbcType=DOUBLE},
-            </if>
             <if test="ms_user != null" >
                 #{ms_user,jdbcType=VARCHAR},
             </if>
@@ -176,9 +165,6 @@
             </if>
             <if test="ms_place != null" >
                 ms_place = #{ms_place,jdbcType=VARCHAR},
-            </if>
-            <if test="ms_position != null" >
-                ms_position = #{ms_position,jdbcType=DOUBLE},
             </if>
             <if test="ms_user != null" >
                 ms_user = #{ms_user,jdbcType=VARCHAR},

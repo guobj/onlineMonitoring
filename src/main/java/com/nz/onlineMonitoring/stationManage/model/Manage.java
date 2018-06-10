@@ -6,7 +6,7 @@
  **/
 package com.nz.onlineMonitoring.stationManage.model;
 
-import com.nz.onlineMonitoring.data.model.Data;
+import com.nz.onlineMonitoring.dict.model.Dict;
 import com.nz.onlineMonitoring.stationInfo.model.Station;
 
 /**
@@ -19,9 +19,6 @@ public class Manage {
 
     /**序号-主键、自增、不可见,所属表字段为 t_manage.id  */
     private Integer id;
-
-    /**监测站名称-与t_station ms_name关联,所属表字段为 t_manage.ms_name  */
-    private String ms_name;
 
     /**监测站编码-与t_station ms_code关联,所属表字段为 t_manage.ms_code  */
     private String ms_code;
@@ -45,13 +42,13 @@ public class Manage {
     private Boolean dr = false;
 
     //数据字典的字段
-    private Data data;
+    private Dict data;
 
-    public Data getData() {
+    public Dict getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(Dict data) {
         this.data = data;
     }
 
@@ -81,23 +78,6 @@ public class Manage {
         this.id = id;
     }
 
-    /**
-     * 获取 监测站名称-与t_station ms_name关联 字段:t_manage.ms_name
-     *
-     * @return  t_manage.ms_name  ,监测站名称-与t_station ms_name关联
-     */
-    public String getMs_name() {
-        return ms_name;
-    }
-
-    /**
-     * 设置 监测站名称-与t_station ms_name关联 字段:t_manage.ms_name
-     *
-     * @param ms_name  t_manage.ms_name,监测站名称-与t_station ms_name关联
-     */
-    public void setMs_name(String ms_name) {
-        this.ms_name = ms_name == null ? null : ms_name.trim();
-    }
 
     /**
      * 获取 监测站编码-与t_station ms_code关联 字段:t_manage.ms_code

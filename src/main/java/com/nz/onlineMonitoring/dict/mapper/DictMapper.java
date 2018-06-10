@@ -5,13 +5,13 @@
  * <link>胖先生作品</link>
  * 创建于: 2018-06-01 11:08:33
  **/
-package com.nz.onlineMonitoring.data.mapper;
+package com.nz.onlineMonitoring.dict.mapper;
 
 import java.util.List;
 
-import com.nz.onlineMonitoring.data.model.Data;
+import com.nz.onlineMonitoring.dict.model.Dict;
 
-public interface DataMapper {
+public interface DictMapper {
     /**
      * t_data
      * 方法描述:
@@ -21,7 +21,7 @@ public interface DataMapper {
      * @date 2018-06-01 11:08:33
      * 
      **/
-    int add(Data data);
+    int add(Dict dict);
 
 	/*t_manage连表使用load方法*/
 	/**
@@ -32,7 +32,7 @@ public interface DataMapper {
 	 * @date 2018-06-01 11:08:33
 	 *
 	 **/
-	Data loadByDataValue(Integer data_value);
+	Dict loadByDataValue(Integer data_value);
 
 
 	/*t_device连表所使用load方法*/
@@ -44,7 +44,7 @@ public interface DataMapper {
 	 * @date 2018-06-01 11:08:33
 	 *
 	 **/
-	Data loadByDevProtocol(Integer data_value);
+	Dict loadByDevProtocol(Integer data_value);
 
 	/**
 	 * t_data
@@ -54,7 +54,7 @@ public interface DataMapper {
 	 * @date 2018-06-01 11:08:33
 	 *
 	 **/
-	Data loadByDevInterface(Integer data_value);
+	Dict loadByDevInterface(Integer data_value);
 
 	/**
 	 * t_data
@@ -64,7 +64,7 @@ public interface DataMapper {
 	 * @date 2018-06-01 11:08:33
 	 *
 	 **/
-	Data loadByDevPort(Integer data_value);
+	Dict loadByDevPort(Integer data_value);
 
 	/**
 	 * t_data
@@ -74,7 +74,7 @@ public interface DataMapper {
 	 * @date 2018-06-01 11:08:33
 	 *
 	 **/
-	Data loadByDevType(Integer data_value);
+	Dict loadByDevType(Integer data_value);
 	/**
 	 * 
 	 * 方法描述：设备类型
@@ -83,7 +83,7 @@ public interface DataMapper {
 	 * @author ssh
 	 * @date 2018年6月8日 下午4:37:31
 	 */
-	Data loadByDevType1(Integer data_value);
+	Dict loadByDevType1(Integer data_value);
 	/**
 	 *
 	 * 方法描述：获取单个监测站所拥有的监测设备编号的值
@@ -91,7 +91,7 @@ public interface DataMapper {
 	 * @return
 	 * @date 2018年6月2日 上午11:58:41
 	 */
-	Data loadDev(int data_value);
+	Dict loadDev(int data_value);
 	/**
 	 *
 	 * 方法描述：获取单个监测站的类型(重点、普通、新建、改建)
@@ -99,7 +99,7 @@ public interface DataMapper {
 	 * @return
 	 * @date 2018年6月2日 上午11:59:17
 	 */
-	Data loadType(int data_value);
+	Dict loadType(int data_value);
 	/**
 	 *
 	 * 方法描述：获取单个监测站的资金来源(省、国家)
@@ -107,7 +107,7 @@ public interface DataMapper {
 	 * @return
 	 * @date 2018年6月2日 下午12:00:13
 	 */
-	Data loadFp(int data_value);
+	Dict loadFp(int data_value);
 	/**
 	 *
 	 * 方法描述：获取单个监测站网络类型（有线、无线）
@@ -115,7 +115,7 @@ public interface DataMapper {
 	 * @return
 	 * @date 2018年6月2日 下午12:00:16
 	 */
-	Data loadNet(int data_value);
+	Dict loadNet(int data_value);
 	/**
 	 *
 	 * 方法描述：获取单个监测站网络类型
@@ -123,7 +123,7 @@ public interface DataMapper {
 	 * @return
 	 * @date 2018年6月2日 下午12:00:19
 	 */
-	Data loadGate(int data_value);
+	Dict loadGate(int data_value);
 	/**
      * 
      * 方法描述：获取单个城市的name，用来解析编码
@@ -132,7 +132,7 @@ public interface DataMapper {
      * @author ssh
      * @date 2018年6月8日 下午5:28:10
      */
-    Data loadCity(Integer data_value);
+    Dict loadCity(Integer data_value);
 	/**
 	 *
 	 * 方法描述：查询山东省的所有市
@@ -141,7 +141,7 @@ public interface DataMapper {
 	 * @author ssh
 	 * @date 2018年6月5日 上午9:24:18
 	 */
-	List<Data> listCity();
+	List<Dict> listCity();
 	/**
 	 *
 	 * 方法描述：根据市的id，查询市的区，会把市的长度取前四位，然后模糊查询
@@ -150,7 +150,7 @@ public interface DataMapper {
 	 * @author ssh
 	 * @date 2018年6月5日 上午9:24:52
 	 */
-	List<Data> listArea(Integer data_value);
+	List<Dict> listArea(Integer data_value);
 	/**
 	 *
 	 * 方法描述：查询设备的全部状态
@@ -158,7 +158,7 @@ public interface DataMapper {
 	 * @author ssh
 	 * @date 2018年6月6日 下午9:27:03
 	 */
-	List<Data> listDevStauts();
+	List<Dict> listDevStauts();
 	/**
 	 *
 	 * 方法描述：查询设备监测的对象
@@ -166,7 +166,7 @@ public interface DataMapper {
 	 * @author ssh
 	 * @date 2018年6月6日 下午9:27:28
 	 */
-	List<Data> listDevType();
+	List<Dict> listDevType();
 	/**
 	 *
 	 * 方法描述：查询设备的类型
@@ -174,7 +174,7 @@ public interface DataMapper {
 	 * @author ssh
 	 * @date 2018年6月6日 下午9:27:51
 	 */
-	List<Data> listDevType1();
+	List<Dict> listDevType1();
 	/**
 	 * 
 	 * 方法描述：查询全部设备编码
@@ -182,7 +182,7 @@ public interface DataMapper {
 	 * @author ssh
 	 * @date 2018年6月8日 上午9:28:18
 	 */
-	List<Data> listMsDev();
+	List<Dict> listMsDev();
 	/**
 	 * 
 	 * 方法描述：查询全部资金来源
@@ -190,7 +190,7 @@ public interface DataMapper {
 	 * @author ssh
 	 * @date 2018年6月8日 上午10:08:59
 	 */
-	List<Data> listMsFp();
+	List<Dict> listMsFp();
 	/**
      * 
      * 方法描述：查询全部监测站类型
@@ -198,7 +198,7 @@ public interface DataMapper {
      * @author ssh
      * @date 2018年6月8日 上午10:08:59
      */
-	List<Data> listMsType();
+	List<Dict> listMsType();
 	/**
      * 
      * 方法描述：查询全部网关类型
@@ -206,7 +206,7 @@ public interface DataMapper {
      * @author ssh
      * @date 2018年6月8日 上午10:08:59
      */
-	List<Data> listMsGate();
+	List<Dict> listMsGate();
 	/**
      * 
      * 方法描述：查询全部网络类型
@@ -214,6 +214,6 @@ public interface DataMapper {
      * @author ssh
      * @date 2018年6月8日 上午10:08:59
      */
-    List<Data> listMsNet();
+    List<Dict> listMsNet();
 	
 }

@@ -1,10 +1,10 @@
-package com.nz.onlineMonitoring.data.service;
+package com.nz.onlineMonitoring.dict.service;
 
 import java.util.List;
 
-import com.nz.onlineMonitoring.data.model.Data;
+import com.nz.onlineMonitoring.dict.model.Dict;
 
-public interface DataService {
+public interface DictService {
     /**
      * 
      * 方法描述：设备类型
@@ -13,7 +13,7 @@ public interface DataService {
      * @author ssh
      * @date 2018年6月8日 下午4:37:31
      */
-    Data loadByDevType1(Integer data_value);
+    Dict loadByDevType1(Integer data_value);
     /**
      * 
      * 方法描述：查询山东省的所有市
@@ -22,7 +22,7 @@ public interface DataService {
      * @author ssh
      * @date 2018年6月5日 上午9:24:18
      */
-    List<Data> listCity();
+    List<Dict> listCity();
     /**
      * 
      * 方法描述：根据市的id，查询市的区，会把市的长度取前四位，然后模糊查询
@@ -31,7 +31,7 @@ public interface DataService {
      * @author ssh
      * @date 2018年6月5日 上午9:24:52
      */
-    List<Data> listArea(int data_value);
+    List<Dict> listArea(int data_value);
     /**
      * 
      * 方法描述：查询设备的全部状态
@@ -39,7 +39,7 @@ public interface DataService {
      * @author ssh
      * @date 2018年6月6日 下午9:27:03
      */
-    List<Data> listDevStauts();
+    List<Dict> listDevStauts();
     /**
      * 
      * 方法描述：查询设备监测的对象
@@ -47,7 +47,7 @@ public interface DataService {
      * @author ssh
      * @date 2018年6月6日 下午9:27:28
      */
-    List<Data> listDevType();
+    List<Dict> listDevType();
     /**
      * 
      * 方法描述：查询设备的类型
@@ -55,7 +55,7 @@ public interface DataService {
      * @author ssh
      * @date 2018年6月6日 下午9:27:51
      */
-    List<Data> listDevType1();
+    List<Dict> listDevType1();
     /**
      * 
      * 方法描述：设备编码
@@ -63,7 +63,7 @@ public interface DataService {
      * @author ssh
      * @date 2018年6月8日 下午4:55:53
      */
-    List<Data> listMsDev();
+    List<Dict> listMsDev();
     /**
      * 
      * 方法描述：查询全部资金来源
@@ -71,7 +71,7 @@ public interface DataService {
      * @author ssh
      * @date 2018年6月8日 上午10:08:59
      */
-    List<Data> listMsFp();
+    List<Dict> listMsFp();
     /**
      * 
      * 方法描述：查询全部监测站类型
@@ -79,7 +79,7 @@ public interface DataService {
      * @author ssh
      * @date 2018年6月8日 上午10:08:59
      */
-    List<Data> listMsType();
+    List<Dict> listMsType();
     /**
      * 
      * 方法描述：查询全部网关类型
@@ -87,7 +87,7 @@ public interface DataService {
      * @author ssh
      * @date 2018年6月8日 上午10:08:59
      */
-    List<Data> listMsGate();
+    List<Dict> listMsGate();
     /**
      * 
      * 方法描述：查询全部网络类型
@@ -95,6 +95,6 @@ public interface DataService {
      * @author ssh
      * @date 2018年6月8日 上午10:08:59
      */
-    List<Data> listMsNet();
+    List<Dict> listMsNet();
    
 }

@@ -1,18 +1,18 @@
-package com.nz.onlineMonitoring.data.service.impl;
+package com.nz.onlineMonitoring.dict.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nz.onlineMonitoring.data.mapper.DataMapper;
-import com.nz.onlineMonitoring.data.model.Data;
-import com.nz.onlineMonitoring.data.service.DataService;
+import com.nz.onlineMonitoring.dict.mapper.DictMapper;
+import com.nz.onlineMonitoring.dict.model.Dict;
+import com.nz.onlineMonitoring.dict.service.DictService;
 @Service
-public class DataServiceImpl implements DataService {
+public class DictServiceImpl implements DictService {
     
     @Autowired
-    private DataMapper dataMapper;
+    private DictMapper dictMapper;
     /**
      * 
      * 方法描述：查询山东省的所有市
@@ -22,10 +22,10 @@ public class DataServiceImpl implements DataService {
      * @date 2018年6月5日 上午9:24:18
      */
     @Override
-    public List<Data> listCity() {
-        List<Data> dataList = dataMapper.listCity();
+    public List<Dict> listCity() {
+        List<Dict> dataList = dictMapper.listCity();
         //将编码除以100.得到其前四位
-        for (Data d : dataList) {
+        for (Dict d : dataList) {
             d.setData_value(d.getData_value()/100);
         }
         return dataList;
@@ -39,8 +39,8 @@ public class DataServiceImpl implements DataService {
      * @date 2018年6月5日 上午9:24:52
      */
     @Override
-    public List<Data> listArea(int data_value) {
-        return dataMapper.listArea(data_value);
+    public List<Dict> listArea(int data_value) {
+        return dictMapper.listArea(data_value);
     }
     /**
      * 
@@ -50,8 +50,8 @@ public class DataServiceImpl implements DataService {
      * @date 2018年6月6日 下午9:27:03
      */
     @Override
-    public List<Data> listDevStauts() {
-        return dataMapper.listDevStauts();
+    public List<Dict> listDevStauts() {
+        return dictMapper.listDevStauts();
     }
     /**
      * 
@@ -61,8 +61,8 @@ public class DataServiceImpl implements DataService {
      * @date 2018年6月6日 下午9:27:28
      */
     @Override
-    public List<Data> listDevType() {
-        return dataMapper.listDevType();
+    public List<Dict> listDevType() {
+        return dictMapper.listDevType();
     }
     /**
      * 
@@ -72,38 +72,38 @@ public class DataServiceImpl implements DataService {
      * @date 2018年6月6日 下午9:27:51
      */
     @Override
-    public List<Data> listDevType1() {
-        return dataMapper.listDevType1();
+    public List<Dict> listDevType1() {
+        return dictMapper.listDevType1();
     }
     @Override
-    public List<Data> listMsDev() {
+    public List<Dict> listMsDev() {
         // TODO Auto-generated method stub
-        return dataMapper.listMsDev();
+        return dictMapper.listMsDev();
     }
     @Override
-    public List<Data> listMsFp() {
+    public List<Dict> listMsFp() {
         // TODO Auto-generated method stub
-        return dataMapper.listMsFp();
+        return dictMapper.listMsFp();
     }
     @Override
-    public List<Data> listMsType() {
+    public List<Dict> listMsType() {
         // TODO Auto-generated method stub
-        return dataMapper.listMsType();
+        return dictMapper.listMsType();
     }
     @Override
-    public List<Data> listMsGate() {
+    public List<Dict> listMsGate() {
         // TODO Auto-generated method stub
-        return dataMapper.listMsGate();
+        return dictMapper.listMsGate();
     }
     @Override
-    public Data loadByDevType1(Integer data_value) {
+    public Dict loadByDevType1(Integer data_value) {
         // TODO Auto-generated method stub
-        return dataMapper.loadByDevType1(data_value);
+        return dictMapper.loadByDevType1(data_value);
     }
     @Override
-    public List<Data> listMsNet() {
+    public List<Dict> listMsNet() {
         // TODO Auto-generated method stub
-        return dataMapper.listMsNet();
+        return dictMapper.listMsNet();
     }
 
 }

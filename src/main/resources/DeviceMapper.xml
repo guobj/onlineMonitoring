@@ -3,7 +3,6 @@
 <mapper namespace="com.nz.onlineMonitoring.deviceInfo.mapper.DeviceMapper" >
     <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.deviceInfo.model.Device" >
         <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="ms_name" property="ms_name" jdbcType="VARCHAR" />
         <result column="ms_code" property="ms_code" jdbcType="VARCHAR" />
         <result column="dev_code" property="dev_code" jdbcType="VARCHAR" />
         <result column="dev_protocol" property="dev_protocol" jdbcType="INTEGER" />
@@ -15,12 +14,12 @@
         <result column="dev_mfrs" property="dev_mfrs" jdbcType="VARCHAR" />
         <result column="dev_desc" property="dev_desc" jdbcType="VARCHAR" />
         <association property="station" column="ms_code" select="com.nz.onlineMonitoring.stationInfo.mapper.StationMapper.loadByMscode"/>
-        <association property="dataProtocol" column="dev_protocol" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadByDevProtocol"/>
-        <association property="dataInterface" column="dev_interface" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadByDevInterface"/>
-        <association property="dataPort" column="dev_port" select="com.nz.onlineMonitoring.data.mapper.DataMapper.loadByDevPort"/>
+        <association property="dataProtocol" column="dev_protocol" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevProtocol"/>
+        <association property="dataInterface" column="dev_interface" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevInterface"/>
+        <association property="dataPort" column="dev_port" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevPort"/>
     </resultMap>
     <sql id="t_device_columns" >
-        id, ms_name, ms_code, dev_code, dev_protocol, dev_interface, dev_regad, dev_ip, dev_port, 
+        id, ms_code, dev_code, dev_protocol, dev_interface, dev_regad, dev_ip, dev_port, 
         dev_warraty, dev_mfrs, dev_desc, dr
     </sql>
     <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -34,9 +33,6 @@
     <select id="queryDeviceInfo" resultMap="BaseResultMap" parameterType="map">
         SELECT * FROM t_device td
         <where>
-            <if test="device.ms_name!=null and device.ms_name.trim()!=''">
-                AND td.ms_name LIKE concat("%",#{device.ms_name},"%")
-            </if>
             <if test="device.ms_code!=null and device.ms_code.trim()!=''">
                 AND td.ms_code LIKE concat("%",#{device.ms_code},"%")
             </if>
@@ -52,9 +48,6 @@
     <select id="count" resultType="integer" parameterType="map">
         SELECT count(*) FROM t_device td
         <where>
-            <if test="device.ms_name!=null and device.ms_name.trim()!=''">
-                AND td.ms_name LIKE concat("%",#{device.ms_name},"%")
-            </if>
             <if test="device.ms_code!=null and device.ms_code.trim()!=''">
                 AND td.ms_code LIKE concat("%",#{device.ms_code},"%")
             </if>
@@ -73,9 +66,6 @@
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="id != null" >
                 id,
-            </if>
-            <if test="ms_name != null" >
-                ms_name,
             </if>
             <if test="ms_code != null" >
                 ms_code,
@@ -112,9 +102,6 @@
             <if test="id != null" >
                 #{id,jdbcType=INTEGER},
             </if>
-            <if test="ms_name != null" >
-                #{ms_name,jdbcType=VARCHAR},
-            </if>
             <if test="ms_code != null" >
                 #{ms_code,jdbcType=VARCHAR},
             </if>
@@ -150,9 +137,6 @@
     <update id="update" parameterType="com.nz.onlineMonitoring.deviceInfo.model.Device" >
         update t_device
         <set >
-            <if test="ms_name != null" >
-                ms_name = #{ms_name,jdbcType=VARCHAR},
-            </if>
             <if test="ms_code != null" >
                 ms_code = #{ms_code,jdbcType=VARCHAR},
             </if>

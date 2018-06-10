@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.nz.onlineMonitoring.data.mapper.DataMapper" >
-    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.data.model.Data" >
+<mapper namespace="com.nz.onlineMonitoring.dict.mapper.DictMapper" >
+    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.dict.model.Dict" >
         <result column="data_type" property="data_type" jdbcType="VARCHAR" />
         <result column="data_value" property="data_value" jdbcType="INTEGER" />
         <result column="data_name" property="data_name" jdbcType="VARCHAR" />
         <result column="data_order" property="data_order" jdbcType="INTEGER" />
     </resultMap>
-    <sql id="t_data_columns" >
+    <sql id="t_dict_columns" >
         data_type, data_value, data_name, data_order
     </sql>
     <select id="loadByDataValue" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select * from t_data where data_type="ms_type" and data_value=#{data_value,jdbcType=INTEGER}
+        select * from t_dict where data_type="ms_type" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
 
     <select id="loadByDevProtocol" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select * from t_data where data_type="dev_protocol" and data_value=#{data_value,jdbcType=INTEGER}
+        select * from t_dict where data_type="dev_protocol" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
 
     <select id="loadByDevInterface" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select * from t_data where data_type="dev_interface" and data_value=#{data_value,jdbcType=INTEGER}
+        select * from t_dict where data_type="dev_interface" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
 
     <select id="loadByDevPort" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select * from t_data where data_type="dev_port" and data_value=#{data_value,jdbcType=INTEGER}
+        select * from t_dict where data_type="dev_port" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
 
     <select id="loadByDevType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select * from t_data where data_type="dev_type" and data_value=#{data_value,jdbcType=INTEGER}
+        select * from t_dict where data_type="dev_type" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
     <select id="loadByDevType1" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select * from t_data where data_type="dev_type1" and data_value=#{data_value,jdbcType=INTEGER}
+        select * from t_dict where data_type="dev_type1" and data_value=#{data_value,jdbcType=INTEGER}
     </select>
-    <insert id="add" parameterType="com.nz.onlineMonitoring.data.model.Data" >
-        insert into t_data
+    <insert id="add" parameterType="com.nz.onlineMonitoring.dict.model.Dict" >
+        insert into t_dict
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="data_type != null" >
                 data_type,
@@ -66,100 +66,100 @@
 
     <select id="loadDev" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_dev'
     </select>
     <select id="loadType" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_type'
     </select>
     <select id="loadFp" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_fp'
     </select>
     <select id="loadNet" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_net'
     </select>
     <select id="loadGate" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_value = #{data_value,jdbcType=INTEGER} and data_type='ms_gate'
     </select>
     <select id="loadCity" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_type='ms_city' and data_value= #{data_value}
     </select>
     <select id="listCity" resultMap="BaseResultMap">
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_type ='ms_city' and data_value like '%00' and data_value not like '%00__'
     </select>
     <!-- 根据市的id，查询市的区，会把市的长度取前四位，然后模糊查询 -->
     <select id="listArea" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_type ='ms_city' and data_value like concat(#{data_value},"%") and data_value not like '%00'
     </select>
     <select id="listDevStauts" resultMap="BaseResultMap">
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_type ='dev_stauts'
     </select>
     <select id="listDevType" resultMap="BaseResultMap">
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_type ='dev_type'
     </select>
     <select id="listDevType1" resultMap="BaseResultMap">
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_type ='dev_type1'
     </select>
     
     <select id="listMsDev" resultMap="BaseResultMap">
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_type='ms_dev'
     </select>
      <select id="listMsFp" resultMap="BaseResultMap">
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_type='ms_fp'
     </select>
     <select id="listMsType" resultMap="BaseResultMap">
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_type='ms_type'
     </select>
     <select id="listMsGate" resultMap="BaseResultMap">
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_type='ms_gate'
     </select>
     <select id="listMsNet" resultMap="BaseResultMap">
         select
-        <include refid="t_data_columns" />
-        from t_data
+        <include refid="t_dict_columns" />
+        from t_dict
         where data_type='ms_net'
     </select>
 </mapper>

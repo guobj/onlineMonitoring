@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.nz.onlineMonitoring.realData.model.Meteorological;
-import com.nz.onlineMonitoring.realData.service.MeteorologicalService;
+import com.nz.onlineMonitoring.realData.model.RealMeteorological;
+import com.nz.onlineMonitoring.realData.service.RealMeteorologicalService;
 import com.nz.onlineMonitoring.utils.PageBean;
 
 @Controller
-@RequestMapping("/meteorological")
-public class MeteorologicalController {
+@RequestMapping("/realMeteorological")
+public class RealMeteorologicalController {
 
     @Autowired
-    private MeteorologicalService meteorologicalService;
+    private RealMeteorologicalService realMeteorologicalService;
     
     /**
      * 
@@ -32,27 +32,27 @@ public class MeteorologicalController {
      * @author ssh
      * @date 2018年6月3日 下午4:18:48
      */
-    @RequestMapping("/listMeteorological")
+    @RequestMapping("/listRealMeteorological")
     @ResponseBody
-    public List<Meteorological> listMeteorological(Map<String, Object> map,Meteorological meteorological,HttpServletRequest request,@RequestParam(required=false,defaultValue="1") int pages,@RequestParam(required=false,name="city")String[] citys){        
+    public List<RealMeteorological> listMeteorological(Map<String, Object> map,RealMeteorological realMeteorological,HttpServletRequest request,@RequestParam(required=false,defaultValue="1") int pages,@RequestParam(required=false,name="city")String[] citys){        
         if (citys != null) {
             int n = citys.length;
             switch (n) {
             case 1:
-                meteorological.setMs_code(citys[0]);
+                realMeteorological.setMs_code(citys[0]);
                 break;
             case 2:
-                meteorological.setMs_code(citys[1]);
+                realMeteorological.setMs_code(citys[1]);
                 break;
             default: 
-                meteorological.setMs_code("37");
+                realMeteorological.setMs_code("37");
                 break;
             }
         }
-        map = PageBean.serverMap(map , meteorological , pages);
-        List<Meteorological> listMeteorological = meteorologicalService.listMeteorological(map);
+        map = PageBean.serverMap(map , realMeteorological , pages);
+        List<RealMeteorological> listMeteorological = realMeteorologicalService.listMeteorological(map);
         map = PageBean.clientMap(map ,pages,request);
-        map.put("listMeteorological", listMeteorological);
+        map.put("listRealMeteorological", listMeteorological);
         return listMeteorological;
     }
     

@@ -15,12 +15,10 @@ import java.util.Date;
  * 
  * 文件创建于: 2018-06-01 11:08:33
  **/
-public class Meteorological {
+public class RealMeteorological {
 
     /**序号-主键、自增、界面不可见,所属表字段为 t_meteorological.id  */
     private Integer id;
-    /**监测站名称-与t_station ms_name关联,所属表字段为 t_meteorological.ms_name  */
-    private String ms_name;
     /**监测站编码-与t_station ms_code关联,所属表字段为 t_meteorological.ms_code  */
     private String ms_code;
     /**设备编码-与t_devive dev_code关联,所属表字段为 t_meteorological.dev_code  */
@@ -56,7 +54,7 @@ public class Meteorological {
     /**土壤EC值,所属表字段为 t_meteorological.soil_ec  */
     private Double soil_ec;
     /**时间,所属表字段为 t_meteorological.time  */
-    private Date time;
+    private Date data_time;
     /**设备状态-关联表，见数据字典,所属表字段为 t_meteorological.dev_status  */
     private Integer dev_status;
 
@@ -85,23 +83,6 @@ public class Meteorological {
         this.id = id;
     }
 
-    /**
-     * 获取 监测站名称-与t_station ms_name关联 字段:t_meteorological.ms_name
-     *
-     * @return  t_meteorological.ms_name  ,监测站名称-与t_station ms_name关联
-     */
-    public String getMs_name() {
-        return ms_name;
-    }
-
-    /**
-     * 设置 监测站名称-与t_station ms_name关联 字段:t_meteorological.ms_name
-     *
-     * @param ms_name  t_meteorological.ms_name,监测站名称-与t_station ms_name关联
-     */
-    public void setMs_name(String ms_name) {
-        this.ms_name = ms_name == null ? null : ms_name.trim();
-    }
 
     /**
      * 获取 监测站编码-与t_station ms_code关联 字段:t_meteorological.ms_code
@@ -414,8 +395,8 @@ public class Meteorological {
      *
      * @return  t_meteorological.time  ,时间
      */
-    public Date getTime() {
-        return time;
+    public Date getData_ime() {
+        return data_time;
     }
 
     /**
@@ -423,8 +404,8 @@ public class Meteorological {
      *
      * @param time  t_meteorological.time,时间
      */
-    public void setTime(Date time) {
-        this.time = time;
+    public void setData_ime(Date data_time) {
+        this.data_time = data_time;
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.nz.onlineMonitoring.stationInfo.contrller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.nz.onlineMonitoring.data.service.DataService;
+import com.nz.onlineMonitoring.dict.service.DictService;
 import com.nz.onlineMonitoring.stationInfo.model.Station;
 import com.nz.onlineMonitoring.stationInfo.service.StationService;
 import com.nz.onlineMonitoring.utils.PageBean;
@@ -24,7 +26,7 @@ public class StationController {
     @Autowired
     private StationService stationService;
     @Autowired
-    private DataService dataService;
+    private DictService dataService;
     
    /**
     * 
@@ -115,12 +117,20 @@ public class StationController {
      * @author ssh 
      * @date 2018年6月2日 下午9:18:29
      */
-    @GetMapping("/updateStation")
-    @ResponseBody
-    public String updateStation(Station station,Map<String , Object> map) {
+    @PostMapping("/updateStation")
+    public String updateStation(Station station,Map<String , Object> map,String ms_date1) {
+        if (ms_date1 != null && ms_date1 != "") {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                station.setMs_date(sdf.parse(ms_date1));
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
         String result = stationService.update(station);
         map.put("result", result);
-        return "station/updateStation";
+        return "station/listStation";
     }
     /**
      * 

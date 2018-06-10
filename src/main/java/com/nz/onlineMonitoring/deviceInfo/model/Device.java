@@ -7,7 +7,7 @@
  **/
 package com.nz.onlineMonitoring.deviceInfo.model;
 
-import com.nz.onlineMonitoring.data.model.Data;
+import com.nz.onlineMonitoring.dict.model.Dict;
 import com.nz.onlineMonitoring.stationInfo.model.Station;
 
 /**
@@ -21,11 +21,13 @@ public class Device {
     /**序号-主键、自增、界面不可见,所属表字段为 t_device.id  */
     private Integer id;
     /**监测站名称-与t_station ms_name关联,所属表字段为 t_device.ms_name  */
-    private String ms_name;
-    /**监测站编码-与t_station ms_code关联,所属表字段为 t_device.ms_code  */
     private String ms_code;
     /**设备编码-由网关设备写入数据库,所属表字段为 t_device.dev_code  */
     private String dev_code;
+    /**设备类型-关联表，见数据字典，由网关设备写入数据库，ps：101，201,202,所属表字段为 t_device.dev_type  */
+    private Integer dev_type;
+    /**设备厂家-关联表，见数据字典，由网关设备写入数据库,所属表字段为 t_device.dev_factory  */
+    private Integer dev_factory;
     /**通信协议-关联表，见数据字典,所属表字段为 t_device.dev_protocol  */
     private Integer dev_protocol;
     /**通讯接口-关联表，见数据字典,所属表字段为 t_device.dev_interface  */
@@ -34,7 +36,7 @@ public class Device {
     private Integer dev_regad;
     /**ip地址-设备ip地址,所属表字段为 t_device.dev_ip  */
     private String dev_ip;
-    /**通信端口-关联表，见数据字典,所属表字段为 t_device.dev_port  */
+    /**通信端口,所属表字段为 t_device.dev_port  */
     private Integer dev_port;
     /**质保期限-年,所属表字段为 t_device.dev_warraty  */
     private Integer dev_warraty;
@@ -51,13 +53,13 @@ public class Device {
 	private Station station;
 
 	//存储数据字典data_type="dev_protocol"的相关信息
-	private Data dataProtocol;
+	private Dict dataProtocol;
 
 	//存储数据字典data_type="dev_interface"的相关信息
-	private Data dataInterface;
+	private Dict dataInterface;
 
 	//存储数据字典data_type="dev_port"的相关信息
-	private Data dataPort;
+	private Dict dataPort;
 
 	public Station getStation() {
 		return station;
@@ -67,27 +69,27 @@ public class Device {
 		this.station = station;
 	}
 
-	public Data getDataProtocol() {
+	public Dict getDataProtocol() {
 		return dataProtocol;
 	}
 
-	public void setDataProtocol(Data dataProtocol) {
+	public void setDataProtocol(Dict dataProtocol) {
 		this.dataProtocol = dataProtocol;
 	}
 
-	public Data getDataInterface() {
+	public Dict getDataInterface() {
 		return dataInterface;
 	}
 
-	public void setDataInterface(Data dataInterface) {
+	public void setDataInterface(Dict dataInterface) {
 		this.dataInterface = dataInterface;
 	}
 
-	public Data getDataPort() {
+	public Dict getDataPort() {
 		return dataPort;
 	}
 
-	public void setDataPort(Data dataPort) {
+	public void setDataPort(Dict dataPort) {
 		this.dataPort = dataPort;
 	}
 
@@ -116,23 +118,6 @@ public class Device {
         this.id = id;
     }
 
-    /**
-     * 获取 监测站名称-与t_station ms_name关联 字段:t_device.ms_name
-     *
-     * @return  t_device.ms_name  ,监测站名称-与t_station ms_name关联
-     */
-    public String getMs_name() {
-        return ms_name;
-    }
-
-    /**
-     * 设置 监测站名称-与t_station ms_name关联 字段:t_device.ms_name
-     *
-     * @param ms_name  t_device.ms_name,监测站名称-与t_station ms_name关联
-     */
-    public void setMs_name(String ms_name) {
-        this.ms_name = ms_name == null ? null : ms_name.trim();
-    }
 
     /**
      * 获取 监测站编码-与t_station ms_code关联 字段:t_device.ms_code
@@ -150,6 +135,46 @@ public class Device {
      */
     public void setMs_code(String ms_code) {
         this.ms_code = ms_code == null ? null : ms_code.trim();
+    }
+    /**
+     * 
+     * 方法描述：设备类型-关联表，见数据字典，由网关设备写入数据库，ps：101，201,202,所属表字段为 t_device.dev_type
+     * @return
+     * @author ssh
+     * @date 2018年6月9日 下午9:19:39
+     */
+    public Integer getDev_type() {
+        return dev_type;
+    }
+    /**
+     * 
+     * 方法描述：设备类型-关联表，见数据字典，由网关设备写入数据库，ps：101，201,202,所属表字段为 t_device.dev_type
+     * @return
+     * @author ssh
+     * @date 2018年6月9日 下午9:19:39
+     */
+    public void setDev_type(Integer dev_type) {
+        this.dev_type = dev_type;
+    }
+    /**
+     * 
+     * 方法描述：通信协议-关联表，见数据字典,所属表字段为 t_device.dev_protocol 
+     * @return
+     * @author ssh
+     * @date 2018年6月9日 下午9:19:58
+     */
+    public Integer getDev_factory() {
+        return dev_factory;
+    }
+    /**
+     * 
+     * 方法描述：通信协议-关联表，见数据字典,所属表字段为 t_device.dev_protocol 
+     * @return
+     * @author ssh
+     * @date 2018年6月9日 下午9:19:58
+     */
+    public void setDev_factory(Integer dev_factory) {
+        this.dev_factory = dev_factory;
     }
 
     /**

@@ -8,7 +8,7 @@
 package com.nz.onlineMonitoring.stationInfo.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.nz.onlineMonitoring.data.model.Data;
+import com.nz.onlineMonitoring.dict.model.Dict;
 
 import java.util.Date;
 
@@ -37,8 +37,10 @@ public class Station {
     private Integer ms_fp;
     /**监测站位置-手动输入位置信息,所属表字段为 t_station.ms_place  */
     private String ms_place;
-    /**经纬度-5位小数，由c/s系统写入,所属表字段为 t_station.ms_position  */
-    private Double ms_position;
+    /**经度-5位小数，由c/s系统写入,所属表字段为 t_station.ms_longitude  */
+    private Double ms_longitude;
+    /**纬度-5位小数，由c/s系统写入,所属表字段为 t_station.ms_latitude  */
+    private Double ms_latitude;
     /**使用单位、联系人、联系方式-直接输入，用逗号隔开,所属表字段为 t_station.ms_user  */
     private String ms_user;
     /**施工单位、联系人、联系方式-直接输入，用逗号隔开,所属表字段为 t_station.ms_builder  */
@@ -62,25 +64,25 @@ public class Station {
 		this.dr = dr;
 	}
 
-	private Data data;
+	private Dict dict;
 
-	public Data getData() {
-		return data;
+	public Dict getDict() {
+		return dict;
 	}
 
-	public void setData(Data data) {
-		this.data = data;
+	public void setDict(Dict dict) {
+		this.dict = dict;
 	}
 	/**与ms_dev关联，是数据字典中的值 */
 	private String ms_dev_value;
 	/**与ms_type关联，是数据字典中的值 */
-	private Data ms_type_value;
+	private Dict ms_type_value;
 	/**与ms_fp关联，是数据字典中的值 */
-	private Data ms_fp_value;
+	private Dict ms_fp_value;
 	/**与ms_net关联，是数据字典中的值 */
-	private Data ms_net_value;
+	private Dict ms_net_value;
 	/**与ms_gate关联，是数据字典中的值 */
-	private Data ms_gate_value;
+	private Dict ms_gate_value;
     /**
      * 获取 序号-主键、自增 字段:t_station.id
      *
@@ -224,23 +226,40 @@ public class Station {
     public void setMs_place(String ms_place) {
         this.ms_place = ms_place == null ? null : ms_place.trim();
     }
-
     /**
-     * 获取 经纬度-5位小数，由c/s系统写入 字段:t_station.ms_position
+     * 获取 经度-5位小数，由c/s系统写入 字段:t_station.ms_longitude
      *
      * @return  t_station.ms_position  ,经纬度-5位小数，由c/s系统写入
      */
-    public Double getMs_position() {
-        return ms_position;
+    public Double getMs_longitude() {
+        return ms_longitude;
     }
 
     /**
-     * 设置 经纬度-5位小数，由c/s系统写入 字段:t_station.ms_position
+     * 设置 经纬度-5位小数，由c/s系统写入 字段:t_station.ms_longitude
      *
      * @param ms_position  t_station.ms_position,经纬度-5位小数，由c/s系统写入
      */
-    public void setMs_position(Double ms_position) {
-        this.ms_position = ms_position;
+    public void setMs_longitude(Double ms_longitude) {
+        this.ms_longitude = ms_longitude;
+    }
+
+    /**
+     * 获取 纬度-5位小数，由c/s系统写入 字段:t_station.ms_latitude
+     *
+     * @return  t_station.ms_position  ,经纬度-5位小数，由c/s系统写入
+     */
+    public Double getMs_latitude() {
+        return ms_latitude;
+    }
+
+    /**
+     * 设置 经纬度-5位小数，由c/s系统写入 字段:t_station.ms_latitude
+     *
+     * @param ms_position  t_station.ms_position,经纬度-5位小数，由c/s系统写入
+     */
+    public void setMs_latitude(Double ms_latitude) {
+        this.ms_latitude = ms_latitude;
     }
 
     /**
@@ -357,7 +376,7 @@ public class Station {
 	 * @return
 	 * @date 2018年6月2日 下午7:05:22
 	 */
-	public Data getMs_type_value() {
+	public Dict getMs_type_value() {
 		return ms_type_value;
 	}
 	/**
@@ -366,7 +385,7 @@ public class Station {
 	 * @param ms_type_value
 	 * @date 2018年6月2日 下午7:05:30
 	 */
-	public void setMs_type_value(Data ms_type_value) {
+	public void setMs_type_value(Dict ms_type_value) {
 		this.ms_type_value = ms_type_value;
 	}
 	/**
@@ -375,7 +394,7 @@ public class Station {
 	 * @return
 	 * @date 2018年6月2日 下午7:05:34
 	 */
-	public Data getMs_fp_value() {
+	public Dict getMs_fp_value() {
 		return ms_fp_value;
 	}
 	/**
@@ -384,7 +403,7 @@ public class Station {
 	 * @param ms_fp_value
 	 * @date 2018年6月2日 下午7:05:37
 	 */
-	public void setMs_fp_value(Data ms_fp_value) {
+	public void setMs_fp_value(Dict ms_fp_value) {
 		this.ms_fp_value = ms_fp_value;
 	}
 	/**
@@ -393,7 +412,7 @@ public class Station {
 	 * @return
 	 * @date 2018年6月2日 下午7:05:41
 	 */
-	public Data getMs_net_value() {
+	public Dict getMs_net_value() {
 		return ms_net_value;
 	}
 	/**
@@ -402,7 +421,7 @@ public class Station {
 	 * @param ms_net_value
 	 * @date 2018年6月2日 下午7:05:45
 	 */
-	public void setMs_net_value(Data ms_net_value) {
+	public void setMs_net_value(Dict ms_net_value) {
 		this.ms_net_value = ms_net_value;
 	}
 	/**
@@ -411,7 +430,7 @@ public class Station {
 	 * @return
 	 * @date 2018年6月2日 下午7:05:48
 	 */
-	public Data getMs_gate_value() {
+	public Dict getMs_gate_value() {
 		return ms_gate_value;
 	}
 	/**
@@ -420,7 +439,7 @@ public class Station {
 	 * @param ms_gate_value
 	 * @date 2018年6月2日 下午7:05:54
 	 */
-	public void setMs_gate_value(Data ms_gate_value) {
+	public void setMs_gate_value(Dict ms_gate_value) {
 		this.ms_gate_value = ms_gate_value;
 	}
 }

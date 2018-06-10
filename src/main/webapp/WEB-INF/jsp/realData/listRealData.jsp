@@ -24,7 +24,7 @@
         $("#s_city").change(function city(){
             var city_id = $(this).val();
             $("#s_area").html("<option value=''>地级市</option>");
-            $.post("data/listArea",{city_id:city_id},function(data){
+            $.post("dict/listArea",{city_id:city_id},function(data){
                 if(data!=null&&data.length>0){
                     for(var i=0;i<data.length;i++){
                         $("#s_area").append("<option value="+data[i].data_value+">"+data[i].data_name+"</option>");
@@ -34,7 +34,7 @@
         });
     })
     function city(){
-        $.post("data/listCity",function(data){
+        $.post("dict/listCity",function(data){
             if(data!=null&&data.length>0){
                 for(var i=0;i<data.length;i++){
                     $("#s_city").append("<option value="+data[i].data_value+">"+data[i].data_name+"</option>");
@@ -65,7 +65,6 @@
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">数据管理</span> > <span id="zb3">实时数据查询</span></p></li>
     <div class="menu">
         <form action="realData/listRealData" method="post">
-            <span>监测站名称：<input type="text" name="ms_name"/></span>
             <span>设备类型：
 	            <select class="select1" name="device_type">
 	                <option value="">不限</option>
@@ -119,8 +118,7 @@
     </div>
     <table>
         <thead class="name">
-        <tr >
-            <td class="t1">监测站名称</td>
+        <tr>
             <td class="t2">监测站编码</td>
             <td class="t3">监测设备编码</td>
             <td class="t5">采集时间</td>
@@ -128,13 +126,12 @@
         </tr>
         </thead>
         <tbody>
-	        <c:forEach items="${listReal }" var="real">
+	        <c:forEach items="${listRealData }" var="real">
 		        <tr style="border-bottom: 1px solid #adadad;">
-		            <td class="t1">${real.ms_name }</td>
 		            <td class="t2">${real.ms_code }</td>
 		            <td class="t3">${real.dev_code }</td>
-		            <td class="t5"><fmt:formatDate value="${real.real_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>  </td>
-		            <td class="t6">${real.real_data }<!-- <input type="button" value="查看" onclick="look()"/> --></td>
+		            <td class="t5"><fmt:formatDate value="${real.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>  </td>
+		            <td class="t6">${real.data_value }<!-- <input type="button" value="查看" onclick="look()"/> --></td>
 		        </tr>
 	        </c:forEach>
         </tbody>

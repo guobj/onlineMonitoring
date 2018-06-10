@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.nz.onlineMonitoring.realData.mapper.RealMapper" >
-    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.realData.model.Real" >
+<mapper namespace="com.nz.onlineMonitoring.realData.mapper.RealDataMapper" >
+    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.realData.model.RealData" >
         <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="ms_name" property="ms_name" jdbcType="VARCHAR" />
         <result column="ms_code" property="ms_code" jdbcType="VARCHAR" />
         <result column="dev_code" property="dev_code" jdbcType="VARCHAR" />
-        <result column="real_data" property="real_data" jdbcType="VARCHAR" />
-        <result column="real_time" property="real_time" jdbcType="TIMESTAMP" />
+        <result column="data_value" property="data_value" jdbcType="VARCHAR" />
+        <result column="data_time" property="data_time" jdbcType="TIMESTAMP" />
         <result column="dev_stauts" property="dev_stauts" jdbcType="INTEGER" />
       <!--   <association column="ms_code" property="ms_code_value" select=""></association>
         <association column="dev_code" property="dev_code_value" select=""></association>
         <association column="dev_stauts" property="dev_stauts_value" select=""></association> -->
     </resultMap>
-    <sql id="t_real_columns" >
-        id, ms_name, ms_code, dev_code, real_data, real_time, dev_stauts,dr
+    <sql id="t_real_data_columns" >
+        id,  ms_code, dev_code, data_value, data_time, dev_stauts,dr
     </sql>
     <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select 
-        <include refid="t_real_columns" />
-        from t_real
+        <include refid="t_real_data_columns" />
+        from t_real_data
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="delete" parameterType="java.lang.Integer" >
-        delete from t_real
+        delete from t_real_data
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <insert id="add" parameterType="com.nz.onlineMonitoring.realData.model.Real" >
-        insert into t_real
+    <insert id="add" parameterType="com.nz.onlineMonitoring.realData.model.RealData" >
+        insert into t_real_data
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="id != null" >
                 id,
-            </if>
-            <if test="ms_name != null" >
-                ms_name,
             </if>
             <if test="ms_code != null" >
                 ms_code,
@@ -41,11 +37,11 @@
             <if test="dev_code != null" >
                 dev_code,
             </if>
-            <if test="real_data != null" >
-                real_data,
+            <if test="data_value != null" >
+                data_value,
             </if>
-            <if test="real_time != null" >
-                real_time,
+            <if test="data_time != null" >
+                data_time,
             </if>
             <if test="dev_stauts != null" >
                 dev_stauts,
@@ -55,43 +51,37 @@
             <if test="id != null" >
                 #{id,jdbcType=INTEGER},
             </if>
-            <if test="ms_name != null" >
-                #{ms_name,jdbcType=VARCHAR},
-            </if>
             <if test="ms_code != null" >
                 #{ms_code,jdbcType=VARCHAR},
             </if>
             <if test="dev_code != null" >
                 #{dev_code,jdbcType=VARCHAR},
             </if>
-            <if test="real_data != null" >
-                #{real_data,jdbcType=VARCHAR},
+            <if test="data_value != null" >
+                #{data_value,jdbcType=VARCHAR},
             </if>
-            <if test="real_time != null" >
-                #{real_time,jdbcType=TIMESTAMP},
+            <if test="data_time != null" >
+                #{data_time,jdbcType=TIMESTAMP},
             </if>
             <if test="dev_stauts != null" >
                 #{dev_stauts,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>
-    <update id="update" parameterType="com.nz.onlineMonitoring.realData.model.Real" >
-        update t_real
-        <set >
-            <if test="ms_name != null" >
-                ms_name = #{ms_name,jdbcType=VARCHAR},
-            </if>
+    <update id="update" parameterType="com.nz.onlineMonitoring.realData.model.RealData" >
+        update t_real_data
+        <set>
             <if test="ms_code != null" >
                 ms_code = #{ms_code,jdbcType=VARCHAR},
             </if>
             <if test="dev_code != null" >
                 dev_code = #{dev_code,jdbcType=VARCHAR},
             </if>
-            <if test="real_data != null" >
-                real_data = #{real_data,jdbcType=VARCHAR},
+            <if test="data_value != null" >
+                data_value = #{data_value,jdbcType=VARCHAR},
             </if>
-            <if test="real_time != null" >
-                real_time = #{real_time,jdbcType=TIMESTAMP},
+            <if test="data_time != null" >
+                data_time = #{data_time,jdbcType=TIMESTAMP},
             </if>
             <if test="dev_stauts != null" >
                 dev_stauts = #{dev_stauts,jdbcType=INTEGER},
@@ -105,35 +95,31 @@
     <!-- 查询数据 -->
     <select id="listReal" resultMap="BaseResultMap" parameterType="map">
         select 
-        <include refid="t_real_columns" />
-        from t_real
+        <include refid="t_real_data_columns" />
+        from t_real_data
         <where>
             <!-- 最大时间 -->
-            real_time = (select max(real_time) from t_real)
-            <!-- 监测站名字  -->
-            <if test="real.ms_name != null and real.ms_name != ''" >
-                and ms_name like concat("%",#{real.ms_name},"%")
-            </if>
+            data_time = (select max(data_time) from t_real_data)
             <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
              -->
-            <if test="real.ms_code != null and real.ms_code != ''" >
-                and ms_code like concat(#{real.ms_code},"%")
+            <if test="realData.ms_code != null and realData.ms_code != ''" >
+                and ms_code like concat(#{realData.ms_code},"%")
             </if>
             <!-- 设备类型，即设备编码第5-6位 
-                 real.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
+                 realData.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
                                                     前面3个，后面两个下划线
             -->
-            <if test="real.device_type != null and real.device_type != ''" >
-                and dev_code like concat("___",#{real.device_type},"__")
+            <if test="realData.device_type != null and realData.device_type != ''" >
+                and dev_code like concat("___",#{realData.device_type},"__")
             </if>
            <!--  设备监测对象，即设备编码第4位 ,传过来的是1位，例如1，后面4个下划线-->
-            <if test="real.device_object != null and real.device_object != ''" >
-                and dev_code like concat("___",#{real.device_object},"____")
+            <if test="realData.device_object != null and realData.device_object != ''" >
+                and dev_code like concat("___",#{realData.device_object},"____")
             </if>
             <!-- 设备运行状态 -->
-            <if test="real.dev_stauts != null and real.dev_stauts != ''" >
-                and dev_stauts = #{real.dev_stauts}
+            <if test="realData.dev_stauts != null and realData.dev_stauts != ''" >
+                and dev_stauts = #{realData.dev_stauts}
             </if>
         </where>
         limit #{record},4
@@ -142,34 +128,30 @@
     <select id="countReal" resultType ="int" parameterType="map">
         select 
             count(*)
-        from t_real
+        from t_real_data
         <where>
             <!-- 最大时间 -->
-            real_time = (select max(real_time) from t_real)
-            <!-- 监测站名字  -->
-            <if test="real.ms_name != null and real.ms_name != ''" >
-                and ms_name like concat("%",#{real.ms_name},"%")
-            </if>
+            data_time = (select max(data_time) from t_real_data)
             <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
              -->
-            <if test="real.ms_code != null and real.ms_code != ''" >
-                and ms_code like concat(#{real.ms_code},"%")
+            <if test="realData.ms_code != null and realData.ms_code != ''" >
+                and ms_code like concat(#{realData.ms_code},"%")
             </if>
             <!-- 设备类型，即设备编码第5-6位 
-                 real.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
+                 realData.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
                                                     前面3个，后面两个下划线
             -->
-            <if test="real.device_type != null and real.device_type != ''" >
-                and dev_code like concat("___",#{real.device_type},"__")
+            <if test="realData.device_type != null and realData.device_type != ''" >
+                and dev_code like concat("___",#{realData.device_type},"__")
             </if>
            <!--  设备监测对象，即设备编码第4位 ,传过来的是4位，例如dev1，后面4个下划线-->
-            <if test="real.device_object != null and real.device_object != ''" >
-                and dev_code like concat(#{real.device_object},"____")
+            <if test="realData.device_object != null and realData.device_object != ''" >
+                and dev_code like concat(#{realData.device_object},"____")
             </if>
             <!-- 设备运行状态 -->
-            <if test="real.dev_stauts != null and real.dev_stauts != ''" >
-                and dev_stauts = #{real.dev_stauts}
+            <if test="realData.dev_stauts != null and realData.dev_stauts != ''" >
+                and dev_stauts = #{realData.dev_stauts}
             </if>
         </where>
     </select>

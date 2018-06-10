@@ -11,7 +11,7 @@
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>监测站信息</title>
-    <link href="css/xinxi.css" rel="stylesheet" type="text/css">
+    <link href="css/xinxi.css" rel="stylesheet" type=text/css>
     <script src="js/jquery.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <script type="text/javascript" src="js/jquery.page.js"></script>
@@ -24,7 +24,7 @@
 	        $("#s_city").change(function city(){
 	            var city_id = $(this).val();
 	            $("#s_area").html("<option value=''>地级市</option>");
-	            $.post("data/listArea",{city_id:city_id},function(data){
+	            $.post("dict/listArea",{city_id:city_id},function(data){
 	                if(data!=null&&data.length>0){
 	                    for(var i=0;i<data.length;i++){
 	                        $("#s_area").append("<option value="+data[i].data_value+">"+data[i].data_name+"</option>");
@@ -34,7 +34,7 @@
 	        });
 	    })
 	    function city(){
-	        $.post("data/listCity",function(data){
+	        $.post("dict/listCity",function(data){
 	            if(data!=null&&data.length>0){
 	                for(var i=0;i<data.length;i++){
 	                    $("#s_city").append("<option value="+data[i].data_value+">"+data[i].data_name+"</option>");
@@ -58,7 +58,8 @@
 	                        "<tr><td class='s1'>监测站类型</td><td class='s2'>"+data.ms_type_value.data_name+"</td></tr>" +
 	                        "<tr><td class='s1'>资金来源</td><td class='s2'>"+data.ms_fp_value.data_name+"</td></tr>" +
 	                        "<tr><td class='s1'>监测站位置</td><td class='s2'>"+data.ms_place+"</td></tr>" +
-	                        "<tr><td class='s1'>经纬度</td><td class='s2'>"+data.ms_position+"</td></tr>" +
+	                        "<tr><td class='s1'>经度</td><td class='s2'>"+data.ms_longitude+"</td></tr>" +
+	                        "<tr><td class='s1'>纬度</td><td class='s2'>"+data.ms_latitude+"</td></tr>" +
 	                        "<tr><td class='s1'>使用单位，联系人，联系方式</td><td class='s2'>"+data.ms_user+"</td></tr>" +
 	                        "<tr><td class='s1'>施工单位，联系人，联系方式</td><td class='s2'>"+data.ms_builder+"</td></tr>" +
 	                        "<tr><td class='s1'>网络类型</td><td class='s2'>"+data.ms_net_value.data_name+"</td></tr>" +
@@ -79,12 +80,14 @@
             $("#xiugai").html("");
             $.post("station/loadStation",{id:id},function(data){
                 if(data!=null){
-                    $("#xiugai").append("<form action='station/loadStation' method='post'>"+
-                            "<span>监测站名称:</span><input name='ms_name' type='text' value='"+data.ms_name+"'><br/>" +
-                            "<span>监测站编码:</span><input name='ms_code' type='text' value='"+data.ms_code+"'><br/>" +
-                            "<span>建设时间:</span><input name='ms_date' type='text' value='"+data.ms_date+"' style='margin-left: 28px;'><br/>" +
-                            "<span>使用单位，联系人，联系方式:</span><input name='ms_user' type='text' value='"+data.ms_user+"' class='lxfs'><br/>" +
-                            "<span>施工单位，联系人，联系方式:</span><input name='ms_builder' type='text' value='"+data.ms_builder+"' class='lxfs'><br/>" +
+                    $("#xiugai").append("<form action='station/updateStation' method='post'>"+
+                    		"<input name='id' type='hidden' value='"+data.id+"'><br/>" +
+                            "<span>监测站名称:</span><input name='ms_name' type='text' id="text_1" value='"+data.ms_name+"'   >+<span id="tip_1">请输入2-50位字符</span><br/>" +
+                            "<span>监测站编码:</span><input name='ms_code' type='text' id="text_2" value='"+data.ms_code+"'><span id="tip_2"> 请输入8位数字</span><br/>" +
+                            "<span>建设时间:</span><input name='ms_date1' type='date' value='"+data.ms_date+"' style='margin-left: 28px;'><br/>" +
+                            "<span>监测站位置:</span><input name='ms_code' type='text' value='"+data.ms_place+"'><br/>" +
+                            "<span>使用单位，联系人，联系方式:</span><input name='ms_user' type='text' id="text_3" value='"+data.ms_user+"' class='lxfs'><span id="tip_3">请输入0-100位字符</span><br/>" +
+                            "<span>施工单位，联系人，联系方式:</span><input name='ms_builder' type='text' id="text_4" value='"+data.ms_builder+"' class='lxfs'><span id="tip_4">请输入0-100位字符</span><br/>" +
                             "<span >监测站类型:</span>" +
                             "<select name='ms_type' style='margin-left: 1%;'>"+ 
                                 "<option value='"+data.ms_type+"'>"+data.ms_type_value.data_name+"</option>" + 
@@ -113,20 +116,31 @@
                                 "<option value='2'>NZ1000</option>" +
                             "</select><br/>" +
                             "<span>建设内容:</span>" +
-                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='1'>病害监测孢子捕捉仪" +
-                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='2'>害虫监测测报灯" +
-                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='3'>害虫监测性诱监测仪" +
-                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='4'>鼠情监测鼠害监测仪" +
-                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='5'>环境因子监测气象监测仪" +
-                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='6'>环境因子监测土壤监测仪" +
-                                "<input name='ms_dev' type='checkbox' name='gn' class='gn' value='7'>视频图像监测高清摄像头<br/>" +
+                                "<input name='ms_dev' type='checkbox' id='msDev1' class='gn' value='1'>病害监测孢子捕捉仪" +
+                                "<input name='ms_dev' type='checkbox' id='msDev2' class='gn' value='2'>害虫监测测报灯" +
+                                "<input name='ms_dev' type='checkbox' id='msDev3' class='gn' value='3'>害虫监测性诱监测仪" +
+                                "<input name='ms_dev' type='checkbox' id='msDev4' class='gn' value='4'>鼠情监测鼠害监测仪" +
+                                "<input name='ms_dev' type='checkbox' id='msDev5' class='gn' value='5'>环境因子监测气象监测仪" +
+                                "<input name='ms_dev' type='checkbox' id='msDev6' class='gn' value='6'>环境因子监测土壤监测仪" +
+                                "<input name='ms_dev' type='checkbox' id='msDev7' class='gn' value='7'>视频图像监测高清摄像头<br/>" +
                             "<span >监测站描述:</span>" +
-                                "<textarea name='ms_desc'>"+data.ms_desc+"</textarea>" +
-                            "<input class='xg' type='button' value='修改' onclick='xg()'>" +
+                                "<textarea name='ms_desc' id="text_5">"+data.ms_desc+"</textarea><span id="tip_3">请输入0-100位字符</span>" +
+                            "<input class='xg' type='submit' value='修改' onclick='xg()'>" +
+                            "<input class='xg' type='button' value='取消'  onclick='xg1()' style='margin-left: 5%;'>"+
                             "</form>"
                     );
+                    var msDev = data.ms_dev.split(",");
+                    for (let i = 0; i <msDev.length; i++) {
+                    	 $("#msDev"+msDev[i]).attr("checked","checked");
+                    }
+                   
                 }
             });
+            
+            
+            
+            
+            
         }
         
         
@@ -154,6 +168,7 @@
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
     <div class="gn">
+    ${result }
         <form action="station/listStation" method="post">
             <span class="span1">监测站名称：<input type="text" name="ms_name" placeholder="不限" ></span>
             <span class="span1">资金来源：
@@ -229,72 +244,164 @@
         </div>
         <div id="chakan"></div>
         <div id="xiugai"></div>
-    <div id="tianjia">
-        <form>
-            <span>监测站名称:</span>
-            <input type="text" >
-            <br/>
-            <span>监测站编码:</span>
-            <input type="text" >
-            <br/>
-            <span>建设时间:</span>
-            <input type="text" style="margin-left: 28px;">
-            <br/>
-            <span>使用单位，联系人，联系方式:</span>
-
-            <input type="text" class="lxfs">
-            <br/>
-            <span>施工单位，联系人，联系方式:</span>
-            <input type="text" class="lxfs">
-            <br/>
-            <span >监测站类型:</span>
-            <select style="margin-left: 1%;">
-                <option>新建重点监测站</option>
-                <option>改建重点监测站</option>
-                <option>新建普通监测站</option>
-                <option>改建普通监测站</option>
-            </select>
-            <br/>
-            <span>资金来源:</span>
-            <select>
-                <option>省资金</option>
-
-                <option>国家资金</option>
-                <option>其他</option>
-            </select>
-            <br/>
-            <span>网络类型:</span>
-            <select>
-                <option>无线</option>
-
-                <option>有线</option>
-            </select>
-            <br/>
-            <span>网关类型:</span>
-            <select>
-                <option>NZ2000</option>
-
-                <option>NZ1000</option>
-            </select>
-            <br/>
-            <span>监测性质:</span>
-            <input type="checkbox" name="gn" class="gn">病害监测
-            <input type="checkbox" name="gn"  class="gn">害虫监测
-            <input type="checkbox" name="gn"  class="gn"> 鼠情监测
-            <input type="checkbox" name="gn"  class="gn">环境因子监测
-            <input type="checkbox" name="gn"  class="gn">视频图像监测
-            <input type="checkbox" name="gn"  class="gn">其他监测
-            <br/>
-            <span >监测站描述:</span>
-            <textarea></textarea>
-            <input class="tj" type="button" value="添加" onclick="tj()">
-        </form>
-    </div>
+        <div id="tianjia">
+	        <form>
+	            <span>监测站名称:</span>
+	            <input type="text" id="tj_text_1">
+	            <span id="tj_tip_1">
+	                    请输入2-50位字符
+	                </span>
+	            <br/>
+	            <span>监测站编码:</span>
+	            <input type="text" id="tj_text_2" >
+	            <span id="tj_tip_2">
+	                    请输入8位数字
+	                </span>
+	            <br/>
+	            <span>建设时间:</span>
+	            <input type="text" style="margin-left: 28px;">
+	
+	            <br/>
+	            <span>使用单位，联系人，联系方式:</span>
+	
+	            <input type="text" class="lxfs" id="tj_text_3">
+	             <span id="tj_tip_3">
+	                    请输入0-100位字符
+	                </span>
+	            <br/>
+	            <span>施工单位，联系人，联系方式:</span>
+	            <input type="text" class="lxfs" id="tj_text_4">
+	             <span id="tj_tip_4">
+	                    请输入0-100位字符
+	                </span>
+	            <br/>
+	            <span >监测站类型:</span>
+	            <select style="margin-left: 1%;">
+	                <option>新建重点监测站</option>
+	                <option>改建重点监测站</option>
+	                <option>新建普通监测站</option>
+	                <option>改建普通监测站</option>
+	            </select>
+	            <br/>
+	            <span>资金来源:</span>
+	            <select>
+	                <option>省资金</option>
+	
+	                <option>国家资金</option>
+	                <option>其他</option>
+	            </select>
+	            <br/>
+	            <span>网络类型:</span>
+	            <select>
+	                <option>无线</option>
+	
+	                <option>有线</option>
+	            </select>
+	            <br/>
+	            <span>网关类型:</span>
+	            <select>
+	                <option>NZ2000</option>
+	
+	                <option>NZ1000</option>
+	            </select>
+	            <br/>
+	            <span>监测性质:</span>
+	            <input type="checkbox" name="gn" class="gn">病害监测
+	            <input type="checkbox" name="gn"  class="gn">害虫监测
+	            <input type="checkbox" name="gn"  class="gn"> 鼠情监测
+	            <input type="checkbox" name="gn"  class="gn">环境因子监测
+	            <input type="checkbox" name="gn"  class="gn">视频图像监测
+	            <input type="checkbox" name="gn"  class="gn">其他监测
+	            <br/>
+	            <span >监测站描述:</span>
+	            <textarea id="tj_text_5"></textarea>
+	             <span id="tj_tip_5">
+	                    请输入0-300位字符
+	                </span>
+	            <input class="tj" type="button" value="添加" onclick="tj()">
+	            <input class="tj" type="button" value="取消"  onclick="tj1()" style="margin-left: 3%;">
+	        </form>
+        </div>   
+       
     </div>
 
 </div>
 <div id="footer">
     <li>济南农智信息科技有限公司所有&copy; &nbsp;电话：12345677  &nbsp;<a href="#">关于我们</a> &nbsp;<a href="#">售后服务</a></li>
 </div>
+<script>
+    var reg2 =/^(\d{8})$/;
+    var reg1=/^.{2,50}$/;
+    var reg3=/^.{0,100}$/;
+    var reg4=/^.{0,100}$/;
+    var reg5=/^.{0,300}$/;
+    $("#xiugai").children().change(function(){
+
+        var str1=reg1.test($("#text_1").val());
+        var str2=reg2.test($("#text_2").val());
+        var str3=reg3.test($("#text_3").val());
+        var str4=reg4.test($("#text_4").val());
+        var str5=reg5.test($("#text_5").val());
+
+        if(str1==true){
+            $("#tip_1").html("格式正确")
+        }else{
+            $("#tip_1").html("请输入2-50位字符");
+        }
+        if(str2==true){
+            $("#tip_2").html("格式正确")
+        }else{
+            $("#tip_2").html("请输入8位数字");
+        }
+        if(str3==true){
+            $("#tip_3").html("格式正确")
+        }else{
+            $("#tip_3").html("请输入0-100位字符");
+        }
+        if(str4==true){
+            $("#tip_4").html("格式正确")
+        }else{
+            $("#tip_4").html("请输入0-100位字符");
+        }
+        if(str5==true){
+            $("#tip_5").html("格式正确")
+        }else{
+            $("#tip_5").html("请输入0-300位字符");
+        }
+    })
+    $("#tianjia").children().change(function(){
+        var str1=reg1.test($("#tj_text_1").val());
+        var str2=reg2.test($("#tj_text_2").val());
+        var str3=reg3.test($("#tj_text_3").val());
+        var str4=reg4.test($("#tj_text_4").val());
+        var str5=reg5.test($("#tj_text_5").val());
+
+        if(str1==true){
+            $("#tj_tip_1").html("格式正确")
+        }else{
+            $("#tj_tip_1").html("请输入2-50位字符");
+        }
+        if(str2==true){
+            $("#tj_tip_2").html("格式正确")
+        }else{
+            $("#tj_tip_2").html("请输入8位数字");
+        }
+        if(str3==true){
+            $("#tj_tip_3").html("格式正确")
+        }else{
+            $("#tj_tip_3").html("请输入0-100位字符");
+        }
+        if(str4==true){
+            $("#tj_tip_4").html("格式正确")
+        }else{
+            $("#tj_tip_4").html("请输入0-100位字符");
+        }
+        if(str5==true){
+            $("#tj_tip_5").html("格式正确")
+        }else{
+            $("#tj_tip_5").html("请输入0-300位字符");
+        }
+    })
+</script>
 </body>
 </html>

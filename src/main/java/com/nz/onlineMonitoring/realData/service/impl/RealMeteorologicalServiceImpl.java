@@ -6,14 +6,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nz.onlineMonitoring.realData.mapper.MeteorologicalMapper;
-import com.nz.onlineMonitoring.realData.model.Meteorological;
-import com.nz.onlineMonitoring.realData.service.MeteorologicalService;
+import com.nz.onlineMonitoring.realData.mapper.RealMeteorologicalMapper;
+import com.nz.onlineMonitoring.realData.model.RealMeteorological;
+import com.nz.onlineMonitoring.realData.service.RealMeteorologicalService;
 @Service
-public class MeteorologicalServiceImpl implements MeteorologicalService {
+public class RealMeteorologicalServiceImpl implements RealMeteorologicalService {
     
     @Autowired
-    private MeteorologicalMapper meteorologicalMapper;
+    private RealMeteorologicalMapper realMeteorologicalMapper;
     
     /**
      * 
@@ -25,10 +25,10 @@ public class MeteorologicalServiceImpl implements MeteorologicalService {
      * @date 2018年6月3日 下午2:36:02
      */
     @Override
-    public List<Meteorological> listMeteorological(Map<String, Object> map) {
-        Integer count = meteorologicalMapper.countMeteorological(map);
+    public List<RealMeteorological> listMeteorological(Map<String, Object> map) {
+        Integer count = realMeteorologicalMapper.countMeteorological(map);
         map.put("count", count);
-        return meteorologicalMapper.listMeteorological(map);
+        return realMeteorologicalMapper.listMeteorological(map);
     }
 
 }

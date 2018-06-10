@@ -5,7 +5,7 @@
  * <link>胖先生作品</link>
  * 创建于: 2018-06-01 11:08:33
  **/
-package com.nz.onlineMonitoring.data.model;
+package com.nz.onlineMonitoring.dict.model;
 
 /**
  * t_data 类
@@ -13,7 +13,7 @@ package com.nz.onlineMonitoring.data.model;
  * 
  * 文件创建于: 2018-06-01 11:08:33
  **/
-public class Data {
+public class Dict {
 
     /**数据类型,所属表字段为 t_data.data_type  */
     private String data_type;

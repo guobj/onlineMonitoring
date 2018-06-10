@@ -15,20 +15,18 @@ import java.util.Date;
  * 
  * 文件创建于: 2018-06-01 11:08:33
  **/
-public class Real {
+public class RealData {
 
     /**序号-主键、自增、界面不可见,所属表字段为 t_real.id  */
     private Integer id;
     /**监测站名称-与t_station ms_name关联,所属表字段为 t_real.ms_name  */
-    private String ms_name;
-    /**监测站编码-与t_station ms_code关联,所属表字段为 t_real.ms_code  */
     private String ms_code;
     /**设备编码-与t_devive dev_code关联,所属表字段为 t_real.dev_code  */
     private String dev_code;
-    /**数据,所属表字段为 t_real.real_data  */
-    private String real_data;
-    /**时间-仅显示时间,所属表字段为 t_real.real_time  */
-    private Date real_time;
+    /**数据,所属表字段为 t_real.data_value  */
+    private String data_value;
+    /**时间-仅显示时间,所属表字段为 t_real.data_time  */
+    private Date data_time;
     /**设备状态-关联表，见数据字典,所属表字段为 t_real.dev_stauts  */
     private Integer dev_stauts;
 
@@ -58,23 +56,6 @@ public class Real {
         this.id = id;
     }
 
-    /**
-     * 获取 监测站名称-与t_station ms_name关联 字段:t_real.ms_name
-     *
-     * @return  t_real.ms_name  ,监测站名称-与t_station ms_name关联
-     */
-    public String getMs_name() {
-        return ms_name;
-    }
-
-    /**
-     * 设置 监测站名称-与t_station ms_name关联 字段:t_real.ms_name
-     *
-     * @param ms_name  t_real.ms_name,监测站名称-与t_station ms_name关联
-     */
-    public void setMs_name(String ms_name) {
-        this.ms_name = ms_name == null ? null : ms_name.trim();
-    }
 
     /**
      * 获取 监测站编码-与t_station ms_code关联 字段:t_real.ms_code
@@ -117,8 +98,8 @@ public class Real {
      *
      * @return  t_real.real_data  ,数据
      */
-    public String getReal_data() {
-        return real_data;
+    public String getData_value() {
+        return data_value;
     }
 
     /**
@@ -126,26 +107,26 @@ public class Real {
      *
      * @param real_data  t_real.real_data,数据
      */
-    public void setReal_data(String real_data) {
-        this.real_data = real_data == null ? null : real_data.trim();
+    public void setData_value(String data_value) {
+        this.data_value = data_value == null ? null : data_value.trim();
     }
 
     /**
-     * 获取 时间-仅显示时间 字段:t_real.real_time
+     * 获取 时间-仅显示时间 字段:t_real.data_time
      *
-     * @return  t_real.real_time  ,时间-仅显示时间
+     * @return  t_real.data_time  ,时间-仅显示时间
      */
-    public Date getReal_time() {
-        return real_time;
+    public Date getData_time() {
+        return data_time;
     }
 
     /**
-     * 设置 时间-仅显示时间 字段:t_real.real_time
+     * 设置 时间-仅显示时间 字段:t_real.data_time
      *
-     * @param real_time  t_real.real_time,时间-仅显示时间
+     * @param data_time  t_real.data_time,时间-仅显示时间
      */
-    public void setReal_time(Date real_time) {
-        this.real_time = real_time;
+    public void setData_time(Date data_time) {
+        this.data_time = data_time;
     }
 
     /**
