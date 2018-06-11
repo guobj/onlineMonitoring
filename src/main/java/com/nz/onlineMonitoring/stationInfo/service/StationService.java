@@ -73,5 +73,14 @@ public interface StationService {
     * @date 2018年6月3日 上午10:17:15
     */
    Integer existMsCode(String ms_code);
-   
+   /**
+    * t_station
+    * 方法描述:
+    * @param  
+    * @return 
+    * @throws 
+    * @date 2018-06-11 11:08:33
+    * 
+    **/
+   int add(Station station);
 }

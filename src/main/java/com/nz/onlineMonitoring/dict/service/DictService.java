@@ -96,5 +96,13 @@ public interface DictService {
      * @date 2018年6月8日 上午10:08:59
      */
     List<Dict> listMsNet();
+    /**
+     * 
+     * 方法描述：解析设备编码
+     * @param map
+     * @author ssh
+     * @date 2018年6月11日 下午3:04:57
+     */
+    List<Dict> analysisMsDev();
    
 }

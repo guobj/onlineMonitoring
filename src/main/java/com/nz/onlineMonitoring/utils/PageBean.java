@@ -1,7 +1,8 @@
 package com.nz.onlineMonitoring.utils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class PageBean {
     public static Map<String , Object> serverMap(Map<String , Object> map,Object obj,Integer pages){
@@ -21,7 +22,6 @@ public class PageBean {
         map.put("pages" , pages);
         map.put("sumPage" , sumPage);
         map.put("url" , request.getServletPath());
-        System.out.println(request.getServletPath());
         return map;
     }
 }

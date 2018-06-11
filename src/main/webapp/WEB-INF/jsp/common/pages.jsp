@@ -29,6 +29,22 @@
         <c:if test="${manage.station != null and manage.station.ms_net != null }">
             <input type="hidden" id="station.ms_net" name="station.ms_net" value="${manage.station.ms_net }">
         </c:if>
+        <!--  监测的查询 -->
+        <c:if test="${station != null and station.ms_name != null }">
+            <input type="hidden" id="ms_name" name="ms_name" value="${station.ms_name }">
+        </c:if>
+        <c:if test="${station != null and station.ms_fp != null }">
+            <input type="hidden" id="ms_fp" name="ms_fp" value="${station.ms_fp }">
+        </c:if>
+        <c:if test="${station != null and station.ms_type != null }">
+            <input type="hidden" id="ms_type" name="ms_type" value="${station.ms_type }">
+        </c:if>
+        <%-- <c:if test="${station != null and station.city != null }">
+            <input type="hidden" id="city" name="city" value="${station.city }">
+        </c:if> --%>
+        <c:if test="${station != null and station.ms_gate != null }">
+            <input type="hidden" id="ms_gate" name="ms_gate" value="${station.ms_gate }">
+        </c:if>
             <div id="page">
                 <input onclick="jumpPage(1)" type="button" value="首页"/>
                 <input onclick="jumpPage(${(pages-1<1)?1:(pages-1)})" type="button" value="上一页"/>

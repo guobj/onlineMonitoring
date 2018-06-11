@@ -135,7 +135,7 @@
                 }
             });
         }
-        
+        //修改
 	    function xg(){
 	        var form = new FormData(document.getElementById("updateForm"));
 	        $.ajax({
@@ -153,7 +153,39 @@
                 }
 	        });
 	    }
-        
+        //添加
+	    function tj(){
+            var form = new FormData(document.getElementById("addForm"));
+            $.ajax({
+                type:"post",
+                url:"station/addStation",
+                data:form,
+                processData:false,
+                contentType:false,
+                dataType:'json',
+                success:function (data) {
+                    if(data.data >= 1){
+                        alert("添加成功");
+                        window.location.reload();
+                    }
+                }
+            });
+        }
+	  //删除方法
+        function delStation(id){
+            $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () {
+                $.ajax({
+                    type:"get",
+                    url:"station/deleteStation",
+                    data:{id:id},
+                    success:function (data) {
+                        window.location.reload();
+                    }
+                })
+                alert("删除成功");
+            });
+
+        }
     
     </script>
 </head>
@@ -241,88 +273,89 @@
 	                        <td class="t4">${station.ms_dev_value }</td>
 	                        <td class="t5">${station.ms_type_value.data_name }</td>
 	                        <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this,${station.id})"></td>
-	                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="del(this,${station.id})" ></td>
+	                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="delStation(${station.id})" ></td>
 	                        <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
 	                        <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this,${station.id})"></td>
 	                    </tr>
                     </c:forEach>
                 </tbody>
             </table>
-        <div  id="page">
-        </div>
+            <jsp:include page="../common/pages.jsp"></jsp:include>
         <div id="chakan"></div>
         <div id="xiugai"></div>
         <div id="tianjia">
-	        <form>
+	        <form id="addForm">
 	            <span>监测站名称:</span>
-	            <input type="text" id="tj_text_1">
+	            <input type="text" id="tj_text_1" name="ms_name">
 	            <span id="tj_tip_1">
 	                    请输入2-50位字符
 	                </span>
 	            <br/>
 	            <span>监测站编码:</span>
-	            <input type="text" id="tj_text_2" >
+	            <input type="text" id="tj_text_2" name="ms_code">
 	            <span id="tj_tip_2">
 	                    请输入8位数字
 	                </span>
 	            <br/>
 	            <span>建设时间:</span>
-	            <input type="text" style="margin-left: 28px;">
+	            <input type="date" style="margin-left: 28px;" name="ms_date1">
 	
 	            <br/>
+	            <span>监测站位置:</span>
+    
+                <input type="text" class="lxfs" id="tj_text_3" name="ms_place">
+                 <span id="tj_tip_3">
+                        请输入0-100位字符
+                    </span>
+                <br/>
 	            <span>使用单位，联系人，联系方式:</span>
 	
-	            <input type="text" class="lxfs" id="tj_text_3">
+	            <input type="text" class="lxfs" id="tj_text_3" name="ms_user">
 	             <span id="tj_tip_3">
 	                    请输入0-100位字符
 	                </span>
 	            <br/>
 	            <span>施工单位，联系人，联系方式:</span>
-	            <input type="text" class="lxfs" id="tj_text_4">
+	            <input type="text" class="lxfs" id="tj_text_4" name="ms_builder">
 	             <span id="tj_tip_4">
 	                    请输入0-100位字符
 	                </span>
 	            <br/>
 	            <span >监测站类型:</span>
-	            <select style="margin-left: 1%;">
-	                <option>新建重点监测站</option>
-	                <option>改建重点监测站</option>
-	                <option>新建普通监测站</option>
-	                <option>改建普通监测站</option>
+	            <select style="margin-left: 1%;" name="ms_type">
+	                <c:forEach items="${msType }" var="type">
+	                   <option value="${type.data_value }">${type.data_name }</option>
+	                </c:forEach>
 	            </select>
 	            <br/>
 	            <span>资金来源:</span>
-	            <select>
-	                <option>省资金</option>
-	
-	                <option>国家资金</option>
-	                <option>其他</option>
+	            <select name="ms_fp">
+	                <c:forEach items="${msFp }" var="fp">
+                       <option value="${fp.data_value }">${fp.data_name }</option>
+                    </c:forEach>
 	            </select>
 	            <br/>
 	            <span>网络类型:</span>
-	            <select>
-	                <option>无线</option>
-	
-	                <option>有线</option>
+	            <select name="ms_net">
+	                <c:forEach items="${msNet }" var="net">
+                       <option value="${net.data_value }">${net.data_name }</option>
+                    </c:forEach>
 	            </select>
 	            <br/>
 	            <span>网关类型:</span>
-	            <select>
-	                <option>NZ2000</option>
-	
-	                <option>NZ1000</option>
+	            <select name="ms_gate">
+	                <c:forEach items="${msGate }" var="gate">
+                       <option value="${gate.data_value }">${gate.data_name }</option>
+                    </c:forEach>
 	            </select>
 	            <br/>
 	            <span>监测性质:</span>
-	            <input type="checkbox" name="gn" class="gn">病害监测
-	            <input type="checkbox" name="gn"  class="gn">害虫监测
-	            <input type="checkbox" name="gn"  class="gn"> 鼠情监测
-	            <input type="checkbox" name="gn"  class="gn">环境因子监测
-	            <input type="checkbox" name="gn"  class="gn">视频图像监测
-	            <input type="checkbox" name="gn"  class="gn">其他监测
+	                <c:forEach items="${msDev }" var="dev" >
+	                   <input type="checkbox" name="ms_dev" class="gn" value="${dev.data_value }">${dev.data_name }
+                    </c:forEach>
 	            <br/>
 	            <span >监测站描述:</span>
-	            <textarea id="tj_text_5"></textarea>
+	            <textarea id="tj_text_5" name="ms_desc"></textarea>
 	             <span id="tj_tip_5">
 	                    请输入0-300位字符
 	                </span>

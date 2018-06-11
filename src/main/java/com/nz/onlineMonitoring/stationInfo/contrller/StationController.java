@@ -57,6 +57,9 @@ public class StationController {
         map.put("msType", dictService.listMsType());
         map.put("msFp", dictService.listMsFp());
         map.put("msGate", dictService.listMsGate());
+        map.put("msNet", dictService.listMsNet());
+        map.put("msDev", dictService.analysisMsDev());
+        map.put("station", station);
         return "station/listStation";
     }
     /**
@@ -84,10 +87,19 @@ public class StationController {
      * @date 2018年6月2日 下午8:12:14
      */
     @GetMapping("/deleteStation")
-    public String deleteStation(Integer id,Map<String , Object> map) {
-        String result = stationService.delete(id);
-        map.put("result", result);
-        return "station/deleteStation";
+    @ResponseBody
+    public JacksonData deleteStation(Integer id,Map<String , Object> map) {
+        JacksonData jd = new JacksonData();
+        Station station = new Station();
+        station.setId(id);
+        station.setDr(true);
+        try {
+            int result = stationService.update(station);
+            jd.success(result);
+        } catch (Exception e) {
+            jd.failure(e.getMessage());
+        }
+        return jd;
     }
     /**
      * 
@@ -107,6 +119,7 @@ public class StationController {
         map.put("msFp", dictService.listMsFp());
         map.put("msGate", dictService.listMsGate());
         map.put("msNet", dictService.listMsNet());
+        map.put("msDev", dictService.analysisMsDev());
         map.put("station", station);
         jd.success(map);
         return jd;
@@ -152,5 +165,34 @@ public class StationController {
     @ResponseBody
     public Integer existMsCode(String ms_code) {
         return stationService.existMsCode(ms_code);
+    }
+    /**
+     * 
+     * 方法描述：添加监测站
+     * @param id
+     * @param map
+     * @return
+     * @author ssh
+     * @date 2018年6月11日 下午3:26:58
+     */
+    @PostMapping("/addStation")
+    @ResponseBody
+    public JacksonData addStation(Station station,Map<String , Object> map,String ms_date1) {
+        if (ms_date1 != null && ms_date1 != "") {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                station.setMs_date(sdf.parse(ms_date1));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        JacksonData jd = new JacksonData();
+        try {
+            int result = stationService.add(station);
+            jd.success(result);
+        } catch (Exception e) {
+            jd.failure(e.getMessage());
+        }
+        return jd;
     }
 }

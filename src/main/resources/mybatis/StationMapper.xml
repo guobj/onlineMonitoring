@@ -196,9 +196,10 @@
         <include refid="t_station_columns" />
         from t_station
         <where>
+            dr = 0 
             <!-- 监测站名字  -->
             <if test="station.ms_name != null and station.ms_name != ''" >
-                ms_name like concat("%",#{station.ms_name},"%")
+                and ms_name like concat("%",#{station.ms_name},"%")
             </if>
             <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
@@ -226,6 +227,7 @@
             count(*)
         from t_station
         <where>
+            dr = 0 
             <!-- 监测站名字  -->
             <if test="station.ms_name != null and station.ms_name != ''" >
                 and ms_name like concat("%",#{station.ms_name},"%")

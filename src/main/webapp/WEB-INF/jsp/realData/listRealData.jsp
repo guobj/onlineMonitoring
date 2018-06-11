@@ -13,6 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>实时数据</title>
 <script src="js/jquery.js"></script>
+    <link href="css/xinxi.css" rel="stylesheet" type=text/css>
     <link href="css/page.css" rel="stylesheet" type="text/css">
     <link href="css/sjck.css" rel="stylesheet" type="text/css">
     <script src="js/pageNav.js" type="text/javascript"></script>

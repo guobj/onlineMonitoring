@@ -100,5 +100,20 @@ public class DictServiceImpl implements DictService {
     public List<Dict> listMsNet() {
         return dictMapper.listMsNet();
     }
+    @Override
+    public List<Dict> analysisMsDev() {
+        List<Dict> listData = dictMapper.listMsDev();
+        if (listData == null || listData.size() < 0) {
+            throw new RuntimeException("暂无数据");
+        } else {
+            for (Dict d : listData) {
+                StringBuffer sb = new StringBuffer();
+                sb.append(dictMapper.loadByDevType(Integer.parseInt(d.getData_name().substring(3, 4))).getData_name());
+                sb.append(dictMapper.loadByDevType1(Integer.parseInt(d.getData_name().substring(3, 6))).getData_name());
+                d.setData_name(sb.toString());
+            }
+        }
+        return listData;
+    }
 
 }
