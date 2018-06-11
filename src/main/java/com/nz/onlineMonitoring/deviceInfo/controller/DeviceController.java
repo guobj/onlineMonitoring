@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/device")
 public class DeviceController {
 
 	@Autowired
@@ -67,6 +68,7 @@ public class DeviceController {
 		return  "device/deviceInfo_list";
 	}
 
+	//查看更多信息
 	@RequestMapping(value = "/deviceLoad")
 	@ResponseBody
 	public JacksonData deviceLoad(Integer id){
@@ -79,4 +81,19 @@ public class DeviceController {
 		}
 		return jacksonData;
 	}
+
+	//修改设备信息和配置设备信息共用次接口。
+	@RequestMapping(value = "/updateById")
+	@ResponseBody
+	public JacksonData updateById(Device device){
+		JacksonData jacksonData = new JacksonData();
+		try {
+			Integer res = deviceService.updateById(device);
+			jacksonData.success(res);
+		} catch (Exception e) {
+			jacksonData.failure(e.getMessage());
+		}
+		return jacksonData;
+	}
+
 }

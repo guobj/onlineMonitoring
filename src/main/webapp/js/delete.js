@@ -1,7 +1,7 @@
-/**
+﻿/**
  * Created by DELL on 2018/6/6.
  */
-(function () {
+$(function () {
     $.MsgBox = {
         Alert: function (title, msg) {
             GenerateHtml("alert", title, msg);
@@ -84,4 +84,4 @@
             $("#mb_box,#mb_con").remove();
         });
     }
-})();
+});

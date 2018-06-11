@@ -101,4 +101,13 @@ public class DeviceServiceImpl implements DeviceService {
 		//监测站编码解析结束
 		return device;
 	}
+
+	@Override
+	public Integer updateById(Device device) {
+		Integer res = deviceMapper.update(device);
+		if(res <= 0){
+			throw new RuntimeException("修改失败");
+		}
+		return res;
+	}
 }

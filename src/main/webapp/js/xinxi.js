@@ -121,12 +121,13 @@ function tj1(){
     $("#page").show();
     $("h4").html("数据列表");
 }
-function peizhi(obj){
+function peizhi(obj,id){
     $(obj).parent().parent().parent().parent().hide();
     $("#peizhi").show();
     $("h4").html("");
     $("#caidan").css("height","700px");
     $("#page").hide();
+    $("#manageId").val(id);
 
 }
 function pz(){

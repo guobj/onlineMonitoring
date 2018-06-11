@@ -21,7 +21,7 @@
         function moreInfo(id) {
             $.ajax({
                 type:"post",
-                url:"deviceLoad",
+                url:"device/deviceLoad",
                 data:{id:id},
                 dataType: "JSON",
                 success:function (data) {
@@ -146,7 +146,7 @@
                 <td class="s2" id="sbms"></td>
             </tr>
         </table>
-        <form action="">
+        <form action="" method="post">
             <input type="button" value="修改" id="update"/>
             <input type="button" value="关闭" id="cl"/>
             <input type="button" value="保存" id="save" style="display: none"/>

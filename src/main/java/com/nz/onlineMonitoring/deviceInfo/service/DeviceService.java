@@ -26,4 +26,14 @@ public interface DeviceService {
 	 *
 	 **/
 	public Device deviceLoad(Integer id);
+
+	/**
+	 * t_device
+	 * 方法描述: 修改设备信息
+	 * @param device
+	 * @return
+	 * @throws
+	 *
+	 **/
+	public Integer updateById(Device device);
 }
