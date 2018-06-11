@@ -30,13 +30,22 @@ public interface StationService {
    
    /**
     * 
-    * 方法描述：查询单条数据
+    * 方法描述：查询单条数据,并解析监测站和设备
     * @param id
     * @return
     * @author ssh
     * @date 2018年6月2日 下午6:56:43
     */
    Station load(Integer id);
+   /**
+    * 
+    * 方法描述：查询单条数据,只解析设备
+    * @param id
+    * @return
+    * @author ssh
+    * @date 2018年6月2日 下午6:56:43
+    */
+   Station getStation(Map<String , Object> map,Integer id);
    /**
     * 
     * 方法描述：根据id，删除一条监测站
@@ -54,7 +63,7 @@ public interface StationService {
     * @author ssh
     * @date 2018年6月2日 下午8:50:50
     */
-   String update(Station station);
+   Integer update(Station station);
    /**
     * 
     * 方法描述：修改编码时，判断是否有重复的编码

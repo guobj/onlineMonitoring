@@ -116,8 +116,6 @@ public class StationServiceImpl implements StationService{
             String name1= dictMapper.loadCity(Integer.parseInt(code01)).getData_name();
             station.setMs_code(name2+name1 + "第" + code2 +"个");
         }
-        
-        
         return station;
     }
     /**
@@ -145,12 +143,12 @@ public class StationServiceImpl implements StationService{
      * @date 2018年6月2日 下午8:50:50
      */
     @Override
-    public String update(Station station) {
+    public Integer update(Station station) {
         int result = stationMapper.update(station);
-        if (result > 0) {
-            return "修改成功";
+        if (result < 0) {
+            throw new RuntimeException("更新失败");
         }
-        return "修改失败";
+        return result;
     }
     /**
      * 
@@ -163,6 +161,45 @@ public class StationServiceImpl implements StationService{
     @Override
     public Integer existMsCode(String ms_code) {
         return stationMapper.existMsCode(ms_code);
+    }
+    @Override
+    public Station getStation(Map<String , Object> map,Integer id) {
+        Station station = stationMapper.load(id);
+        String dev= "";
+        if (station == null) {
+            throw new RuntimeException("暂无数据");
+        }else {
+            dev = station.getMs_dev();
+        }
+        List<Dict> listData = dictMapper.listMsDev();
+        if (listData == null || listData.size() < 0) {
+            throw new RuntimeException("暂无数据");
+        }else {
+          //将data中的ms_code的value作为键，name作为值
+            //将字典表中的设备编码解析，用于前台修改时的遍历选择
+            Map<String, String> mapDev = new HashMap<>();
+            for (Dict d : listData) {
+                StringBuffer sb = new StringBuffer();
+                mapDev.put(String.valueOf(d.getData_value()), d.getData_name());
+                sb.append(dictMapper.loadByDevType(Integer.parseInt(d.getData_name().substring(3, 4))).getData_name());
+                sb.append(dictMapper.loadByDevType1(Integer.parseInt(d.getData_name().substring(3, 6))).getData_name());
+                d.setData_name(sb.toString());
+            }
+            map.put("msDev", listData);
+            //因为ms_dev中的数据是用，分开的多个数据，所以没法用mapper直接查询，如果ms_dev不等于空，那么循环其中的数据，把从字典表中拿到的name值，拼接成字符串，传到ms_dev_value,用，隔开
+            if (dev != null && dev != "") {
+                String[] temp = dev.split(",");
+                for (int i = 0, n = temp.length; i < n; i++) {
+                    temp[i] = mapDev.get(temp[i]);
+                    StringBuffer sb = new StringBuffer();
+                    sb.append(dictMapper.loadByDevType(Integer.parseInt(temp[i].substring(3, 4))).getData_name());
+                    sb.append(dictMapper.loadByDevType1(Integer.parseInt(temp[i].substring(3, 6))).getData_name());
+                    temp[i] = sb.toString();
+                }
+                station.setMs_dev_value(String.join(",", temp));
+            }
+        }
+        return station;
     }
 
 }

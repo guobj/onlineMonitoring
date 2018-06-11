@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.nz.onlineMonitoring.dict.service.DictService;
 import com.nz.onlineMonitoring.stationInfo.model.Station;
 import com.nz.onlineMonitoring.stationInfo.service.StationService;
+import com.nz.onlineMonitoring.utils.JacksonData;
 import com.nz.onlineMonitoring.utils.PageBean;
 
 @Controller
@@ -97,16 +98,18 @@ public class StationController {
      * @author ssh 
      * @date 2018年6月2日 下午9:18:29
      */
-    @GetMapping("/idStation")
+    @RequestMapping("/getStation")
     @ResponseBody
-    public Station idStation(Integer id,Map<String , Object> map) {
-        Station station = stationService.load(id);
+    public JacksonData getStation(@RequestParam(required=false)Integer id,Map<String , Object> map) {
+        JacksonData jd = new JacksonData();
+        Station station = stationService.getStation(map,id);
         map.put("msType", dictService.listMsType());
         map.put("msFp", dictService.listMsFp());
         map.put("msGate", dictService.listMsGate());
         map.put("msNet", dictService.listMsNet());
         map.put("station", station);
-        return station;
+        jd.success(map);
+        return jd;
     }
     /**
      * 
@@ -118,19 +121,24 @@ public class StationController {
      * @date 2018年6月2日 下午9:18:29
      */
     @PostMapping("/updateStation")
-    public String updateStation(Station station,Map<String , Object> map,String ms_date1) {
+    @ResponseBody
+    public JacksonData updateStation(Station station,Map<String , Object> map,String ms_date1) {
         if (ms_date1 != null && ms_date1 != "") {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             try {
                 station.setMs_date(sdf.parse(ms_date1));
             } catch (ParseException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
-        String result = stationService.update(station);
-        map.put("result", result);
-        return "station/listStation";
+        JacksonData jd = new JacksonData();
+        try {
+            int result = stationService.update(station);
+            jd.success(result);
+        } catch (Exception e) {
+            jd.failure(e.getMessage());
+        }
+        return jd;
     }
     /**
      * 

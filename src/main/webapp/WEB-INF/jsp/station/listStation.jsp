@@ -78,72 +78,81 @@
             $("#page").hide();
             $("#caidan").css("height","840px");
             $("#xiugai").html("");
-            $.post("station/loadStation",{id:id},function(data){
+            $.post("station/getStation",{id:id},function(data){
                 if(data!=null){
-                    $("#xiugai").append("<form action='station/updateStation' method='post'>"+
-                    		"<input name='id' type='hidden' value='"+data.id+"'><br/>" +
-                            "<span>监测站名称:</span><input name='ms_name' type='text' id='text_1' value='"+data.ms_name+"'   >+<span id='tip_1'>请输入2-50位字符</span><br/>" +
-                            "<span>监测站编码:</span><input name='ms_code' type='text' id='text_2' value='"+data.ms_code+"'><span id='tip_2'> 请输入8位数字</span><br/>" +
-                            "<span>建设时间:</span><input name='ms_date1' type='date' value='"+data.ms_date+"' style='margin-left: 28px;'><br/>" +
-                            "<span>监测站位置:</span><input name='ms_code' type='text' value='"+data.ms_place+"'><br/>" +
-                            "<span>使用单位，联系人，联系方式:</span><input name='ms_user' type='text' id='text_3' value='"+data.ms_user+"' class='lxfs'><span id='tip_3'>请输入0-100位字符</span><br/>" +
-                            "<span>施工单位，联系人，联系方式:</span><input name='ms_builder' type='text' id='text_4' value='"+data.ms_builder+"' class='lxfs'><span id='tip_4'>请输入0-100位字符</span><br/>" +
+                	$("#xiugai").append("<form id='updateForm'>"+
+                            "<input name='id' type='hidden' value='"+data.data.station.id+"'><br/>" +
+                            "<span>监测站名称:</span><input name='ms_name' type='text' id='text_1' value='"+data.data.station.ms_name+"'><span id='tip_1'>请输入2-50位字符</span><br/>" +
+                            "<span>监测站编码:</span><input name='ms_code' type='text' id='text_2' value='"+data.data.station.ms_code+"'><span id='tip_2'> 请输入8位数字</span><br/>" +
+                            "<span>建设时间:</span><input name='ms_date1' type='date' value='"+data.data.station.ms_date+"' style='margin-left: 28px;'><br/>" +
+                            "<span>监测站位置:</span><input name='ms_place' type='text' value='"+data.data.station.ms_place+"'><br/>" +
+                            "<span>使用单位，联系人，联系方式:</span><input name='ms_user' type='text' id='text_3' value='"+data.data.station.ms_user+"' class='lxfs'><span id='tip_3'>请输入0-100位字符</span><br/>" +
+                            "<span>施工单位，联系人，联系方式:</span><input name='ms_builder' type='text' id='text_4' value='"+data.data.station.ms_builder+"' class='lxfs'><span id='tip_4'>请输入0-100位字符</span><br/>" +
                             "<span >监测站类型:</span>" +
-                            "<select name='ms_type' style='margin-left: 1%;'>"+ 
-                                "<option value='"+data.ms_type+"'>"+data.ms_type_value.data_name+"</option>" + 
-                                "<option value='1'>新建重点监测站</option>" +
-                                "<option value='2'>改建重点监测站</option>" +
-                                "<option value='3'>新建普通监测站</option>" +
-                                "<option value='4'>改建普通监测站</option>" +
+                            "<select name='ms_type' id='ms_type' style='margin-left: 1%;'>"+ 
+                                "<option value='"+data.data.station.ms_type+"'>"+data.data.station.ms_type_value.data_name+"</option>" + 
                             "</select><br/>" +
                             "<span>资金来源:</span>" +
-                            "<select name='ms_fp'>"+
-                                "<option value='"+data.ms_fp+"'>"+data.ms_fp_value.data_name+"</option>" +
-                                "<option value='1'>省资金</option>" +
-                                "<option value='2'>国家资金</option>" +
-                                "<option value='3'>其他</option>" +
+                            "<select name='ms_fp' id='ms_fp'>"+
+                                "<option value='"+data.data.station.ms_fp+"'>"+data.data.station.ms_fp_value.data_name+"</option>" +
                             "</select><br/>" +
                             "<span>网络类型:</span>" +
-                            "<select name='ms_net'>" +
-                                "<option value='"+data.ms_net+"'>"+data.ms_net_value.data_name+"</option>" +
-                                "<option value='1'>无线</option>" +
-                                "<option value='2'>有线</option>" +
+                            "<select name='ms_net' id='ms_net'>" +
+                                "<option value='"+data.data.station.ms_net+"'>"+data.data.station.ms_net_value.data_name+"</option>" +
                             "</select><br/>" +
                             "<span>网关类型:</span>" +
-                            "<select name='ms_gate'>" +
-                                "<option value='"+data.ms_gate+"'>"+data.ms_gate_value.data_name+"</option>" +
-                                "<option value='1'>NZ2000</option>" +
-                                "<option value='2'>NZ1000</option>" +
+                            "<select name='ms_gate' id='ms_gate'>" +
+                                "<option value='"+data.data.station.ms_gate+"'>"+data.data.station.ms_gate_value.data_name+"</option>" +
                             "</select><br/>" +
                             "<span>建设内容:</span>" +
-                                "<input name='ms_dev' type='checkbox' id='msDev1' class='gn' value='1'>病害监测孢子捕捉仪" +
-                                "<input name='ms_dev' type='checkbox' id='msDev2' class='gn' value='2'>害虫监测测报灯" +
-                                "<input name='ms_dev' type='checkbox' id='msDev3' class='gn' value='3'>害虫监测性诱监测仪" +
-                                "<input name='ms_dev' type='checkbox' id='msDev4' class='gn' value='4'>鼠情监测鼠害监测仪" +
-                                "<input name='ms_dev' type='checkbox' id='msDev5' class='gn' value='5'>环境因子监测气象监测仪" +
-                                "<input name='ms_dev' type='checkbox' id='msDev6' class='gn' value='6'>环境因子监测土壤监测仪" +
-                                "<input name='ms_dev' type='checkbox' id='msDev7' class='gn' value='7'>视频图像监测高清摄像头<br/>" +
+                                "<div id='ms_dev'></div>" +
                             "<span >监测站描述:</span>" +
-                                "<textarea name='ms_desc' id='text_5'>"+data.ms_desc+"</textarea><span id='tip_3'>请输入0-100位字符</span>" +
-                            "<input class='xg' type='submit' value='修改' onclick='xg()'>" +
+                                "<textarea name='ms_desc' id='text_5'>"+data.data.station.ms_desc+"</textarea><span id='tip_3'>请输入0-100位字符</span>" +
+                            "<input class='xg' type='button' value='修改' onclick='xg()'>" +
                             "<input class='xg' type='button' value='取消'  onclick='xg1()' style='margin-left: 5%;'>"+
                             "</form>"
                     );
-                    var msDev = data.ms_dev.split(",");
-                    for (let i = 0; i <msDev.length; i++) {
+                	
+                	for (let i = 0, n = data.data.msType.length; i < n; i++) {
+                		$("#ms_type").append("<option value='"+data.data.msType[i].data_value+"'>"+data.data.msType[i].data_name+"</option>");
+                	}
+                	for (let i = 0, n = data.data.msFp.length; i < n; i++) {
+                        $("#ms_fp").append("<option value='"+data.data.msFp[i].data_value+"'>"+data.data.msFp[i].data_name+"</option>");
+                    }
+                	for (let i = 0, n = data.data.msGate.length; i < n; i++) {
+                        $("#ms_gate").append("<option value='"+data.data.msGate[i].data_value+"'>"+data.data.msGate[i].data_name+"</option>");
+                    }
+                	for (let i = 0, n = data.data.msNet.length; i < n; i++) {
+                        $("#ms_net").append("<option value='"+data.data.msNet[i].data_value+"'>"+data.data.msNet[i].data_name+"</option>");
+                    }
+                	for (let i = 0, n = data.data.msDev.length; i < n; i++) {
+                        $("#ms_dev").append("<input name='ms_dev' type='checkbox' id='msDev"+data.data.msDev[i].data_value+"' class='gn' value='"+data.data.msDev[i].data_value+"'>"+data.data.msDev[i].data_name+"");
+                    } 
+                    var msDev = data.data.station.ms_dev.split(",");
+                    for (let i = 0,n = msDev.length; i < n; i++) {
                     	 $("#msDev"+msDev[i]).attr("checked","checked");
                     }
-                   
                 }
             });
-            
-            
-            
-            
-            
         }
         
-        
+	    function xg(){
+	        var form = new FormData(document.getElementById("updateForm"));
+	        $.ajax({
+	        	type:"post",
+	        	url:"station/updateStation",
+	        	data:form,
+	        	processData:false,
+                contentType:false,
+                dataType:'json',
+                success:function (data) {
+                    if(data.data >= 1){
+                        alert("更新成功");
+                        window.location.href="station/listStation";
+                    }
+                }
+	        });
+	    }
         
     
     </script>
@@ -168,7 +177,6 @@
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
     <div class="gn">
-    ${result }
         <form action="station/listStation" method="post">
             <span class="span1">监测站名称：<input type="text" name="ms_name" placeholder="不限" ></span>
             <span class="span1">资金来源：
