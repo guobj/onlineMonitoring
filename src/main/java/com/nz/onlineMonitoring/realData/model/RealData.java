@@ -7,9 +7,9 @@
  **/
 package com.nz.onlineMonitoring.realData.model;
 
-import com.nz.onlineMonitoring.dict.model.Dict;
-
 import java.util.Date;
+
+import com.nz.onlineMonitoring.dict.model.Dict;
 
 /**
  * t_real 类
@@ -40,7 +40,8 @@ public class RealData {
 	private String device_type;
 	/**根据设备监测对象的查询数据 */
 	private String device_object;
-
+	/**设备编码 解析设备*/
+	private String dev_code_value;
 	//设备状态
 	private Dict dataDevStatus;
 
@@ -52,7 +53,16 @@ public class RealData {
 		this.dataDevStatus = dataDevStatus;
 	}
 
-	/**
+	
+	public String getDev_code_value() {
+        return dev_code_value;
+    }
+
+    public void setDev_code_value(String dev_code_value) {
+        this.dev_code_value = dev_code_value;
+    }
+
+    /**
      * 获取 序号-主键、自增、界面不可见 字段:t_real.id
      *
      * @return  t_real.id  ,序号-主键、自增、界面不可见

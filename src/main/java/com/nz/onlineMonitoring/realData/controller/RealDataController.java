@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.nz.onlineMonitoring.dict.service.DictService;
 import com.nz.onlineMonitoring.realData.model.RealData;
 import com.nz.onlineMonitoring.realData.service.RealDataService;
+import com.nz.onlineMonitoring.utils.AuthorityUtil;
 import com.nz.onlineMonitoring.utils.PageBean;
 
 @Controller
@@ -35,22 +36,19 @@ public class RealDataController {
      */
     @RequestMapping("/listRealData")
     public String listReal(Map<String, Object> map,RealData realData,HttpServletRequest request,@RequestParam(required=false,defaultValue="1") int pages,@RequestParam(required=false,name="city")String[] citys){
-        if (citys != null) {
-            if (citys[1] != null && citys[1] != "") {
-                realData.setMs_code(citys[1]);
-            }else if (citys[0] != null && citys[0] != "") {
-                realData.setMs_code(citys[0]);
-            }else {
-                realData.setMs_code("37");
-            }
-        }
+        AuthorityUtil.getInstance().assignPermissionsRealData(citys, request, realData);
         map = PageBean.serverMap(map , realData , pages);
-        List<RealData> listReal = realDataService.listReal(map);
-        map = PageBean.clientMap(map ,pages,request);
-        map.put("listRealData", listReal);
-        map.put("devStauts", dictService.listDevStauts());
-        map.put("devType", dictService.listDevType());
-        map.put("devType1", dictService.listDevType1());
+        List<RealData> listReal = null;
+        try {
+            listReal = realDataService.listReal(map);
+            map = PageBean.clientMap(map ,pages,request);
+            map.put("listRealData", listReal);
+            map.put("devStauts", dictService.listDevStauts());
+            map.put("devObject", dictService.listDevType());
+            map.put("devType", dictService.listDevType1());
+        } catch (Exception e) {
+            map.put("message", e.getMessage());
+        }
         return "realData/listRealData";
     }
 }

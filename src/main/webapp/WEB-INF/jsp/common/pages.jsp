@@ -39,11 +39,24 @@
         <c:if test="${station != null and station.ms_type != null }">
             <input type="hidden" id="ms_type" name="ms_type" value="${station.ms_type }">
         </c:if>
-        <%-- <c:if test="${station != null and station.city != null }">
-            <input type="hidden" id="city" name="city" value="${station.city }">
-        </c:if> --%>
+        <c:if test="${station != null and station.ms_code != null }">
+            <input type="hidden" id="ms_code" name="ms_code" value="${station.ms_code }">
+        </c:if>
         <c:if test="${station != null and station.ms_gate != null }">
             <input type="hidden" id="ms_gate" name="ms_gate" value="${station.ms_gate }">
+        </c:if>
+       <!--  实时数据查询 -->
+       <c:if test="${realData != null and realData.device_type != null }">
+            <input type="hidden" id="device_type" name="device_type" value="${realData.device_type }">
+        </c:if>
+        <c:if test="${realData != null and realData.dev_status != null }">
+            <input type="hidden" id="dev_status" name="dev_status" value="${realData.dev_status }">
+        </c:if>
+        <c:if test="${realData != null and realData.device_object != null }">
+            <input type="hidden" id="device_object" name="device_object" value="${realData.device_object }">
+        </c:if>
+        <c:if test="${realData != null and realData.ms_code != null }">
+            <input type="hidden" id="ms_code" name="ms_code" value="${realData.ms_code }">
         </c:if>
             <div id="page">
                 <input onclick="jumpPage(1)" type="button" value="首页"/>

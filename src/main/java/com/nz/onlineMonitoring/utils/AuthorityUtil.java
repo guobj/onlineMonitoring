@@ -12,11 +12,12 @@
  */
 package com.nz.onlineMonitoring.utils;
 
-import com.nz.onlineMonitoring.login.model.Login;
-import com.nz.onlineMonitoring.stationManage.model.Manage;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import com.nz.onlineMonitoring.login.model.Login;
+import com.nz.onlineMonitoring.realData.model.RealData;
+import com.nz.onlineMonitoring.stationManage.model.Manage;
 
 public class AuthorityUtil {
 
@@ -33,7 +34,7 @@ public class AuthorityUtil {
 		return authorityUtil;
 	}
 
-	public void assignPermissions(String[] citys, HttpServletRequest request, Manage manage){
+	public void assignPermissions(String[] citys, HttpServletRequest request, Manage realData){
 		HttpSession session = request.getSession();
 		Login user = (Login) session.getAttribute("user");
 		String  account = user.getAccount().toString();
@@ -41,25 +42,54 @@ public class AuthorityUtil {
 			if(account.endsWith("0000")){
 				if (citys != null) {
 					if (citys[1] != null && citys[1] != "") {
-						manage.setMs_code(citys[1]);
+						realData.setMs_code(citys[1]);
 					}else if (citys[0] != null && citys[0] != "") {
-						manage.setMs_code(citys[0]);
+						realData.setMs_code(citys[0]);
 					}else {
-						manage.setMs_code("37");
+						realData.setMs_code("37");
 					}
 				}
 			}else if(account.endsWith("00")){
 				if (citys != null) {
 					if (citys[0] != null && citys[0] != "") {
-						manage.setMs_code(citys[0]);
+						realData.setMs_code(citys[0]);
 					}
 				}else{
 					Integer res = user.getAccount() / 100;
-					manage.setMs_code(res.toString());
+					realData.setMs_code(res.toString());
 				}
 			}else{
-				manage.setMs_code(account);
+				realData.setMs_code(account);
 			}
 		}
 	}
+	public void assignPermissionsRealData(String[] citys, HttpServletRequest request, RealData realData){
+        HttpSession session = request.getSession();
+        Login user = (Login) session.getAttribute("user");
+        String  account = user.getAccount().toString();
+        if(account != null && !account.equals("")){
+            if(account.endsWith("0000")){
+                if (citys != null) {
+                    if (citys[1] != null && citys[1] != "") {
+                        realData.setMs_code(citys[1]);
+                    }else if (citys[0] != null && citys[0] != "") {
+                        realData.setMs_code(citys[0]);
+                    }else {
+                        realData.setMs_code("37");
+                    }
+                }
+            }else if(account.endsWith("00")){
+                if (citys != null) {
+                    if (citys[0] != null && citys[0] != "") {
+                        realData.setMs_code(citys[0]);
+                    }
+                }else{
+                    Integer res = user.getAccount() / 100;
+                    realData.setMs_code(res.toString());
+                }
+            }else{
+                realData.setMs_code(account);
+            }
+        }
+    }
 }

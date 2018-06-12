@@ -59,7 +59,6 @@ public class StationController {
         map.put("msGate", dictService.listMsGate());
         map.put("msNet", dictService.listMsNet());
         map.put("msDev", dictService.analysisMsDev());
-        map.put("station", station);
         return "station/listStation";
     }
     /**

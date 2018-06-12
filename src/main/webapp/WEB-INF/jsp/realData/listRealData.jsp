@@ -19,31 +19,11 @@
     <script src="js/pageNav.js" type="text/javascript"></script>
     <script src="js/sjck.js" type="text/javascript"></script>
     <script src="js/jilian.js" type="text/javascript"></script>
+    <script src="js/cascading.js"  type="text/javascript"></script>
     <script type="text/javascript">
-    $(function(){
-        city();
-        $("#s_city").change(function city(){
-            var city_id = $(this).val();
-            $("#s_area").html("<option value=''>地级市</option>");
-            $.post("dict/listArea",{city_id:city_id},function(data){
-                if(data!=null&&data.length>0){
-                    for(var i=0;i<data.length;i++){
-                        $("#s_area").append("<option value="+data[i].data_value+">"+data[i].data_name+"</option>");
-                    }
-                }
-            });
-        });
-    })
-    function city(){
-        $.post("dict/listCity",function(data){
-            if(data!=null&&data.length>0){
-                for(var i=0;i<data.length;i++){
-                    $("#s_city").append("<option value="+data[i].data_value+">"+data[i].data_name+"</option>");
-                }
-            }
-        })
-    }
-</script>
+    var account = ${sessionScope.user.account};
+    
+    </script>
 </head>
 
 <body>
@@ -55,26 +35,26 @@
             <span>设备类型：
 	            <select class="select1" name="device_type">
 	                <option value="">不限</option>
-	                <c:forEach items="${devType1 }" var="type1">
+	                <c:forEach items="${devType }" var="type">
 	                    <c:choose>
-	                        <c:when test="${type1.data_value < 10 }">
-	                            <option value="00${type1.data_value }">${type1.data_name }</option>
+	                        <c:when test="${type.data_value < 10 }">
+	                            <option value="00${type.data_value }">${type.data_name }</option>
 	                        </c:when>
-	                        <c:when test="${type1.data_value < 100 }">
-                                <option value="0${type1.data_value }">${type1.data_name }</option>
+	                        <c:when test="${type.data_value < 100 }">
+                                <option value="0${type.data_value }">${type.data_name }</option>
                             </c:when>
 	                        <c:otherwise>
-	                            <option value="${type1.data_value }">${type1.data_name }</option>
+	                            <option value="${type.data_value }">${type.data_name }</option>
 	                        </c:otherwise>
 	                    </c:choose>
 	                </c:forEach>
 	            </select>
             </span>
              <span>设备状态：
-                <select class="select1" name="dev_stauts">
+                <select class="select1" name="dev_status">
                     <option value="">不限</option>
-                    <c:forEach items="${devStauts }" var="stauts">
-                        <option value="${stauts.data_value }">${stauts.data_name }</option>
+                    <c:forEach items="${devStauts }" var="status">
+                        <option value="${status.data_value }">${status.data_name }</option>
                     </c:forEach>
                 </select>
             </span>
@@ -91,8 +71,8 @@
             <span>监测对象：
                 <select class="select1" name="device_object">
                     <option value="">不限</option>
-                    <c:forEach items="${devType }" var="type">
-                        <option value="${type.data_value }">${type.data_name }</option>
+                    <c:forEach items="${devObject }" var="ob">
+                        <option value="${ob.data_value }">${ob.data_name }</option>
                     </c:forEach>
                 </select>
             </span>
@@ -113,14 +93,19 @@
         </tr>
         </thead>
         <tbody>
-	        <c:forEach items="${listRealData }" var="real">
-		        <tr style="border-bottom: 1px solid #adadad;">
-		            <td class="t2">${real.ms_code }</td>
-		            <td class="t3">${real.dev_code }</td>
-		            <td class="t5"><fmt:formatDate value="${real.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>  </td>
-		            <td class="t6">${real.data_value }<!-- <input type="button" value="查看" onclick="look()"/> --></td>
-		        </tr>
-	        </c:forEach>
+            <c:if test="${listRealData eq null}" >
+                <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
+            </c:if>
+            <c:if test="${listRealData != null}" >
+		        <c:forEach items="${listRealData }" var="real">
+			        <tr style="border-bottom: 1px solid #adadad;">
+			            <td class="t2">${real.ms_code }</td>
+			            <td class="t3">${real.dev_code_value }</td>
+			            <td class="t5"><fmt:formatDate value="${real.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>  </td>
+			            <td class="t6">${real.data_value }<!-- <input type="button" value="查看" onclick="look()"/> --></td>
+			        </tr>
+		        </c:forEach>
+	        </c:if>
         </tbody>
     </table>
     <jsp:include page="../common/pages.jsp"></jsp:include>

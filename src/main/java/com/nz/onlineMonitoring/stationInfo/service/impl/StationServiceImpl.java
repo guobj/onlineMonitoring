@@ -34,8 +34,8 @@ public class StationServiceImpl implements StationService{
         map.put("count", count);
         List<Station> listStation = stationMapper.listStation(map);
         List<Dict> listData = dictMapper.listMsDev();
-        Map<String, String> mapDev = new HashMap<>();
         //将data中的ms_code的value作为键，name作为值
+        Map<String, String> mapDev = new HashMap<>();
         for (Dict d : listData) {
             mapDev.put(String.valueOf(d.getData_value()), d.getData_name());
         }

@@ -18,18 +18,8 @@
     <script type="text/javascript" src="js/jquery.page.js"></script>
     <script src="js/delete.js" type="text/javascript"></script>
     <script src="js/xinxi.js"  type="text/javascript"></script>
-    <script src="js/cascading.js" ></script>
+    <script src="js/cascading.js"  type="text/javascript"></script>
     <script type="text/javascript">
-	    function city(){
-	        $.post("dict/listCity",function(data){
-	            if(data!=null&&data.length>0){
-	                for(var i=0;i<data.length;i++){
-	                    $("#s_city").append("<option value="+data[i].data_value+">"+data[i].data_name+"</option>");
-	                }
-	            }
-	        })
-	    }
-	    
 	    function chakan(obj,id){
 	        $(obj).parent().parent().parent().parent().hide();
 	        $("#chakan").show();
