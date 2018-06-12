@@ -18,7 +18,7 @@
         <association property="station" column="ms_code" select="com.nz.onlineMonitoring.stationInfo.mapper.StationMapper.loadByMscode"/>
         <association property="dataProtocol" column="dev_protocol" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevProtocol"/>
         <association property="dataInterface" column="dev_interface" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevInterface"/>
-        <association property="dataType" column="dev_type" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevInterface"/>
+        <association property="dataType" column="dev_type" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevType1"/>
         <association property="dataDevfactory" column="dev_factory" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevfactory"/>
     </resultMap>
     <sql id="t_device_columns" >

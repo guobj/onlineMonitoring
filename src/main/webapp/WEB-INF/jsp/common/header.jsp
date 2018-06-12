@@ -29,7 +29,7 @@
                 <a href="javascript:;" class="a_1"><img src="img/xt3.png">&nbsp;监测设备管理</a>
                 <ul class="zdgl" id="c2">
                     <li><a href="device/queryDeviceInfo" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备信息管理</a></li>
-                    <li><a href="device/queryDeviceInfo" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备状态查看</a></li>
+                    <li><a href="vDevStatus/devcieStatusList" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备状态查看</a></li>
                     <li><a href="device/queryDeviceInfoList" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备信息查询</a></li>
                 </ul>
             </li>
