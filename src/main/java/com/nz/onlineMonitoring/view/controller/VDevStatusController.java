@@ -46,7 +46,7 @@ public class VDevStatusController {
 			map = PageBean.clientMap(map, pages, request);
 			jacksonData.success(vDevStatusList);
 		} catch (Exception e) {
-			jacksonData.failure(e.getMessage());
+			map.put("message", e.getMessage());
 		}
 		return "device/deviceStatus_list";
 //		return jacksonData;

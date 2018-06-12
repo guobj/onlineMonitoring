@@ -12,27 +12,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>监测站信息</title>
     <link href="css/xinxi.css" rel="stylesheet" type=text/css>
+    <link href="css/page.css" rel="stylesheet" type=text/css>
     <script src="js/jquery.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <script type="text/javascript" src="js/jquery.page.js"></script>
     <script src="js/delete.js" type="text/javascript"></script>
     <script src="js/xinxi.js"  type="text/javascript"></script>
-    <script src="js/jilian.js" type="text/javascript"></script>
+    <script src="js/cascading.js" ></script>
     <script type="text/javascript">
-	    $(function(){
-	        city();
-	        $("#s_city").change(function city(){
-	            var city_id = $(this).val();
-	            $("#s_area").html("<option value=''>地级市</option>");
-	            $.post("dict/listArea",{city_id:city_id},function(data){
-	                if(data!=null&&data.length>0){
-	                    for(var i=0;i<data.length;i++){
-	                        $("#s_area").append("<option value="+data[i].data_value+">"+data[i].data_name+"</option>");
-	                    }
-	                }
-	            });
-	        });
-	    })
 	    function city(){
 	        $.post("dict/listCity",function(data){
 	            if(data!=null&&data.length>0){
