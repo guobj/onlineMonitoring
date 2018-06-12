@@ -27,8 +27,7 @@ public class DictController {
 	 */
 	@RequestMapping("/listCity")
 	@ResponseBody
-	public List<Dict> listCity() {
-		return dictService.listCity();
+	public List<Dict> listCity() { return dictService.listCity();
 	}
 
 	/**

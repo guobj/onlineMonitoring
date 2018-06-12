@@ -2,7 +2,7 @@ package com.nz.onlineMonitoring.login.model;
 
 public class Login {
 	//账号
-	private String account;
+	private Integer account;
 	//密码
 	private String password;
 	//城市名字
@@ -10,11 +10,11 @@ public class Login {
 	//是否删除；
 	private Boolean dr;
 
-	public String getAccount() {
+	public Integer getAccount() {
 		return account;
 	}
 
-	public void setAccount(String account) {
+	public void setAccount(Integer account) {
 		this.account = account;
 	}
 

@@ -19,11 +19,14 @@ pageContext.setAttribute("basePath", basePath);
     <script src="js/delete.js" type="text/javascript"></script>
     <script src="js/xinxi.js" ></script>
     <script type="text/javascript" src="js/queryLike.js"></script>
+    <%--<script type="text/javascript" src="js/cascading.jsp"></script>--%>
     <script src="js/cascading.js"></script>
     <script type="text/javascript">
+        var account = ${sessionScope.user.account};
         //模糊查询调用方法
         function submit() {
             var form = new FormData(document.getElementById("like"));
+            $("#s_city").removeAttr("disabled");
            // console.log(text);
            //  form.append("content",text);
             $.ajax({
@@ -134,6 +137,7 @@ pageContext.setAttribute("basePath", basePath);
                 }
             });
         }
+
     </script>
 </head>
 <body>

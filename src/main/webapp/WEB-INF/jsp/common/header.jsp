@@ -15,7 +15,7 @@
             <ul class="three">
                 <a href="#"><img src="img/fz.png">&nbsp;返回首页</a>
                 <a href="#"><img src="img/bg2.png">&nbsp;个人信息</a>
-                <a href="#"><img src="img/gb.png" style="margin-top:7px;">&nbsp;退出系统</a>
+                <a href="loginOut"><img src="img/gb.png" style="margin-top:7px;">&nbsp;退出系统</a>
             </ul>
         </li>
     </ul>
