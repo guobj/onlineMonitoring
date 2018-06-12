@@ -20,6 +20,9 @@
     <script src="js/xinxi.js"  type="text/javascript"></script>
     <script src="js/cascading.js"  type="text/javascript"></script>
     <script type="text/javascript">
+        var account = ${sessionScope.user.account};
+    </script>
+    <script type="text/javascript">
 	    function chakan(obj,id){
 	        $(obj).parent().parent().parent().parent().hide();
 	        $("#chakan").show();
@@ -163,14 +166,14 @@
             });
 
         }
-    
+   
     </script>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点信息管理</span></p></li>
     <div class="gn">
         <form action="station/listStation" method="post">
             <span class="span1">监测站名称：<input type="text" name="ms_name" placeholder="不限" ></span>
@@ -229,18 +232,23 @@
                 </tr>
             </thead>
                 <tbody>
-                    <c:forEach items="${listStation }" var="station">
-	                    <tr>
-	                        <td class="t3">${station.ms_name }</td>
-	                        <td class="t2">${station.ms_code }</td>
-	                        <td class="t4">${station.ms_dev_value }</td>
-	                        <td class="t5">${station.ms_type_value.data_name }</td>
-	                        <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this,${station.id})"></td>
-	                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="delStation(${station.id})" ></td>
-	                        <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
-	                        <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this,${station.id})"></td>
-	                    </tr>
-                    </c:forEach>
+                    <c:if test="${listStation eq null}" >
+                        <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
+                    </c:if>
+                    <c:if test="${listStation != null}" >
+	                    <c:forEach items="${listStation }" var="station">
+		                    <tr>
+		                        <td class="t3">${station.ms_name }</td>
+		                        <td class="t2">${station.ms_code }</td>
+		                        <td class="t4">${station.ms_dev_value }</td>
+		                        <td class="t5">${station.ms_type_value.data_name }</td>
+		                        <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this,${station.id})"></td>
+		                        <td class="t7"><input type="button" value="删除"  class="input2" onclick="delStation(${station.id})" ></td>
+		                        <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this)"></td>
+		                        <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this,${station.id})"></td>
+		                    </tr>
+	                    </c:forEach>
+	                 </c:if>
                 </tbody>
             </table>
             <jsp:include page="../common/pages.jsp"></jsp:include>
@@ -353,7 +361,14 @@
             $("#tip_1").html("请输入2-50位字符");
         }
         if(str2==true){
-            $("#tip_2").html("格式正确")
+            var code = $("#text_2").val();
+            $.post("station/existMsCode",{ms_code:code},function(data){
+                if (data >= 0) {
+                    $("#tip_2").html("编码已重复")
+                }else {
+                    $("#tip_2").html("格式正确")
+                }
+            });
         }else{
             $("#tip_2").html("请输入8位数字");
         }
@@ -386,7 +401,14 @@
             $("#tj_tip_1").html("请输入2-50位字符");
         }
         if(str2==true){
-            $("#tj_tip_2").html("格式正确")
+            var code = $("#tj_text_2").val();
+            $.post("station/existMsCode",{ms_code:code},function(data){
+            	if (data >= 0) {
+            		$("#tj_tip_2").html("编码已重复")
+            	}else {
+            		$("#tj_tip_2").html("格式正确")
+            	}
+            });
         }else{
             $("#tj_tip_2").html("请输入8位数字");
         }

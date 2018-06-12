@@ -33,7 +33,13 @@ public class StationServiceImpl implements StationService{
         Integer count = stationMapper.countStation(map);
         map.put("count", count);
         List<Station> listStation = stationMapper.listStation(map);
+        if (listStation == null || listStation.size() < 0) {
+            throw new RuntimeException("暂无数据");
+        }
         List<Dict> listData = dictMapper.listMsDev();
+        if (listData == null || listData.size() < 0) {
+            throw new RuntimeException("暂无数据");
+        }
         //将data中的ms_code的value作为键，name作为值
         Map<String, String> mapDev = new HashMap<>();
         for (Dict d : listData) {
@@ -47,8 +53,13 @@ public class StationServiceImpl implements StationService{
                     temp[i] = mapDev.get(temp[i]);
                     //将设备编码解析成具体的name
                     StringBuffer sb = new StringBuffer();
-                    sb.append(dictMapper.loadByDevType(Integer.parseInt(temp[i].substring(3, 4))).getData_name());
-                    sb.append(dictMapper.loadByDevType1(Integer.parseInt(temp[i].substring(3, 6))).getData_name());
+                    Dict devObject = dictMapper.loadByDevType(Integer.parseInt(temp[i].substring(3, 4)));
+                    Dict devType = dictMapper.loadByDevType1(Integer.parseInt(temp[i].substring(3, 6)));
+                    if (devObject == null || devType == null) {
+                        throw new RuntimeException("暂无数据"); 
+                    }
+                    sb.append(devObject.getData_name());
+                    sb.append(devType.getData_name());
                     temp[i] = sb.toString();
                 }
                 s.setMs_dev_value(String.join(",", temp));
@@ -68,7 +79,11 @@ public class StationServiceImpl implements StationService{
      */
     @Override
     public Integer countStation(Map<String , Object> map) {
-        return stationMapper.countStation(map);
+        int count = stationMapper.countStation(map);
+        if (count <= 0) {
+            throw new RuntimeException("暂无数据"); 
+        }
+        return count;
     }
     /**
      * 
@@ -81,8 +96,14 @@ public class StationServiceImpl implements StationService{
     @Override
     public Station load(Integer id) {
         Station station = stationMapper.load(id);
+        if (station == null) {
+            throw new RuntimeException("暂无数据");
+        }
         String dev = station.getMs_dev();
         List<Dict> listData = dictMapper.listMsDev();
+        if (listData == null || listData.size() < 0) {
+            throw new RuntimeException("暂无数据");
+        }
         Map<String, String> mapDev = new HashMap<>();
         //将data中的ms_code的value作为键，name作为值
         for (Dict d : listData) {
@@ -94,8 +115,13 @@ public class StationServiceImpl implements StationService{
             for (int i = 0, n = temp.length; i < n; i++) {
                 temp[i] = mapDev.get(temp[i]);
                 StringBuffer sb = new StringBuffer();
-                sb.append(dictMapper.loadByDevType(Integer.parseInt(temp[i].substring(3, 4))).getData_name());
-                sb.append(dictMapper.loadByDevType1(Integer.parseInt(temp[i].substring(3, 6))).getData_name());
+                Dict devObject = dictMapper.loadByDevType(Integer.parseInt(temp[i].substring(3, 4)));
+                Dict devType = dictMapper.loadByDevType1(Integer.parseInt(temp[i].substring(3, 6)));
+                if (devObject == null || devType == null) {
+                    throw new RuntimeException("暂无数据"); 
+                }
+                sb.append(devObject.getData_name());
+                sb.append(devType.getData_name());
                 temp[i] = sb.toString();
             }
             station.setMs_dev_value(String.join(",", temp));
@@ -127,12 +153,12 @@ public class StationServiceImpl implements StationService{
      * @date 2018年6月2日 下午8:07:08
      */
     @Override
-    public String delete(Integer id) {
+    public Integer delete(Integer id) {
         int result = stationMapper.delete(id);
-        if (result > 0) {
-            return "删除成功";
+        if (result < 0) {
+            throw new RuntimeException("更删除失败");
         }
-        return "删除失败";
+        return result;
     }
     /**
      * 根据id，修改监测站的信息

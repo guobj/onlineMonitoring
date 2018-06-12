@@ -54,7 +54,7 @@ public interface StationService {
     * @author ssh
     * @date 2018年6月2日 下午8:07:08
     */
-   String delete(Integer id);
+   Integer delete(Integer id);
    /**
     * 根据id，修改监测站的信息
     * 方法描述：

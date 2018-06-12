@@ -21,8 +21,7 @@
     <script src="js/jilian.js" type="text/javascript"></script>
     <script src="js/cascading.js"  type="text/javascript"></script>
     <script type="text/javascript">
-    var account = ${sessionScope.user.account};
-    
+        var account = ${sessionScope.user.account};
     </script>
 </head>
 
