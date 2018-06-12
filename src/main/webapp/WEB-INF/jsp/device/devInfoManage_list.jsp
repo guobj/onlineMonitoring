@@ -25,6 +25,7 @@
                 data:{id:id},
                 dataType: "JSON",
                 success:function (data) {
+                    $("#manageId").val(data.data.id);
                     if(data.data.station != null){
                         $("#ms_name").html(data.data.station.ms_name);
                     }
@@ -42,6 +43,22 @@
                     $("#zbqx").html(data.data.dev_warraty);
                     $("#sbcj").html(data.data.dev_mfrs);
                     $("#sbms").html(data.data.dev_desc);
+                }
+            });
+        }
+        
+        //修改质保期限，设备厂家，设备描述
+        function update() {
+            $.ajax({
+                type:"post",
+                url:"device/updateById",
+                data:{"id":$("#manageId").val(),
+                    "dev_warraty":$("#in").val(),
+                    "dev_mfrs":$("#in1").val(),
+                    "dev_desc":$("#in2").val()
+                },
+                dataType: "JSON",
+                success:function (data) {
                 }
             });
         }
@@ -101,6 +118,7 @@
     </table>
     <div id="detail">
         <table id="bg1">
+            <<input type="hidden" id="manageId">
             <tr>
                 <td class="s1">监测站名称</td>
                 <td class="s2" id="ms_name"></td>
@@ -147,7 +165,7 @@
             </tr>
         </table>
         <form action="" method="post">
-            <input type="button" value="修改" id="update"/>
+            <input type="button" onclick="" value="修改" id="update"/>
             <input type="button" value="关闭" id="cl"/>
             <input type="button" value="保存" id="save" style="display: none"/>
             <input type="button" value="取消" id="esc" style="display: none"/>
@@ -188,12 +206,12 @@
             tr.innerHTML=con;
             var tr1=document.getElementById("sbcj")
             con1=tr1.innerHTML;
-            con1="<input type='text' id='in1' value='"+con+"' class='s3'>";
-            tr1.innerHTML=con;
+            con1="<input type='text' id='in1' value='"+con1+"' class='s3'>";
+            tr1.innerHTML=con1;
             var tr2=document.getElementById("sbms");
             con2=tr2.innerHTML;
-            con2="<input type='text' id='in2' value='"+con+"' class='s3'>";
-            tr2.innerHTML=con;
+            con2="<input type='text' id='in2' value='"+con2+"' class='s3'>";
+            tr2.innerHTML=con2;
             $("#update").hide()
             $("#cl").hide()
             $("#save").show()
@@ -204,13 +222,27 @@
             var inp=document.getElementById("in").value;
             var p=document.getElementById("zbqx");
             p.innerHTML=inp;
-            var inp1=document.getElementById("in").value;
+            var inp1=document.getElementById("in1").value;
             var p1=document.getElementById("sbcj");
-            p1.innerHTML=inp;
-            var inp2=document.getElementById("in").value;
+            p1.innerHTML=inp1;
+            var inp2=document.getElementById("in2").value;
             var p2=document.getElementById("sbms");
-            p2.innerHTML=inp;
-            $.MsgBox.Confirm("温馨提示", "确认保存？温馨提示", function () {  $.MsgBox.Alert("消息", "保存成功");});
+            p2.innerHTML=inp2;
+            $.MsgBox.Confirm("温馨提示", "确认保存？温馨提示", function () {
+                console.log("设备："+$("#in").val()+$("#in1").val()+$("#in2").val())
+                $.ajax({
+                    type:"post",
+                    url:"device/updateById",
+                    data:{"id":$("#manageId").val(),
+                        "dev_warraty":inp,
+                        "dev_mfrs":inp1,
+                        "dev_desc":inp2
+                    },
+                    dataType: "JSON",
+                    success:function (data) {
+                    }
+                });
+                $.MsgBox.Alert("消息", "保存成功");});
             $("#update").show()
             $("#cl").show()
             $("#save").hide()
@@ -220,12 +252,12 @@
             var inp=document.getElementById("in").value;
             var p=document.getElementById("zbqx");
             p.innerHTML=inp;
-            var inp1=document.getElementById("in").value;
+            var inp1=document.getElementById("in1").value;
             var p1=document.getElementById("sbcj");
-            p1.innerHTML=inp;
-            var inp2=document.getElementById("in").value;
+            p1.innerHTML=inp1;
+            var inp2=document.getElementById("in2").value;
             var p2=document.getElementById("sbms");
-            p2.innerHTML=inp;
+            p2.innerHTML=inp2;
             $("#update").show()
             $("#cl").show()
             $("#save").hide()

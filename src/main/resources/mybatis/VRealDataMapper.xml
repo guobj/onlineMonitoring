@@ -10,6 +10,4 @@
     </resultMap>
 
     <!--<select id="load" resultMap="BaseResultMap" parameterType=""-->
-
-
 </mapper>
