@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nz.onlineMonitoring.view.mapper.VDevStatusMapper" >
+    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.view.model.VDevStatus" >
+        <result column="ms_name" property="ms_name" jdbcType="VARCHAR" />
+        <result column="ms_code" property="ms_code" jdbcType="VARCHAR" />
+        <result column="dev_code" property="dev_code" jdbcType="VARCHAR" />
+        <result column="dev_type" property="dev_type" jdbcType="INTEGER" />
+        <result column="dev_factory" property="dev_factory" jdbcType="INTEGER" />
+        <result column="data_time" property="data_time" jdbcType="INTEGER" />
+        <result column="dev_status" property="dev_status" jdbcType="INTEGER" />
+        <association property="dataDevStatus" column="dev_status" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevStatus"/>
+        <association property="dataDevType" column="dev_type" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevType1"/>
+        <association property="dataDevFactory" column="dev_factory" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevfactory"/>
+    </resultMap>
+    <select id="deviceStatusList" parameterType="map" resultMap="BaseResultMap">
+        select
+          *
+        from
+          v_dev_status
+        <where>
+            <if test="vdevstatus.ms_code!=null and vdevstatus.ms_code!=''">
+                AND ms_code LIKE concat("%",#{vdevstatus.ms_code},"%")
+            </if>
+            <if test="vdevstatus.dev_code!=null and vdevstatus.dev_code!=''">
+                AND dev_code LIKE concat("%",#{vdevstatus.dev_code},"%")
+            </if>
+            <if test="vdevstatus.dev_type!=null and vdevstatus.dev_type!=''">
+                AND dev_type = #{vdevstatus.dev_type}
+            </if>
+        </where>
+        LIMIT #{record},4
+    </select>
+    <!--共有多少记录-->
+    <select id="count" parameterType="map" resultType="integer">
+        select
+        count(*)
+        from
+          v_dev_status
+        <where>
+            <if test="vdevstatus.ms_code!=null and vdevstatus.ms_code!=''">
+                AND ms_code LIKE concat("%",#{vdevstatus.ms_code},"%")
+            </if>
+            <if test="vdevstatus.dev_code!=null and vdevstatus.dev_code!=''">
+                AND dev_code LIKE concat("%",#{vdevstatus.dev_code},"%")
+            </if>
+            <if test="vdevstatus.dev_type!=null and vdevstatus.dev_type!=''">
+                AND dev_type = #{vdevstatus.dev_type}
+            </if>
+        </where>
+    </select>
+</mapper>
