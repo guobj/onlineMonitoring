@@ -50,7 +50,7 @@
             <if test="manage.station != null and manage.station.ms_net != null">
                 AND ts.ms_net = #{manage.station.ms_net}
             </if>
-            AND ts.dr = false AND tm.dr = false
+            AND ts.dr = false AND tm.dr = false order by tm.id desc
         </where>
         LIMIT #{record},4
     </select>

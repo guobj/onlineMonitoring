@@ -96,4 +96,18 @@ public class DeviceController {
 		return jacksonData;
 	}
 
+	//设备状态查看
+	@RequestMapping(value = "/devcieStatusList")
+//	@ResponseBody
+	public String devcieStatusList(Device device){
+//		JacksonData jacksonData = new JacksonData();
+//		try {
+//			Integer res = deviceService.updateById(device);
+//			jacksonData.success(res);
+//		} catch (Exception e) {
+//			jacksonData.failure(e.getMessage());
+//		}
+		return "device/deviceStatus_list";
+	}
+
 }

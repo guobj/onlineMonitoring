@@ -80,32 +80,21 @@ pageContext.setAttribute("basePath", basePath);
 
         }
         //修改方法
-        function updateById(obj,id) {
-            $(obj).parent().parent().parent().parent().hide();
-            $("#xiugai").show();
-            $("h4").html("");
-            $("#page").hide();
+        function updateById() {
+            var form = new FormData(document.getElementById("update"));
             $.ajax({
-                type:"get",
-                url:"updateById",
-                data:{id:id},
+                type:"post",
+                url:"manage/updateById",
+                data:form,
+                processData:false,
+                contentType:false,
+                dataType:'json',
                 success:function (data) {
-                    console.log("测试："+data.data.station.ms_fp_value.data_name);
-                    $("#ms_name").html(data.data.station.ms_name);
-                    $("#ms_code").html(data.data.ms_code);
-                    $("#ms_date").html(data.data.station.ms_date);
-                    $("#ms_dev").html(data.data.station.ms_dev_value);
-                    $("#ms_type1").html(data.data.station.dict.data_name);
-                    $("#ms_fp1").html(data.data.station.ms_fp_value.data_name);
-                    $("#ms_place").html(data.data.station.ms_place);
-                    $("#ms_position").html(data.data.station.ms_longitude+","+data.data.station.ms_latitude);
-                    $("#ms_user").html(data.data.station.ms_user);
-                    $("#ms_builder").html(data.data.station.ms_builder);
-                    $("#ms_net1").html(data.data.station.ms_net_value.data_name);
-                    $("#ms_gate1").html(data.data.station.ms_gate_value.data_name);
-                    $("#ms_desc").html(data.data.station.ms_desc);
+                    if(data.data >= 1){
+                        alert("修改成功");
+                    }
                 }
-            })
+            });
         }
         //配置方法
         function conf() {
@@ -124,6 +113,7 @@ pageContext.setAttribute("basePath", basePath);
                 }
             });
         }
+        //调出div
         function update(obj,id){
             $(obj).parent().parent().parent().parent().hide();
             $("#peizhi").show();
@@ -292,81 +282,24 @@ pageContext.setAttribute("basePath", basePath);
                 <input type="button" value="关闭" onclick="guanbi()" />
             </form>
         </div>
-        <div id="xiugai">
-            <form method="post">
-            <h5>修改</h5>
-                <span>监测站名称:</span>
-                <input type="text" id="text_1" name="ms_name">
-                <span id="tip_1">
-                    请输入2-50位字符
-                </span>
+        <div id="peizhi">
+            <form method="post" id="update">
+                <%--<span>监测站名称:</span><input type="text" name=""/>--%>
+                <%--<br/>--%>
+                <input type="hidden" id="manageId" name="id">
+                <span>监测站编码:</span><input type="text" id="ms_code1" name="ms_code"/>
                 <br/>
-                <span>监测站编码:</span>
-                <input type="text" id="text_2" name="ms_code">
-                <span id="tip_2">
-                    请输入8位数字
-                </span>
+                <span style="margin-right: 16px;">上传地址:</span><input type="text" id="server_ip" name="server_ip"/>
                 <br/>
-                <span>建设时间:</span>
-                <input type="text" style="margin-left: 28px;" name="">
+                <span style="margin-right: 16px;">上传频率:</span><input type="text" id="data_upload" name="data_upload"/>
                 <br/>
-                <span>使用单位，联系人，联系方式:</span>
-                <input type="text" class="lxfs" id="text_3">
-                <span id="tip_3">
-                    请输入0-100位字符
-                </span>
+                <span style="margin-right: 28px;">端口号:</span> <input type="text" id="server_port" name="server_port"/>
                 <br/>
-                <span>施工单位，联系人，联系方式:</span>
-                <input type="text" class="lxfs " id="text_4">
-                <span id="tip_4">
-                    请输入0-100位字符
-                </span>
+                <span style="margin-right: 16px;">存储周期:</span><input type="text" id="data_storage" name="data_storage"/>
                 <br/>
-                <span >监测站类型:</span>
-                <select style="margin-left: 1%;">
-                    <option>新建重点监测站</option>
-                    <option>改建重点监测站</option>
-                    <option>新建普通监测站</option>
-                    <option>改建普通监测站</option>
-                </select>
-                <br/>
-                <span>资金来源:</span>
-                <select>
-                    <option>省资金</option>
+                <input class="pz" type="button" value="修改" onclick="updateById()">
+                <input  type="button" value="关闭" class="close" onclick="pz()">
 
-                    <option>国家资金</option>
-                    <option>其他</option>
-                </select>
-                <br/>
-                <span>网络类型:</span>
-                <select>
-                    <option>无线</option>
-
-                    <option>有线</option>
-                </select>
-                <br/>
-                <span>网关类型:</span>
-                <select>
-                    <option>NZ2000</option>
-
-                    <option>NZ1000</option>
-                </select>
-                <br/>
-                <span>监测性质:</span>
-                <input type="checkbox" name="gn" class="gn">病害监测
-                <input type="checkbox" name="gn"  class="gn">害虫监测
-                <input type="checkbox" name="gn"  class="gn"> 鼠情监测
-                <input type="checkbox" name="gn"  class="gn">环境因子监测
-                <input type="checkbox" name="gn"  class="gn">视频图像监测
-                <input type="checkbox" name="gn"  class="gn">其他监测
-                <br/>
-                <span >监测站描述:</span>
-                <textarea id="text_5"></textarea>
-                <span id="tip_5">
-                    请输入0-300位字符
-                </span>
-                <input class="xg" type="button" value="修改" onclick="xg()">
-                <input class="xg" type="button" value="取消"  onclick="xg1()" style="margin-left: 5%;">
             </form>
         </div>
 
@@ -465,6 +398,7 @@ pageContext.setAttribute("basePath", basePath);
                 <span style="margin-right: 16px;">存储周期:</span><input type="text" id="data_storage" name="data_storage"/>
                 <br/>
                 <input class="pz" type="button" value="配置" onclick="conf()">
+                <input  type="button" value="关闭" class="close" onclick="pz()">
             </form>
         </div>
 

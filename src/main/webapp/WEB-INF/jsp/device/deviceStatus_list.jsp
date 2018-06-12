@@ -13,10 +13,8 @@
     <base href="${basePath }">
     <meta charset="UTF-8">
     <title></title>
-    <link href="css/sbxxcx.css" rel="stylesheet" type="text/css">
-    <link href="css/page.css" rel="stylesheet" type="text/css">
-    <script src="js/jquery.js"></script>
-    <script src="js/sbck.js" ></script>
+    <link href="css/sbztcx.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery.js"></script>
     <script src="js/cascading.js" ></script>
     <script type="text/javascript">
         $(function () {
@@ -36,7 +34,6 @@
         });
     </script>
 </head>
-
 <body>
 <div id="tit">
     <p>山东省病虫害物联网监测系统</p>
@@ -53,18 +50,18 @@
     </ul>
 </div>
 <jsp:include page="../common/header.jsp"></jsp:include>
+
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
     <div class="menu">
-        <form action="device/queryDeviceInfoList" method="post">
-            <span>监测站名称：<input name="ms_name" type="text"/></span>
+        <form action="vDevStatus/devcieStatusList" method="post">
+            <span>监测站名称：<input type="text"/></span>
             <span>设备类型： <select class="select1" name="dev_type" id="dev_type">
                 <option value="">设备类型</option>
-
             </select></span>
             <br/>
-            <span>监测站编码：
-                <select id="s_city" name="city">
+            <span>监测区域：
+                 <select id="s_city" name="city">
                     <option value="">市区</option>
                 </select>
                 <select id="s_area" name="city" >
@@ -74,7 +71,6 @@
             <span>监测对象：
                 <select class="select1" name="dev_object" id="dev_object">
                     <option value="">监测对象</option>
-
                 </select>
             </span>
             <br/>
@@ -82,46 +78,100 @@
 
         </form>
     </div>
-    <span class="title">查询列表</span>
-    <table>
-        <thead>
-        <tr>
+    <h4>信息列表</h4>
+    <br/>
+        <table>
+            <thead>
+            <tr>
             <td class="t2">监测站名称</td>
             <td class="t3">监测站编码</td>
             <td class="t4">设备类型</td>
-            <td class="t5">设备采集数据</td>
-            <td class="t6">图片</td>
-        </tr>
-        </thead>
-        <tbody>
-        <c:choose>
-            <c:when test="${list eq null}">
-                <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
-            </c:when>
-            <c:otherwise>
-                <c:forEach var="list" items="${list}">
-                    <tr>
-                        <td class="t2">${list.station.ms_name}</td>
-                        <td class="t3">${list.ms_code}</td>
-                        <td class="t4">${list.dev_code}</td>
-                        <td class="t5">设备采集数据</td>
-                        <td class="t6"><input type="button" value="查看" onclick="check(this)"/></td>
-                    </tr>
-                </c:forEach>
-            </c:otherwise>
-        </c:choose>
-        </tbody>
-    </table>
-    <jsp:include page="../common/pages.jsp"></jsp:include>
-    <div id="img">
-        <div id="imga"></div>
-        <form>
-            <input type="button" value="关闭" onclick="clos()"/>
-        </form>
+            <td class="t5">监测对象</td>
+            <td class="t6">设备状态</td>
+            </tr>
+            </thead>
+            <tbody>
+                <c:choose>
+                    <c:when test="${list eq null}">
+                        <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="list" items="${list}">
+                            <tr>
+                                <td class="t2">${list.ms_name}</td>
+                                <td class="t3">${list.ms_code}</td>
+                                <td class="t4">${list.dataDevType.data_name}</td>
+                                <td class="t5">${list.dev_code}</td>
+                                <td class="t6">${list.dataDevStatus.data_name}</td>
+                            </tr>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
+            </tbody>
+        </table>
     </div>
-</div>
-<div id="footer">
-    <li>济南农智信息科技有限公司所有&copy; &nbsp;电话：12345677  &nbsp;<a href="#">关于我们</a> &nbsp;<a href="#">售后服务</a></li>
-</div>
 </body>
+<script>
+ $(function(){
+    var height=$("#content_r").height();
+    //日期
+    var date=new Date();
+    $("#year").html(date.getFullYear());
+    $("#month").html(date.getMonth()+1);
+    $("#dat").html(date.getDate());
+
+    var day=date.getDay();
+
+    if(day=="1"){
+        $("#day").html("一");
+    }else if((day=="2")){
+        $("#day").html("二");
+    }else if(day=="3"){
+        $("#day").html("三");
+    }
+    else if(day=="4"){
+        $("#day").html("四");
+    }
+    else if(day=="5"){
+        $("#day").html("五");
+    }
+    else if(day=="6"){
+        $("#day").html("六");
+    }
+    else if(day=="0"){
+        $("#day").html("日");
+    }
+    //菜单
+    $("#a_1").click(function(){
+        $("#c1").toggle()
+    })
+    $("#a_2").click(function(){
+        $("#c2").toggle()
+    })
+    $("#a_3").click(function(){
+        $("#c3").toggle()
+    })
+    $("#a_4").click(function(){
+        $("#c4").toggle()
+    })
+
+
+    $("#ceNav li a").click(function(){
+        $(this).siblings().toggle();
+    })
+    $("#img").hide();
+});
+
+
+$(function(){
+    $(" tbody tr").mouseover(function(){
+        $(this).css("background","#fff4e5");
+    })
+    $(" tbody tr").mouseout(function(){
+        $(this).css("background","#EEF4F9");
+    })
+})
+
+
+</script>
 </html>

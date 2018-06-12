@@ -7,6 +7,8 @@
  **/
 package com.nz.onlineMonitoring.realData.model;
 
+import com.nz.onlineMonitoring.dict.model.Dict;
+
 import java.util.Date;
 
 /**
@@ -65,6 +67,7 @@ public class RealMeteorological {
 	private String device_type;
 	/**根据设备监测对象的查询数据 */
 	private String device_object;
+
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_meteorological.id
      *

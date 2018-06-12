@@ -160,4 +160,20 @@
         from t_dict
         where data_type='ms_net'
     </select>
+
+    <!--查询设备厂家一条记录-->
+    <select id="loadByDevfactory" parameterType="integer" resultMap="BaseResultMap">
+        select
+        <include refid="t_dict_columns" />
+        from t_dict
+        where data_type='dev_factory' and data_value = #{data_value,jdbcType=INTEGER}
+    </select>
+
+    <!--查询设备状态-->
+    <select id="loadByDevStatus" parameterType="integer" resultMap="BaseResultMap">
+        select
+        <include refid="t_dict_columns" />
+        from t_dict
+        where data_type='dev_status' and data_value = #{data_value,jdbcType=INTEGER}
+    </select>
 </mapper>

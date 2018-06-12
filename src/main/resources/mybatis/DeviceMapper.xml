@@ -14,10 +14,12 @@
         <result column="dev_mfrs" property="dev_mfrs" jdbcType="VARCHAR" />
         <result column="dev_desc" property="dev_desc" jdbcType="VARCHAR" />
         <result column="dev_type" property="dev_type" jdbcType="INTEGER" />
+        <result column="dev_factory" property="dev_factory" jdbcType="INTEGER" />
         <association property="station" column="ms_code" select="com.nz.onlineMonitoring.stationInfo.mapper.StationMapper.loadByMscode"/>
         <association property="dataProtocol" column="dev_protocol" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevProtocol"/>
         <association property="dataInterface" column="dev_interface" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevInterface"/>
         <association property="dataType" column="dev_type" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevInterface"/>
+        <association property="dataDevfactory" column="dev_factory" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevfactory"/>
     </resultMap>
     <sql id="t_device_columns" >
         id, ms_code, dev_code, dev_protocol, dev_interface, dev_regad, dev_ip, dev_port, 
@@ -34,14 +36,14 @@
     <select id="queryDeviceInfo" resultMap="BaseResultMap" parameterType="map">
         SELECT * FROM t_device td
         <where>
-            <if test="device.ms_code!=null and device.ms_code.trim()!=''">
+            <if test="device.ms_code!=null and device.ms_code!=''">
                 AND td.ms_code LIKE concat("%",#{device.ms_code},"%")
             </if>
-            <if test="device.dev_code!=null and device.dev_code.trim()!=''">
+            <if test="device.dev_code!=null and device.dev_code!=''">
                 AND td.dev_code LIKE concat("%",#{device.dev_code},"%")
             </if>
-            <if test="device.dev_type!=null and device.dev_type.trim()!=''">
-                AND td.dev_type = concat("%",#{device.dev_type},"%")
+            <if test="device.dev_type!=null and device.dev_type!=''">
+                AND td.dev_type = #{device.dev_type}
             </if>
             AND td.dr = false
         </where>

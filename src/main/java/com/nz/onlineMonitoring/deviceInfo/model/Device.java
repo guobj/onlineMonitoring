@@ -61,6 +61,25 @@ public class Device {
 	//存储数据字典data_type="dev_type"的相关信息 设备类型
 	private Dict dataType;
 
+	//存储设备厂家
+	private Dict dataDevfactory;
+
+	public Dict getDataType() {
+		return dataType;
+	}
+
+	public void setDataType(Dict dataType) {
+		this.dataType = dataType;
+	}
+
+	public Dict getDataDevfactory() {
+		return dataDevfactory;
+	}
+
+	public void setDataDevfactory(Dict dataDevfactory) {
+		this.dataDevfactory = dataDevfactory;
+	}
+
 	public Station getStation() {
 		return station;
 	}

@@ -7,10 +7,11 @@
         <result column="dev_code" property="dev_code" jdbcType="VARCHAR" />
         <result column="data_value" property="data_value" jdbcType="VARCHAR" />
         <result column="data_time" property="data_time" jdbcType="TIMESTAMP" />
-        <result column="dev_stauts" property="dev_stauts" jdbcType="INTEGER" />
+        <result column="dev_status" property="dev_status" jdbcType="INTEGER" />
       <!--   <association column="ms_code" property="ms_code_value" select=""></association>
         <association column="dev_code" property="dev_code_value" select=""></association>
         <association column="dev_stauts" property="dev_stauts_value" select=""></association> -->
+        <association column="dev_status" property="dataDevStatus" select=""></association>
     </resultMap>
     <sql id="t_real_data_columns" >
         id,  ms_code, dev_code, data_value, data_time, dev_stauts,dr

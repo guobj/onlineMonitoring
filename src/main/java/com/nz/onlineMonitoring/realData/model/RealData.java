@@ -7,6 +7,8 @@
  **/
 package com.nz.onlineMonitoring.realData.model;
 
+import com.nz.onlineMonitoring.dict.model.Dict;
+
 import java.util.Date;
 
 /**
@@ -27,8 +29,8 @@ public class RealData {
     private String data_value;
     /**时间-仅显示时间,所属表字段为 t_real.data_time  */
     private Date data_time;
-    /**设备状态-关联表，见数据字典,所属表字段为 t_real.dev_stauts  */
-    private Integer dev_stauts;
+    /**设备状态-关联表，见数据字典,所属表字段为 t_real.dev_status  */
+    private Integer dev_status;
 
 
 	//是否删除 1删除0未删除
@@ -38,6 +40,7 @@ public class RealData {
 	private String device_type;
 	/**根据设备监测对象的查询数据 */
 	private String device_object;
+
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_real.id
      *
@@ -132,19 +135,19 @@ public class RealData {
     /**
      * 获取 设备状态-关联表，见数据字典 字段:t_real.dev_stauts
      *
-     * @return  t_real.dev_stauts  ,设备状态-关联表，见数据字典
+     * @return  t_real.dev_status  ,设备状态-关联表，见数据字典
      */
-    public Integer getDev_stauts() {
-        return dev_stauts;
+    public Integer getDev_dev_status() {
+        return dev_status;
     }
 
     /**
      * 设置 设备状态-关联表，见数据字典 字段:t_real.dev_stauts
      *
-     * @param dev_stauts  t_real.dev_stauts,设备状态-关联表，见数据字典
+     * @param dev_status  t_real.dev_stauts,设备状态-关联表，见数据字典
      */
-    public void setDev_stauts(Integer dev_stauts) {
-        this.dev_stauts = dev_stauts;
+    public void setDev_status(Integer dev_status) {
+        this.dev_status = dev_status;
     }
 	/**
 	 *

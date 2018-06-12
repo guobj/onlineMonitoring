@@ -205,5 +205,23 @@ public interface DictMapper {
      * @date 2018年6月8日 上午10:08:59
      */
     List<Dict> listMsNet();
+
+	/**
+	 * 方法描述：查询设备厂家
+	 *
+	 * @return
+	 * @author ssh
+	 * @date 2018年6月8日 上午10:08:59
+	 */
+	Dict loadByDevfactory(Integer devfactory);
+
+	/**
+	 * 方法描述：查询全部网络类型
+	 *
+	 * @return
+	 * @author ssh
+	 * @date 2018年6月8日 上午10:08:59
+	 */
+	Dict loadByDevStatus(Integer devStatus);
 	
 }
