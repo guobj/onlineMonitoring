@@ -10,11 +10,11 @@
         <result column="dev_status" property="dev_status" jdbcType="INTEGER" />
       <!--   <association column="ms_code" property="ms_code_value" select=""></association>
         <association column="dev_code" property="dev_code_value" select=""></association>
-        <association column="dev_stauts" property="dev_stauts_value" select=""></association> -->
-        <association column="dev_status" property="dataDevStatus" select=""></association>
+        <association column="dev_status" property="dev_status_value" select=""></association> -->
+        <association column="dev_status" property="dataDevStatus" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevStatus"></association>
     </resultMap>
     <sql id="t_real_data_columns" >
-        id,  ms_code, dev_code, data_value, data_time, dev_stauts,dr
+        id,  ms_code, dev_code, data_value, data_time, dev_status,dr
     </sql>
     <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select 
@@ -44,8 +44,8 @@
             <if test="data_time != null" >
                 data_time,
             </if>
-            <if test="dev_stauts != null" >
-                dev_stauts,
+            <if test="dev_status != null" >
+                dev_status,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -64,8 +64,8 @@
             <if test="data_time != null" >
                 #{data_time,jdbcType=TIMESTAMP},
             </if>
-            <if test="dev_stauts != null" >
-                #{dev_stauts,jdbcType=INTEGER},
+            <if test="dev_status != null" >
+                #{dev_status,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>
@@ -84,8 +84,8 @@
             <if test="data_time != null" >
                 data_time = #{data_time,jdbcType=TIMESTAMP},
             </if>
-            <if test="dev_stauts != null" >
-                dev_stauts = #{dev_stauts,jdbcType=INTEGER},
+            <if test="dev_status != null" >
+                dev_status = #{dev_status,jdbcType=INTEGER},
             </if>
             <if test="dr != null" >
                 dr = #{dr},
@@ -119,8 +119,8 @@
                 and dev_code like concat("___",#{realData.device_object},"____")
             </if>
             <!-- 设备运行状态 -->
-            <if test="realData.dev_stauts != null and realData.dev_stauts != ''" >
-                and dev_stauts = #{realData.dev_stauts}
+            <if test="realData.dev_status != null and realData.dev_status != ''" >
+                and dev_status = #{realData.dev_status}
             </if>
         </where>
         limit #{record},4
@@ -151,8 +151,8 @@
                 and dev_code like concat(#{realData.device_object},"____")
             </if>
             <!-- 设备运行状态 -->
-            <if test="realData.dev_stauts != null and realData.dev_stauts != ''" >
-                and dev_stauts = #{realData.dev_stauts}
+            <if test="realData.dev_status != null and realData.dev_status != ''" >
+                and dev_status = #{realData.dev_status}
             </if>
         </where>
     </select>

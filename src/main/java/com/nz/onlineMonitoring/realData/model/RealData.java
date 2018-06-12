@@ -41,7 +41,18 @@ public class RealData {
 	/**根据设备监测对象的查询数据 */
 	private String device_object;
 
-    /**
+	//设备状态
+	private Dict dataDevStatus;
+
+	public Dict getDataDevStatus() {
+		return dataDevStatus;
+	}
+
+	public void setDataDevStatus(Dict dataDevStatus) {
+		this.dataDevStatus = dataDevStatus;
+	}
+
+	/**
      * 获取 序号-主键、自增、界面不可见 字段:t_real.id
      *
      * @return  t_real.id  ,序号-主键、自增、界面不可见
@@ -137,7 +148,7 @@ public class RealData {
      *
      * @return  t_real.dev_status  ,设备状态-关联表，见数据字典
      */
-    public Integer getDev_dev_status() {
+    public Integer getDev_status() {
         return dev_status;
     }
 
