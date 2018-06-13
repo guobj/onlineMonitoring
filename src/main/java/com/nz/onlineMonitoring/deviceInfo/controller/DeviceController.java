@@ -2,6 +2,7 @@ package com.nz.onlineMonitoring.deviceInfo.controller;
 
 import com.nz.onlineMonitoring.deviceInfo.model.Device;
 import com.nz.onlineMonitoring.deviceInfo.service.DeviceService;
+import com.nz.onlineMonitoring.utils.AuthorityUtil;
 import com.nz.onlineMonitoring.utils.JacksonData;
 import com.nz.onlineMonitoring.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,11 @@ public class DeviceController {
 	//设备信息管理查询
 	@RequestMapping(value = "/queryDeviceInfo")
 	public String queryDeviceInfo(Map<String, Object> map, Device device,
-									   @RequestParam(required=false,defaultValue="1")Integer pages, HttpServletRequest request) {
+									   @RequestParam(required=false,defaultValue="1")Integer pages,
+								  @RequestParam(required=false,name="city")String[] citys,HttpServletRequest request) {
 
 		try {
+			AuthorityUtil.getInstance().assignPermissions(citys, request, device);
 			//存储前端传来的数据
 			map = PageBean.serverMap(map, device, pages);
 			List<Device> list = deviceService.queryDeviceInfo(map,device);
@@ -48,15 +51,7 @@ public class DeviceController {
 			device.setDev_code("dev"+dev_object);
 		}
 		try {
-			if (citys != null) {
-				if (citys[1] != null && citys[1] != "") {
-					device.setMs_code(citys[1]);
-				}else if (citys[0] != null && citys[0] != "") {
-					device.setMs_code(citys[0]);
-				}else {
-					device.setMs_code("37");
-				}
-			}
+			AuthorityUtil.getInstance().assignPermissions(citys, request, device);
 			//存储前端传来的数据
 			map = PageBean.serverMap(map, device, pages);
 			List<Device> list = deviceService.queryDeviceInfo(map,device);

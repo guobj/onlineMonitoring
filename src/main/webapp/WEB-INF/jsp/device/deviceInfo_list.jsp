@@ -19,6 +19,7 @@
     <script src="js/sbck.js" ></script>
     <script src="js/cascading.js" ></script>
     <script type="text/javascript">
+        var account = ${sessionScope.user.account};
         $(function () {
             $.ajax({
                 type:"post",

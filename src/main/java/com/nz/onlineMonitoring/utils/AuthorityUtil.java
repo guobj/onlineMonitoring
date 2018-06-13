@@ -12,12 +12,12 @@
  */
 package com.nz.onlineMonitoring.utils;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import com.nz.onlineMonitoring.login.model.Login;
 import com.nz.onlineMonitoring.realData.model.RealData;
-import com.nz.onlineMonitoring.stationManage.model.Manage;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.lang.reflect.Field;
 
 public class AuthorityUtil {
 
@@ -34,7 +34,14 @@ public class AuthorityUtil {
 		return authorityUtil;
 	}
 
-	public void assignPermissions(String[] citys, HttpServletRequest request, Manage realData){
+	public void assignPermissions(String[] citys, HttpServletRequest request, Object object) throws Exception{
+
+		//反射得到object的类
+		Class clz = object.getClass();
+		//取到类成名ms_code
+		Field field = clz.getDeclaredField("ms_code");
+		//private成员变量无法为其赋值，所以设置其可见性为true，使其可以被赋值
+		field.setAccessible(true);
 		HttpSession session = request.getSession();
 		Login user = (Login) session.getAttribute("user");
 		String  account = user.getAccount().toString();
@@ -42,27 +49,29 @@ public class AuthorityUtil {
 			if(account.endsWith("0000")){
 				if (citys != null) {
 					if (citys[1] != null && citys[1] != "") {
-						realData.setMs_code(citys[1]);
+						//为成员变量ms_code赋值
+						field.set(object, citys[1]);
 					}else if (citys[0] != null && citys[0] != "") {
-						realData.setMs_code(citys[0]);
+						field.set(object, citys[0]);
 					}else {
-						realData.setMs_code("37");
 					}
 				}
 			}else if(account.endsWith("00")){
 				if (citys != null) {
 					if (citys[0] != null && citys[0] != "") {
-						realData.setMs_code(citys[0]);
+						field.set(object, citys[0]);
 					}
 				}else{
 					Integer res = user.getAccount() / 100;
-					realData.setMs_code(res.toString());
+					field.set(object, res.toString());
 				}
 			}else{
-				realData.setMs_code(account);
+				field.set(object, account);
 			}
 		}
+//		System.out.println("测试："+field.get(object));
 	}
+
 	public void assignPermissionsRealData(String[] citys, HttpServletRequest request, RealData realData){
         HttpSession session = request.getSession();
         Login user = (Login) session.getAttribute("user");

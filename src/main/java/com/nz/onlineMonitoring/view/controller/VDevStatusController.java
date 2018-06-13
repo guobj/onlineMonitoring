@@ -1,6 +1,6 @@
 package com.nz.onlineMonitoring.view.controller;
 
-import com.nz.onlineMonitoring.utils.JacksonData;
+import com.nz.onlineMonitoring.utils.AuthorityUtil;
 import com.nz.onlineMonitoring.utils.PageBean;
 import com.nz.onlineMonitoring.view.model.VDevStatus;
 import com.nz.onlineMonitoring.view.service.VDevStatusService;
@@ -29,22 +29,12 @@ public class VDevStatusController {
 		if(dev_object != null && !dev_object.equals("")){
 			vDevStatus.setDev_code("dev"+dev_object);
 		}
-		if (citys != null) {
-			if (citys[1] != null && citys[1] != "") {
-				vDevStatus.setMs_code(citys[1]);
-			}else if (citys[0] != null && citys[0] != "") {
-				vDevStatus.setMs_code(citys[0]);
-			}else {
-				vDevStatus.setMs_code("37");
-			}
-		}
-		JacksonData jacksonData = new JacksonData();
 		try {
+			AuthorityUtil.getInstance().assignPermissions(citys, request, vDevStatus);
 			map = PageBean.serverMap(map, vDevStatus, pages);
 			List<VDevStatus> vDevStatusList = vDevStatusService.deviceStatusList(map,vDevStatus);
 			//返回给前端的数据
 			map = PageBean.clientMap(map, pages, request);
-			jacksonData.success(vDevStatusList);
 		} catch (Exception e) {
 			map.put("message", e.getMessage());
 		}

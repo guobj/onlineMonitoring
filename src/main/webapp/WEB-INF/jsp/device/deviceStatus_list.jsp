@@ -18,6 +18,7 @@
     <script src="js/cascading.js" ></script>
     <link href="css/page.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
+        var account = ${sessionScope.user.account};
         $(function () {
             $.ajax({
                 type:"post",
