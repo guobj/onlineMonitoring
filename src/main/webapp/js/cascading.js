@@ -1,4 +1,4 @@
-$(function () {
+﻿$(function () {
     var res = parseInt(account / 100);
     console.log("account1:"+account);
     // 判断是否为省级账号
@@ -47,7 +47,6 @@ $(function () {
                 },
                 "json"
             )
-            $("#s_area").html("<option value=''>地级市</option>");
             $.post(
                 "data/listArea",
                 {city_id:res},
@@ -76,7 +75,7 @@ $(function () {
             "json"
         )
         $("#s_city").change(function() {
-        	$("#s_area").html("<option value=''>地级市</option>");
+            $("#s_area").html('<option value="">不限</option>');
             $.post(
                 "data/listArea",
                 {city_id:$("#s_city").val()},

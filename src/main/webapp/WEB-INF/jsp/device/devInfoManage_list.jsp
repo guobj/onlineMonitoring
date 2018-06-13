@@ -18,7 +18,9 @@
     <script src="js/jquery.js"></script>
     <script src="js/delete.js"></script>
     <script src="js/sbgl.js" ></script>
+    <script src="js/cascading.js" ></script>
     <script type="text/javascript">
+        var account = ${sessionScope.user.account};
         function moreInfo(id) {
             $.ajax({
                 type:"post",
@@ -63,6 +65,21 @@
                 }
             });
         }
+        $(function () {
+            $.ajax({
+                type:"post",
+                url:"data/queryDevType",
+                dataType: "JSON",
+                success:function (data) {
+                    for(var o in data.data.devObject){
+                        $("#dev_object").append("<option value="+data.data.devObject[o].data_value+">"+data.data.devObject[o].data_name+"</option>");
+                    }
+                    for(var type in data.data.devType){
+                        $("#dev_type").append("<option value="+data.data.devType[type].data_value+">"+data.data.devType[type].data_name+"</option>");
+                    }
+                }
+            });
+        });
     </script>
 </head>
 
@@ -70,6 +87,32 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
+    <div class="menu">
+        <form>
+            <%--<span>监测站名称：<input name="ms_name" type="text"/></span>--%>
+            <span>设备类型：
+                <select class="select1" name="dev_type" id="dev_type">
+                    <option value="">不限</option>
+                </select></span>
+            <br/>
+            <span>监测站编码：
+                <select id="s_city" name="city">
+                    <option value="">市区</option>
+                </select>
+                <select id="s_area" name="city" >
+                    <option value="">区县</option>
+                </select>
+            </span>
+            <span>监测对象：
+                <select class="select1" name="dev_object" id="dev_object">
+                    <option value="">不限</option>
+                </select>
+            </span>
+            <br/>
+            <input type="button" value="查找" class="search"><input type="reset" value="重置" class="reset">
+
+        </form>
+    </div>
     <h4>信息列表</h4>
     <br/>
     <table id="xx">
@@ -91,13 +134,13 @@
             </c:if>
             <c:forEach var="list" items="${list}">
                 <tr>
-                    <td class="t2">${list.station.ms_name}</td>
-                    <td class="t3" >${list.ms_code}</td>
-                    <td class="t4">${list.dev_code}</td>
-                    <td class="t5">${list.dataProtocol.data_name}</td>
-                    <td class="t6">${list.dataInterface.data_name}</td>
-                    <td class="t7">${list.dev_regad}</td>
-                    <td class="t8">${list.dev_ip}</td>
+                    <td>${list.station.ms_name}</td>
+                    <td>${list.ms_code}</td>
+                    <td>${list.dev_code}</td>
+                    <td>${list.dataProtocol.data_name}</td>
+                    <td>${list.dataInterface.data_name}</td>
+                    <td>${list.dev_regad}</td>
+                    <td>${list.dev_ip}</td>
                     <td><input type="button" onclick="moreInfo(${list.id})" value="更多"/></td>
                 </tr>
             </c:forEach>
@@ -163,7 +206,7 @@
 </div>
 
 <div id="footer">
-    <li>济南农智信息科技有限公司所有&copy; &nbsp;电话：12345677  &nbsp;<a href="#">关于我们</a> &nbsp;<a href="#">售后服务</a></li>
+    <p>山东省植物保护总站</p>
 </div>
 <script>
     $(function(){

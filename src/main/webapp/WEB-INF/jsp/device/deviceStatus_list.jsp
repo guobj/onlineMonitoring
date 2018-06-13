@@ -13,7 +13,7 @@
     <base href="${basePath }">
     <meta charset="UTF-8">
     <title></title>
-    <link href="css/sbztcx.css" rel="stylesheet" type="text/css">
+    <link href="css/sbzt.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script src="js/cascading.js" ></script>
     <link href="css/page.css" rel="stylesheet" type="text/css">
@@ -40,33 +40,31 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">设备状态查看</span></p></li>
     <div class="menu">
         <form action="vDevStatus/devcieStatusList" method="post">
-            <span>监测站名称：<input type="text"/></span>
-            <span>设备类型： <select class="select1" name="dev_type" id="dev_type">
-                <option value="">设备类型</option>
-            </select></span>
-            <br/>
-            <span>监测区域：
+            <%--<span>监测站名称：<input type="text"/></span>--%>
+            <span>设备类型： </span>
+                <select class="select1" name="dev_type" id="dev_type">
+                    <option value="">设备类型</option>
+                </select>
+            <span>监测区域：</span>
                  <select id="s_city" name="city">
                     <option value="">市区</option>
                 </select>
                 <select id="s_area" name="city" >
                     <option value="">区县</option>
                 </select>
-            </span>
-            <span>监测对象：
+            <span>监测对象：</span>
                 <select class="select1" name="dev_object" id="dev_object">
                     <option value="">监测对象</option>
                 </select>
-            </span>
             <br/>
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>
     </div>
-    <h4>信息列表</h4>
+    <h5>信息列表</h5>
     <br/>
         <table>
             <thead>
@@ -98,6 +96,9 @@
             </tbody>
         </table>
     <jsp:include page="../common/pages.jsp"></jsp:include>
+    </div>
+    <div id="footer">
+        <li>山东省植物保护总站</li>
     </div>
 </body>
 <script>

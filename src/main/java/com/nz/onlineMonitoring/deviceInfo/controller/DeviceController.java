@@ -25,8 +25,9 @@ public class DeviceController {
 	//设备信息管理查询
 	@RequestMapping(value = "/queryDeviceInfo")
 	public String queryDeviceInfo(Map<String, Object> map, Device device,
-									   @RequestParam(required=false,defaultValue="1")Integer pages,
-								  @RequestParam(required=false,name="city")String[] citys,HttpServletRequest request) {
+								  @RequestParam(required=false,defaultValue="1")Integer pages,
+								  @RequestParam(required=false,name="city")String[] citys,
+								  String dev_object,HttpServletRequest request) {
 
 		try {
 			AuthorityUtil.getInstance().assignPermissions(citys, request, device);
