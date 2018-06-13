@@ -53,6 +53,7 @@ $(function(){
 });
 
 $(function(){
+    $("#chakan").hide();
     $("#bg tbody tr").mouseover(function(){
         $(this).css("background","#fff4e5");
     })
@@ -65,7 +66,9 @@ $(function(){
     $("#bg1 tr").mouseout(function(){
         $(this).css("background","#EEF4F9");
     })
-
+    $("#xiugai").hide();
+    $("#tianjia").hide()
+    $("#peizhi").hide();
 })
 function chakan(obj){
     $(obj).parent().parent().parent().parent().hide();
@@ -78,6 +81,7 @@ function xiugai(obj){
     $(obj).parent().parent().parent().parent().hide();
     $("#xiugai").show();
     $("h4").html("");
+    $("#caidan").css("height",height)
     $("#page").hide();
 }
 
@@ -92,13 +96,7 @@ function xg(){
     $("#xiugai").hide();
     $("#bg").show();
     $("h4").html("数据列表");
-    $("#page").show();
-    $("#caidan").css("height","1020px");
-}
-function xg1(){
-    $("#xiugai").hide();
-    $("#bg").show();
-    $("h4").html("数据列表");
+    $("#caidan").css("height",height);
     $("#page").show();
 }
 
@@ -115,19 +113,11 @@ function tj(){
     $("#page").show();
     $("h4").html("数据列表");
 }
-function tj1(){
-    $("#tianjia").hide();
-    $("#bg").show();
-    $("#page").show();
-    $("h4").html("数据列表");
-}
-function peizhi(obj,id){
+function peizhi(obj){
     $(obj).parent().parent().parent().parent().hide();
     $("#peizhi").show();
     $("h4").html("");
-    $("#caidan").css("height","700px");
     $("#page").hide();
-    $("#manageId").val(id);
 
 }
 function pz(){
@@ -135,10 +125,15 @@ function pz(){
     $("#bg").show();
     $("h4").html("");
     $("#page").show();
-    $("#caidan").css("height","1020px");
 
 }
-
 function del(){
     $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () { alert("删除成功"); });
+}
+
+function close1()
+{
+    $("#peizhi").hide();
+    $("#bg").show();
+    $("#page").show();
 }

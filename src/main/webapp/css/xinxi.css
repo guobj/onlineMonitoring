@@ -1,10 +1,9 @@
 *{ list-style:none; text-decoration:none; padding:0; margin:0; border:none;}
 a{ text-decoration: none;}
-
+body{ background:#1c8914;}
 
 #tit{ width:100%; height:93px; background:url(../img/tit.jpg) no-repeat; background-size:cover; border-bottom:7px #1bb11c solid;}
-#tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:2.1em; margin-left:3%; color:#3d9d18; font-weight:bold; text-shadow:4px 2px 3px #ffffff; font-family: '宋体';}
-
+#tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:2.1em; margin-left:3%;color:#006600; font-weight:bold;  font-family: '宋体';}
 #tit ul{ width:28%; height:93px; float:left; margin-left:24%;}
 #tit ul li{ width:91%; height:30px; margin-top:20px; line-height:30px; font-size:0.75em; color:#FFF; float:left; overflow:hidden;}
 #tit ul li .three{ width:90%; margin-left:5%; height:32px;}
@@ -32,86 +31,107 @@ a{ text-decoration: none;}
 #caidan ul .cd_4 .zdgl .ul .a_3{ width:100%; height:27px; background:#eaeaea; display:block;}
 
 
-#content_r{ width:84%;  margin-left:16%;}
-#content_r .tit{ width:100%; height:40px; background:#bfd1c3;}
+#content_r{ width:84%;  margin-left:16%; background:#eaeaea; height:1022px;}
+#content_r .tit{ width:100%; height:40px; border-bottom: 1px solid #cccccc;}
 #content_r .tit .xx{ float:left; margin-top:8px; margin-left:1%; font-size:12px; height:20px; line-height:20px;}
 #content_r .tit .xx img{ margin-top:0px; float:left;}
-#content_r .gn{  width: 100%; height: 184px;  }
-#content_r .gn form{ height: 184px;}
-#content_r .gn form .span1{font-size: 14px; color: #000000; font-weight: bolder; margin-top: 37px; margin-left: 3%; float: left; width: 25%;}
-#content_r .gn form input{height: 38px; width: 50%; border: 1px solid #c6c5c5; margin-right: 10%; text-align: center;}
-#content_r .gn form .cx{width: 10%; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfff4+0,dfe5d7+40,b3bead+100;Wax+3D+%233 */
+#content_r .gn{  width: 100%; height: 110px; background: #F8F8FF;}
+#content_r .gn form{ height: 100px; padding-top:10px; border-bottom: 1px solid #cccccc;}
+#content_r .gn form .span1{font-size: 12px; color: #000000;  margin-left: 3%;  
+    width: 20%; margin-top: 10px;
+}
+#content_r .gn form input{height: 24px; width: 10%; border: 1px solid #c6c5c5;  text-align: center; margin-top: 10px; border-radius: 4px;}
+#content_r .gn form select{
+    width: 10%;
+    border: 1px solid #cccccc;
+    margin-right: 2%;
+    margin-top: 10px;
+    height: 24px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e5e5e5+100;White+3D */
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+
+}
+#content_r .gn form .wg{
+    margin-left: 8.8%;
+}
+#content_r .gn form .cx{width: 7%; 
+    height: 38px;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfff4+0,dfe5d7+40,b3bead+100;Wax+3D+%233 */
 background: rgb(252,255,244); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(252,255,244,1) 0%, rgba(223,229,215,1) 40%, rgba(179,190,173,1) 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%); /* Chrome10-25,Safari5.1-6 */
 background: linear-gradient(to bottom,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 ); /* IE6-9 */
- border-radius:4px; border:1px #b2b2b2 solid;  cursor: pointer;  float: left; margin-right: 0; margin-top: 37px; margin-left: 2%; }
-#content_r .gn form .cx:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+ border-radius:4px; border:1px #b2b2b2 solid;  cursor: pointer;   margin-right: 0;  margin-left: 2%; 
 }
-#content_r  .btn1{width: 10%!important;height: 48px; border-radius:4px;  cursor: pointer; 
-background: rgb(180,227,145); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(180,227,145,1) 0%, rgba(97,196,25,1) 50%, rgba(180,227,145,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391',GradientType=0 ); /* IE6-9 */
- border-radius: 4px; border: 1px solid #bfbfbf; color: #FFFFFF; float: left; margin:37px 0 0 1%;}
-#content_r .btn1:hover {
+#content_r .gn form .cx:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 #content_r .gn span select{width: 25% !important ; margin-right: 1%; border: 1px solid #bfbfbf; height: 40px;}
 #content_r .gn span .select1{width: 50%!important;}
 #content_r #bg{margin-left: 3%; margin-top: 10px;background: url("../img/bg3.jpg") repeat-x;border: 1px solid #bfbfbf;width: 90%;}
-#content_r .input1{background: none;  }
-#content_r .input2{background: none;  }
-#content_r .t2{width: 7%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
-#content_r .t3{width: 16%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
-#content_r .t4{width: 16%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
-#content_r .t5{width: 13%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
-#content_r .t6{width: 7%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
-#content_r .t7{width: 7%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
-#content_r .t8{width: 7%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
-#content_r .t9{width: 7%; text-align: center; border: 1px solid #bfbfbf; height: 50px;}
+#content_r .input1{background: none; color:#269dc9; }
+#content_r .input2{background: none; color:#da0000; }
+#content_r table{margin-left: 2%; width: 98%; font-size: 0.75em;}
+#content_r table thead tr{
+    color:#707d83;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f5f6+0,e3eaed+37,c8d7dc+100;Grey+3D+%234 */
+background: rgb(242,245,246); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(242,245,246,1) 0%, rgba(227,234,237,1) 37%, rgba(200,215,220,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(242,245,246,1) 0%,rgba(227,234,237,1) 37%,rgba(200,215,220,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(242,245,246,1) 0%,rgba(227,234,237,1) 37%,rgba(200,215,220,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 ); /* IE6-9 */
+}
+#content_r table tr{color:#707d83;height: 30px;text-align: center;}
+#content_r table tr td{
+     border-collapse: separate; 
+     border: 1px solid #ffffff;
+}
+#content_r table .t2{width: 13%;}
+#content_r table .t3{width: 13%;}
+#content_r table .t4{width: 11%;}
+#content_r table .t5{width: 13%;}
+#content_r table .t6{width: 10%;}
+#content_r table .t7{width: 10%;}
+#content_r table .t8{width: 10%;}
+#content_r table .t9{width: 10%;}
+#content_r h5{
+    margin-left: 2%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color:#707d83;
+}
 #bg {
     margin-top:10px;
     margin-left:20px;
     margin-right:20px;
     margin-bottom:5px;
-    background:#EEF4F9;
     border: none;
     border-collapse:collapse;
     font: 12px  "宋体";
 }
-#content_r table tbody{font-size: 12px; line-height: 48px; color: #4e4f4f;}
-#content_r table thead{font-size: 12px; line-height: 48px; color: #4e4f4f;}
-#bg thead{font-size: 14px;}
-#bg thead tr{
-    background:#7CB8E2;
-    color:#fff;
-    text-align:center;
-}
-#bg thead tr td{
-    background:#C7DDEE none repeat-x scroll center left;
-    color:#000;
-}
 
-#chakan{width: 90%; margin-left: 3%;float: left; display: none; height: 800px;}
-#content_r #bg1{margin-left: 15%; margin-top: 10px;background: url("../img/bg3.jpg") repeat-x;border: 1px solid #bfbfbf;width: 70%; border-right:1px #b9b9b9 solid; box-shadow: 10px 10px 5px #888888; }
+
+#chakan{width: 70%; margin-left: 3%;float: left; display: none; height: 800px;}
+#content_r #bg1{margin-left: 15%; margin-top: 10px;background: url("../img/bg3.jpg") repeat-x;border: 1px solid #bfbfbf;width: 100%; border-right:1px #b9b9b9 solid; box-shadow: 10px 10px 5px #888888; }
 #chakan .s1{height: 50px; width: 30%; text-align: center;  color:#383838; border-bottom: 1px solid #bfbfbf;}
 #chakan .s2{height: 50px; width: 70%; text-align: center; border-bottom: 1px solid #bfbfbf;}
 #content_r #bg1 caption{
     height: 50px;
     line-height: 50px;
-    font:bold 2em;
-    background: #f0f7ff; 
-    border:1px solid #bfbfbf; 
-    box-shadow: 10px 10px 5px #888888;  
+    /*font:bold 2em;*/
+    background: #f0f7ff;
+    border:1px solid #bfbfbf;
+    box-shadow: 10px 10px 5px #888888;
     border-bottom: none;
     margin-bottom: -1px;
 }
 #chakan form{margin-left: 35%;float: left; margin-top: 20px; width: 100%;}
-#chakan form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 44px; margin-left: 8%;}
+#chakan form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 44px; margin-left: 19%;}
 
 
 #bg {
@@ -128,10 +148,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', end
 		background:#7CB8E2;  
         color:#fff;   
         text-align:center; 
-}
-#bg thead tr td{
-	background:#C7DDEE none repeat-x scroll center left;  
-        color:#000;   
 }
 #bg1{
 	border: none;   
@@ -162,11 +178,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', end
 }
 #xiugai{ width: 80%; 
         margin-left: 8%;
-        height: 680px;
+        height: 740px;
 background: rgb(248,248,248); 
 box-shadow: 10px 0 10px -10px rgba(0,0,0,.6),-10px 0  10px -10px rgba(0,0,0,.6);
 border-radius: 8px;
-display:none;
 }
 #xiugai h5{
     height: 30px;
@@ -180,11 +195,20 @@ display:none;
 #xiugai input{margin-left: 1%;width: 40%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 15px; border-radius: 4px;}
 #xiugai .lxfs{width: 40%; margin-right: 0;}
 #xiugai textarea{width: 50%; height: 90px; border: 1px solid #bfbfbf; margin-left: 30%; resize: none;}
-#xiugai select{width: 15%;height: 30px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 15px;}
-#xiugai .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 15px;}
-#xiugai .xg{width: 80px; height: 40px; line-height: 40px; margin-left: 40%; background:#ffffff;}
+#xiugai select{width: 15%;height: 30px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 15px;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e5e5e5+100;White+3D */
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
 
-#tianjia{ width: 85%; background: #e4ecef; height: 700px; padding-top: 50px; border: 1px solid #cccccc; border-radius: 8px; margin-left: 5%; display:none;}
+}
+
+#xiugai .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 15px;}
+#xiugai .xg{width: 80px; height: 40px; line-height: 40px; margin-left: 48%; background:#ffffff;}
+#nature{width: 100%; height: 60px; !important; display: block;}
+#tianjia{ width: 80%; background: #e4ecef; height: 700px; padding-top: 50px; border: 1px solid #cccccc; border-radius: 8px; margin-left: 5%;}
 #tianjia form{
     background: #fffffd;
     width: 90%;
@@ -201,16 +225,15 @@ display:none;
 #tianjia textarea{width: 50%; height: 80px; border: 1px solid #bfbfbf; margin-top: 5px; resize: none; margin-left:26%;}
 #tianjia select{width: 15%;height: 30px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 5px;}
 #tianjia .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 5px;}
-#tianjia .tj{width: 80px; height: 40px; line-height: 40px; margin-left: 40%; background: #ffffff; border-radius: 4px; }
+#tianjia .tj{width: 80px; height: 40px; line-height: 40px; margin-left: 50%; background: #ffffff; border-radius: 4px; }
 #ts{
     width: 30%;height: 30%;
 }
 #peizhi{
     width: 60%;margin-left: 16%;
     border: 1px solid #bfbfbf;
-    height: 500px;
+    height: 600px;
     border-radius: 8px;
-	display:none;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfff4+0,e9e9ce+100;Wax+3D+%232 */
 background: rgb(252,255,244); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(252,255,244,1) 0%, rgba(233,233,206,1) 100%); /* FF3.6-15 */
@@ -231,19 +254,90 @@ margin-top: 10px;
 }
 #peizhi span{margin-left: 20%;margin-top: 10px; }
 #peizhi input{margin-left: 1%;width: 40%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 30px; border-radius: 4px;}
-#peizhi .pz{width: 80px; height: 40px; line-height: 40px; margin-left: 45%; background:#ffffff; border-radius: 4px; }
-#peizhi .close{width: 80px; height: 40px; line-height: 40px; margin-left: 3%; background:#ffffff; border-radius: 4px; }
+#peizhi .pz{width: 80px; height: 40px; line-height: 40px; margin-left: 35%; background:#ffffff; border-radius: 4px; float: left;}
+#peizhi .pz1{
+    float: left;
+    margin-left: 10%;
+}
 #footer{ width:100%; height:26px; float:left; background:#1b8a14; margin-top: 3px;}
 #footer li{ text-align:center; line-height:26px; font-size:0.75em;}
 #footer li a{ color:#000;}
 #footer li a:hover{ color:#F00;}
-#tip_1{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip_2{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip_3{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip_4{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip_5{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tj_tip_1{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tj_tip_2{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tj_tip_3{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tj_tip_4{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tj_tip_5{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
+#page {
+    height: 30px;
+    display: table;
+    margin-left: 55%;
+    margin-top: 10px;
+}
+.page {
+    text-align: center;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.pagingUl {
+    float: right;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    height: 30px;
+}
+.pagingUl li {
+    float: left;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    text-align: center;
+    margin-right: 5px;
+    border-radius: 5px
+}
+.pagingUl li a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 28px;
+    color: #666;
+    font-size: 12px;
+    border-radius: 5px
+}
+.prv,
+.next {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    background: #fff;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+.prv {
+    margin-right: 10px;
+}
+.first,
+.last {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 30px;
+    /*border: 1px solid #ddd;*/
+    cursor: pointer;
+    background: #fff;
+    padding: 0 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.prv:hover,
+.next:hover,
+.first:hover,
+.last:hover,
+.pagingUl li a:hover,
+.activP {
+    background-color: #d7dce2!important;
+    
+}

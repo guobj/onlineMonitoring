@@ -1,4 +1,4 @@
-﻿
+
 function Dsy(){
     this.Items = {};
 }
@@ -55,7 +55,7 @@ dsy.add("0",["济南市","青岛市","淄博市","枣庄市","东营市","烟台
 
 
 var s=["s_province","s_city"];//三个select的name
-var opt0 = ["市区","地级市"];//初始值
+var opt0 = ["市区","区县"];//初始值
 function _init_area(){ //初始化函数
     for(i=0;i<s.length-1;i++){
         document.getElementById(s[i]).onchange=new Function("change("+(i+1)+")");

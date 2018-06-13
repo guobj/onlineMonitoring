@@ -44,23 +44,23 @@
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
     <div class="menu">
         <form action="device/queryDeviceInfoList" method="post">
-            <span>监测站名称：<input name="ms_name" type="text"/></span>
+            <%--<span>监测站名称：<input name="ms_name" type="text"/></span>--%>
             <span>设备类型： <select class="select1" name="dev_type" id="dev_type">
-                <option value="">设备类型</option>
+                <option value="">不限</option>
 
             </select></span>
             <br/>
             <span>监测站编码：
-                <select id="s_city" name="city">
+                <select id="s_city" name="city" style="margin-left: 0.5%;">
                     <option value="">市区</option>
                 </select>
-                <select id="s_area" name="city" >
+                <select id="s_area" name="city" style="margin-left: 0.5%;">
                     <option value="">区县</option>
                 </select>
             </span>
-            <span>监测对象：
+            <span style="margin-left: 4.1%;">监测对象：
                 <select class="select1" name="dev_object" id="dev_object">
-                    <option value="">监测对象</option>
+                    <option value="">不限</option>
 
                 </select>
             </span>
@@ -108,7 +108,7 @@
     </div>
 </div>
 <div id="footer">
-    <li>济南农智信息科技有限公司所有&copy; &nbsp;电话：12345677  &nbsp;<a href="#">关于我们</a> &nbsp;<a href="#">售后服务</a></li>
+    <li>山东省植物保护总站</li>
 </div>
 </body>
 </html>

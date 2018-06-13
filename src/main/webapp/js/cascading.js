@@ -76,7 +76,6 @@ $(function () {
             "json"
         )
         $("#s_city").change(function() {
-        	$("#s_area").html("<option value=''>地级市</option>");
             $.post(
                 "data/listArea",
                 {city_id:$("#s_city").val()},

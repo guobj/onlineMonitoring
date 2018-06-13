@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 pageContext.setAttribute("path", path);
 pageContext.setAttribute("basePath", basePath);
 %>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head lang="en">
     <base href="${basePath }">
@@ -78,7 +78,7 @@ pageContext.setAttribute("basePath", basePath);
                         window.location.reload();
                     }
                 })
-                alert("删除成功");
+                $.MsgBox.Alert("消息", "删除成功");
             });
 
         }
@@ -94,7 +94,7 @@ pageContext.setAttribute("basePath", basePath);
                 dataType:'json',
                 success:function (data) {
                     if(data.data >= 1){
-                        alert("修改成功");
+                        $.MsgBox.Alert("消息", "修改成功");
                     }
                 }
             });
@@ -111,7 +111,7 @@ pageContext.setAttribute("basePath", basePath);
                 dataType:'json',
                 success:function (data) {
                     if(data.data >= 1){
-                        alert("配置成功");
+                        $.MsgBox.Alert("消息", "配置成功");
                     }
                 }
             });
@@ -146,37 +146,33 @@ pageContext.setAttribute("basePath", basePath);
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
     <div class="gn">
         <form id="like" method="post">
-            <span class="span1">监测站名称：<input name="ms_name" type="text" placeholder="不限" ></span>
-            <span class="span1">资金来源：
-                <select class="select1" id="ms_fp" name="station.ms_fp">
-                    <option value="">资金来源</option>
+            <%--<span class="span1">监测站名称：</span><input name="ms_name" type="text" placeholder="不限" >--%>
+            <span class="span1">资金来源：</span>
+                <select id="ms_fp" name="station.ms_fp">
+                    <option value="">不限</option>
                 </select>
-            </span>
-            <span class="span1">监测站类型：
-                <select class="select1" id="ms_type" name="station.ms_type">
-                    <option value="">监测站类型</option>
+            <span class="span1">监测站类型：</span>
+                <select id="ms_type" name="station.ms_type">
+                    <option value="">不限</option>
                 </select>
-            </span>
-           <span class="span1">监测站区域：
+            <br />
+           <span class="span1">监测站区域：</span>
                 <select id="s_city" name="city">
                     <option value="">市区</option>
                 </select>
                 <select id="s_area" name="city">
-                    <option value="">地级市</option>
+                    <option value="">区县</option>
                 </select>
-            </span>
-            <span class="span1">网关类型：
-                <select class="select1" id="ms_gate" name="station.ms_gate">
-                    <option value="">网关类型</option>
+            <span class="span1 wg">网关类型：</span>
+                <select id="ms_gate" name="station.ms_gate">
+                    <option value="">不限</option>
                 </select>
-            </span>
-
             <input type="button"  value="查询" class="cx" onclick="submit()">
         </form>
     </div>
 
 
-    <h4>数据列表：</h4>
+    <h5>数据列表：</h5>
 
     <div id="xq">
         <table  id="bg">
@@ -272,107 +268,30 @@ pageContext.setAttribute("basePath", basePath);
                 <input type="button" value="关闭" onclick="guanbi()" />
             </form>
         </div>
-        <div id="peizhi">
-            <form method="post" id="update">
-                <%--<span>监测站名称:</span><input type="text" name=""/>--%>
+        <%--<div id="peizhi">--%>
+
+            <%--<form method="post" id="update">--%>
+                <%--&lt;%&ndash;<span>监测站名称:</span><input type="text" name=""/>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<br/>&ndash;%&gt;--%>
+                <%--<input type="hidden" id="manageId" name="id">--%>
+                <%--<span>监测站编码:</span><input type="text" id="ms_code1" name="ms_code"/>--%>
                 <%--<br/>--%>
-                <input type="hidden" id="manageId" name="id">
-                <span>监测站编码:</span><input type="text" id="ms_code1" name="ms_code"/>
-                <br/>
-                <span style="margin-right: 16px;">上传地址:</span><input type="text" id="server_ip" name="server_ip"/>
-                <br/>
-                <span style="margin-right: 16px;">上传频率:</span><input type="text" id="data_upload" name="data_upload"/>
-                <br/>
-                <span style="margin-right: 28px;">端口号:</span> <input type="text" id="server_port" name="server_port"/>
-                <br/>
-                <span style="margin-right: 16px;">存储周期:</span><input type="text" id="data_storage" name="data_storage"/>
-                <br/>
-                <input class="pz" type="button" value="修改" onclick="updateById()">
-                <input  type="button" value="关闭" class="close" onclick="pz()">
+                <%--<span style="margin-right: 16px;">上传地址:</span><input type="text" id="server_ip" name="server_ip"/>--%>
+                <%--<br/>--%>
+                <%--<span style="margin-right: 16px;">上传频率:</span><input type="text" id="data_upload" name="data_upload"/>--%>
+                <%--<br/>--%>
+                <%--<span style="margin-right: 28px;">端口号:</span> <input type="text" id="server_port" name="server_port"/>--%>
+                <%--<br/>--%>
+                <%--<span style="margin-right: 16px;">存储周期:</span><input type="text" id="data_storage" name="data_storage"/>--%>
+                <%--<br/>--%>
+                <%--<input class="pz" type="button" value="修改" onclick="updateById()">--%>
+                <%--<input  type="button" value="关闭" class="close" onclick="pz()">--%>
 
-            </form>
-        </div>
-
-        <div id="tianjia">
-        <form>
-            <span>监测站名称:</span>
-            <input type="text" id="tj_text_1">
-            <span id="tj_tip_1">
-                    请输入2-50位字符
-                </span>
-            <br/>
-            <span>监测站编码:</span>
-            <input type="text" id="tj_text_2" >
-            <span id="tj_tip_2">
-                    请输入8位数字
-                </span>
-            <br/>
-            <span>建设时间:</span>
-            <input type="text" style="margin-left: 28px;">
-
-            <br/>
-            <span>使用单位，联系人，联系方式:</span>
-
-            <input type="text" class="lxfs" id="tj_text_3">
-             <span id="tj_tip_3">
-                    请输入0-100位字符
-                </span>
-            <br/>
-            <span>施工单位，联系人，联系方式:</span>
-            <input type="text" class="lxfs" id="tj_text_4">
-             <span id="tj_tip_4">
-                    请输入0-100位字符
-                </span>
-            <br/>
-            <span >监测站类型:</span>
-            <select style="margin-left: 1%;">
-                <option>新建重点监测站</option>
-                <option>改建重点监测站</option>
-                <option>新建普通监测站</option>
-                <option>改建普通监测站</option>
-            </select>
-            <br/>
-            <span>资金来源:</span>
-            <select>
-                <option>省资金</option>
-
-                <option>国家资金</option>
-                <option>其他</option>
-            </select>
-            <br/>
-            <span>网络类型:</span>
-            <select>
-                <option>无线</option>
-
-                <option>有线</option>
-            </select>
-            <br/>
-            <span>网关类型:</span>
-            <select>
-                <option>NZ2000</option>
-
-                <option>NZ1000</option>
-            </select>
-            <br/>
-            <span>监测性质:</span>
-            <input type="checkbox" name="gn" class="gn">病害监测
-            <input type="checkbox" name="gn"  class="gn">害虫监测
-            <input type="checkbox" name="gn"  class="gn"> 鼠情监测
-            <input type="checkbox" name="gn"  class="gn">环境因子监测
-            <input type="checkbox" name="gn"  class="gn">视频图像监测
-            <input type="checkbox" name="gn"  class="gn">其他监测
-            <br/>
-            <span >监测站描述:</span>
-            <textarea id="tj_text_5"></textarea>
-             <span id="tj_tip_5">
-                    请输入0-300位字符
-                </span>
-            <input class="tj" type="button" value="添加" onclick="tj()">
-            <input class="tj" type="button" value="取消"  onclick="tj1()" style="margin-left: 3%;">
-        </form>
-    </div>
+            <%--</form>--%>
+        <%--</div>--%>
 
         <div id="peizhi">
+            <h5>配置信息</h5>
             <form method="post" id="conf">
                 <%--<span>监测站名称:</span><input type="text" name=""/>--%>
                 <%--<br/>--%>
@@ -388,7 +307,8 @@ pageContext.setAttribute("basePath", basePath);
                 <span style="margin-right: 16px;">存储周期:</span><input type="text" id="data_storage" name="data_storage"/>
                 <br/>
                 <input class="pz" type="button" value="配置" onclick="conf()">
-                <input  type="button" value="关闭" class="close" onclick="pz()">
+                <input class="pz pz1" type="button" value="关闭" onclick="close1()">
+                <%--<input  type="button" value="关闭" class="close" onclick="pz()">--%>
             </form>
         </div>
 
@@ -396,7 +316,7 @@ pageContext.setAttribute("basePath", basePath);
 
 </div>
 <div id="footer">
-    <li>济南农智信息科技有限公司所有&copy; &nbsp;电话：12345677  &nbsp;<a href="#">关于我们</a> &nbsp;<a href="#">售后服务</a></li>
+    <li>山东省植物保护总站</li>
 </div>
 <script>
     var reg2 =/^(\d{8})$/;
