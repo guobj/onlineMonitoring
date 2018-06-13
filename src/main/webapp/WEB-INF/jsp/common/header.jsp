@@ -51,7 +51,7 @@
                 <a href="javascript:;" class="a_1"><img src="img/xt3.png">&nbsp;监测数据管理</a>
                 <ul class="zdgl" id="c3">
                     <li><a href="realData/listRealData" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;实时数据查看</a></li>
-                    <li><a href="#" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;历史数据查询功能</a></li>
+                    <li><a href="hisData/listHisData" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;历史数据查询功能</a></li>
                 </ul>
             </li>
         </ul>

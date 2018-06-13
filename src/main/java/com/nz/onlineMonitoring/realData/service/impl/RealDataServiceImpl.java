@@ -15,7 +15,7 @@ import com.nz.onlineMonitoring.realData.service.RealDataService;
 public class RealDataServiceImpl implements RealDataService {
     
     @Autowired
-    private RealDataMapper RealDataMapper;
+    private RealDataMapper realDataMapper;
     @Autowired
     private DictMapper dictMapper;
     /**
@@ -29,11 +29,10 @@ public class RealDataServiceImpl implements RealDataService {
      */
     @Override
     public List<RealData> listReal(Map<String, Object> map) {
-        Integer count = RealDataMapper.countReal(map);
+        Integer count = realDataMapper.countReal(map);
         map.put("count", count);
-        List<RealData> realList = RealDataMapper.listReal(map);
-        List<Dict> listData = dictMapper.listMsDev();
-        if (listData == null || listData.size() < 0) {
+        List<RealData> realList = realDataMapper.listReal(map);
+        if (realList == null || realList.size() <= 0) {
             throw new RuntimeException("暂无数据");
         }else {
             for (RealData rd : realList) {

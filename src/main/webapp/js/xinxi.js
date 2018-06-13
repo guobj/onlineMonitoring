@@ -51,7 +51,24 @@ $(function(){
         $(this).siblings().toggle();
     })
 });
-
+$(function(){
+    $("#chakan").hide();
+    $("#bg tbody tr").mouseover(function(){
+        $(this).css("background","#fff4e5");
+    })
+    $("#bg tbody tr").mouseout(function(){
+        $(this).css("background","#EEF4F9");
+    })
+    $("#bg1 tr").mouseover(function(){
+        $(this).css("background","#fff4e5");
+    })
+    $("#bg1 tr").mouseout(function(){
+        $(this).css("background","#EEF4F9");
+    })
+    $("#xiugai").hide();
+    $("#tianjia").hide()
+    $("#peizhi").hide();
+})
 $(function(){
     $("#bg tbody tr").mouseover(function(){
         $(this).css("background","#fff4e5");

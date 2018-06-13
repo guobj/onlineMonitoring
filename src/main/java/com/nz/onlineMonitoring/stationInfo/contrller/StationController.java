@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.nz.onlineMonitoring.dict.service.DictService;
 import com.nz.onlineMonitoring.stationInfo.model.Station;
 import com.nz.onlineMonitoring.stationInfo.service.StationService;
+import com.nz.onlineMonitoring.utils.AuthorityUtil;
 import com.nz.onlineMonitoring.utils.JacksonData;
 import com.nz.onlineMonitoring.utils.PageBean;
 
@@ -41,24 +42,22 @@ public class StationController {
     */
     @RequestMapping("/listStation")
     public String listStation(HttpServletRequest request, Station station,Map<String , Object> map,@RequestParam(required=false,defaultValue="1") int pages,@RequestParam(required=false,name="city")String[] citys) {
-        if (citys != null) {
-            if (citys[1] != null && citys[1] != "") {
-                station.setMs_code(citys[1]);
-            }else if (citys[0] != null && citys[0] != "") {
-                station.setMs_code(citys[0]);
-            }else {
-                station.setMs_code("37");
-            }
+        List<Station> listStation = null;
+        try {
+            AuthorityUtil.getInstance().assignPermissions(citys, request, station);
+            map = PageBean.serverMap(map , station , pages);
+            listStation = stationService.listStation(map);
+            map = PageBean.clientMap(map ,pages,request);
+            map.put("msType", dictService.listMsType());
+            map.put("msFp", dictService.listMsFp());
+            map.put("msGate", dictService.listMsGate());
+            map.put("msNet", dictService.listMsNet());
+            map.put("msDev", dictService.analysisMsDev());
+        } catch (Exception e) {
+            map.put("message", e.getMessage());
+        }finally {
+            map.put("listStation", listStation);
         }
-        map = PageBean.serverMap(map , station , pages);
-        List<Station> listStation = stationService.listStation(map);
-        map = PageBean.clientMap(map ,pages,request);
-        map.put("listStation", listStation);
-        map.put("msType", dictService.listMsType());
-        map.put("msFp", dictService.listMsFp());
-        map.put("msGate", dictService.listMsGate());
-        map.put("msNet", dictService.listMsNet());
-        map.put("msDev", dictService.analysisMsDev());
         return "station/listStation";
     }
     /**
@@ -73,7 +72,12 @@ public class StationController {
     @PostMapping("/loadStation")
     @ResponseBody
     public Station loadStation(Integer id,Map<String , Object> map) {
-        Station station = stationService.load(id);
+        Station station = null;
+        try {
+            station = stationService.load(id);
+        } catch (Exception e) {
+            map.put("message", e.getMessage());
+        }
         return station;
     }
     /**
@@ -113,14 +117,18 @@ public class StationController {
     @ResponseBody
     public JacksonData getStation(@RequestParam(required=false)Integer id,Map<String , Object> map) {
         JacksonData jd = new JacksonData();
-        Station station = stationService.getStation(map,id);
-        map.put("msType", dictService.listMsType());
-        map.put("msFp", dictService.listMsFp());
-        map.put("msGate", dictService.listMsGate());
-        map.put("msNet", dictService.listMsNet());
-        map.put("msDev", dictService.analysisMsDev());
-        map.put("station", station);
-        jd.success(map);
+        try {
+            Station station = stationService.getStation(map,id);
+            map.put("msType", dictService.listMsType());
+            map.put("msFp", dictService.listMsFp());
+            map.put("msGate", dictService.listMsGate());
+            map.put("msNet", dictService.listMsNet());
+            map.put("msDev", dictService.analysisMsDev());
+            map.put("station", station);
+            jd.success(map);
+        } catch (Exception e) {
+            jd.failure(e.getMessage());
+        }
         return jd;
     }
     /**

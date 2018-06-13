@@ -36,18 +36,19 @@ public class RealDataController {
      */
     @RequestMapping("/listRealData")
     public String listReal(Map<String, Object> map,RealData realData,HttpServletRequest request,@RequestParam(required=false,defaultValue="1") int pages,@RequestParam(required=false,name="city")String[] citys){
-        AuthorityUtil.getInstance().assignPermissionsRealData(citys, request, realData);
-        map = PageBean.serverMap(map , realData , pages);
         List<RealData> listReal = null;
         try {
+            AuthorityUtil.getInstance().assignPermissions(citys, request, realData);
+            map = PageBean.serverMap(map , realData , pages);
             listReal = realDataService.listReal(map);
             map = PageBean.clientMap(map ,pages,request);
-            map.put("listRealData", listReal);
             map.put("devStauts", dictService.listDevStauts());
             map.put("devObject", dictService.listDevType());
             map.put("devType", dictService.listDevType1());
         } catch (Exception e) {
             map.put("message", e.getMessage());
+        }finally {
+            map.put("listRealData", listReal);
         }
         return "realData/listRealData";
     }

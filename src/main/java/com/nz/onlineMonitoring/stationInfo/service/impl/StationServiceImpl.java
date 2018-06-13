@@ -33,7 +33,7 @@ public class StationServiceImpl implements StationService{
         Integer count = stationMapper.countStation(map);
         map.put("count", count);
         List<Station> listStation = stationMapper.listStation(map);
-        if (listStation == null || listStation.size() < 0) {
+        if (listStation == null || listStation.size() <= 0) {
             throw new RuntimeException("暂无数据");
         }
         List<Dict> listData = dictMapper.listMsDev();
@@ -156,7 +156,7 @@ public class StationServiceImpl implements StationService{
     public Integer delete(Integer id) {
         int result = stationMapper.delete(id);
         if (result < 0) {
-            throw new RuntimeException("更删除失败");
+            throw new RuntimeException("删除失败");
         }
         return result;
     }
@@ -188,7 +188,15 @@ public class StationServiceImpl implements StationService{
     public Integer existMsCode(String ms_code) {
         return stationMapper.existMsCode(ms_code);
     }
-    
+    /**
+     * 
+     * 方法描述：根据id，查询一个监测站的信息以及字典表中的数据
+     * @param station
+     * @param map
+     * @return
+     * @author ssh 
+     * @date 2018年6月2日 下午9:18:29
+     */
     @Override
     public Station getStation(Map<String , Object> map,Integer id) {
         Station station = stationMapper.load(id);
@@ -223,6 +231,7 @@ public class StationServiceImpl implements StationService{
         }
         return station;
     }
+    
     @Override
     public int add(Station station) {
         int result = stationMapper.add(station);

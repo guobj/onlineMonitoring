@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nz.onlineMonitoring.historyData.mapper.HisDataMapper" >
+    <resultMap id="BaseResultMap" type="com.nz.onlineMonitoring.historyData.model.HisData" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="ms_code" property="ms_code" jdbcType="VARCHAR" />
+        <result column="dev_code" property="dev_code" jdbcType="VARCHAR" />
+        <result column="data_value" property="data_value" jdbcType="VARCHAR" />
+        <result column="data_time" property="data_time" jdbcType="TIMESTAMP" />
+        <result column="dev_status" property="dev_status" jdbcType="INTEGER" />
+        <association column="dev_status" property="dataDevStatus" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevStatus"></association>
+    </resultMap>
+    <sql id="t_his_data_columns" >
+        id, ms_code, dev_code, data_value, data_time, dev_status
+    </sql>
+    <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="t_his_data_columns" />
+        from t_his_data
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from t_his_data
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="add" parameterType="com.nz.onlineMonitoring.historyData.model.HisData" >
+        insert into t_his_data
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="ms_code != null" >
+                ms_code,
+            </if>
+            <if test="dev_code != null" >
+                dev_code,
+            </if>
+            <if test="data_value != null" >
+                data_value,
+            </if>
+            <if test="data_time != null" >
+                data_time,
+            </if>
+            <if test="dev_status != null" >
+                dev_status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="ms_code != null" >
+                #{ms_code,jdbcType=VARCHAR},
+            </if>
+            <if test="dev_code != null" >
+                #{dev_code,jdbcType=VARCHAR},
+            </if>
+            <if test="data_value != null" >
+                #{data_value,jdbcType=VARCHAR},
+            </if>
+            <if test="data_time != null" >
+                #{data_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dev_status != null" >
+                #{dev_status,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.nz.onlineMonitoring.historyData.model.HisData" >
+        update t_his_data
+        <set >
+            <if test="ms_code != null" >
+                ms_code = #{ms_code,jdbcType=VARCHAR},
+            </if>
+            <if test="dev_code != null" >
+                dev_code = #{dev_code,jdbcType=VARCHAR},
+            </if>
+            <if test="data_value != null" >
+                data_value = #{data_value,jdbcType=VARCHAR},
+            </if>
+            <if test="data_time != null" >
+                data_time = #{data_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dev_status != null" >
+                dev_status = #{dev_status,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <!-- 查询数据 -->
+    <select id="listHisData" resultMap="BaseResultMap" parameterType="map">
+        select 
+        <include refid="t_his_data_columns" />
+        from t_his_data
+        <where>
+            <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
+                                                    传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
+             -->
+            <if test="hisData.ms_code != null and hisData.ms_code != ''" >
+                ms_code like concat(#{hisData.ms_code},"%")
+            </if>
+            <!-- 设备类型，即设备编码第5-6位 
+                 hisData.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
+                                                    前面3个，后面两个下划线
+            -->
+            <if test="hisData.device_type != null and hisData.device_type != ''" >
+                and dev_code like concat("___",#{hisData.device_type},"__")
+            </if>
+           <!--  设备监测对象，即设备编码第4位 ,传过来的是1位，例如1，后面4个下划线-->
+            <if test="hisData.device_object != null and hisData.device_object != ''" >
+                and dev_code like concat("___",#{hisData.device_object},"____")
+            </if>
+            <!-- 设备运行状态 -->
+            <if test="hisData.dev_status != null and hisData.dev_status != ''" >
+                and dev_status = #{hisData.dev_status}
+            </if>
+            <if test="hisData.data_time_begin != null and hisData.data_time_begin != '' and hisData.data_time_end != null and hisData.data_time_end != ''  " >
+                and data_time between  #{hisData.data_time_begin} and #{hisData.data_time_end}
+            </if>
+        </where>
+        limit #{record},4
+    </select>
+     <!-- 查询数据的数量 -->
+    <select id="countHisData" resultType ="int" parameterType="map">
+        select 
+            count(*)
+        from t_his_data
+        <where>
+            <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
+                                                    传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
+             -->
+            <if test="hisData.ms_code != null and hisData.ms_code != ''" >
+                and ms_code like concat(#{hisData.ms_code},"%")
+            </if>
+            <!-- 设备类型，即设备编码第5-6位 
+                 hisData.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
+                                                    前面3个，后面两个下划线
+            -->
+           <if test="hisData.device_type != null and hisData.device_type != ''" >
+                and dev_code like concat("___",#{hisData.device_type},"__")
+            </if>
+           <!--  设备监测对象，即设备编码第4位 ,传过来的是4位，例如dev1，后面4个下划线-->
+            <if test="hisData.device_object != null and hisData.device_object != ''" >
+                and dev_code like concat("___",#{hisData.device_object},"____")
+            </if>
+            <!-- 设备运行状态 -->
+            <if test="hisData.dev_status != null and hisData.dev_status != ''" >
+                and dev_status = #{hisData.dev_status}
+            </if>
+            <if test="hisData.data_time_begin != null and hisData.data_time_begin != '' and hisData.data_time_end != null and hisData.data_time_end != ''  " >
+                and data_time between  #{hisData.data_time_begin} and #{hisData.data_time_end}
+            </if>
+        </where>
+    </select>
+</mapper>

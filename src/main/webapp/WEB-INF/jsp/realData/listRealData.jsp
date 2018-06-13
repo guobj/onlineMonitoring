@@ -31,7 +31,7 @@
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">数据管理</span> > <span id="zb3">实时数据查询</span></p></li>
     <div class="menu">
         <form action="realData/listRealData" method="post">
-            <span>设备类型：
+            <span>设备类型：</span>
 	            <select class="select1" name="device_type">
 	                <option value="">不限</option>
 	                <c:forEach items="${devType }" var="type">
@@ -48,17 +48,17 @@
 	                    </c:choose>
 	                </c:forEach>
 	            </select>
-            </span>
-             <span>设备状态：
+            
+             <span>设备状态：</span>
                 <select class="select1" name="dev_status">
                     <option value="">不限</option>
                     <c:forEach items="${devStauts }" var="status">
                         <option value="${status.data_value }">${status.data_name }</option>
                     </c:forEach>
                 </select>
-            </span>
-            <br/>
-            <span>监测站编码：
+            
+            
+            <span>监测站编码： </span>
                 <select id="s_city" name="city">
                     <option value="">市区</option>
                 </select>
@@ -66,17 +66,15 @@
                     <option value="">地级市</option>
                 </select>
                
-            </span>
-            <span>监测对象：
+           <br/>
+            <span>监测对象：</span>
                 <select class="select1" name="device_object">
                     <option value="">不限</option>
                     <c:forEach items="${devObject }" var="ob">
                         <option value="${ob.data_value }">${ob.data_name }</option>
                     </c:forEach>
                 </select>
-            </span>
 
-            <br/>
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>
