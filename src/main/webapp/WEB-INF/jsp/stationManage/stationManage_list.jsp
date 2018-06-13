@@ -20,7 +20,7 @@ pageContext.setAttribute("basePath", basePath);
     <script src="js/xinxi.js" ></script>
     <script type="text/javascript" src="js/queryLike.js"></script>
     <%--<script type="text/javascript" src="js/cascading.jsp"></script>--%>
-    <script src="js/cascading.js"></script>
+    <script src="js/cascading.js" charset="UTF-8"></script>
     <script type="text/javascript">
         var account = ${sessionScope.user.account};
         //模糊查询调用方法

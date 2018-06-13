@@ -49,7 +49,6 @@
                 <option value="">不限</option>
 
             </select></span>
-            <br/>
             <span>监测站编码：
                 <select id="s_city" name="city" style="margin-left: 0.5%;">
                     <option value="">市区</option>
