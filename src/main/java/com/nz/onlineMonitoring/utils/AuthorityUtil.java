@@ -34,6 +34,14 @@ public class AuthorityUtil {
 		return authorityUtil;
 	}
 
+	/**
+	 * 此方法用于按照省市区进去查询，设置不可越级访问，亦不可同级访问。
+	 * @param citys 城市范围
+	 * @param request
+	 * @param object 类的实例化对象
+	 * @throws Exception
+	 * @author guobj
+	 */
 	public void assignPermissions(String[] citys, HttpServletRequest request, Object object) throws Exception{
 
 		//反射得到object的类
