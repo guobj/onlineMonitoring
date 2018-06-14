@@ -117,9 +117,6 @@ public class StationServiceImpl implements StationService{
                 StringBuffer sb = new StringBuffer();
                 Dict devObject = dictMapper.loadByDevType(Integer.parseInt(temp[i].substring(3, 4)));
                 Dict devType = dictMapper.loadByDevType1(Integer.parseInt(temp[i].substring(3, 6)));
-                if (devObject == null || devType == null) {
-                    throw new RuntimeException("暂无数据"); 
-                }
                 sb.append(devObject.getData_name());
                 sb.append(devType.getData_name());
                 temp[i] = sb.toString();
@@ -133,14 +130,26 @@ public class StationServiceImpl implements StationService{
         
         String code2 = ms_code.substring(6, 8);
         if (code02.equals("00")) {
-            String name1= dictMapper.loadCity(Integer.parseInt(code01)).getData_name();
-            station.setMs_code(name1 + "第" + code2 +"个");
+            Dict city = dictMapper.loadCity(Integer.parseInt(code01));
+            if (city != null) {
+                String name1= city.getData_name();
+                station.setMs_code(name1 + "第" + code2 +"个");
+            }else {
+                station.setMs_code("无法解析编码");
+            }
+            
         }else {
             String code03 = ms_code.substring(0, 4);
             code03 += "00";
-            String name2= dictMapper.loadCity(Integer.parseInt(code03)).getData_name();
-            String name1= dictMapper.loadCity(Integer.parseInt(code01)).getData_name();
-            station.setMs_code(name2+name1 + "第" + code2 +"个");
+            Dict city1 = dictMapper.loadCity(Integer.parseInt(code03));
+            Dict city2 = dictMapper.loadCity(Integer.parseInt(code01));
+            if (city1 != null && city2 != null) {
+                String name2= city1.getData_name();
+                String name1= city2.getData_name();
+                station.setMs_code(name2+name1 + "第" + code2 +"个");
+            }else {
+                station.setMs_code("无法解析编码");
+            }
         }
         return station;
     }
