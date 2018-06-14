@@ -65,8 +65,6 @@
                 <select id="s_area" name="city" >
                     <option value="">地级市</option>
                 </select>
-               
-           <br/>
             <span>监测对象：</span>
                 <select class="select1" name="device_object">
                     <option value="">不限</option>
