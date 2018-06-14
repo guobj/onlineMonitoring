@@ -200,7 +200,7 @@
                     <option value="">地级市</option>
                 </select>
                 
-            <span class="span1 wg">网关类型： </span>
+            <span class="span1">网关类型： </span>
                 <select class="select1" name="ms_gate">
                     <option value="">不限</option>
                     <c:forEach items="${msGate }" var="gate">
@@ -209,7 +209,7 @@
                 </select>
            
 
-            <input type="submit"  value="查询" class="search"> <input type="button" value="添加监测站" class="cx" onclick="tianjia()"/>
+            <input type="submit"  value="查询" class="search"> <input type="button" value="添加监测站" class="reset" onclick="tianjia()"/>
         </form>
     </div>
 

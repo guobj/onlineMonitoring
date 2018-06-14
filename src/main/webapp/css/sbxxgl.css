@@ -82,7 +82,6 @@ position: absolute;
 top: 0px;
   left: 92%;
 }
-#content_r .title{font-size: 12px; margin-left: 2%;color: #646464; margin-top: 10px;}
 #content_r table thead tr{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f5f6+0,e3eaed+37,c8d7dc+100;Grey+3D+%234 */
 background: rgb(242,245,246); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(242,245,246,1) 0%, rgba(227,234,237,1) 37%, rgba(200,215,220,1) 100%); /* FF3.6-15 */
@@ -98,27 +97,22 @@ font-size: 0.75em;
     border-collapse: separate;
     border: 1px solid #ffffff;
 }
-#content_r table tr{color:#707d83;height: 30px;text-align: center;}
+#content_r table tr{color:#707d83;height: 30px;text-align: center; table-layout:fixed;}
 #content_r table tr td{
     border-collapse: separate;
     border: 1px solid #ffffff;
+    height: 30px;
 }
 #content_r table{width: 97%;float: left; height: 440px; margin-left: 2%;  margin-bottom: 10px; border-collapse:collapse;}
-#content_r table tbody .tr1{ border-bottom: 1px solid #adadad; width: 100%;  }
 #content_r table tbody{font-size: 12px;  color: #4e4f4f;}
-#content_r table .t1{width: 5%;}
-#content_r table .t2{width: 8%;}
-#content_r table .t3{width: 8%;}
-#content_r table .t4{width: 8%;}
-#content_r table .t5{width: 8%;}
-#content_r table .t6{width: 8%;}
-#content_r table .t7{width: 8%;}
-#content_r table .t8{width: 8%;}
-#content_r table .t9{width: 8%;}
-#content_r table .t10{width: 8%;}
-#content_r table .t11{width: 17%;}
-#content_r table .t12{width: 15%;}
-#content_r input{background: none; }
+#content_r table .t1{width: 10%; height: 30px;}
+#content_r table .t2{width: 10%; height: 30px;}
+#content_r table .t3{width: 8%; height: 30px;}
+#content_r table .t4{width: 8%; height: 30px;}
+#content_r table .t5{width: 8%; height: 30px;}
+#content_r table .t6{width: 8%; height: 30px;}
+#content_r table .t7{width: 8%; height: 30px;}
+#content_r table .t8{width: 8%;height: 30px;}
 #del{color: #da0000}
 #update{color: #269dc9}
 

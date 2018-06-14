@@ -132,14 +132,14 @@
             </c:if>
             <c:forEach var="list" items="${list}">
                 <tr>
-                    <td>${list.station.ms_name}</td>
-                    <td>${list.ms_code}</td>
-                    <td>${list.dev_code}</td>
-                    <td>${list.dataProtocol.data_name}</td>
-                    <td>${list.dataInterface.data_name}</td>
-                    <td>${list.dev_regad}</td>
-                    <td>${list.dev_ip}</td>
-                    <td><input type="button" onclick="moreInfo(${list.id})" value="更多"/></td>
+                    <td class="t1">${list.station.ms_name}</td>
+                    <td class="t2">${list.ms_code}</td>
+                    <td class="t3">${list.dev_code}</td>
+                    <td class="t4">${list.dataProtocol.data_name}</td>
+                    <td class="t5">${list.dataInterface.data_name}</td>
+                    <td class="t6">${list.dev_regad}</td>
+                    <td class="t7">${list.dev_ip}</td>
+                    <td class="t8"><input type="button" onclick="moreInfo(${list.id})" value="更多"/></td>
                 </tr>
             </c:forEach>
         </tbody>
