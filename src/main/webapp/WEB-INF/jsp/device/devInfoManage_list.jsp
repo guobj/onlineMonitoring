@@ -22,6 +22,8 @@
     <script type="text/javascript">
         var account = ${sessionScope.user.account};
         function moreInfo(id) {
+            $("#Paging").hide();
+            $("#page").hide();
             $.ajax({
                 type:"post",
                 url:"device/deviceLoad",
@@ -86,7 +88,7 @@
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">监测设备管理</span> > <span id="zb3">设备信息管理</span></p></li>
     <div class="menu">
         <form>
             <%--<span>监测站名称：<input name="ms_name" type="text"/></span>--%>
@@ -94,7 +96,6 @@
                 <select class="select1" name="dev_type" id="dev_type">
                     <option value="">不限</option>
                 </select></span>
-            <br/>
             <span>监测站编码：
                 <select id="s_city" name="city">
                     <option value="">市区</option>
@@ -108,24 +109,23 @@
                     <option value="">不限</option>
                 </select>
             </span>
-            <br/>
             <input type="button" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>
     </div>
-    <h4>信息列表</h4>
+    <h5>信息列表</h5>
     <br/>
     <table id="xx">
         <thead>
             <tr>
-                <td>监测站名称</td>
-                <td>监测站编码</td>
-                <td>设备编码</td>
-                <td>通信协议</td>
-                <td>通讯接口</td>
-                <td>从机地址</td>
-                <td>IP地址</td>
-                <td>更多</td>
+                <td class="t1">监测站名称</td>
+                <td class="t2">监测站编码</td>
+                <td class="t3">设备编码</td>
+                <td class="t4">通信协议</td>
+                <td class="t5">通讯接口</td>
+                <%--<td class="t6">从机地址</td>--%>
+                <%--<td class="t7">IP地址</td>--%>
+                <td class="t8">更多</td>
             </tr>
         </thead>
         <tbody>
@@ -133,15 +133,15 @@
                 <tr><td colspan="11" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
             </c:if>
             <c:forEach var="list" items="${list}">
-                <tr>
-                    <td>${list.station.ms_name}</td>
-                    <td>${list.ms_code}</td>
-                    <td>${list.dev_code}</td>
-                    <td>${list.dataProtocol.data_name}</td>
-                    <td>${list.dataInterface.data_name}</td>
-                    <td>${list.dev_regad}</td>
-                    <td>${list.dev_ip}</td>
-                    <td><input type="button" onclick="moreInfo(${list.id})" value="更多"/></td>
+                <tr style="height: 30px;">
+                    <td class="t1">${list.station.ms_name}</td>
+                    <td class="t2">${list.ms_code}</td>
+                    <td class="t3">${list.dev_code}</td>
+                    <td class="t4">${list.dataProtocol.data_name}</td>
+                    <td class="t5">${list.dataInterface.data_name}</td>
+                    <%--<td class="t6">${list.dev_regad}</td>--%>
+                    <%--<td class="t7"> ${list.dev_ip}</td>--%>
+                    <td class="t8"><input type="button" onclick="moreInfo(${list.id})" value="更多"/></td>
                 </tr>
             </c:forEach>
         </tbody>
@@ -149,7 +149,7 @@
     <jsp:include page="../common/pages.jsp"></jsp:include>
     <div id="detail">
         <table id="bg1">
-            <<input type="hidden" id="manageId">
+            <input type="hidden" id="manageId">
             <tr>
                 <td class="s1">监测站名称</td>
                 <td class="s2" id="ms_name"></td>

@@ -50,7 +50,7 @@
             <if test="manage.station != null and manage.station.ms_net != null">
                 AND ts.ms_net = #{manage.station.ms_net}
             </if>
-            AND ts.dr = false AND tm.dr = false order by tm.id desc
+            order by tm.id desc
         </where>
         LIMIT #{record},4
     </select>
@@ -82,18 +82,17 @@
             <if test="manage.station != null and manage.station.ms_net != null">
                 AND ts.ms_net = #{manage.station.ms_net}
             </if>
-            AND ts.dr = false AND tm.dr = false
         </where>
     </select>
-   <!-- <delete id="deleteById" parameterType="java.lang.Integer" >
+   <delete id="deleteById" parameterType="java.lang.Integer" >-->
         delete from t_manage
         where id = #{id,jdbcType=INTEGER}
-    </delete>-->
+    </delete>
 
-    <update id="deleteById" parameterType="java.lang.Integer">
-        update t_manage
-        set dr = true where id = #{id,jdbcType=INTEGER}
-    </update>
+    <!--<update id="deleteById" parameterType="java.lang.Integer">-->
+        <!--update t_manage-->
+        <!--set dr = true where id = #{id,jdbcType=INTEGER}-->
+    <!--</update>-->
     <!--<insert id="add" parameterType="com.nz.onlineMonitoring.stationManage.model.Manage" >-->
         <!--insert into t_manage-->
         <!--<trim prefix="(" suffix=")" suffixOverrides="," >-->

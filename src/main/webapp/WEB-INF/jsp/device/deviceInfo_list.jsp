@@ -11,7 +11,8 @@
 <html>
 <head lang="en">
     <base href="${basePath }">
-    <meta charset="UTF-8">
+    <%--<meta charset="UTF-8">--%>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title></title>
     <link href="css/sbxxcx.css" rel="stylesheet" type="text/css">
     <link href="css/page.css" rel="stylesheet" type="text/css">
@@ -41,7 +42,7 @@
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">监测设备管理</span> > <span id="zb3">设备信息查询</span></p></li>
     <div class="menu">
         <form action="device/queryDeviceInfoList" method="post">
             <%--<span>监测站名称：<input name="ms_name" type="text"/></span>--%>
@@ -63,7 +64,6 @@
 
                 </select>
             </span>
-            <br/>
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>

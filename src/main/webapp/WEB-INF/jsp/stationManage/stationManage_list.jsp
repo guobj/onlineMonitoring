@@ -45,6 +45,7 @@ pageContext.setAttribute("basePath", basePath);
             $(obj).parent().parent().parent().parent().hide();
             $("#chakan").show();
             $("#page").hide();
+            $("#Paging").hide();
             $.ajax({
                 type:"get",
                 url:"manage/load",
@@ -123,6 +124,7 @@ pageContext.setAttribute("basePath", basePath);
             $("h4").html("");
             $("#caidan").css("height","700px");
             $("#page").hide();
+            $("#Paging").hide();
             $.ajax({
                 type:"get",
                 url:"manage/load",
@@ -143,7 +145,7 @@ pageContext.setAttribute("basePath", basePath);
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点配置管理</span></p></li>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点管理</span> > <span id="zb3">站点配置管理</span></p></li>
     <div class="gn">
         <form id="like" method="post">
             <%--<span class="span1">监测站名称：</span><input name="ms_name" type="text" placeholder="不限" >--%>
@@ -155,7 +157,6 @@ pageContext.setAttribute("basePath", basePath);
                 <select id="ms_type" name="station.ms_type">
                     <option value="">不限</option>
                 </select>
-            <br />
            <span class="span1">监测站区域：</span>
                 <select id="s_city" name="city">
                     <option value="">市区</option>
@@ -163,11 +164,11 @@ pageContext.setAttribute("basePath", basePath);
                 <select id="s_area" name="city">
                     <option value="">区县</option>
                 </select>
-            <span class="span1 wg">网关类型：</span>
+            <span class="span1">网关类型：</span>
                 <select id="ms_gate" name="station.ms_gate">
                     <option value="">不限</option>
                 </select>
-            <input type="button"  value="查询" class="cx" onclick="submit()">
+            <input type="button"  value="查询" class="search" onclick="submit()">
         </form>
     </div>
 
