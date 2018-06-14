@@ -119,7 +119,7 @@
 </div>
 
 <div id="footer">
-    <li>济南农智信息科技有限公司所有&copy; &nbsp;电话：12345677  &nbsp;<a href="#">关于我们</a> &nbsp;<a href="#">售后服务</a></li>
+    <li>山东省植物保护总站</li>
 </div>
 
 </body>

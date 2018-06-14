@@ -55,7 +55,7 @@ pageContext.setAttribute("basePath", basePath);
                     $("#ms_name").html(data.data.station.ms_name);
                     $("#ms_code").html(data.data.ms_code);
                     $("#ms_date").html(data.data.station.ms_date);
-                    $("#ms_dev").html(data.data.station.ms_dev_value);
+                    $("#manage_ms_dev").html(data.data.station.ms_dev_value);
                     $("#ms_type1").html(data.data.station.dict.data_name);
                     $("#ms_fp1").html(data.data.station.ms_fp_value.data_name);
                     $("#ms_place").html(data.data.station.ms_place);
@@ -186,7 +186,7 @@ pageContext.setAttribute("basePath", basePath);
                 <td class="t6">查看</td>
                 <td class="t7">删除</td>
                 <td class="t8">配置</td>
-                <td class="t9">修改</td>
+                <%--<td class="t9">修改</td>--%>
             </tr>
             </thead>
             <tbody>
@@ -203,7 +203,7 @@ pageContext.setAttribute("basePath", basePath);
                         <td class="t6"><input type="button" value="查看" class="input1" onclick="look(this,${list.id})"></td>
                         <td class="t7"><input type="button" value="删除"  class="input2" onclick="deleteById(${list.id})"></td>
                         <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this,${list.id})"></td>
-                        <td class="t9"><input type="button" value="修改"  class="input1"  onclick="update(this,${list.id})"></td>
+                        <%--<td class="t9"><input type="button" value="修改"  class="input1"  onclick="update(this,${list.id})"></td>--%>
                     </tr>
                 </c:forEach>
             </c:if>
@@ -226,7 +226,7 @@ pageContext.setAttribute("basePath", basePath);
                 </tr>
                 <tr>
                     <td class="s1">建设内容</td>
-                    <td class="s2" id="ms_dev"></td>
+                    <td class="s2" id="manage_ms_dev"></td>
                 </tr>
                 <tr>
                     <td class="s1">监测站类型</td>
