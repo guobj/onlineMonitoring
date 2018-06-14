@@ -111,19 +111,19 @@
 
         </form>
     </div>
-    <h4>信息列表</h4>
+    <h5>信息列表</h5>
     <br/>
     <table id="xx">
         <thead>
             <tr>
-                <td>监测站名称</td>
-                <td>监测站编码</td>
-                <td>设备编码</td>
-                <td>通信协议</td>
-                <td>通讯接口</td>
-                <td>从机地址</td>
-                <td>IP地址</td>
-                <td>更多</td>
+                <td class="t1">监测站名称</td>
+                <td class="t2">监测站编码</td>
+                <td class="t3">设备编码</td>
+                <td class="t4">通信协议</td>
+                <td class="t5">通讯接口</td>
+                <td class="t6">从机地址</td>
+                <td class="t7">IP地址</td>
+                <td class="t8">更多</td>
             </tr>
         </thead>
         <tbody>
@@ -138,7 +138,7 @@
                     <td class="t4">${list.dataProtocol.data_name}</td>
                     <td class="t5">${list.dataInterface.data_name}</td>
                     <td class="t6">${list.dev_regad}</td>
-                    <td class="t7">${list.dev_ip}</td>
+                    <td class="t7"> ${list.dev_ip}</td>
                     <td class="t8"><input type="button" onclick="moreInfo(${list.id})" value="更多"/></td>
                 </tr>
             </c:forEach>
@@ -147,7 +147,7 @@
     <jsp:include page="../common/pages.jsp"></jsp:include>
     <div id="detail">
         <table id="bg1">
-            <<input type="hidden" id="manageId">
+            <input type="hidden" id="manageId">
             <tr>
                 <td class="s1">监测站名称</td>
                 <td class="s2" id="ms_name"></td>
