@@ -40,7 +40,7 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">设备状态查看</span></p></li>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">监测设备管理</span> > <span id="zb3">设备状态查看</span></p></li>
     <div class="menu">
         <form action="vDevStatus/devcieStatusList" method="post">
             <%--<span>监测站名称：<input type="text"/></span>--%>
