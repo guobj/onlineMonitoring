@@ -120,6 +120,7 @@ function xg(){
 function tianjia(){
     $("#bg").hide();
     $("#tianjia").show();
+    $("#Paging").hide();
     $("h4").html("添加监测站");
     $("#page").hide();
 
@@ -133,6 +134,7 @@ function tj(){
 function peizhi(obj){
     $(obj).parent().parent().parent().parent().hide();
     $("#peizhi").show();
+    $("#Paging").hide();
     $("h4").html("");
     $("#page").hide();
 

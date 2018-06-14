@@ -22,6 +22,8 @@
     <script type="text/javascript">
         var account = ${sessionScope.user.account};
         function moreInfo(id) {
+            $("#Paging").hide();
+            $("#page").hide();
             $.ajax({
                 type:"post",
                 url:"device/deviceLoad",
@@ -131,7 +133,7 @@
                 <tr><td colspan="11" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
             </c:if>
             <c:forEach var="list" items="${list}">
-                <tr>
+                <tr style="height: 30px;">
                     <td class="t1">${list.station.ms_name}</td>
                     <td class="t2">${list.ms_code}</td>
                     <td class="t3">${list.dev_code}</td>

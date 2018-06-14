@@ -45,6 +45,7 @@ pageContext.setAttribute("basePath", basePath);
             $(obj).parent().parent().parent().parent().hide();
             $("#chakan").show();
             $("#page").hide();
+            $("#Paging").hide();
             $.ajax({
                 type:"get",
                 url:"manage/load",
@@ -123,6 +124,7 @@ pageContext.setAttribute("basePath", basePath);
             $("h4").html("");
             $("#caidan").css("height","700px");
             $("#page").hide();
+            $("#Paging").hide();
             $.ajax({
                 type:"get",
                 url:"manage/load",

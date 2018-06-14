@@ -27,6 +27,7 @@
             $(obj).parent().parent().parent().parent().hide();
             $("#chakan").show();
             $("#page").hide();
+            $("#Paging").hide();
             $("#chakan").html("");
             $.post("station/loadStation",{id:id},function(data){
                 if(data!=null){
@@ -56,6 +57,7 @@
             $("h4").html("修改信息");
             $("#caidan").css("height",height)
             $("#page").hide();
+            $("#Paging").hide();
             $("#caidan").css("height","840px");
             $("#xiugai").html("");
             $.post("station/getStation",{id:id},function(data){
