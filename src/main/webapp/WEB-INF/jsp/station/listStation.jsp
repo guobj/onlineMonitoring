@@ -133,6 +133,7 @@
             $("#bg").show();
             $("h4").html("数据列表");
             $("#page").show();
+            $("#Paging").show();
         }
         //添加
         function tj(){
@@ -157,6 +158,7 @@
             $("#bg").show();
             $("#page").show();
             $("h4").html("数据列表");
+            $("#Paging").show();
         }
       //删除方法
         function delStation(id){
@@ -183,7 +185,7 @@
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点信息管理</span></p></li>
     <div class="gn">
         <form action="station/listStation" method="post">
-            <span class="span1">监测站名称：</span><input type="text" name="ms_name" placeholder="不限" >
+           <!--  <span class="span1">监测站名称：</span><input type="text" name="ms_name" placeholder="不限" > -->
             <span class="span1">资金来源：</span>
                 <select class="select1" name="ms_fp">
                     <option value="">不限</option>
@@ -199,7 +201,6 @@
                         <option value="${type.data_value }">${type.data_name }</option>
                     </c:forEach>
                 </select>
-             <br />
             <span  class="span1">监测站区域：</span>
                 <select id="s_city" name="city">
                     <option value="">市区</option>
@@ -207,7 +208,7 @@
                 <select id="s_area" name="city" >
                     <option value="">地级市</option>
                 </select>
-                
+           
             <span class="span1 wg">网关类型： </span>
                 <select class="select1" name="ms_gate">
                     <option value="">不限</option>

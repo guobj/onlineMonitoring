@@ -48,7 +48,7 @@
 	                    </c:choose>
 	                </c:forEach>
 	            </select>
-            
+             
              <span>设备状态：</span>
                 <select class="select1" name="dev_status">
                     <option value="">不限</option>
@@ -57,7 +57,7 @@
                     </c:forEach>
                 </select>
             
-            
+           
             <span>监测站编码： </span>
                 <select id="s_city" name="city">
                     <option value="">市区</option>
@@ -65,6 +65,7 @@
                 <select id="s_area" name="city" >
                     <option value="">地级市</option>
                 </select>
+                <br/>
             <span>监测对象：</span>
                 <select class="select1" name="device_object">
                     <option value="">不限</option>
