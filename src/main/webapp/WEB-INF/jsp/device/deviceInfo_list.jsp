@@ -11,7 +11,8 @@
 <html>
 <head lang="en">
     <base href="${basePath }">
-    <meta charset="UTF-8">
+    <%--<meta charset="UTF-8">--%>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title></title>
     <link href="css/sbxxcx.css" rel="stylesheet" type="text/css">
     <link href="css/page.css" rel="stylesheet" type="text/css">

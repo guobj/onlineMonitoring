@@ -4,7 +4,7 @@ $(function(){
     var date=new Date();
     $("#year").html(date.getFullYear());
     $("#month").html(date.getMonth()+1);
-    $("#dat").html(date.getDate()+1);
+    $("#dat").html(date.getDate());
 
     var day=date.getDay();
 
