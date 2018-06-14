@@ -123,8 +123,8 @@
                 <td class="t3">设备编码</td>
                 <td class="t4">通信协议</td>
                 <td class="t5">通讯接口</td>
-                <td class="t6">从机地址</td>
-                <td class="t7">IP地址</td>
+                <%--<td class="t6">从机地址</td>--%>
+                <%--<td class="t7">IP地址</td>--%>
                 <td class="t8">更多</td>
             </tr>
         </thead>
@@ -139,8 +139,8 @@
                     <td class="t3">${list.dev_code}</td>
                     <td class="t4">${list.dataProtocol.data_name}</td>
                     <td class="t5">${list.dataInterface.data_name}</td>
-                    <td class="t6">${list.dev_regad}</td>
-                    <td class="t7"> ${list.dev_ip}</td>
+                    <%--<td class="t6">${list.dev_regad}</td>--%>
+                    <%--<td class="t7"> ${list.dev_ip}</td>--%>
                     <td class="t8"><input type="button" onclick="moreInfo(${list.id})" value="更多"/></td>
                 </tr>
             </c:forEach>

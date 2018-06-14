@@ -92,7 +92,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', end
 font-size: 0.75em;
   }
 
-#content_r table{width: 97%; height: 440px; margin-left: 2%;  margin-bottom: 10px; border-collapse:collapse;}
+#content_r table{width: 97%; margin-left: 2%;  margin-bottom: 10px; border-collapse:collapse;}
 #content_r table thead tr td{
     border: 1px solid #ffffff;
 }
