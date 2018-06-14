@@ -131,8 +131,9 @@ function tj(){
     $("#page").show();
     $("h4").html("数据列表");
 }
-function peizhi(obj){
+function peizhi(obj,id){
     $(obj).parent().parent().parent().parent().hide();
+    $("#manageId").val(id);
     $("#peizhi").show();
     $("#Paging").hide();
     $("h4").html("");
