@@ -94,7 +94,6 @@
                 <select class="select1" name="dev_type" id="dev_type">
                     <option value="">不限</option>
                 </select></span>
-            <br/>
             <span>监测站编码：
                 <select id="s_city" name="city">
                     <option value="">市区</option>
@@ -108,7 +107,6 @@
                     <option value="">不限</option>
                 </select>
             </span>
-            <br/>
             <input type="button" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>

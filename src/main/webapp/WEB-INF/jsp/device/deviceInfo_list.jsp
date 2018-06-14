@@ -63,7 +63,6 @@
 
                 </select>
             </span>
-            <br/>
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>

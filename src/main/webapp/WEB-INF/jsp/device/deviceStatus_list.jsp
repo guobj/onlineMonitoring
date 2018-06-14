@@ -59,7 +59,6 @@
                 <select class="select1" name="dev_object" id="dev_object">
                     <option value="">监测对象</option>
                 </select>
-            <br/>
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>

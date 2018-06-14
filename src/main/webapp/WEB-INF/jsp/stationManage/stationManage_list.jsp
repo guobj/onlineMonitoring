@@ -155,7 +155,6 @@ pageContext.setAttribute("basePath", basePath);
                 <select id="ms_type" name="station.ms_type">
                     <option value="">不限</option>
                 </select>
-            <br />
            <span class="span1">监测站区域：</span>
                 <select id="s_city" name="city">
                     <option value="">市区</option>
@@ -163,11 +162,11 @@ pageContext.setAttribute("basePath", basePath);
                 <select id="s_area" name="city">
                     <option value="">区县</option>
                 </select>
-            <span class="span1 wg">网关类型：</span>
+            <span class="span1">网关类型：</span>
                 <select id="ms_gate" name="station.ms_gate">
                     <option value="">不限</option>
                 </select>
-            <input type="button"  value="查询" class="cx" onclick="submit()">
+            <input type="button"  value="查询" class="search" onclick="submit()">
         </form>
     </div>
 
