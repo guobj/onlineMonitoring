@@ -58,6 +58,25 @@
         <c:if test="${realData != null and realData.ms_code != null }">
             <input type="hidden" id="ms_code" name="ms_code" value="${realData.ms_code }">
         </c:if>
+       <!--  历史数据查询 -->
+        <c:if test="${hisData != null and hisData.device_type != null }">
+            <input type="hidden" id="device_type" name="device_type" value="${hisData.device_type }">
+        </c:if>
+        <c:if test="${hisData != null and hisData.dev_status != null }">
+            <input type="hidden" id="dev_status" name="dev_status" value="${hisData.dev_status }">
+        </c:if>
+        <c:if test="${hisData != null and hisData.device_object != null }">
+            <input type="hidden" id="device_object" name="device_object" value="${hisData.device_object }">
+        </c:if>
+        <c:if test="${hisData != null and hisData.ms_code != null }">
+            <input type="hidden" id="ms_code" name="ms_code" value="${hisData.ms_code }">
+        </c:if>
+        <c:if test="${hisData != null and hisData.data_time_begin != null }">
+            <input type="hidden" id="data_time_begin1" name="data_time_begin1" value="${hisData.data_time_begin }">
+        </c:if>
+        <c:if test="${hisData != null and hisData.data_time_end != null }">
+            <input type="hidden" id="data_time_end1" name="data_time_end1" value="${hisData.data_time_end }">
+        </c:if>
             <div id="page">
                 <input onclick="jumpPage(1)" type="button" value="首页"/>
                 <input onclick="jumpPage(${(pages-1<1)?1:(pages-1)})" type="button" value="上一页"/>

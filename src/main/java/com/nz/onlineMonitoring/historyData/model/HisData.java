@@ -9,6 +9,7 @@ package com.nz.onlineMonitoring.historyData.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nz.onlineMonitoring.dict.model.Dict;
 
 /**
@@ -30,6 +31,7 @@ public class HisData {
     /**数据值,所属表字段为 t_his_data.data_value  */
     private String data_value;
     /**数据时间,所属表字段为 t_his_data.data_time  */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date data_time;
     /**设备状态-关联表，见数据字典,所属表字段为 t_his_data.dev_status  */
     private Integer dev_status;
@@ -43,9 +45,9 @@ public class HisData {
     //设备状态
     private Dict dataDevStatus;
     /**查询时开始时间 */
-    private Date data_time_begin;
+    private String data_time_begin;
     /**查询时结束时间 */
-    private Date data_time_end;
+    private String data_time_end;
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_his_data.id
      *
@@ -186,19 +188,19 @@ public class HisData {
         this.dataDevStatus = dataDevStatus;
     }
 
-    public Date getData_time_begin() {
+    public String getData_time_begin() {
         return data_time_begin;
     }
 
-    public void setData_time_begin(Date data_time_begin) {
+    public void setData_time_begin(String data_time_begin) {
         this.data_time_begin = data_time_begin;
     }
 
-    public Date getData_time_end() {
+    public String getData_time_end() {
         return data_time_end;
     }
 
-    public void setData_time_end(Date data_time_end) {
+    public void setData_time_end(String data_time_end) {
         this.data_time_end = data_time_end;
     }
     

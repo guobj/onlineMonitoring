@@ -42,13 +42,13 @@ public class RealDataController {
             map = PageBean.serverMap(map , realData , pages);
             listReal = realDataService.listReal(map);
             map = PageBean.clientMap(map ,pages,request);
-            map.put("devStauts", dictService.listDevStauts());
-            map.put("devObject", dictService.listDevType());
-            map.put("devType", dictService.listDevType1());
         } catch (Exception e) {
             map.put("message", e.getMessage());
         }finally {
             map.put("listRealData", listReal);
+            map.put("devStauts", dictService.listDevStauts());
+            map.put("devObject", dictService.listDevType());
+            map.put("devType", dictService.listDevType1());
         }
         return "realData/listRealData";
     }

@@ -11,7 +11,7 @@
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>实时数据</title>
+<title>历史数据</title>
 <script src="js/jquery.js"></script>
     <link href="css/xinxi.css" rel="stylesheet" type=text/css>
     <link href="css/page.css" rel="stylesheet" type="text/css">
@@ -28,9 +28,9 @@
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">数据管理</span> > <span id="zb3">实时数据查询</span></p></li>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">数据管理</span> > <span id="zb3">历史数据查询</span></p></li>
     <div class="menu">
-        <form action="realData/listRealData" method="post">
+        <form action="hisData/listHisData" method="post">
             <span>设备类型：</span>
 	            <select class="select1" name="device_type">
 	                <option value="">不限</option>
@@ -74,7 +74,9 @@
                         <option value="${ob.data_value }">${ob.data_name }</option>
                     </c:forEach>
                 </select>
-
+            <span>数据时间：</span>
+                <input type="datetime-local" name="data_time_begin1">--<input type="datetime-local" name="data_time_end1">
+                
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>

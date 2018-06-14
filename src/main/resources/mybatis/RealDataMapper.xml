@@ -14,7 +14,7 @@
         <association column="dev_status" property="dataDevStatus" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevStatus"></association>
     </resultMap>
     <sql id="t_real_data_columns" >
-        id,  ms_code, dev_code, data_value, data_time, dev_status,dr
+        id,  ms_code, dev_code, data_value, data_time, dev_status
     </sql>
     <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select 
@@ -86,9 +86,6 @@
             </if>
             <if test="dev_status != null" >
                 dev_status = #{dev_status,jdbcType=INTEGER},
-            </if>
-            <if test="dr != null" >
-                dr = #{dr},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}

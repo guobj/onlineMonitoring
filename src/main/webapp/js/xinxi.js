@@ -92,6 +92,7 @@ function chakan(obj){
     $("#chakan").show();
     $("h4").html("");
     $("#page").hide();
+    $("#Paging").hide();
 
 }
 function xiugai(obj){
@@ -116,12 +117,13 @@ function xg(){
     $("#caidan").css("height",height);
     $("#page").show();
 }
-
 function tianjia(){
     $("#bg").hide();
     $("#tianjia").show();
     $("h4").html("添加监测站");
     $("#page").hide();
+    $("#xiugai").hide();
+    $("#Paging").hide();
 
 }
 function tj(){

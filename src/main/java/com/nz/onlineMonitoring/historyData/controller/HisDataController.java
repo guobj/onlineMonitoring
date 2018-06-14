@@ -35,20 +35,25 @@ public class HisDataController {
      * @date 2018年6月3日 下午4:18:48
      */
     @RequestMapping("/listHisData")
-    public String listHisData(Map<String, Object> map,HisData hisData,HttpServletRequest request,@RequestParam(required=false,defaultValue="1") int pages,@RequestParam(required=false,name="city")String[] citys){
+    public String listHisData(Map<String, Object> map,HisData hisData,HttpServletRequest request,@RequestParam(required=false,defaultValue="1") int pages,
+            @RequestParam(required=false,name="city")String[] citys,@RequestParam(required=false,defaultValue="1900-01-01T00:00")String data_time_begin1,@RequestParam(required=false,defaultValue="9999-01-01T00:00")String data_time_end1){
+            data_time_begin1 = data_time_begin1.replace('T', ' ');
+            data_time_end1 = data_time_end1.replace('T', ' ');
+            hisData.setData_time_begin(data_time_begin1);
+            hisData.setData_time_end(data_time_end1);
         List<HisData> listHisData = null;
         try {
             AuthorityUtil.getInstance().assignPermissions(citys, request, hisData);
             map = PageBean.serverMap(map , hisData , pages);
             listHisData = hisDataService.listHisData(map);
             map = PageBean.clientMap(map ,pages,request);
-            map.put("devStauts", dictService.listDevStauts());
-            map.put("devObject", dictService.listDevType());
-            map.put("devType", dictService.listDevType1());
         } catch (Exception e) {
             map.put("message", e.getMessage());
         }finally {
             map.put("listHisData", listHisData);
+            map.put("devStauts", dictService.listDevStauts());
+            map.put("devObject", dictService.listDevType());
+            map.put("devType", dictService.listDevType1());
         }
         return "hisData/listHisData";
     }

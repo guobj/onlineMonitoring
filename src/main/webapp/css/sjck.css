@@ -43,7 +43,7 @@ body{ background:#1c8914;}
 #content_r .tit .xx img{ margin-top:0px; float:left;}
 #content_r .menu{width: 100%; height:110px; margin-bottom: 10px; border-bottom: 1px solid #cccccc; background: #F8F8FF;}
 #content_r .menu span{width: 15%; font-size: 12px; color: #595959;margin:10px 0 0 5%;}
-#content_r .menu input{width: 10%; height: 24px; border: 1px solid #bfbfbf;margin:10px 0 0 1%; border-radius: 5px;}
+#content_r .menu input{width: 14%; height: 24px; border: 1px solid #bfbfbf;margin:10px 0 0 1%; border-radius: 5px;}
 #content_r .menu select{
     border: 1px solid #cccccc;
     width: 10%;

@@ -48,15 +48,15 @@ public class StationController {
             map = PageBean.serverMap(map , station , pages);
             listStation = stationService.listStation(map);
             map = PageBean.clientMap(map ,pages,request);
+        } catch (Exception e) {
+            map.put("message", e.getMessage());
+        }finally {
+            map.put("listStation", listStation);
             map.put("msType", dictService.listMsType());
             map.put("msFp", dictService.listMsFp());
             map.put("msGate", dictService.listMsGate());
             map.put("msNet", dictService.listMsNet());
             map.put("msDev", dictService.analysisMsDev());
-        } catch (Exception e) {
-            map.put("message", e.getMessage());
-        }finally {
-            map.put("listStation", listStation);
         }
         return "station/listStation";
     }
@@ -93,11 +93,8 @@ public class StationController {
     @ResponseBody
     public JacksonData deleteStation(Integer id,Map<String , Object> map) {
         JacksonData jd = new JacksonData();
-        Station station = new Station();
-        station.setId(id);
-        station.setDr(true);
         try {
-            int result = stationService.update(station);
+            int result = stationService.delete(id);
             jd.success(result);
         } catch (Exception e) {
             jd.failure(e.getMessage());
