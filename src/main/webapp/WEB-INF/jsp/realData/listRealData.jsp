@@ -63,7 +63,7 @@
                     <option value="">市区</option>
                 </select>
                 <select id="s_area" name="city" >
-                    <option value="">地级市</option>
+                    <option value="">区县</option>
                 </select>
                 <br/>
             <span>监测对象：</span>

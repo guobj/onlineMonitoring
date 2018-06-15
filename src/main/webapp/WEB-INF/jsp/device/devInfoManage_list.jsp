@@ -109,7 +109,7 @@
                     <option value="">不限</option>
                 </select>
             </span>
-            <input type="button" value="查找" class="search"><input type="reset" value="重置" class="reset">
+            <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>
     </div>

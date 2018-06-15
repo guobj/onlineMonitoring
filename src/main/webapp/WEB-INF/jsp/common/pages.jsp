@@ -17,6 +17,7 @@
     </c:if>
     <form target="_self" id="pageForm" method="post">
         <input type="hidden" id="pages" name="pages">
+        <%--站点配置管理--%>
         <c:if test="${manage.ms_code!=null and manage.ms_code.trim()!='' }">
             <input type="hidden" id="ms_code" name="ms_code" value="${manage.ms_code }">
         </c:if>
@@ -76,6 +77,26 @@
         </c:if>
         <c:if test="${hisData != null and hisData.data_time_end != null }">
             <input type="hidden" id="data_time_end1" name="data_time_end1" value="${hisData.data_time_end }">
+        </c:if>
+        <%--设备信息查询--%>
+        <c:if test="${device.ms_code!=null and device.ms_code!=''}">
+            <input type="hidden" id="ms_code" name="ms_code" value="${device.ms_code }">
+        </c:if>
+        <c:if test="${device.dev_code!=null and device.dev_code!=''}">
+            <input type="hidden" id="dev_code" name="dev_code" value="${device.dev_code }">
+        </c:if>
+        <c:if test="${device.dev_type!=null and device.dev_type!=''}">
+            <input type="hidden" id="dev_type" name="dev_type" value="${device.dev_type }">
+        </c:if>
+        <%--设备状态查看--%>
+        <c:if test="${vdevstatus.ms_code!=null and vdevstatus.ms_code!=''}">
+            <input type="hidden" id="ms_code" name="ms_code" value="${vdevstatus.ms_code }">
+        </c:if>
+        <c:if test="${vdevstatus.dev_code!=null and vdevstatus.dev_code!=''}">
+            <input type="hidden" id="dev_code" name="dev_code" value="${vdevstatus.dev_code }">
+        </c:if>
+        <c:if test="${vdevstatus.dev_type!=null and vdevstatus.dev_type!=''}">
+            <input type="hidden" id="dev_type" name="dev_type" value="${vdevstatus.dev_type }">
         </c:if>
             <div id="page">
                 <input onclick="jumpPage(1)" type="button" value="首页"/>

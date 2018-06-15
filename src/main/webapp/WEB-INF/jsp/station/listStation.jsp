@@ -206,7 +206,7 @@
                     <option value="">市区</option>
                 </select>
                 <select id="s_area" name="city" >
-                    <option value="">地级市</option>
+                    <option value="">区县</option>
                 </select>
            
             <span class="span1 wg">网关类型： </span>
