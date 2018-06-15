@@ -104,8 +104,8 @@ background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(246,246,246,
 background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* Chrome10-25,Safari5.1-6 */
 background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
- width: 70%; height: 700px; box-shadow: 10px 10px 5px #888888; border: 1px solid #d3d3d3;}
-#content_r #img #imga{ width: 65%;margin-left: 3%;margin-top: 20px; height: 600px;overflow-y:scroll;}
+ width: 60%; height: 450px; box-shadow: 10px 10px 5px #888888; border: 1px solid #d3d3d3;}
+#content_r #img #imga{ width: 100%;margin-left: 3%;margin-top: 20px; height: 300px;}
 #content_r #img #imga img{width: 26%; margin-left: 3%; float: left; margin-top: 10px;}
 #content_r #img input{margin-left: 45%; width: 10%; height: 30px; margin-top: 10px; border: 1px solid #bfbfbf; border-radius: 5px; }
 
