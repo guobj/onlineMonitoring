@@ -36,6 +36,19 @@
                 }
             });
         });
+        function look(obj) {
+            $("#img").show();
+            $.ajax({
+                type:"post",
+                url:"device/photo",
+                dataType: "JSON",
+                success:function (data) {
+                    for(var o in data.data){
+                        $("#imga").append("<img src='/upload/"+data.data[o]+"'/>");
+                    }
+                }
+            });
+        }
     </script>
 </head>
 
@@ -91,7 +104,7 @@
                         <td class="t3">${list.ms_code}</td>
                         <td class="t4">${list.dev_code}</td>
                         <td class="t5">设备采集数据</td>
-                        <td class="t6"><input type="button" value="查看" onclick="check(this)"/></td>
+                        <td class="t6"><input type="button" value="查看" onclick="look(this)"/></td>
                     </tr>
                 </c:forEach>
             </c:otherwise>

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -104,6 +106,37 @@ public class DeviceController {
 //			jacksonData.failure(e.getMessage());
 //		}
 		return "device/deviceStatus_list";
+	}
+
+	@RequestMapping(value = "/photo")
+	@ResponseBody
+	public JacksonData photo(){
+		JacksonData jacksonData = new JacksonData();
+		File file = new File("D:\\photo");
+		List list = new ArrayList();
+//		File[] fileList = file.listFiles();
+//		File file = new File(path);
+		if (file.exists()) {
+			File[] files = file.listFiles();
+			if (files.length == 0) {
+				System.out.println("文件夹是空的!");
+				return null;
+			} else {
+				for (File file2 : files) {
+					if (file2.isDirectory()) {
+						System.out.println("文件夹:" + file2.getAbsolutePath());
+//						traverseFolder2(file2.getAbsolutePath());
+					} else {
+						System.out.println("文件:" + file2.getAbsolutePath());
+						list.add(file2.getName());
+					}
+				}
+			}
+		} else {
+			System.out.println("文件不存在!");
+		}
+		jacksonData.success(list);
+		return jacksonData;
 	}
 
 }
