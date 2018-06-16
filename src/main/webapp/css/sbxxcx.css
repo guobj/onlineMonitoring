@@ -107,6 +107,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
  width: 60%; height: 450px; box-shadow: 10px 10px 5px #888888; border: 1px solid #d3d3d3;}
 #content_r #img #imga{ width: 100%;margin-left: 4%;margin-top: 20px; height: 300px;}
 #content_r #img #imga .min{width: 26%; margin-left: 3%; float: left; margin-top: 10px;}
+#content_r #img input{width: 6%; height: 30px; position:fixed; bottom: 30px; left: 45%; border: 1px solid #bfbfbf; border-radius: 5px;  }
+#content_r #img #clo{margin-left: 45%;float: left;width: 100%;}
 /*#content_r #img #imga .max{width: 26%; margin-left: 3%; float: left; margin-top: 10px;}*/
 #content_r #img form{margin-left: 45%; width: 10%; height: 30px; margin-top: 10px; border: 1px solid #bfbfbf; border-radius: 5px; }
 
