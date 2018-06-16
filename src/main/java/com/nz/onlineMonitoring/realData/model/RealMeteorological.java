@@ -7,9 +7,9 @@
  **/
 package com.nz.onlineMonitoring.realData.model;
 
-import com.nz.onlineMonitoring.dict.model.Dict;
-
 import java.util.Date;
+
+import com.nz.onlineMonitoring.dict.model.Dict;
 
 /**
  * t_meteorological 类
@@ -68,6 +68,10 @@ public class RealMeteorological {
 	/**根据设备监测对象的查询数据 */
 	private String device_object;
 
+	/**设备编码 解析设备*/
+    private String dev_code_value;
+    //设备状态
+    private Dict dataDevStatus;
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_meteorological.id
      *
@@ -489,4 +493,29 @@ public class RealMeteorological {
 	public void setDevice_object(String device_object) {
 		this.device_object = device_object;
 	}
+
+    public Date getData_time() {
+        return data_time;
+    }
+
+    public void setData_time(Date data_time) {
+        this.data_time = data_time;
+    }
+
+    public String getDev_code_value() {
+        return dev_code_value;
+    }
+
+    public void setDev_code_value(String dev_code_value) {
+        this.dev_code_value = dev_code_value;
+    }
+
+    public Dict getDataDevStatus() {
+        return dataDevStatus;
+    }
+
+    public void setDataDevStatus(Dict dataDevStatus) {
+        this.dataDevStatus = dataDevStatus;
+    }
+	
 }

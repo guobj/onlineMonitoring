@@ -29,8 +29,9 @@ public class RealDataServiceImpl implements RealDataService {
      */
     @Override
     public List<RealData> listReal(Map<String, Object> map) {
-        Integer count = realDataMapper.countReal(map);
-        map.put("count", count);
+        Integer countData = realDataMapper.countReal(map);
+        Integer countMeteorological = realDataMapper.countReal(map);
+        map.put("count", countData+countMeteorological);
         List<RealData> realList = realDataMapper.listReal(map);
         if (realList == null || realList.size() <= 0) {
             throw new RuntimeException("暂无数据");

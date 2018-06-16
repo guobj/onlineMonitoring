@@ -22,7 +22,7 @@
         <result column="soil_ec" property="soil_ec" jdbcType="DOUBLE" />
         <result column="data_time" property="data_time" jdbcType="TIMESTAMP" />
         <result column="dev_status" property="dev_status" jdbcType="INTEGER" />
-        <association column="dev_status" property="dataDevStatus" select=""></association>
+        <association column="dev_status" property="dataDevStatus" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevStatus"></association>
     </resultMap>
     <sql id="t_real_meteorological_columns" >
         id, ms_code, dev_code, air_t, air_h, wind_s, wind_d, dew_p, rain_f, sunshine_h, 
