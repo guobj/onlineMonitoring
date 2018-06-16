@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -22,6 +23,24 @@
     <script src="js/cascading.js"  type="text/javascript"></script>
     <script type="text/javascript">
         var account = ${sessionScope.user.account};
+        
+        
+        function look(dev_code,ms_code) {
+            $("#img").show();
+            $.ajax({
+                type:"post",
+                url:"realData/photo",
+                dataType: "JSON",
+                data:{ms_code:ms_code,dev_code:dev_code},
+                success:function (data) {
+                    for(var o in data.data){
+                        $("#imga").append("<img class='min' src='/upload/"+ms_code+"/"+dev_code+"/"+data.data[o]+"'/>");
+                    }
+                }
+            });
+        }
+        
+        
     </script>
 </head>
 
@@ -94,12 +113,24 @@
             </c:if>
             <c:if test="${listRealData != null}" >
 		        <c:forEach items="${listRealData }" var="real">
-			        <tr style="border-bottom: 1px solid #adadad;">
-			            <td class="t2">${real.ms_code }</td>
-			            <td class="t3">${real.dev_code_value }</td>
-			            <td class="t5"><fmt:formatDate value="${real.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>  </td>
-			            <td class="t6">${real.data_value }<!-- <input type="button" value="查看" onclick="look()"/> --></td>
-			        </tr>
+		            <c:choose>
+		                  <c:when test="${fn:startsWith(real.dev_code,'dev101') or fn:startsWith(real.dev_code,'dev201')}">
+		                      <tr style="border-bottom: 1px solid #adadad;">
+	                            <td class="t2">${real.ms_code }</td>
+	                            <td class="t3">${real.dev_code_value }</td>
+	                            <td class="t5"><fmt:formatDate value="${real.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+	                            <td class="t6"><input type="button" value="查看" onclick="look('${real.dev_code }',${real.ms_code})"></td>
+	                          </tr>
+		                  </c:when>
+		                  <c:otherwise>
+		                      <tr style="border-bottom: 1px solid #adadad;">
+		                        <td class="t2">${real.ms_code }</td>
+		                        <td class="t3">${real.dev_code_value }</td>
+		                        <td class="t5"><fmt:formatDate value="${real.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+		                        <td class="t6">${real.data_value }</td>
+		                      </tr>
+		                  </c:otherwise>
+		            </c:choose>
 		        </c:forEach>
 	        </c:if>
         </tbody>
