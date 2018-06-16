@@ -153,14 +153,13 @@
             </if>
         </where>
     </select>
-
     <!--查询设备实时数据-->
     <select id="loadByMsCodeAndDevCode" parameterType="map" resultMap="BaseResultMap">
         select
-          <include refid="t_real_data_columns" />
+         <include refid="t_real_data_columns" />
         from
-          t_real_data
+         t_real_data
         where
-           ms_code = #{ms_code} and dev_code = #{dev_code}
+        ms_code = #{ms_code} and dev_code = #{dev_code}
     </select>
 </mapper>

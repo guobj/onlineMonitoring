@@ -133,6 +133,19 @@
 		            </c:choose>
 		        </c:forEach>
 	        </c:if>
+	        <c:if test="${listRealMeteorological eq null}" >
+                <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
+            </c:if>
+            <c:if test="${listRealMeteorological != null}" >
+                <c:forEach items="${listRealMeteorological }" var="meteorological">
+                     <tr style="border-bottom: 1px solid #adadad;">
+                       <td class="t2">${meteorological.ms_code }</td>
+                       <td class="t3">${meteorological.dev_code_value }</td>
+                       <td class="t5"><fmt:formatDate value="${meteorological.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+                       <td class="t6">${meteorological.soil_t1 }</td>
+                     </tr>
+                </c:forEach>
+            </c:if>
         </tbody>
     </table>
     <jsp:include page="../common/pages.jsp"></jsp:include>

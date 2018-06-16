@@ -1,9 +1,9 @@
 package com.nz.onlineMonitoring.realData.service;
 
-import com.nz.onlineMonitoring.realData.model.RealData;
-
 import java.util.List;
 import java.util.Map;
+
+import com.nz.onlineMonitoring.realData.model.RealData;
 
 public interface RealDataService {
     /**
@@ -25,5 +25,5 @@ public interface RealDataService {
      * @author guobj
      * @date 2018年6月16日
      */
-    List loadByMsCodeAndDevCode(Map<String, Object> map);
+    void loadByMsCodeAndDevCode(Map<String, Object> map);
 }
