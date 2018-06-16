@@ -1,8 +1,10 @@
 package com.nz.onlineMonitoring.realData.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.nz.onlineMonitoring.realData.mapper.RealMeteorologicalMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,8 @@ public class RealDataServiceImpl implements RealDataService {
     private RealDataMapper realDataMapper;
     @Autowired
     private DictMapper dictMapper;
+    @Autowired
+    private RealMeteorologicalMapper realMeteorologicalMapper;
     /**
      * 
      * 方法描述：查询实时数据，根据监测站名称、监测站编码（见数据字典中行政区划代码，输入市、县代码则显示全市、全县的监测站列表）、
@@ -50,4 +54,46 @@ public class RealDataServiceImpl implements RealDataService {
         return realList;
     }
 
+    /**
+     * 方法描述：通过ms_code和dev_code查询实时数据
+     *
+     * @param map
+     * @return
+     * @author guobj
+     * @date 2018年6月16日
+     */
+    @Override
+    public List loadByMsCodeAndDevCode(Map<String, Object> map) {
+        String dev_type = map.get("dev_code").toString().substring(3, 6);
+        List list = new ArrayList<>();
+        if(dev_type.equals("501")){
+            list = realMeteorologicalMapper.loadByMsCodeAndDevCode(map);
+        } else if (dev_type.equals("202")) {
+            list = realDataMapper.loadByMsCodeAndDevCode(map);
+        }else {
+            RealData realData = new RealData();
+            realData.setMs_code(map.get("ms_code").toString());
+            //设备编码解析开始
+            char c = '0';
+            Integer dev_type1 = 0;
+            if(map.get("dev_code").toString() != null && map.get("dev_code").toString() != ""){
+                c = map.get("dev_code").toString().charAt(3);
+                String str = map.get("dev_code").toString().substring(3, 6);
+                dev_type1 = Integer.parseInt(str);
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.append(dictMapper.loadByDevType(Character.getNumericValue(c)).getData_name());
+            sb.append(dictMapper.loadByDevType1(dev_type1).getData_name());
+            //设备编码解析结束
+            realData.setDev_code_value(sb.toString());
+            realData.setDev_code(map.get("dev_code").toString());
+            list.add(realData);
+        }
+//         = realDataMapper.loadByMsCodeAndDevCode(map);
+        if(list == null || list.size() <= 0){
+            throw new RuntimeException("暂无数据");
+        }
+        map.put("listRealData", list);
+        return list;
+    }
 }

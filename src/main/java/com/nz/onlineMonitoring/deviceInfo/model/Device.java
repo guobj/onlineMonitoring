@@ -45,6 +45,17 @@ public class Device {
     /**设备描述,所属表字段为 t_device.dev_desc  */
     private String dev_desc;
 
+    //存储解析的dev_code;
+
+	public String getDev_value() {
+		return dev_value;
+	}
+
+	public void setDev_value(String dev_value) {
+		this.dev_value = dev_value;
+	}
+
+	private String dev_value;
 
 	//是否删除 1删除0未删除
 	private Boolean dr = false;

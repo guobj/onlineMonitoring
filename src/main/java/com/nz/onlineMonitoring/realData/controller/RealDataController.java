@@ -1,24 +1,22 @@
 package com.nz.onlineMonitoring.realData.controller;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.nz.onlineMonitoring.dict.service.DictService;
 import com.nz.onlineMonitoring.realData.model.RealData;
 import com.nz.onlineMonitoring.realData.service.RealDataService;
 import com.nz.onlineMonitoring.utils.AuthorityUtil;
 import com.nz.onlineMonitoring.utils.JacksonData;
 import com.nz.onlineMonitoring.utils.PageBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/realData")
@@ -56,32 +54,47 @@ public class RealDataController {
         }
         return "realData/listRealData";
     }
-    
-    @RequestMapping(value = "/photo")
-    @ResponseBody
-    public JacksonData photo(String ms_code,String dev_code){
-        JacksonData jacksonData = new JacksonData();
-        File file = new File("D:\\photo\\"+ms_code+"\\"+dev_code);
-        List list = new ArrayList();
-        if (file.exists()) {
-            File[] files = file.listFiles();
-            if (files.length == 0) {
-                System.out.println("文件夹是空的!");
-                return null;
-            } else {
-                for (File file2 : files) {
-                    if (file2.isDirectory()) {
-                        System.out.println("文件夹:" + file2.getAbsolutePath());
-                    } else {
-                        System.out.println("文件:" + file2.getAbsolutePath());
-                        list.add(file2.getName());
-                    }
-                }
-            }
-        } else {
-            System.out.println("文件不存在!");
-        }
-        jacksonData.success(list);
-        return jacksonData;
-    }
+
+    //设备信息查询设备采集数据（查询）按钮调用接口，需区分气象设备调用气象表，蝗虫和性诱调用t_real_data,包子和测报灯无数据
+	@RequestMapping("/loadByMsCodeAndDevCode")
+	public String loadByMsCodeAndDevCode(Map<String, Object> map, String ms_code,String dev_code){
+
+		try {
+//			String dev_type = dev_code.substring(3, 6);
+			map.put("ms_code", ms_code);
+			map.put("dev_code", dev_code);
+			List list = realDataService.loadByMsCodeAndDevCode(map);
+		} catch (Exception e) {
+			map.put("message", e.getMessage());
+		}
+		return "realData/listRealData";
+	}
+
+	@RequestMapping(value = "/photo")
+	@ResponseBody
+	public JacksonData photo(String ms_code, String dev_code){
+		JacksonData jacksonData = new JacksonData();
+		File file = new File("D:\\photo\\"+ms_code+"\\"+dev_code);
+		List list = new ArrayList();
+		if (file.exists()) {
+			File[] files = file.listFiles();
+			if (files.length == 0) {
+				System.out.println("文件夹是空的!");
+				return null;
+			} else {
+				for (File file2 : files) {
+					if (file2.isDirectory()) {
+						System.out.println("文件夹:" + file2.getAbsolutePath());
+					} else {
+						System.out.println("文件:" + file2.getAbsolutePath());
+						list.add(file2.getName());
+					}
+				}
+			}
+		} else {
+			System.out.println("文件不存在!");
+		}
+		jacksonData.success(list);
+		return jacksonData;
+	}
 }

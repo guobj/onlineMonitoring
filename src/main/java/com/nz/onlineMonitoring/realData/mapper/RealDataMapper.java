@@ -7,10 +7,10 @@
  **/
 package com.nz.onlineMonitoring.realData.mapper;
 
+import com.nz.onlineMonitoring.realData.model.RealData;
+
 import java.util.List;
 import java.util.Map;
-
-import com.nz.onlineMonitoring.realData.model.RealData;
 
 public interface RealDataMapper {
     /**
@@ -75,4 +75,14 @@ public interface RealDataMapper {
      * @date 2018年6月5日 上午11:14:52
      */
     Integer countReal(Map<String, Object> map);
+
+    /**
+     * 方法描述：通过ms_code和dev_code查询实时数据
+     *
+     * @param map
+     * @return
+     * @author guobj
+     * @date 2018年6月16日
+     */
+    List<RealData> loadByMsCodeAndDevCode(Map<String, Object> map);
 }
