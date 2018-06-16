@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -96,15 +97,40 @@
                 <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
             </c:if>
             <c:if test="${listHisData != null}" >
-		        <c:forEach items="${listHisData }" var="his">
-			        <tr style="border-bottom: 1px solid #adadad;">
-			            <td class="t2">${his.ms_code }</td>
-			            <td class="t3">${his.dev_code_value }</td>
-			            <td class="t5"><fmt:formatDate value="${his.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>  </td>
-			            <td class="t6">${his.data_value }<!-- <input type="button" value="查看" onclick="look()"/> --></td>
-			        </tr>
-		        </c:forEach>
-	        </c:if>
+                <c:forEach items="${listHisData }" var="his">
+                    <c:choose>
+                          <c:when test="${fn:startsWith(his.dev_code,'dev101') or fn:startsWith(his.dev_code,'dev201')}">
+                              <tr style="border-bottom: 1px solid #adadad;">
+                                <td class="t2">${his.ms_code }</td>
+                                <td class="t3">${his.dev_code_value }</td>
+                                <td class="t5"><fmt:formatDate value="${his.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+                                <td class="t6"><input type="button" value="查看" onclick="look('${his.dev_code }',${his.ms_code})"></td>
+                              </tr>
+                          </c:when>
+                          <c:otherwise>
+                              <tr style="border-bottom: 1px solid #adadad;">
+                                <td class="t2">${his.ms_code }</td>
+                                <td class="t3">${his.dev_code_value }</td>
+                                <td class="t5"><fmt:formatDate value="${his.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+                                <td class="t6">${his.data_value }</td>
+                              </tr>
+                          </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </c:if>
+            <c:if test="${listHisMeteorological eq null}" >
+                <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
+            </c:if>
+            <c:if test="${listHisMeteorological != null}" >
+                <c:forEach items="${listHisMeteorological }" var="meteorological">
+                     <tr style="border-bottom: 1px solid #adadad;">
+                       <td class="t2">${meteorological.ms_code }</td>
+                       <td class="t3">${meteorological.dev_code_value }</td>
+                       <td class="t5"><fmt:formatDate value="${meteorological.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+                       <td class="t6">${meteorological.soil_t1 }</td>
+                     </tr>
+                </c:forEach>
+            </c:if>
         </tbody>
     </table>
     <jsp:include page="../common/pages.jsp"></jsp:include>

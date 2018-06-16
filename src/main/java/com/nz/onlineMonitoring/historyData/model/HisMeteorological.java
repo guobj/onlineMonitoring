@@ -7,8 +7,9 @@
  **/
 package com.nz.onlineMonitoring.historyData.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
+
+import com.nz.onlineMonitoring.dict.model.Dict;
 
 /**
  * t_his_meteorological 类
@@ -27,39 +28,99 @@ public class HisMeteorological {
     /**设备编码-与t_devive dev_code关联,所属表字段为 t_his_meteorological.dev_code  */
     private String dev_code;
     /**空气温度,所属表字段为 t_his_meteorological.air_t  */
-    private BigDecimal air_t;
+    private Double air_t;
     /**空气湿度,所属表字段为 t_his_meteorological.air_h  */
-    private BigDecimal air_h;
+    private Double air_h;
     /**风速,所属表字段为 t_his_meteorological.wind_s  */
-    private BigDecimal wind_s;
+    private Double wind_s;
     /**风向,所属表字段为 t_his_meteorological.wind_d  */
-    private BigDecimal wind_d;
+    private Double wind_d;
     /**露点温度,所属表字段为 t_his_meteorological.dew_p  */
-    private BigDecimal dew_p;
+    private Double dew_p;
     /**降雨量,所属表字段为 t_his_meteorological.rain_f  */
-    private BigDecimal rain_f;
+    private Double rain_f;
     /**日照时数,所属表字段为 t_his_meteorological.sunshine_h  */
-    private BigDecimal sunshine_h;
+    private Double sunshine_h;
     /**大气压,所属表字段为 t_his_meteorological.atmo_s  */
-    private BigDecimal atmo_s;
+    private Double atmo_s;
     /**土壤温度1,所属表字段为 t_his_meteorological.soil_t1  */
-    private BigDecimal soil_t1;
+    private Double soil_t1;
     /**土壤温度2,所属表字段为 t_his_meteorological.soil_t2  */
-    private BigDecimal soil_t2;
+    private Double soil_t2;
     /**土壤温度3,所属表字段为 t_his_meteorological.soil_t3  */
-    private BigDecimal soil_t3;
+    private Double soil_t3;
     /**土壤湿度1,所属表字段为 t_his_meteorological.soil_h1  */
-    private BigDecimal soil_h1;
+    private Double soil_h1;
     /**土壤湿度2,所属表字段为 t_his_meteorological.soil_h2  */
-    private BigDecimal soil_h2;
+    private Double soil_h2;
     /**土壤湿度3,所属表字段为 t_his_meteorological.soil_h3  */
-    private BigDecimal soil_h3;
+    private Double soil_h3;
     /**土壤EC值,所属表字段为 t_his_meteorological.soil_ec  */
-    private BigDecimal soil_ec;
+    private Double soil_ec;
     /**数据时间,所属表字段为 t_his_meteorological.data_time  */
     private Date data_time;
     /**设备状态-关联表，见数据字典,所属表字段为 t_his_meteorological.dev_status  */
     private Integer dev_status;
+
+    /**根据设备的类型查询数据 */
+    private String device_type;
+    /**根据设备监测对象的查询数据 */
+    private String device_object;
+    /**设备编码 解析设备*/
+    private String dev_code_value;
+    //设备状态
+    private Dict dataDevStatus;
+    /**查询时开始时间 */
+    private String data_time_begin;
+    /**查询时结束时间 */
+    private String data_time_end;
+    public String getDevice_type() {
+        return device_type;
+    }
+
+    public void setDevice_type(String device_type) {
+        this.device_type = device_type;
+    }
+
+    public String getDevice_object() {
+        return device_object;
+    }
+
+    public void setDevice_object(String device_object) {
+        this.device_object = device_object;
+    }
+
+    public String getDev_code_value() {
+        return dev_code_value;
+    }
+
+    public void setDev_code_value(String dev_code_value) {
+        this.dev_code_value = dev_code_value;
+    }
+
+    public Dict getDataDevStatus() {
+        return dataDevStatus;
+    }
+
+    public void setDataDevStatus(Dict dataDevStatus) {
+        this.dataDevStatus = dataDevStatus;
+    }
+
+    public String getData_time_begin() {
+        return data_time_begin;
+    }
+
+    public void setData_time_begin(String data_time_begin) {
+        this.data_time_begin = data_time_begin;
+    }
+
+    public String getData_time_end() {
+        return data_time_end;
+    }
+
+    public void setData_time_end(String data_time_end) {
+        this.data_time_end = data_time_end;
+    }
 
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_his_meteorological.id
@@ -120,7 +181,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.air_t  ,空气温度
      */
-    public BigDecimal getAir_t() {
+    public Double getAir_t() {
         return air_t;
     }
 
@@ -129,7 +190,7 @@ public class HisMeteorological {
      *
      * @param air_t  t_his_meteorological.air_t,空气温度
      */
-    public void setAir_t(BigDecimal air_t) {
+    public void setAir_t(Double air_t) {
         this.air_t = air_t;
     }
 
@@ -138,7 +199,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.air_h  ,空气湿度
      */
-    public BigDecimal getAir_h() {
+    public Double getAir_h() {
         return air_h;
     }
 
@@ -147,7 +208,7 @@ public class HisMeteorological {
      *
      * @param air_h  t_his_meteorological.air_h,空气湿度
      */
-    public void setAir_h(BigDecimal air_h) {
+    public void setAir_h(Double air_h) {
         this.air_h = air_h;
     }
 
@@ -156,7 +217,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.wind_s  ,风速
      */
-    public BigDecimal getWind_s() {
+    public Double getWind_s() {
         return wind_s;
     }
 
@@ -165,7 +226,7 @@ public class HisMeteorological {
      *
      * @param wind_s  t_his_meteorological.wind_s,风速
      */
-    public void setWind_s(BigDecimal wind_s) {
+    public void setWind_s(Double wind_s) {
         this.wind_s = wind_s;
     }
 
@@ -174,7 +235,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.wind_d  ,风向
      */
-    public BigDecimal getWind_d() {
+    public Double getWind_d() {
         return wind_d;
     }
 
@@ -183,7 +244,7 @@ public class HisMeteorological {
      *
      * @param wind_d  t_his_meteorological.wind_d,风向
      */
-    public void setWind_d(BigDecimal wind_d) {
+    public void setWind_d(Double wind_d) {
         this.wind_d = wind_d;
     }
 
@@ -192,7 +253,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.dew_p  ,露点温度
      */
-    public BigDecimal getDew_p() {
+    public Double getDew_p() {
         return dew_p;
     }
 
@@ -201,7 +262,7 @@ public class HisMeteorological {
      *
      * @param dew_p  t_his_meteorological.dew_p,露点温度
      */
-    public void setDew_p(BigDecimal dew_p) {
+    public void setDew_p(Double dew_p) {
         this.dew_p = dew_p;
     }
 
@@ -210,7 +271,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.rain_f  ,降雨量
      */
-    public BigDecimal getRain_f() {
+    public Double getRain_f() {
         return rain_f;
     }
 
@@ -219,7 +280,7 @@ public class HisMeteorological {
      *
      * @param rain_f  t_his_meteorological.rain_f,降雨量
      */
-    public void setRain_f(BigDecimal rain_f) {
+    public void setRain_f(Double rain_f) {
         this.rain_f = rain_f;
     }
 
@@ -228,7 +289,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.sunshine_h  ,日照时数
      */
-    public BigDecimal getSunshine_h() {
+    public Double getSunshine_h() {
         return sunshine_h;
     }
 
@@ -237,7 +298,7 @@ public class HisMeteorological {
      *
      * @param sunshine_h  t_his_meteorological.sunshine_h,日照时数
      */
-    public void setSunshine_h(BigDecimal sunshine_h) {
+    public void setSunshine_h(Double sunshine_h) {
         this.sunshine_h = sunshine_h;
     }
 
@@ -246,7 +307,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.atmo_s  ,大气压
      */
-    public BigDecimal getAtmo_s() {
+    public Double getAtmo_s() {
         return atmo_s;
     }
 
@@ -255,7 +316,7 @@ public class HisMeteorological {
      *
      * @param atmo_s  t_his_meteorological.atmo_s,大气压
      */
-    public void setAtmo_s(BigDecimal atmo_s) {
+    public void setAtmo_s(Double atmo_s) {
         this.atmo_s = atmo_s;
     }
 
@@ -264,7 +325,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.soil_t1  ,土壤温度1
      */
-    public BigDecimal getSoil_t1() {
+    public Double getSoil_t1() {
         return soil_t1;
     }
 
@@ -273,7 +334,7 @@ public class HisMeteorological {
      *
      * @param soil_t1  t_his_meteorological.soil_t1,土壤温度1
      */
-    public void setSoil_t1(BigDecimal soil_t1) {
+    public void setSoil_t1(Double soil_t1) {
         this.soil_t1 = soil_t1;
     }
 
@@ -282,7 +343,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.soil_t2  ,土壤温度2
      */
-    public BigDecimal getSoil_t2() {
+    public Double getSoil_t2() {
         return soil_t2;
     }
 
@@ -291,7 +352,7 @@ public class HisMeteorological {
      *
      * @param soil_t2  t_his_meteorological.soil_t2,土壤温度2
      */
-    public void setSoil_t2(BigDecimal soil_t2) {
+    public void setSoil_t2(Double soil_t2) {
         this.soil_t2 = soil_t2;
     }
 
@@ -300,7 +361,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.soil_t3  ,土壤温度3
      */
-    public BigDecimal getSoil_t3() {
+    public Double getSoil_t3() {
         return soil_t3;
     }
 
@@ -309,7 +370,7 @@ public class HisMeteorological {
      *
      * @param soil_t3  t_his_meteorological.soil_t3,土壤温度3
      */
-    public void setSoil_t3(BigDecimal soil_t3) {
+    public void setSoil_t3(Double soil_t3) {
         this.soil_t3 = soil_t3;
     }
 
@@ -318,7 +379,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.soil_h1  ,土壤湿度1
      */
-    public BigDecimal getSoil_h1() {
+    public Double getSoil_h1() {
         return soil_h1;
     }
 
@@ -327,7 +388,7 @@ public class HisMeteorological {
      *
      * @param soil_h1  t_his_meteorological.soil_h1,土壤湿度1
      */
-    public void setSoil_h1(BigDecimal soil_h1) {
+    public void setSoil_h1(Double soil_h1) {
         this.soil_h1 = soil_h1;
     }
 
@@ -336,7 +397,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.soil_h2  ,土壤湿度2
      */
-    public BigDecimal getSoil_h2() {
+    public Double getSoil_h2() {
         return soil_h2;
     }
 
@@ -345,7 +406,7 @@ public class HisMeteorological {
      *
      * @param soil_h2  t_his_meteorological.soil_h2,土壤湿度2
      */
-    public void setSoil_h2(BigDecimal soil_h2) {
+    public void setSoil_h2(Double soil_h2) {
         this.soil_h2 = soil_h2;
     }
 
@@ -354,7 +415,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.soil_h3  ,土壤湿度3
      */
-    public BigDecimal getSoil_h3() {
+    public Double getSoil_h3() {
         return soil_h3;
     }
 
@@ -363,7 +424,7 @@ public class HisMeteorological {
      *
      * @param soil_h3  t_his_meteorological.soil_h3,土壤湿度3
      */
-    public void setSoil_h3(BigDecimal soil_h3) {
+    public void setSoil_h3(Double soil_h3) {
         this.soil_h3 = soil_h3;
     }
 
@@ -372,7 +433,7 @@ public class HisMeteorological {
      *
      * @return  t_his_meteorological.soil_ec  ,土壤EC值
      */
-    public BigDecimal getSoil_ec() {
+    public Double getSoil_ec() {
         return soil_ec;
     }
 
@@ -381,7 +442,7 @@ public class HisMeteorological {
      *
      * @param soil_ec  t_his_meteorological.soil_ec,土壤EC值
      */
-    public void setSoil_ec(BigDecimal soil_ec) {
+    public void setSoil_ec(Double soil_ec) {
         this.soil_ec = soil_ec;
     }
 

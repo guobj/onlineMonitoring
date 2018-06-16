@@ -40,7 +40,7 @@ public class RealDataServiceImpl implements RealDataService {
         RealMeteorological realMeteorological = new RealMeteorological();
         //不管ms_code,dev_status用没有值，赋给RealMeteorological就行，他们不决定查询哪个表
         realMeteorological.setMs_code(realData.getMs_code());
-        realMeteorological.setDataDevStatus(realData.getDataDevStatus());
+        realMeteorological.setDev_status(realData.getDev_status());
         //建立两个list，用于装两个表中返回的数据，不一定都会装东西，可能只查一个表
         List<RealMeteorological> realMeteorologicalList = null;
         List<RealData> realList = null;

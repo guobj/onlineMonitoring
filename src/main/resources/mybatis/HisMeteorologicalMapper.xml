@@ -5,23 +5,24 @@
         <id column="id" property="id" jdbcType="INTEGER" />
         <result column="ms_code" property="ms_code" jdbcType="VARCHAR" />
         <result column="dev_code" property="dev_code" jdbcType="VARCHAR" />
-        <result column="air_t" property="air_t" jdbcType="DECIMAL" />
-        <result column="air_h" property="air_h" jdbcType="DECIMAL" />
-        <result column="wind_s" property="wind_s" jdbcType="DECIMAL" />
-        <result column="wind_d" property="wind_d" jdbcType="DECIMAL" />
-        <result column="dew_p" property="dew_p" jdbcType="DECIMAL" />
-        <result column="rain_f" property="rain_f" jdbcType="DECIMAL" />
-        <result column="sunshine_h" property="sunshine_h" jdbcType="DECIMAL" />
-        <result column="atmo_s" property="atmo_s" jdbcType="DECIMAL" />
-        <result column="soil_t1" property="soil_t1" jdbcType="DECIMAL" />
-        <result column="soil_t2" property="soil_t2" jdbcType="DECIMAL" />
-        <result column="soil_t3" property="soil_t3" jdbcType="DECIMAL" />
-        <result column="soil_h1" property="soil_h1" jdbcType="DECIMAL" />
-        <result column="soil_h2" property="soil_h2" jdbcType="DECIMAL" />
-        <result column="soil_h3" property="soil_h3" jdbcType="DECIMAL" />
-        <result column="soil_ec" property="soil_ec" jdbcType="DECIMAL" />
+        <result column="air_t" property="air_t" jdbcType="DOUBLE" />
+        <result column="air_h" property="air_h" jdbcType="DOUBLE" />
+        <result column="wind_s" property="wind_s" jdbcType="DOUBLE" />
+        <result column="wind_d" property="wind_d" jdbcType="DOUBLE" />
+        <result column="dew_p" property="dew_p" jdbcType="DOUBLE" />
+        <result column="rain_f" property="rain_f" jdbcType="DOUBLE" />
+        <result column="sunshine_h" property="sunshine_h" jdbcType="DOUBLE" />
+        <result column="atmo_s" property="atmo_s" jdbcType="DOUBLE" />
+        <result column="soil_t1" property="soil_t1" jdbcType="DOUBLE" />
+        <result column="soil_t2" property="soil_t2" jdbcType="DOUBLE" />
+        <result column="soil_t3" property="soil_t3" jdbcType="DOUBLE" />
+        <result column="soil_h1" property="soil_h1" jdbcType="DOUBLE" />
+        <result column="soil_h2" property="soil_h2" jdbcType="DOUBLE" />
+        <result column="soil_h3" property="soil_h3" jdbcType="DOUBLE" />
+        <result column="soil_ec" property="soil_ec" jdbcType="DOUBLE" />
         <result column="data_time" property="data_time" jdbcType="TIMESTAMP" />
         <result column="dev_status" property="dev_status" jdbcType="INTEGER" />
+        <association column="dev_status" property="dataDevStatus" select="com.nz.onlineMonitoring.dict.mapper.DictMapper.loadByDevStatus"></association>
     </resultMap>
     <sql id="t_his_meteorological_columns" >
         id, ms_code, dev_code, air_t, air_h, wind_s, wind_d, dew_p, rain_f, sunshine_h, atmo_s, 
@@ -112,49 +113,49 @@
                 #{dev_code,jdbcType=VARCHAR},
             </if>
             <if test="air_t != null" >
-                #{air_t,jdbcType=DECIMAL},
+                #{air_t,jdbcType=DOUBLE},
             </if>
             <if test="air_h != null" >
-                #{air_h,jdbcType=DECIMAL},
+                #{air_h,jdbcType=DOUBLE},
             </if>
             <if test="wind_s != null" >
-                #{wind_s,jdbcType=DECIMAL},
+                #{wind_s,jdbcType=DOUBLE},
             </if>
             <if test="wind_d != null" >
-                #{wind_d,jdbcType=DECIMAL},
+                #{wind_d,jdbcType=DOUBLE},
             </if>
             <if test="dew_p != null" >
-                #{dew_p,jdbcType=DECIMAL},
+                #{dew_p,jdbcType=DOUBLE},
             </if>
             <if test="rain_f != null" >
-                #{rain_f,jdbcType=DECIMAL},
+                #{rain_f,jdbcType=DOUBLE},
             </if>
             <if test="sunshine_h != null" >
-                #{sunshine_h,jdbcType=DECIMAL},
+                #{sunshine_h,jdbcType=DOUBLE},
             </if>
             <if test="atmo_s != null" >
-                #{atmo_s,jdbcType=DECIMAL},
+                #{atmo_s,jdbcType=DOUBLE},
             </if>
             <if test="soil_t1 != null" >
-                #{soil_t1,jdbcType=DECIMAL},
+                #{soil_t1,jdbcType=DOUBLE},
             </if>
             <if test="soil_t2 != null" >
-                #{soil_t2,jdbcType=DECIMAL},
+                #{soil_t2,jdbcType=DOUBLE},
             </if>
             <if test="soil_t3 != null" >
-                #{soil_t3,jdbcType=DECIMAL},
+                #{soil_t3,jdbcType=DOUBLE},
             </if>
             <if test="soil_h1 != null" >
-                #{soil_h1,jdbcType=DECIMAL},
+                #{soil_h1,jdbcType=DOUBLE},
             </if>
             <if test="soil_h2 != null" >
-                #{soil_h2,jdbcType=DECIMAL},
+                #{soil_h2,jdbcType=DOUBLE},
             </if>
             <if test="soil_h3 != null" >
-                #{soil_h3,jdbcType=DECIMAL},
+                #{soil_h3,jdbcType=DOUBLE},
             </if>
             <if test="soil_ec != null" >
-                #{soil_ec,jdbcType=DECIMAL},
+                #{soil_ec,jdbcType=DOUBLE},
             </if>
             <if test="data_time != null" >
                 #{data_time,jdbcType=TIMESTAMP},
@@ -174,49 +175,49 @@
                 dev_code = #{dev_code,jdbcType=VARCHAR},
             </if>
             <if test="air_t != null" >
-                air_t = #{air_t,jdbcType=DECIMAL},
+                air_t = #{air_t,jdbcType=DOUBLE},
             </if>
             <if test="air_h != null" >
-                air_h = #{air_h,jdbcType=DECIMAL},
+                air_h = #{air_h,jdbcType=DOUBLE},
             </if>
             <if test="wind_s != null" >
-                wind_s = #{wind_s,jdbcType=DECIMAL},
+                wind_s = #{wind_s,jdbcType=DOUBLE},
             </if>
             <if test="wind_d != null" >
-                wind_d = #{wind_d,jdbcType=DECIMAL},
+                wind_d = #{wind_d,jdbcType=DOUBLE},
             </if>
             <if test="dew_p != null" >
-                dew_p = #{dew_p,jdbcType=DECIMAL},
+                dew_p = #{dew_p,jdbcType=DOUBLE},
             </if>
             <if test="rain_f != null" >
-                rain_f = #{rain_f,jdbcType=DECIMAL},
+                rain_f = #{rain_f,jdbcType=DOUBLE},
             </if>
             <if test="sunshine_h != null" >
-                sunshine_h = #{sunshine_h,jdbcType=DECIMAL},
+                sunshine_h = #{sunshine_h,jdbcType=DOUBLE},
             </if>
             <if test="atmo_s != null" >
-                atmo_s = #{atmo_s,jdbcType=DECIMAL},
+                atmo_s = #{atmo_s,jdbcType=DOUBLE},
             </if>
             <if test="soil_t1 != null" >
-                soil_t1 = #{soil_t1,jdbcType=DECIMAL},
+                soil_t1 = #{soil_t1,jdbcType=DOUBLE},
             </if>
             <if test="soil_t2 != null" >
-                soil_t2 = #{soil_t2,jdbcType=DECIMAL},
+                soil_t2 = #{soil_t2,jdbcType=DOUBLE},
             </if>
             <if test="soil_t3 != null" >
-                soil_t3 = #{soil_t3,jdbcType=DECIMAL},
+                soil_t3 = #{soil_t3,jdbcType=DOUBLE},
             </if>
             <if test="soil_h1 != null" >
-                soil_h1 = #{soil_h1,jdbcType=DECIMAL},
+                soil_h1 = #{soil_h1,jdbcType=DOUBLE},
             </if>
             <if test="soil_h2 != null" >
-                soil_h2 = #{soil_h2,jdbcType=DECIMAL},
+                soil_h2 = #{soil_h2,jdbcType=DOUBLE},
             </if>
             <if test="soil_h3 != null" >
-                soil_h3 = #{soil_h3,jdbcType=DECIMAL},
+                soil_h3 = #{soil_h3,jdbcType=DOUBLE},
             </if>
             <if test="soil_ec != null" >
-                soil_ec = #{soil_ec,jdbcType=DECIMAL},
+                soil_ec = #{soil_ec,jdbcType=DOUBLE},
             </if>
             <if test="data_time != null" >
                 data_time = #{data_time,jdbcType=TIMESTAMP},
@@ -227,4 +228,69 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+    <!-- 查询数据 -->
+    <select id="listHisMeteorological" resultMap="BaseResultMap" parameterType="map">
+        select 
+        <include refid="t_his_meteorological_columns" />
+        from t_his_meteorological
+        <where>
+            <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
+                                                    传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
+             -->
+            <if test="hisMeteorological.ms_code != null and hisMeteorological.ms_code != ''" >
+                ms_code like concat(#{hisMeteorological.ms_code},"%")
+            </if>
+            <!-- 设备类型，即设备编码第5-6位 
+                 hisMeteorological.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
+                                                    前面3个，后面两个下划线
+            -->
+            <if test="hisMeteorological.device_type != null and hisMeteorological.device_type != ''" >
+                and dev_code like concat("___",#{hisMeteorological.device_type},"__")
+            </if>
+           <!--  设备监测对象，即设备编码第4位 ,传过来的是1位，例如1，后面4个下划线-->
+            <if test="hisMeteorological.device_object != null and hisMeteorological.device_object != ''" >
+                and dev_code like concat("___",#{hisMeteorological.device_object},"____")
+            </if>
+            <!-- 设备运行状态 -->
+            <if test="hisMeteorological.dev_status != null and hisMeteorological.dev_status != ''" >
+                and dev_status = #{hisMeteorological.dev_status}
+            </if>
+            <if test="hisMeteorological.data_time_begin != null and hisMeteorological.data_time_begin != '' and hisMeteorological.data_time_end != null and hisMeteorological.data_time_end != ''  " >
+                and data_time between  #{hisMeteorological.data_time_begin} and #{hisMeteorological.data_time_end}
+            </if>
+        </where>
+        limit #{record},4
+    </select>
+     <!-- 查询数据的数量 -->
+    <select id="countHisMeteorological" resultType ="int" parameterType="map">
+        select 
+            count(*)
+        from t_his_meteorological
+        <where>
+            <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
+                                                    传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
+             -->
+            <if test="hisMeteorological.ms_code != null and hisMeteorological.ms_code != ''" >
+                and ms_code like concat(#{hisMeteorological.ms_code},"%")
+            </if>
+            <!-- 设备类型，即设备编码第5-6位 
+                 hisMeteorological.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
+                                                    前面3个，后面两个下划线
+            -->
+           <if test="hisMeteorological.device_type != null and hisMeteorological.device_type != ''" >
+                and dev_code like concat("___",#{hisMeteorological.device_type},"__")
+            </if>
+           <!--  设备监测对象，即设备编码第4位 ,传过来的是4位，例如dev1，后面4个下划线-->
+            <if test="hisMeteorological.device_object != null and hisMeteorological.device_object != ''" >
+                and dev_code like concat("___",#{hisMeteorological.device_object},"____")
+            </if>
+            <!-- 设备运行状态 -->
+            <if test="hisMeteorological.dev_status != null and hisMeteorological.dev_status != ''" >
+                and dev_status = #{hisMeteorological.dev_status}
+            </if>
+            <if test="hisMeteorological.data_time_begin != null and hisMeteorological.data_time_begin != '' and hisMeteorological.data_time_end != null and hisMeteorological.data_time_end != ''  " >
+                and data_time between  #{hisMeteorological.data_time_begin} and #{hisMeteorological.data_time_end}
+            </if>
+        </where>
+    </select>
 </mapper>
