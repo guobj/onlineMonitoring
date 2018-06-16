@@ -44,11 +44,19 @@
                 dataType: "JSON",
                 success:function (data) {
                     for(var o in data.data){
-                        $("#imga").append("<img src='/upload/"+data.data[o]+"'/>");
+                        $("#imga").append("<img class='min' src='/upload/"+data.data[o]+"'/>");
                     }
                 }
             });
         }
+        // $(function () {
+        //     console.log("aaa");
+        //     $("img.min").click(function(){
+        //         console.log("aaa");
+        //         $(this).toggleClass("min");
+        //         $(this).toggleClass("max");
+        //     })
+        // })
     </script>
 </head>
 

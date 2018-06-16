@@ -67,3 +67,18 @@ $(function(){
 
 
 })
+$(function () {
+    // $("#imga").children().click(function(){
+    //     console.log("aaa");
+    //     $(this).toggleClass("min");
+    //     $(this).toggleClass("max");
+    // })
+    $("#imga").on("click",".min",function () {
+        $(this).toggleClass("min");
+        $(this).toggleClass("max");
+    })
+    $("#imga").on("click",".max",function () {
+        $(this).toggleClass("min");
+        $(this).toggleClass("max");
+    })
+})
