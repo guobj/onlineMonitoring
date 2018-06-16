@@ -7,10 +7,10 @@
  **/
 package com.nz.onlineMonitoring.realData.mapper;
 
+import com.nz.onlineMonitoring.realData.model.RealMeteorological;
+
 import java.util.List;
 import java.util.Map;
-
-import com.nz.onlineMonitoring.realData.model.RealMeteorological;
 
 public interface RealMeteorologicalMapper {
     /**
@@ -76,4 +76,14 @@ public interface RealMeteorologicalMapper {
      * @date 2018年6月5日 下午2:13:48
      */
     Integer countMeteorological(Map<String, Object> map);
+
+    /**
+     *
+     * 方法描述：通过ms_code和dev_code查询实时数据
+     * @param map
+     * @return
+     * @author guobj
+     * @date 2018年6月16日
+     */
+    List<RealMeteorological> loadByMsCodeAndDevCode(Map<String, Object> map);
 }

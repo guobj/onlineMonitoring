@@ -1,9 +1,9 @@
 package com.nz.onlineMonitoring.realData.service;
 
+import com.nz.onlineMonitoring.realData.model.RealData;
+
 import java.util.List;
 import java.util.Map;
-
-import com.nz.onlineMonitoring.realData.model.RealData;
 
 public interface RealDataService {
     /**
@@ -16,4 +16,14 @@ public interface RealDataService {
      * @date 2018年6月3日 下午2:36:02
      */
     List<RealData> listReal(Map<String, Object> map);
+
+    /**
+     * 方法描述：通过ms_code和dev_code查询实时数据
+     *
+     * @param map
+     * @return
+     * @author guobj
+     * @date 2018年6月16日
+     */
+    List loadByMsCodeAndDevCode(Map<String, Object> map);
 }

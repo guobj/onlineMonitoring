@@ -110,8 +110,8 @@
                     <tr>
                         <td class="t2">${list.station.ms_name}</td>
                         <td class="t3">${list.ms_code}</td>
-                        <td class="t4">${list.dev_code}</td>
-                        <td class="t5">设备采集数据</td>
+                        <td class="t4">${list.dev_value}</td>
+                        <td class="t5"><a href="realData/loadByMsCodeAndDevCode?ms_code=${list.ms_code}&dev_code=${list.dev_code}" class="input1">查询</a></td>
                         <td class="t6"><input type="button" value="查看" onclick="look(this)"/></td>
                     </tr>
                 </c:forEach>

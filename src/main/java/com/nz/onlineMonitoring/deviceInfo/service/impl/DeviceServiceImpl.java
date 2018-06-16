@@ -54,7 +54,7 @@ public class DeviceServiceImpl implements DeviceService {
 				sb.append(dictMapper.loadByDevType(Character.getNumericValue(c)).getData_name());
 				sb.append(dictMapper.loadByDevType1(dev_type).getData_name());
 //			dbmap.put("dev_code",data.getData_name());
-				dev.setDev_code(sb.toString());
+				dev.setDev_value(sb.toString());
 			}
 			map.put("list",queryList);
 			map.put("count",count);
