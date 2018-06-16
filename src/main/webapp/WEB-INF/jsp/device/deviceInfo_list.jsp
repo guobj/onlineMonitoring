@@ -122,9 +122,9 @@
     <jsp:include page="../common/pages.jsp"></jsp:include>
     <div id="img" style="overflow-x: scroll;overflow-x: hidden;">
         <div id="imga"></div>
-        <form>
+        <%--<div id="clo">--%>
             <input type="button" value="关闭" onclick="clos()"/>
-        </form>
+        <%--</div>--%>
     </div>
 </div>
 <div id="footer">
