@@ -143,23 +143,38 @@ public class RealDataServiceImpl implements RealDataService {
         List<RealData> listRealData = new ArrayList<>();
         List<RealMeteorological> listRealMeteorological = new ArrayList<>();
         String dev_code = map.get("dev_code").toString();
+        String ms_code = map.get("ms_code").toString();
+        String dev_code_object = dev_code.substring(3,4);
+        String dev_code_type = dev_code.substring(3,6);
         //如果第4位是5，则是查气象表，查出来一条数据，然后编码解析
         if(dev_code.charAt(3) == '5'){
             listRealMeteorological = realMeteorologicalMapper.loadByMsCodeAndDevCode(map);
             if (listRealMeteorological != null && listRealMeteorological.size() == 1) {
-                Dict devObject = dictMapper.loadByDevType(Integer.parseInt(dev_code.substring(3, 4)));
-                Dict devType = dictMapper.loadByDevType1(Integer.parseInt(dev_code.substring(3, 6)));
+                Dict devObject = dictMapper.loadByDevType(Integer.parseInt(dev_code_object));
+                Dict devType = dictMapper.loadByDevType1(Integer.parseInt(dev_code_type));
                 if (devObject == null || devType == null) {
                     throw new RuntimeException("暂无数据");
                 }else {
                     listRealMeteorological.get(0).setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+listRealMeteorological.get(0).getDev_code().substring(6, 8)+"个");
                 }
             }
-        } else {
+        } else if (dev_code_type.equals("101") || dev_code_type.equals("201")) {
+            RealData rd = new RealData();
+            rd.setDev_code(dev_code);
+            rd.setMs_code(ms_code);
+            listRealData.add(rd);
+            Dict devObject = dictMapper.loadByDevType(Integer.parseInt(dev_code_object));
+            Dict devType = dictMapper.loadByDevType1(Integer.parseInt(dev_code_type));
+            if (devObject == null || devType == null) {
+                throw new RuntimeException("暂无数据");
+            }else {
+                listRealData.get(0).setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+listRealData.get(0).getDev_code().substring(6, 8)+"个");
+            }
+        }else {
             listRealData = realDataMapper.loadByMsCodeAndDevCode(map);
             if (listRealData != null && listRealData.size() == 1) {
-                Dict devObject = dictMapper.loadByDevType(Integer.parseInt(dev_code.substring(3, 4)));
-                Dict devType = dictMapper.loadByDevType1(Integer.parseInt(dev_code.substring(3, 6)));
+                Dict devObject = dictMapper.loadByDevType(Integer.parseInt(dev_code_object));
+                Dict devType = dictMapper.loadByDevType1(Integer.parseInt(dev_code_type));
                 if (devObject == null || devType == null) {
                     throw new RuntimeException("暂无数据");
                 }else {

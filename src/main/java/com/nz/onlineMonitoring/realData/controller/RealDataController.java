@@ -60,7 +60,6 @@ public class RealDataController {
     //设备信息查询设备采集数据（查询）按钮调用接口，需区分气象设备调用气象表，蝗虫和性诱调用t_real_data,包子和测报灯无数据
 	@RequestMapping("/loadByMsCodeAndDevCode")
 	public String loadByMsCodeAndDevCode(Map<String, Object> map, String ms_code,String dev_code){
-
 		try {
 //			String dev_type = dev_code.substring(3, 6);
 			map.put("ms_code", ms_code);
