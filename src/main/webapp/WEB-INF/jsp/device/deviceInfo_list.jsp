@@ -97,7 +97,7 @@
             <td class="t3">监测站编码</td>
             <td class="t4">设备类型</td>
             <td class="t5">设备采集数据</td>
-            <td class="t6">图片</td>
+            <%--<td class="t6">图片</td>--%>
         </tr>
         </thead>
         <tbody>
@@ -112,7 +112,7 @@
                         <td class="t3">${list.ms_code}</td>
                         <td class="t4">${list.dev_value}</td>
                         <td class="t5"><a href="realData/loadByMsCodeAndDevCode?ms_code=${list.ms_code}&dev_code=${list.dev_code}" class="input1">查询</a></td>
-                        <td class="t6"><input type="button" value="查看" onclick="look(this)"/></td>
+                        <%--<td class="t6"><input type="button" value="查看" onclick="look(this)"/></td>--%>
                     </tr>
                 </c:forEach>
             </c:otherwise>
