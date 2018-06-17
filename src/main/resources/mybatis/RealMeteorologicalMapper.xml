@@ -26,7 +26,7 @@
     </resultMap>
     <sql id="t_real_meteorological_columns" >
         id, ms_code, dev_code, air_t, air_h, wind_s, wind_d, dew_p, rain_f, sunshine_h, 
-        atmo_s, soil_t1, soil_t2, soil_t3, soil_h1, soil_h2, soil_h3, soil_ec, data_time, dev_status,dr
+        atmo_s, soil_t1, soil_t2, soil_t3, soil_h1, soil_h2, soil_h3, soil_ec, data_time, dev_status
     </sql>
     <select id="load" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select 

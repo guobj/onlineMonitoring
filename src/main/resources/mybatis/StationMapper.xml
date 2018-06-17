@@ -55,7 +55,7 @@
         select
         <include refid="t_station_columns" />
         from t_station
-        where dr = false and ms_code = #{ms_code,jdbcType=INTEGER}
+        where ms_code = #{ms_code,jdbcType=INTEGER}
     </select>
     <delete id="delete" parameterType="java.lang.Integer" >
         delete from t_station
