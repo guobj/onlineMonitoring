@@ -398,14 +398,15 @@
     var reg5=/^.{0,300}$/;
     var reg6=/^.{0,100}$/;
     $(function(){
+    	$("#mdi").attr("disabled", true);
         $("#ms_name").change(function(){
                     var str1=reg1.test($("#ms_name").val());
                     if(str1==true){
                         $("#tip_1").html("格式正确")
                     }else{
                         $("#tip_1").html("请输入2-50位字符");
+                        $("#mdi").attr("disabled", true);
                     }
-                    $("#mdi").attr("disabled", true);
                 })
          var temp = 0;
         $("#ms_code").change(function(){
@@ -418,9 +419,13 @@
                         if (data > 0) {
                             $("#tip_2").html("编码已重复")
                             temp = 1;
+                            $("#mdi").attr("disabled", true);
                         }else {
                             $("#tip_2").html("格式正确")
                             temp = 0;
+                        }
+                        if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true){
+                            $("#mdi").removeAttr("disabled", true);
                         }
                     });
             	}else {
@@ -429,8 +434,9 @@
             	}
             }else{
                 $("#tip_2").html("请输入8位数字");
+                $("#mdi").attr("disabled", true);
             }
-            $("#mdi").attr("disabled", true);
+            
         })
         $("#ms_user").change(function(){
             var str3 = reg3.test($("#ms_user").val());
@@ -438,8 +444,9 @@
                     $("#tip_3").html("格式正确")
                 } else {
                     $("#tip_3").html("请输入0-100位字符");
+                    $("#mdi").attr("disabled", true);
                 }
-            $("#mdi").attr("disabled", true);
+            
         })
         $("#ms_builder").change(function(){
                     var str4=reg4.test($("#ms_builder").val());
@@ -447,8 +454,9 @@
                         $("#tip_4").html("格式正确")
                     }else{
                         $("#tip_4").html("请输入0-100位字符");
+                        $("#mdi").attr("disabled", true);
                     }
-                    $("#mdi").attr("disabled", true);
+                    
                 })
         $("#ms_desc").change(function() {
                     var str5 = reg5.test($("#ms_desc").val());
@@ -456,8 +464,9 @@
                         $("#tip_5").html("格式正确")
                     } else {
                         $("#tip_5").html("请输入0-300位字符");
+                        $("#mdi").attr("disabled", true);
                     }
-                    $("#mdi").attr("disabled", true);
+                    
                 }
         )
     $("#ms_place").change(function() {
@@ -479,14 +488,16 @@
     })
 
     $(function(){
+    	$("#add").attr("disabled", true);
         $("#tj_text_1").change(function(){
             var str1 = reg1.test($("#tj_text_1").val());
             if (str1 == true) {
                 $("#tj_tip_1").html("格式正确")
             } else {
                 $("#tj_tip_1").html("请输入2-50位字符");
+                $("#add").attr("disabled", true);
             }
-            $("#add").attr("disabled", true);
+            
         })
         var temp = 0;
         $("#tj_text_2").change(function(){
@@ -497,15 +508,20 @@
                     if (data > 0) {
                         $("#tj_tip_2").html("编码已重复")
                         temp = 1;
+                        $("#add").attr("disabled", true);
                     }else {
                         $("#tj_tip_2").html("格式正确")
                         temp = 0;
                     }
+                    if(temp==0&&reg1.test($("#tj_text_1").val())==true&&reg2.test($("#tj_text_2").val())==true&&reg3.test($("#tj_text_3").val())==true&&reg4.test($("#tj_text_4").val())==true&&reg5.test($("#tj_text_5").val())==true&&reg6.test($("#tj_text_6").val())==true){
+                        $("#add").removeAttr("disabled", true);
+                    }
                 });
             } else {
-                $("#tj_tip_2").html(" 请输入8位数字");
+                $("#tj_tip_2").html("请输入8位数字");
+                $("#add").attr("disabled", true);
             }
-            $("#add").attr("disabled", true);
+            
         })
         $("#tj_text_3").change(function(){
             var str3 = reg3.test($("#tj_text_3").val());
@@ -513,8 +529,9 @@
                 $("#tj_tip_3").html("格式正确")
             } else {
                 $("#tj_tip_3").html("请输入0-100位字符");
+                $("#add").attr("disabled", true);
             }
-            $("#add").attr("disabled", true);
+            
         })
         $("#tj_text_4").change(function(){
             var str4 = reg4.test($("#tj_text_4").val());
@@ -522,8 +539,9 @@
                 $("#tj_tip_4").html("格式正确")
             } else {
                 $("#tj_tip_4").html("请输入0-100位字符");
+                $("#add").attr("disabled", true);
             }
-            $("#add").attr("disabled", true);
+            
         })
         $("#tj_text_5").change(function(){
             var str5 = reg5.test($("#tj_text_5").val());
@@ -531,8 +549,9 @@
                 $("#tj_tip_5").html("格式正确")
             } else {
                 $("#tj_tip_5").html("请输入0-300位字符");
+                $("#add").attr("disabled", true);
             }
-            $("#add").attr("disabled", true);
+            
         })
         $("#tj_text_6").change(function(){
             var str6 = reg5.test($("#tj_text_6").val());
@@ -540,8 +559,9 @@
                 $("#tj_tip_6").html("格式正确")
             } else {
                 $("#tj_tip_6").html("请输入0-300位字符");
+                $("#add").attr("disabled", true);
             }
-            $("#add").attr("disabled", true);
+            
         })
         $("#tianjia").children().children().change(function(){
             if(temp==0&&reg1.test($("#tj_text_1").val())==true&&reg2.test($("#tj_text_2").val())==true&&reg3.test($("#tj_text_3").val())==true&&reg4.test($("#tj_text_4").val())==true&&reg5.test($("#tj_text_5").val())==true&&reg6.test($("#tj_text_6").val())==true){
