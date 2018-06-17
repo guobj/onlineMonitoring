@@ -115,7 +115,7 @@
         select
         <include refid="t_dict_columns" />
         from t_dict
-        where data_type ='dev_stauts'
+        where data_type ='dev_status'
     </select>
     <select id="listDevType" resultMap="BaseResultMap">
         select
