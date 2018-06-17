@@ -93,10 +93,10 @@ public class RealDataServiceImpl implements RealDataService {
             realList = realDataMapper.listReal(map);
             countData = realDataMapper.countReal(map);
             //获取此次数据表中查询出来的数量，如果小于10，就从气象表中拿数据
+            map.put("realMeteorological", realMeteorological);
             if (realList.size() < 10) {
-                map.put("realMeteorological", realMeteorological);
                 //一开始，record是0，countData为6大于它，此时从气象表的第0条记录开始拿数据，然后下一页record是10，需要从第4条记录拿数据，因为前4条已经在上一页显示了
-                map.put("record", countData > Integer.parseInt(map.get("record").toString()) ? Integer.parseInt(map.get("record").toString()) : Integer.parseInt(map.get("record").toString())-countData);
+                map.put("record", countData >= Integer.parseInt(map.get("record").toString()) ? 0 : Integer.parseInt(map.get("record").toString())-countData);
                 //拿取数据的数量，与数据表在一页上的数据互补
                 map.put("num", 10-realList.size());
                 realMeteorologicalList = realMeteorologicalMapper.listMeteorological(map);

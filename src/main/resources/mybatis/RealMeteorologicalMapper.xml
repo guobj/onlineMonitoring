@@ -225,9 +225,6 @@
             <if test="dev_status != null" >
                 dev_status = #{dev_status,jdbcType=INTEGER},
             </if>
-            <if test="dr != null" >
-                dr = #{dr},
-            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>

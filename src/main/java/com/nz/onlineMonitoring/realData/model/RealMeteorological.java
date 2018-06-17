@@ -9,6 +9,7 @@ package com.nz.onlineMonitoring.realData.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nz.onlineMonitoring.dict.model.Dict;
 
 /**
@@ -56,6 +57,7 @@ public class RealMeteorological {
     /**土壤EC值,所属表字段为 t_meteorological.soil_ec  */
     private Double soil_ec;
     /**时间,所属表字段为 t_meteorological.time  */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date data_time;
     /**设备状态-关联表，见数据字典,所属表字段为 t_meteorological.dev_status  */
     private Integer dev_status;
@@ -68,8 +70,10 @@ public class RealMeteorological {
 	/**根据设备监测对象的查询数据 */
 	private String device_object;
 
-	/**设备编码 解析设备*/
+	/**设备编码 解析数据*/
     private String dev_code_value;
+    /**j监测站编码 解析数据*/
+    private String ms_code_value;
     //设备状态
     private Dict dataDevStatus;
     /**
@@ -516,6 +520,14 @@ public class RealMeteorological {
 
     public void setDataDevStatus(Dict dataDevStatus) {
         this.dataDevStatus = dataDevStatus;
+    }
+
+    public String getMs_code_value() {
+        return ms_code_value;
+    }
+
+    public void setMs_code_value(String ms_code_value) {
+        this.ms_code_value = ms_code_value;
     }
 	
 }

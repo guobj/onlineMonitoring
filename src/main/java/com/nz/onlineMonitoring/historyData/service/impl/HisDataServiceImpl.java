@@ -1,5 +1,6 @@
 package com.nz.onlineMonitoring.historyData.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,8 +25,12 @@ public class HisDataServiceImpl implements HisDataService{
     
     
     @Override
-    public List<HisData> listHisData(Map<String, Object> map) {
-      //获取前台查询的值
+    public List listHisData(Map<String, Object> map) {
+        //用于气象表字段中查询的数量，会根据数据表查出的数量，与之互补
+        map.put("num", 10);
+        //返回前台的list，泛型
+        List list = new ArrayList<>();
+        //获取前台查询的值
         HisData hisData = (HisData) map.get("hisData");
         //建立一个HisMeteorological类，用于mapper.xml里的查数据时用
         HisMeteorological hisMeteorological = new HisMeteorological();
@@ -79,11 +84,17 @@ public class HisDataServiceImpl implements HisDataService{
                 countData = hisDataMapper.countHisData(map);
             }
         }else {
-            map.put("hisMeteorological", hisMeteorological);
-            hisMeteorologicalList = hisMeteorologicalMapper.listHisMeteorological(map);
             hisList = hisDataMapper.listHisData(map);
-            countHisMeteorological = hisMeteorologicalMapper.countHisMeteorological(map);
             countData = hisDataMapper.countHisData(map);
+            map.put("hisMeteorological", hisMeteorological);
+            if (hisList.size() < 10) {
+                //一开始，record是0，countData为6大于它，此时从气象表的第0条记录开始拿数据，然后下一页record是10，需要从第4条记录拿数据，因为前4条已经在上一页显示了
+                map.put("record", countData >= Integer.parseInt(map.get("record").toString()) ? 0 : Integer.parseInt(map.get("record").toString())-countData);
+                //拿取数据的数量，与数据表在一页上的数据互补
+                map.put("num", 10-hisList.size());
+                hisMeteorologicalList = hisMeteorologicalMapper.listHisMeteorological(map);
+            }
+            countHisMeteorological = hisMeteorologicalMapper.countHisMeteorological(map);
         }
         map.put("count", countData+countHisMeteorological);
         //根据各个list有无数据，进行设备编码解析，有就解析，没有算了
@@ -102,6 +113,7 @@ public class HisDataServiceImpl implements HisDataService{
                         }
                     }
                 }
+                list.addAll(hisList);
             }
             if (hisMeteorologicalList != null && hisMeteorologicalList.size() > 0) {
                 for (HisMeteorological rm : hisMeteorologicalList) {
@@ -115,10 +127,10 @@ public class HisDataServiceImpl implements HisDataService{
                         }
                     }
                 }
+                list.addAll(hisMeteorologicalList);
             }
         }
-        map.put("listHisMeteorological", hisMeteorologicalList);
-        return hisList;
+        return list;
     }
 
 }

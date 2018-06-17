@@ -55,6 +55,25 @@ public class RealMeteorologicalController {
         map.put("listRealMeteorological", listMeteorological);
         return listMeteorological;
     }
-    
+    /**
+     * 
+     * 方法描述：根据id，查询气象表中的一条数据
+     * @param station
+     * @param map
+     * @return
+     * @author ssh 
+     * @date 2018年6月2日 下午9:18:29
+     */
+    @RequestMapping("/loadRealMeteorological")
+    @ResponseBody
+    public RealMeteorological getRealMeteorological(Integer id,Map<String , Object> map) {
+        RealMeteorological realMeteorological = null;
+        try {
+            realMeteorological = realMeteorologicalService.load(id);
+        } catch (Exception e) {
+            map.put("message", e.getMessage());
+        }
+        return realMeteorological;
+    }
     
 }

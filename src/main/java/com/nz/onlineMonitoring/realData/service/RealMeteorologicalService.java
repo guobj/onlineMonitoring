@@ -16,4 +16,14 @@ public interface RealMeteorologicalService {
      * @date 2018年6月3日 下午2:36:02
      */
     List<RealMeteorological> listMeteorological(Map<String, Object> map);
+    /**
+     * 
+     * 方法描述：根据id，查询气象表中的一条数据
+     * @param id
+     * @param map
+     * @return
+     * @author ssh
+     * @date 2018年6月17日 下午7:32:09
+     */
+    RealMeteorological load (Integer id);
 }

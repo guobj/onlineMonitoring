@@ -23,7 +23,39 @@
     <script src="js/cascading.js"  type="text/javascript"></script>
     <script type="text/javascript">
         var account = ${sessionScope.user.account};
-    </script>
+		function weather(obj,id){
+		    $(obj).parent().parent().parent().parent().hide();
+		    $("#weather").show();
+		    $("#page").hide();
+		    $("#Paging").hide();
+		    $.post("hisMeteorological/loadHisMeteorological",{id:id},function(data){
+		        if(data!=null){
+		            $("#m_ms_code_value").html(data.ms_code_value);
+		            $("#m_ms_code").html(data.ms_code);
+		            $("#m_dev_code_value").html(data.dev_code_value);
+		            $("#m_dev_code").html(data.dev_code);
+		            $("#m_air_t").html(data.air_t);
+		            $("#m_air_h").html(data.air_h);
+		            $("#m_wind_s").html(data.wind_s);
+		            $("#m_wind_d").html(data.wind_d);
+		            $("#m_dew_p").html(data.dew_p);
+		            $("#m_rain_f").html(data.rain_f);
+		            $("#m_sunshine_h").html(data.sunshine_h);
+		            $("#m_atmo_s").html(data.atmo_s);
+		            $("#m_soil_t1").html(data.soil_t1);
+		            $("#m_soil_t2").html(data.soil_t2);
+		            $("#m_soil_t3").html(data.soil_t3);
+		            $("#m_soil_h1").html(data.soil_h1);
+		            $("#m_soil_h2").html(data.soil_h2);
+		            $("#m_soil_h3").html(data.soil_h3);
+		            $("#m_soil_ec").html(data.soil_ec);
+		            $("#m_data_time").html(data.data_time);
+		            $("#m_dev_status").html(data.dev_status);
+		        }
+		    });
+		}
+
+</script>
 </head>
 
 <body>
@@ -83,7 +115,7 @@
         </form>
 
     </div>
-    <table>
+    <table id="main">
         <thead class="name">
         <tr>
             <td class="t2">监测站编码</td>
@@ -107,6 +139,14 @@
                                 <td class="t6"><input type="button" value="查看" onclick="look('${his.dev_code }',${his.ms_code})"></td>
                               </tr>
                           </c:when>
+                          <c:when test="${fn:startsWith(his.dev_code,'dev5')}">
+                              <tr style="border-bottom: 1px solid #adadad;">
+                                <td class="t2">${his.ms_code }</td>
+                                <td class="t3">${his.dev_code_value }</td>
+                                <td class="t5"><fmt:formatDate value="${his.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+                                <td class="t6"><input type="button" value="查看" onclick="weather(this,${his.id})"></td>
+                              </tr>
+                          </c:when>
                           <c:otherwise>
                               <tr style="border-bottom: 1px solid #adadad;">
                                 <td class="t2">${his.ms_code }</td>
@@ -116,19 +156,6 @@
                               </tr>
                           </c:otherwise>
                     </c:choose>
-                </c:forEach>
-            </c:if>
-            <c:if test="${listHisMeteorological eq null}" >
-                <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
-            </c:if>
-            <c:if test="${listHisMeteorological != null}" >
-                <c:forEach items="${listHisMeteorological }" var="meteorological">
-                     <tr style="border-bottom: 1px solid #adadad;">
-                       <td class="t2">${meteorological.ms_code }</td>
-                       <td class="t3">${meteorological.dev_code_value }</td>
-                       <td class="t5"><fmt:formatDate value="${meteorological.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
-                       <td class="t6">${meteorological.soil_t1 }</td>
-                     </tr>
                 </c:forEach>
             </c:if>
         </tbody>
@@ -141,7 +168,97 @@
             <input type="button" value="关闭" onclick="clos()"/>
         </form>
     </div>
-
+<div id="weather" style="display: none">
+        <table>
+            <tr>
+                <td>监测站名称</td>
+                <td id="m_ms_code_value"></td>
+            </tr>
+            <tr>
+                <td>监测站编码</td>
+                <td id="m_ms_code"></td>
+            </tr>
+            <tr>
+                <td>设备名称</td>
+                <td id="m_dev_code_value"></td>
+            </tr>
+            <tr>
+                <td>设备编码</td>
+                <td id="m_dev_code"></td>
+            </tr>
+            <tr>
+                <td>空气温度</td>
+                <td id="m_air_t"></td>
+            </tr>
+            <tr>
+                <td>空气湿度</td>
+                <td id="m_air_h"></td>
+            </tr>
+            <tr>
+                <td>风速</td>
+                <td id="m_wind_s"></td>
+            </tr>
+            <tr>
+                <td>风向</td>
+                <td id="m_wind_d"></td>
+            </tr>
+            <tr>
+                <td>露点温度</td>
+                <td id="m_dew_p"></td>
+            </tr>
+            <tr>
+                <td>降雨量</td>
+                <td id="m_rain_f"></td>
+            </tr>
+            <tr>
+                <td>日照时数</td>
+                <td id="m_sunshine_h"></td>
+            </tr>
+            <tr>
+                <td>大气压</td>
+                <td id="m_atmo_s"></td>
+            </tr>
+            <tr>
+                <td>土壤温度1</td>
+                <td id="m_soil_t1"></td>
+            </tr>
+            <tr>
+                <td>土壤温度2</td>
+                <td id="m_soil_t2"></td>
+            </tr>
+            <tr>
+                <td>土壤温度3</td>
+                <td id="m_soil_t3"></td>
+            </tr>
+            <tr>
+                <td>土壤湿度1</td>
+                <td id="m_soil_h1"></td>
+            </tr>
+            <tr>
+                <td>土壤湿度2</td>
+                <td id="m_soil_h2"></td>
+            </tr>
+            <tr>
+                <td>土壤湿度3</td>
+                <td id="m_soil_h3"></td>
+            </tr>
+            <tr>
+                <td>土壤EC值</td>
+                <td id="m_soil_ec"></td>
+            </tr>
+            <tr>
+                <td>时间</td>
+                <td id="m_data_time"></td>
+            </tr>
+            <tr>
+                <td>设备状态</td>
+                <td id="m_dev_status"></td>
+            </tr>
+        </table>
+        <form>
+            <input type="button" value="关闭" onclick="clo()"/>
+        </form>
+    </div>
 </div>
 
 <div id="footer">

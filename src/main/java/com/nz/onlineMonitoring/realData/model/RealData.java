@@ -9,6 +9,7 @@ package com.nz.onlineMonitoring.realData.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nz.onlineMonitoring.dict.model.Dict;
 
 /**
@@ -28,6 +29,7 @@ public class RealData {
     /**数据,所属表字段为 t_real.data_value  */
     private String data_value;
     /**时间-仅显示时间,所属表字段为 t_real.data_time  */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date data_time;
     /**设备状态-关联表，见数据字典,所属表字段为 t_real.dev_status  */
     private Integer dev_status;
