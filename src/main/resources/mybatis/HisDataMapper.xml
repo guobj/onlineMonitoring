@@ -118,7 +118,7 @@
                 and data_time between  #{hisData.data_time_begin} and #{hisData.data_time_end}
             </if>
         </where>
-        limit #{record},4
+        limit #{record},10
     </select>
      <!-- 查询数据的数量 -->
     <select id="countHisData" resultType ="int" parameterType="map">

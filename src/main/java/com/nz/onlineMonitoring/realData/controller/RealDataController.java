@@ -50,7 +50,7 @@ public class RealDataController {
             map.put("message", e.getMessage());
         }finally {
             map.put("listRealData", listReal);
-            map.put("devStauts", dictService.listDevStauts());
+            map.put("devStatus", dictService.listDevStauts());
             map.put("devObject", dictService.listDevType());
             map.put("devType", dictService.listDevType1());
         }

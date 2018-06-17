@@ -71,7 +71,7 @@
              <span>设备状态：</span>
                 <select class="select1" name="dev_status">
                     <option value="">不限</option>
-                    <c:forEach items="${devStauts }" var="status">
+                    <c:forEach items="${devStatus }" var="status">
                         <option value="${status.data_value }">${status.data_name }</option>
                     </c:forEach>
                 </select>
@@ -102,7 +102,7 @@
         <thead class="name">
         <tr>
             <td class="t2">监测站编码</td>
-            <td class="t3">监测设备编码</td>
+            <td class="t3">监测设备</td>
             <td class="t5">采集时间</td>
             <td class="t6">数据/气象查看</td>
         </tr>
@@ -122,6 +122,14 @@
 	                            <td class="t6"><input type="button" value="查看" onclick="look('${real.dev_code }',${real.ms_code})"></td>
 	                          </tr>
 		                  </c:when>
+		                  <c:when test="${fn:startsWith(real.dev_code,'dev5')}">
+                              <tr style="border-bottom: 1px solid #adadad;">
+                                <td class="t2">${real.ms_code }</td>
+                                <td class="t3">${real.dev_code_value }</td>
+                                <td class="t5"><fmt:formatDate value="${real.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+                                <td class="t6"><input type="button" value="查看" onclick="weather(${real.id})"></td>
+                              </tr>
+                          </c:when>
 		                  <c:otherwise>
 		                      <tr style="border-bottom: 1px solid #adadad;">
 		                        <td class="t2">${real.ms_code }</td>
@@ -133,19 +141,6 @@
 		            </c:choose>
 		        </c:forEach>
 	        </c:if>
-	        <c:if test="${listRealMeteorological eq null}" >
-                <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
-            </c:if>
-            <c:if test="${listRealMeteorological != null}" >
-                <c:forEach items="${listRealMeteorological }" var="meteorological">
-                     <tr style="border-bottom: 1px solid #adadad;">
-                       <td class="t2">${meteorological.ms_code }</td>
-                       <td class="t3">${meteorological.dev_code_value }</td>
-                       <td class="t5"><fmt:formatDate value="${meteorological.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
-                       <td><input type="button" value="查看气象" onclick="weather()"/></td>
-                     </tr>
-                </c:forEach>
-            </c:if>
         </tbody>
     </table>
     <jsp:include page="../common/pages.jsp"></jsp:include>
@@ -161,7 +156,7 @@
      <div id="weather" style="display: none">
         <table>
             <tr>
-                <td>监测站名称</td>
+                <td >监测站名称</td>
                 <td></td>
             </tr>
             <tr>

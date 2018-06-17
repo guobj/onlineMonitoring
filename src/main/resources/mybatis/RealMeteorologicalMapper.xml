@@ -238,7 +238,7 @@
         from t_real_meteorological
         <where>
             <!-- 最大时间 -->
-            data_time = (select max(data_time) from t_real_meteorological)
+            <!-- data_time = (select max(data_time) from t_real_meteorological) -->
             <!-- 监测站编码，例如输入济南，济南下所有监测站的气象数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
              -->
@@ -261,6 +261,7 @@
                 and dev_status = #{realMeteorological.dev_status}
             </if>
         </where>
+        limit #{record},#{num}
     </select>
      <!-- 查询气象数据的数量 -->
     <select id="countMeteorological" resultType ="int" parameterType="map">
@@ -269,7 +270,7 @@
         from t_real_meteorological
         <where>
             <!-- 最大时间 -->
-            data_time = (select max(data_time) from t_real_meteorological)
+            <!-- data_time = (select max(data_time) from t_real_meteorological) -->
             <!-- 监测站编码，例如输入济南，济南下所有监测站的气象数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
              -->

@@ -46,7 +46,7 @@
                 AND td.dev_type = #{device.dev_type}
             </if>
         </where>
-        LIMIT #{record},4
+        LIMIT #{record},10
     </select>
 
     <!--设备信息查询，记录总数-->

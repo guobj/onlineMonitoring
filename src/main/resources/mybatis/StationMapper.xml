@@ -216,7 +216,7 @@
                 and ms_gate = #{station.ms_gate}
             </if>
         </where>
-        limit #{record},4
+        limit #{record},10
     </select>
     <select id="countStation" resultType ="int" parameterType="map">
         select 

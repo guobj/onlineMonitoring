@@ -97,7 +97,7 @@
         from t_real_data
         <where>
             <!-- 最大时间 -->
-            data_time = (select max(data_time) from t_real_data)
+            <!-- data_time = (select max(data_time) from t_real_data) -->
             <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
              -->
@@ -120,7 +120,7 @@
                 and dev_status = #{realData.dev_status}
             </if>
         </where>
-        limit #{record},4
+        limit #{record},10
     </select>
      <!-- 查询数据的数量 -->
     <select id="countReal" resultType ="int" parameterType="map">
@@ -129,7 +129,7 @@
         from t_real_data
         <where>
             <!-- 最大时间 -->
-            data_time = (select max(data_time) from t_real_data)
+            <!-- data_time = (select max(data_time) from t_real_data) -->
             <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
              -->
