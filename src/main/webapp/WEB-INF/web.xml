@@ -6,7 +6,7 @@
          id="onlineMonitoring" version="3.0">
   <display-name>onlineMonitoring</display-name>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>login</welcome-file>
   </welcome-file-list>
   
 	<!--   编码过滤器 -->
