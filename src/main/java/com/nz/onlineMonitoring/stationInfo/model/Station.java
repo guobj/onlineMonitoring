@@ -7,10 +7,10 @@
  **/
 package com.nz.onlineMonitoring.stationInfo.model;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nz.onlineMonitoring.dict.model.Dict;
-
-import java.util.Date;
 
 /**
  * t_station 类
@@ -73,7 +73,9 @@ public class Station {
 	public void setDict(Dict dict) {
 		this.dict = dict;
 	}
-	/**与ms_dev关联，是数据字典中的值 */
+	/**监测站名称,所属表字段为 t_station.ms_name,是数据字典中的值   */
+	private String ms_code_value;
+    /**与ms_dev关联，是数据字典中的值 */
 	private String ms_dev_value;
 	/**与ms_type关联，是数据字典中的值 */
 	private Dict ms_type_value;
@@ -442,4 +444,11 @@ public class Station {
 	public void setMs_gate_value(Dict ms_gate_value) {
 		this.ms_gate_value = ms_gate_value;
 	}
+	public String getMs_code_value() {
+        return ms_code_value;
+    }
+
+    public void setMs_code_value(String ms_code_value) {
+        this.ms_code_value = ms_code_value;
+    }
 }

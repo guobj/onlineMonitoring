@@ -64,3 +64,16 @@ $(function(){
 
 
 })
+
+
+function weather(){
+    $("#weather").show();
+    $("#img").hide();
+    $("#main").hide();
+    $("#page").hide();
+}
+function clo(){
+    $("#weather").hide();
+    $("#main").show();
+    $("#page").show();
+}
