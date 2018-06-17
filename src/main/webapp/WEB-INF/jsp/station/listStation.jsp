@@ -31,9 +31,31 @@
             $("#Paging").hide();
             $.post("station/loadStation",{id:id},function(data){
                 if(data!=null){
+                	if (data.ms_dev_value == null) {
+                		data.ms_dev_value = "";
+                	}
+                	if (data.ms_name == null) {
+                        data.ms_name = "";
+                    }
+                	if (data.ms_date == null) {
+                        data.ms_date = "";
+                    }
+                	if (data.ms_place == null) {
+                        data.ms_place = "";
+                    }
+                	if (data.ms_user == null) {
+                        data.ms_user = "";
+                    }
+                	if (data.ms_builder == null) {
+                        data.ms_builder = "";
+                    }
+                	if (data.ms_desc == null) {
+                        data.ms_desc = "";
+                    }
                     $("#chakan").append("<table id='bg1'>" +
                             "<tr><td class='s1'>监测站名称</td><td class='s2'>"+data.ms_name+"</td></tr>" +
-                            "<tr><td class='s1'>监测站</td><td class='s2'>"+data.ms_code+"</td></tr>" +
+                            "<tr><td class='s1'>监测站</td><td class='s2'>"+data.ms_code_value+"</td></tr>" +
+                            "<tr><td class='s1'>监测站编码</td><td class='s2'>"+data.ms_code+"</td></tr>" +
                             "<tr><td class='s1'>建设时间</td><td class='s2'>"+data.ms_date+"</td></tr>" +
                             "<tr><td class='s1'>建设内容</td><td class='s2'>"+data.ms_dev_value+"</td></tr>" +
                             "<tr><td class='s1'>监测站类型</td><td class='s2'>"+data.ms_type_value.data_name+"</td></tr>" +

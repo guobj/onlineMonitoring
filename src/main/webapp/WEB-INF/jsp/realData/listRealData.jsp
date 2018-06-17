@@ -98,13 +98,13 @@
         </form>
 
     </div>
-    <table>
+    <table id="main">
         <thead class="name">
         <tr>
             <td class="t2">监测站编码</td>
             <td class="t3">监测设备编码</td>
             <td class="t5">采集时间</td>
-            <td class="t6">数据查看</td>
+            <td class="t6">数据/气象查看</td>
         </tr>
         </thead>
         <tbody>
@@ -142,7 +142,7 @@
                        <td class="t2">${meteorological.ms_code }</td>
                        <td class="t3">${meteorological.dev_code_value }</td>
                        <td class="t5"><fmt:formatDate value="${meteorological.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
-                       <td class="t6">${meteorological.soil_t1 }</td>
+                       <td><input type="button" value="查看气象" onclick="weather()"/></td>
                      </tr>
                 </c:forEach>
             </c:if>
@@ -153,10 +153,100 @@
     <div id="img">
         <div id="imga"></div>
         <form>
-            <input type="button" value="关闭" onclick="clos()"/>
+            
+            <input type="button" value="关闭" onclick="clos()" style="margin-left:20%; float:left"/>
+            
         </form>
     </div>
-
+     <div id="weather" style="display: none">
+        <table>
+            <tr>
+                <td>监测站名称</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>监测站编码</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>设备编码</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>空气温度</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>空气湿度</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>风速</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>风向</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>露点温度</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>降雨量</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>日照时数</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>大气压</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>土壤温度1</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>土壤温度2</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>土壤温度3</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>土壤湿度1</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>土壤湿度2</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>土壤湿度3</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>土壤EC值</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>时间</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>设备状态</td>
+                <td></td>
+            </tr>
+        </table>
+        <form>
+            <input type="button" value="关闭" onclick="clo()"/>
+        </form>
+    </div>
+</div>
+    
 </div>
 
 <div id="footer">

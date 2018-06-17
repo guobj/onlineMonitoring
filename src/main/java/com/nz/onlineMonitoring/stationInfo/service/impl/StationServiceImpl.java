@@ -133,9 +133,9 @@ public class StationServiceImpl implements StationService{
             Dict city = dictMapper.loadCity(Integer.parseInt(code01));
             if (city != null) {
                 String name1= city.getData_name();
-                station.setMs_code(name1 + "第" + code2 +"个");
+                station.setMs_code_value(name1 + "第" + code2 +"个");
             }else {
-                station.setMs_code("无法解析编码");
+                station.setMs_code_value("无法解析编码");
             }
             
         }else {
@@ -146,9 +146,9 @@ public class StationServiceImpl implements StationService{
             if (city1 != null && city2 != null) {
                 String name2= city1.getData_name();
                 String name1= city2.getData_name();
-                station.setMs_code(name2+name1 + "第" + code2 +"个");
+                station.setMs_code_value(name2+name1 + "第" + code2 +"个");
             }else {
-                station.setMs_code("无法解析编码");
+                station.setMs_code_value("无法解析编码");
             }
         }
         return station;
