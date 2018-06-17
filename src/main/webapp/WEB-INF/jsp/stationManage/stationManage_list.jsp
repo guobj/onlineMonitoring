@@ -171,10 +171,7 @@ pageContext.setAttribute("basePath", basePath);
             <input type="button"  value="查询" class="search" onclick="submit()">
         </form>
     </div>
-
-
-    <h5>数据列表：</h5>
-
+    <%--<h5>数据列表：</h5>--%>
     <div id="xq">
         <table  id="bg">
             <thead>
