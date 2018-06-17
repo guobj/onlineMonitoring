@@ -11,7 +11,7 @@
         <association property="station" column="ms_code" select="com.nz.onlineMonitoring.stationInfo.mapper.StationMapper.loadByMscode"/>
     </resultMap>
     <sql id="t_manage_columns" >
-        id, ms_code, server_ip, server_port, data_upload, data_storage, dr
+        id, ms_code, server_ip, server_port, data_upload, data_storage
     </sql>
     
     <!--load方法查询一条数据-->
