@@ -197,6 +197,9 @@
             });
 
         }
+      function realData(ms_code){
+    	  window.location.href="realData/listRealData?ms_code="+ms_code;
+      }
    
     </script>
 </head>
@@ -253,6 +256,7 @@
                     <td class="t4">建设内容</td>
                     <td class="t5">监测站类型</td>
                     <td class="t6">查看</td>
+                    <td class="t8">实时数据</td>
                     <td class="t7">删除</td>
                     <td class="t9">修改</td>
                 </tr>
@@ -269,6 +273,7 @@
                                 <td class="t4">${station.ms_dev_value }</td>
                                 <td class="t5">${station.ms_type_value.data_name }</td>
                                 <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this,${station.id})"></td>
+                                <td class="t8"><input type="button" value="查看" class="input1" onclick="realData(${station.ms_code})"></td>
                                 <td class="t7"><input type="button" value="删除"  class="input2" onclick="delStation(${station.id})" ></td>
                                 <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this,${station.id})"></td>
                             </tr>
