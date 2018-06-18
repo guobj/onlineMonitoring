@@ -24,7 +24,7 @@
     <h5><span>${ms_code }</span>站点实时数据查看</h5>
     <div id="main">
     <c:if test="${listAll eq null}" >
-         <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
+         <p  style="margin-top:250px; color:#ff0000;font-size:40px; margin-left:40%; ">${message }</p> 
     </c:if>
     <c:if test="${listAll != null}" >
 	    <c:forEach items="${listAll }" var="list">
@@ -35,21 +35,21 @@
 			            <p>设备类型：<span>${list.dev_code_value }</span></p>
 			            <p>数据上报时间：<span><fmt:formatDate value="${list.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></span></p>
 			            <div class="con">
-			                <p>空气温度<span>${list.air_t }</span></p>
-			                <p>空气湿度<span>${list.air_h }</span></p>
-			                <p>露点温度<span>${list.dew_p }</span></p>
-			                <p>日照时数<span>${list.sunshine_h }</span></p>
-			                <p>土壤温度1<span>${list.soil_t1 }</span></p>
-			                <p>土壤温度2<span>${list.soil_t2 }</span></p>
-			                <p style="margin-right: 9.2%">土壤温度3<span>${list.soil_t3 }</span></p>
-			                <p style="margin-right: 9.1%;">土壤湿度1<span>${list.soil_h1 }</span></p>
-			                <p  style="margin-right: 9.1%;">土壤湿度2<span>${list.soil_h2 }</span></p>
-			                <p  style="margin-right: 9.2%;">土壤湿度3<span>${list.soil_h3 }</span></p>
-			                <p  style="margin-right:10.5%;">土壤EC值<span>${list.soil_ec }</span></p>
-			                <p>大气压<span>${list.atmo_s }</span></p>
-			                <p  style="margin-right: 11.5%;">降雨量<span>${list.rain_f }</span></p>
-			                <p style="margin-right: 12.5%">风速<span>${list.wind_s }</span></p>
-			                <p>风向<span></span>${list.wind_d }</p>
+			                <p>空气温度：<span>${list.air_t }</span>℃</p>
+			                <p>空气湿度：<span>${list.air_h }</span>%</p>
+			                <p>露点温度：<span>${list.dew_p }</span>℃</p>
+			                <p>日照时数：<span>${list.sunshine_h }</span>h</p>
+			                <p>土壤温度1：<span>${list.soil_t1 }</span>℃</p>
+			                <p>土壤温度2：<span>${list.soil_t2 }</span>℃</p>
+			                <p>土壤温度3：<span>${list.soil_t3 }</span>℃</p>
+			                <p>土壤湿度1：<span>${list.soil_h1 }</span>%</p>
+			                <p>土壤湿度2：<span>${list.soil_h2 }</span>%</p>
+			                <p>土壤湿度3：<span>${list.soil_h3 }</span>%</p>
+			                <p>土壤EC值：<span>${list.soil_ec }</span></p>
+			                <p>大气压：<span>${list.atmo_s }</span></p>
+			                <p>降雨量：<span>${list.rain_f }</span>mm</p>
+			                <p>风速：<span>${list.wind_s }</span>m/s</p>
+			                <p>风向：<span></span>${list.wind_d }</p>
 			            </div>
 	                </div>
 	            </c:when>

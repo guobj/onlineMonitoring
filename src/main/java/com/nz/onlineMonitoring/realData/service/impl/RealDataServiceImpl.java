@@ -219,20 +219,27 @@ public class RealDataServiceImpl implements RealDataService {
     @Override
     public List listDataByMsCode(String ms_code) { 
         List listAll = new ArrayList<>();
+        //拿出监测站下所有的孢子和测报灯的编码
         List<String> listDevCode = deviceMapper.listDevCodeByMsCode(ms_code);
         //拿图片数据
+        //循环这些编码，并分别处理
         for (String dev_code : listDevCode) {
             File file = new File("E:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
             if (file.exists()) {
                 File[] files = file.listFiles();
-                
+                //判断里面是否有图片
                 if (files.length != 0) {
+                    //最新的时间
                     String maxTime = "";
+                    //用于装最新的10张图片名，用，隔开，存在data_value中
                     StringBuffer sb = new StringBuffer();
                     RealData rd = new RealData();
+                    //用于装文件下所有图片的名，然后排序，取前10
                     List<String> list = new ArrayList<>();
                     SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
+                    //记录文件夹下图片的数量，如果图片不到10个，就装sum个
                     int sum = 0;
+                    //孢子仪和测报灯图片的命名不同，分开解析
                     if (dev_code.startsWith("dev101")) {
                         for (File file2 : files) {
                             if (!file2.isDirectory()) {
@@ -267,17 +274,19 @@ public class RealDataServiceImpl implements RealDataService {
                         s.insert(0, "20");
                         maxTime = s.toString();
                     }
+                    //所有图片的名，排序，取前10
                     Collections.sort(list, new Comparator<String>() {
                         @Override
                         public int compare(String o1, String o2) {
                             return -1;
                         }
                     });
+                  //记录文件夹下图片的数量，如果图片不到10个，就装sum个
                     sum = sum>=10?10:sum;
                     for (int i = 0; i < sum; i++) {
                         sb.append(list.get(i)+",");
                     }
-                    
+                    //装入RealData中，用于前台遍历
                     try {
                         rd.setData_time(formatter.parse(maxTime));
                     } catch (ParseException e) {
@@ -286,6 +295,7 @@ public class RealDataServiceImpl implements RealDataService {
                     rd.setMs_code(ms_code);
                     rd.setDev_code(dev_code);
                     rd.setData_value(sb.toString());
+                    //解析设备编码，只解析类型
                     Dict devType = dictMapper.loadByDevType1(Integer.parseInt(dev_code.substring(3, 6)));
                     if (devType == null) {
                         rd.setDev_code_value("无此类型设备");
