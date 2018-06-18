@@ -28,7 +28,7 @@ public class LoginController {
 		try {
 			Login loginUser = loginService.login(login);
 			session.setAttribute("user", loginUser);
-			url = "stationManage/stationManage_list";
+			url = "station/listStation";
 		} catch (Exception e) {
 			map.put("message", e.getMessage());
 		}

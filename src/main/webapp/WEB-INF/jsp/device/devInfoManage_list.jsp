@@ -206,7 +206,7 @@
 </div>
 
 <div id="footer">
-    <p>山东省植物保护总站</p>
+    <li>山东省植物保护总站</li>
 </div>
 <script>
     $(function(){

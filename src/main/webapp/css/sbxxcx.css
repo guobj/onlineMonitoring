@@ -14,7 +14,7 @@ body{ background:#1c8914;}
 #tit ul li .three a:hover{ color:#F00;}
 
 
-#caidan{ width:15%; height:750px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
+#caidan{ width:15%; height:600px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
 #caidan ul{ width:100%;}
 #caidan ul .tit{ height:30px; background:url(../img/gl.jpg) no-repeat; font-size:0.8em; color:#FFF; line-height:30px;}
 #caidan ul .tit img{ margin-left:4.6%; margin-top:9px; float:left; max-width: 100%;}
@@ -32,8 +32,8 @@ body{ background:#1c8914;}
 #caidan ul .cd_4 ul li .zdgl .a_2 img{ margin-left:7%; margin-top:9px; float:left;}
 #caidan ul .cd_4 .zdgl .ul .a_3{ width:100%; height:27px; background:#eaeaea; display:block;}
 
-
-#content_r{ width:84%;  margin-left:16%; position: relative;background:#eaeaea; height:750px;}
+#content_r{ width:84%; margin-left: 16%;  position: relative;background:#eaeaea; height:600px;margin-top: 3px;}
+/*#content_r{ width:84%;  margin-left:16%; position: relative;background:#eaeaea; height:600px;}*/
 #content_r .tit{ width:100%; height:40px; border: 1px solid #cccccc;}
 #content_r .tit .xx{ float:left; margin-top:8px; margin-left:1%; font-size:12px; height:20px; line-height:20px;}
 #content_r .tit .xx img{ margin-top:0px; float:left;}
@@ -82,7 +82,8 @@ top: 0px;
 #content_r .title{font-size: 12px; margin-left: 2%;color: #646464; margin-top: 10px;}
 #content_r .menu  select{width: 8% !important ;  border: 1px solid #cccccc; height: 20px; border-radius: 3px; margin-top: 3px; }
 
-#content_r table{margin-left: 2%; width: 98%; font-size: 0.75em;}
+#content_r table{margin-left: 2%; width: 90%; font-size: 0.75em;}
+/*#content_r table{margin-left: 2%; width: 98%; font-size: 0.75em;}*/
 #content_r table thead tr{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f5f6+0,e3eaed+37,c8d7dc+100;Grey+3D+%234 */
 background: rgb(242,245,246); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(242,245,246,1) 0%, rgba(227,234,237,1) 37%, rgba(200,215,220,1) 100%); /* FF3.6-15 */

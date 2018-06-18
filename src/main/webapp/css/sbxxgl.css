@@ -13,7 +13,7 @@ body{ background:#1c8914;}
 #tit ul li .three a:hover{ color:#F00;}
 
 
-#caidan{ width:15%; height:730px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
+#caidan{ width:15%; height:600px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
 #caidan ul{ width:100%;}
 #caidan ul .tit{ height:30px; background:url(../img/gl.jpg); font-size:0.8em; color:#FFF; line-height:30px;}
 #caidan ul .tit img{ margin-left:4.6%; margin-top:9px; float:left; max-width: 100%;}
@@ -32,7 +32,7 @@ body{ background:#1c8914;}
 #caidan ul .cd_4 .zdgl .ul .a_3{ width:100%; height:27px; background:#eaeaea; display:block;}
 
 
-#content_r{ width:84%; height:730px; margin-left:16%; position: relative; background:#eaeaea;}
+#content_r{ width:84%; height:600px; margin-left:16%; position: relative; background:#eaeaea;margin-top: 3px}
 #content_r .tit{ width:100%; height:40px; 
     border-bottom:1px solid #cccccc;
 }
@@ -46,70 +46,70 @@ body{ background:#1c8914;}
 }
 #content_r .title{font-size: 16px; margin-left: 2%;color: #646464; margin-top: 10px; float: left; margin-bottom: 5px;}
 #content_r .menu{width: 99%; height: 45px;  padding-left:1%; border-bottom: 1px solid #cccccc; position: relative;
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f6f6f6+47,ededed+100;White+3D+%231 */
-background: rgb(255,255,255); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f6f6f6+47,ededed+100;White+3D+%231 */
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
 
 }
 #content_r .menu form span{width: 15%; font-size: 12px; color: #595959;margin-top:10px; margin-left: 3%;}
 #content_r .menu form input{width: 10%; height: 20px; border: 1px solid #bfbfbf;margin-top:10px; border-radius: 5px;}
-#content_r .menu form select{width: 10% !important ;  border: 1px solid #cccccc; height: 20px; border-radius: 3px; margin-top:10px; }
+#content_r .menu form select{width: 11% !important ;  border: 1px solid #cccccc; height: 20px; border-radius: 3px; margin-top:10px; }
 #content_r .menu .search{width: 6%; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
-background: rgb(238,238,238); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
-  text-align: center; 
-  position: absolute;
-  top: 0px;
-  left: 85%;
- height: 30px;
+    background: rgb(238,238,238); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    left: 85%;
+    height: 30px;
 
 }
 #content_r .menu .reset{width: 6%; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
-background: rgb(238,238,238); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
- text-align: center;
-height: 30px;
-position: absolute;
-top: 0px;
-  left: 92%;
+    background: rgb(238,238,238); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+    text-align: center;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    left: 92%;
 }
+#content_r .title{font-size: 12px; margin-left: 2%;color: #646464; margin-top: 10px;}
+#content_r .menu  select{width: 8% !important ;  border: 1px solid #cccccc; height: 20px; border-radius: 3px; margin-top: 3px; }
+
 #content_r table thead tr{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f5f6+0,e3eaed+37,c8d7dc+100;Grey+3D+%234 */
 background: rgb(242,245,246); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(242,245,246,1) 0%, rgba(227,234,237,1) 37%, rgba(200,215,220,1) 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top,  rgba(242,245,246,1) 0%,rgba(227,234,237,1) 37%,rgba(200,215,220,1) 100%); /* Chrome10-25,Safari5.1-6 */
 background: linear-gradient(to bottom,  rgba(242,245,246,1) 0%,rgba(227,234,237,1) 37%,rgba(200,215,220,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 ); /* IE6-9 */
- color:#707d83;height: 35px;text-align: center;
-font-size: 0.75em;
-  }
-
-#content_r table{width: 97%; height: 440px; margin-left: 2%;  margin-bottom: 10px; border-collapse:collapse;}
+ color:#707d83;height: 35px;text-align: center; }
 #content_r table thead tr td{
+    border-collapse: separate;
     border: 1px solid #ffffff;
 }
-#content_r table tbody{font-size: 12px;  color: #4e4f4f;}
-#content_r table tbody tr{color:#707d83;height: 30px;text-align: center; table-layout:fixed;}
-#content_r table tbody tr td{
+#content_r table tr{color:#707d83;height: 30px;text-align: center;}
+#content_r table tr td{
+    border-collapse: separate;
     border: 1px solid #ffffff;
-    height: 30px;
+	height:40px;
 }
-#content_r table .t1{width: 10%; height: 30px;}
-#content_r table .t2{width: 10%; height: 30px;}
-#content_r table .t3{width: 8%; height: 30px;}
-#content_r table .t4{width: 8%; height: 30px;}
-#content_r table .t5{width: 8%; height: 30px;}
-#content_r table .t6{width: 8%; height: 30px;}
-#content_r table .t7{width: 8%; height: 30px;}
-#content_r table .t8{width: 8%;height: 30px;}
+#content_r table{width: 97%;float: left;  margin-left: 2%;  margin-bottom: 10px; border-collapse:collapse;}
+#content_r table tbody .tr1{ border-bottom: 1px solid #adadad; width: 100%; height: 48px; }
+#content_r table tbody{font-size: 12px; line-height: 3em; color: #4e4f4f;}
+#content_r table tbody td{height:40px;}
+
+#content_r .name{ width:100%; margin-top:10px; height:48px; background:#bee2f4; margin-left:2%; font-size:12px; color:#4e4f4f; text-align:center; line-height:48px; overflow:hidden; !important;}
+
+#content_r input{background: none; }
 #del{color: #da0000}
 #update{color: #269dc9}
 
@@ -196,14 +196,14 @@ font-size: 0.75em;
     background-color: #d7dce2!important;
 }
 
-#detail{width: 70%; margin-left: 3%;float: left; display: none; height: 800px; }
-#detail #bg1{margin-left: 15%; margin-top: 10px;background: url("../img/bg3.jpg") repeat-x;border: 1px solid #bfbfbf;width: 100%; border-right:1px #b9b9b9 solid; box-shadow: 10px 10px 5px #888888; }
-#detail .s1{height: 50px; width: 30%; text-align: center;  color:#383838; border-bottom: 1px solid #bfbfbf;}
-#detail .s2{height: 50px; width: 70%; text-align: center; border-bottom: 1px solid #bfbfbf;}
+#detail{width:50%; margin-left: 13%;float: left; display: none;  }
+#detail #bg1{margin-left: 15%; margin-top: 10px;border: 1px solid #bfbfbf;width: 100%; border-right:1px #b9b9b9 solid; box-shadow: 10px 10px 5px #888888; }
+#detail .s1{height: 30px; width: 30%; text-align: center;  color:#383838; border-bottom: 1px solid #bfbfbf;}
+#detail .s2{height:30px; width: 70%; text-align: center; border-bottom: 1px solid #bfbfbf;}
 #detail #bg1 caption{
     height: 50px;
     line-height: 50px;
-    /*font:bold 2em;*/
+    font:bold 2em;
     background: #f0f7ff;
     border:1px solid #bfbfbf;
     box-shadow: 10px 10px 5px #888888;
@@ -211,4 +211,4 @@ font-size: 0.75em;
     margin-bottom: -1px;
 }
 #detail form{margin-left: 35%;float: left; margin-top: 20px; width: 100%;}
-#detail form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 44px; margin-left: 10%;}
+#detail form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 24px; margin-left: 10%;}
