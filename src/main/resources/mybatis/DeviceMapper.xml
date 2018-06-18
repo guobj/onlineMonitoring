@@ -177,4 +177,12 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+    <!--   通过监测站的编码,查询该监测站下的孢子捕捉仪和测报灯的编码 -->
+    <select id="listDevCodeByMsCode" parameterType="String" resultType="String" >
+        select
+        dev_code
+        from t_device
+        where ms_code =#{ms_code} and ( dev_code like concat('dev101',"%") or dev_code like concat('dev201',"%"))
+    </select>
+    
 </mapper>

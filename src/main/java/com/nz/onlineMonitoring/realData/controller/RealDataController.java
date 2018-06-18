@@ -98,4 +98,20 @@ public class RealDataController {
 		jacksonData.success(list);
 		return jacksonData;
 	}
+	
+	@RequestMapping("/listByMsCode")
+    public String listByMsCode(Map<String, Object> map,String ms_code){
+        List listAll = null;
+        try {
+           listAll = realDataService.listDataByMsCode(ms_code);
+        } catch (Exception e) {
+            map.put("message", e.getMessage());
+        }finally {
+            map.put("listAll", listAll);
+            map.put("ms_code", ms_code);
+        }
+        return "realData/listMsCodeRealData";
+    }
+	
+	
 }

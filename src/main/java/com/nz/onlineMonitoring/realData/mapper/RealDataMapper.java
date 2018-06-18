@@ -7,10 +7,12 @@
  **/
 package com.nz.onlineMonitoring.realData.mapper;
 
-import com.nz.onlineMonitoring.realData.model.RealData;
-
 import java.util.List;
 import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.nz.onlineMonitoring.realData.model.RealData;
 
 public interface RealDataMapper {
     /**
@@ -85,4 +87,14 @@ public interface RealDataMapper {
      * @date 2018年6月16日
      */
     List<RealData> loadByMsCodeAndDevCode(Map<String, Object> map);
+    /**
+     * 
+     * 方法描述：查询一个监测站下所有设备的数据
+     * @param ms_code
+     * @return
+     * @author ssh
+     * @date 2018年6月18日 下午3:37:16
+     */
+    List<RealData> listRealByMsCode(@Param("ms_code")String ms_code);
+    
 }

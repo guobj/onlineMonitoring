@@ -1,0 +1,73 @@
+*{ list-style:none; text-decoration:none; padding:0; margin:0; border:none; font-size: 12px;}
+body{ background:#1c8914; overflow: auto;}
+
+#tit{ width:100%; height:93px; background:url(../img/tit.jpg) no-repeat; background-size:cover; border-bottom:7px #1bb11c solid;}
+#tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:2.1em; margin-left:3%;color:#006600; font-weight:bold;  font-family: '宋体';}
+
+#tit ul{ width:28%; height:93px; float:left; margin-left:24%;}
+#tit ul li{ width:91%; height:30px; margin-top:20px; line-height:30px; font-size:0.75em; color:#FFF; float:left; overflow:hidden;}
+#tit ul li .three{ width:90%; margin-left:5%; height:32px;}
+#tit ul li .three a{ width:23%; float:left; margin-top:0px; height:32px; line-height:32px; color:#FFF;}
+#tit ul li .three a img{ margin-top:5px; float:left; max-width: 100%;}
+#tit ul li .three a:hover{ color:#F00;}
+
+
+#caidan{ width:15%; height:620px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
+#caidan ul{ width:100%;}
+#caidan ul .tit{ height:30px; background:url(../img/gl.jpg); font-size:0.8em; color:#FFF; line-height:30px;}
+#caidan ul .tit img{ margin-left:4.6%; margin-top:9px; float:left; max-width: 100%;}
+
+#caidan ul .cdq{ height:37px; width:100%; background:url(../img/cdq.jpg);}
+#caidan ul .cdq img{ margin-left:2.9%; margin-top:9px; width:8.4%; float:left; max-width: 100%;}
+#caidan ul .cdq a{ line-height:37px; width:63%; float:left; margin-left:4%; color:#5a5a5b; font-size:0.75em;}
+
+#caidan ul .cd_4{ width:100%;}
+#caidan ul .cd_4 ul li .a_1{ height:33px; background:url(../img/cdbg.jpg); display:block; margin-top:3px; font-size:0.75em; color:#FFF; line-height:33px; overflow:hidden;}
+#caidan ul .cd_4 ul li .a_1 img{ margin-left:6.3%; margin-top:8px; float:left; max-width: 100%;}
+#caidan ul .cd_4 ul li .zdgl{ width:100%; background:#FFF;}
+#caidan ul .cd_4 ul li .zdgl .a_2{ width:100%; height:27px; font-size:12px; line-height:27px; display:block; margin-top:0px; color:#000; background:#eaeaea; overflow:hidden;}
+#caidan ul .cd_4 ul li .zdgl .a_2:hover{ background:#d7dce2;}
+#caidan ul .cd_4 ul li .zdgl .a_2 img{ margin-left:7%; margin-top:9px; float:left;}
+#caidan ul .cd_4 .zdgl .ul .a_3{ width:100%; height:27px; background:#eaeaea; display:block;}
+
+#content_r{ width:84%; height:627px; margin-left:16%; position: relative; background:#eaeaea;margin-top: 3px;}
+#content_r h5{
+    margin-left: 2%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color:#707d83;
+    float: left;
+;}
+#content_r #main{width: 95%; float: left; margin-left: 3%; height: 550px; overflow-y: scroll; overflow-x: hidden}
+#content_r #main #meeq{width: 95%; float: left; border: 1px solid #cccccc; padding-top: 15px; padding-left: 2%;
+ background: rgb(255,255,255);  
+ padding-bottom: 10px;
+ border-radius: 6px;
+ box-shadow:2px 2px 3px #aaaaaa;
+}
+#content_r #main #meeq p{ float: left; margin-right:10%; font-weight: bolder;}
+#content_r #main #meeq p span{ font-weight: normal;}
+#content_r #main #meeq .con{margin-top: 10px;}
+#content_r #main #meeq .con p{font-weight: normal; height: 30px; line-height: 30px; !important;}
+#content_r #main #detyp{width: 95%; float: left; border: 1px solid #cccccc; margin-top: 20px; padding-left: 2%; 
+	padding-top: 15px;
+background: rgb(255,255,255);
+border-radius: 6px; 
+box-shadow:2px 2px 3px #aaaaaa;
+}
+#content_r #main #detyp p{ float: left; margin-right:10%; font-weight: bolder;}
+#content_r #main #detyp p span{ font-weight: normal;}
+#content_r #main #detyp .con{margin-top: 20px; float: left; width: 100%;}
+#content_r #main #detyp .con p{font-weight: normal; height: 30px; line-height: 30px; margin-bottom: 20px; !important;}
+#content_r #main #picture{width: 95%; float: left; border: 1px solid #cccccc; margin-top: 20px; padding-left: 2%; margin-bottom: 7px;
+ padding-top: 15px; padding-bottom: 10px; background: rgb(255,255,255); border-radius: 6px; box-shadow:2px 2px 3px #aaaaaa;
+}
+#content_r #main #picture p{ float: left; margin-right:10%; font-weight: bolder;}
+#content_r #main #picture p span{ font-weight: normal;}
+#content_r #main #picture .con{margin-top: 20px; float: left; width: 100%;}
+#content_r #main #picture .con .min {width: 17.5%; float: left; margin-left: 2%; margin-bottom: 10px;}
+#content_r #main #picture .con .max {width: 70%; float: left; margin-left: 2%; margin-bottom: 10px;}
+#footer{ width:100%; height:26px; float:left; background:#1b8a14; margin-top: 3px;}
+#footer li{ text-align:center; line-height:26px; font-size:0.75em;}
+#footer li a{ color:#000;}
+#footer li a:hover{ color:#F00;}

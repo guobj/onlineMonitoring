@@ -1,12 +1,18 @@
 package com.nz.onlineMonitoring.realData.service.impl;
 
+import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nz.onlineMonitoring.deviceInfo.mapper.DeviceMapper;
 import com.nz.onlineMonitoring.dict.mapper.DictMapper;
 import com.nz.onlineMonitoring.dict.model.Dict;
 import com.nz.onlineMonitoring.realData.mapper.RealDataMapper;
@@ -23,6 +29,9 @@ public class RealDataServiceImpl implements RealDataService {
     private DictMapper dictMapper;
     @Autowired
     private RealMeteorologicalMapper realMeteorologicalMapper;
+    @Autowired
+    private DeviceMapper deviceMapper;
+    
     /**
      * 
      * 方法描述：查询实时数据，根据监测站名称、监测站编码（见数据字典中行政区划代码，输入市、县代码则显示全市、全县的监测站列表）、
@@ -196,5 +205,131 @@ public class RealDataServiceImpl implements RealDataService {
         }
         map.put("listRealMeteorological", listRealMeteorological);
         map.put("listRealData", listRealData);
+    }
+
+
+    /**
+     * 
+     * 方法描述：通过监测站的编码，查询监测站下所有设备的数据，包括图片信息，数据信息，气象信息
+     * @param map
+     * @return
+     * @author ssh
+     * @date 2018年6月18日 下午2:00:12
+     */
+    @Override
+    public List listDataByMsCode(String ms_code) { 
+        List listAll = new ArrayList<>();
+        List<String> listDevCode = deviceMapper.listDevCodeByMsCode(ms_code);
+        //拿图片数据
+        for (String dev_code : listDevCode) {
+            File file = new File("E:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
+            if (file.exists()) {
+                File[] files = file.listFiles();
+                
+                if (files.length != 0) {
+                    String maxTime = "";
+                    StringBuffer sb = new StringBuffer();
+                    RealData rd = new RealData();
+                    List<String> list = new ArrayList<>();
+                    SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
+                    int sum = 0;
+                    if (dev_code.startsWith("dev101")) {
+                        for (File file2 : files) {
+                            if (!file2.isDirectory()) {
+                                String t = file2.getName();
+                                list.add(t);
+                                int index = t.lastIndexOf(".");
+                                sum++;
+                                maxTime = maxTime.compareTo(t.substring(index-16, index-2)) < 0 ? t.substring(index-16, index-2) : maxTime;
+                            }
+                        }
+                        StringBuffer s = new StringBuffer(maxTime);
+                        s.insert(12, ":");
+                        s.insert(10, ":");
+                        s.insert(8, " ");
+                        s.insert(6, "-");
+                        s.insert(4, "-");
+                        maxTime = s.toString();
+                    }else {
+                        for (File file2 : files) {
+                            if (!file2.isDirectory()) {
+                                String t = file2.getName();
+                                list.add(t);
+                                int index = t.lastIndexOf(".");
+                                sum++;
+                                maxTime = maxTime.compareTo(t.substring(index-19, index-2)) < 0 ? t.substring(index-19, index-2) : maxTime;
+                            }
+                        }
+                        StringBuffer s = new StringBuffer(maxTime);
+                        s.replace(14, 15, ":");
+                        s.replace(11, 12, ":");
+                        s.replace(8, 9, " ");
+                        s.insert(0, "20");
+                        maxTime = s.toString();
+                    }
+                    Collections.sort(list, new Comparator<String>() {
+                        @Override
+                        public int compare(String o1, String o2) {
+                            return -1;
+                        }
+                    });
+                    sum = sum>=10?10:sum;
+                    for (int i = 0; i < sum; i++) {
+                        sb.append(list.get(i)+",");
+                    }
+                    
+                    try {
+                        rd.setData_time(formatter.parse(maxTime));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    rd.setMs_code(ms_code);
+                    rd.setDev_code(dev_code);
+                    rd.setData_value(sb.toString());
+                    Dict devType = dictMapper.loadByDevType1(Integer.parseInt(dev_code.substring(3, 6)));
+                    if (devType == null) {
+                        rd.setDev_code_value("无此类型设备");
+                    }else {
+                        rd.setDev_code_value(devType.getData_name());
+                    }
+                    listAll.add(rd);
+                }
+            }
+        }
+        //此数据和气象表拿数据
+        List<RealMeteorological> realMeteorologicalList = realMeteorologicalMapper.listMeteorologicalByMsCode(ms_code);
+        List<RealData> realList = realDataMapper.listRealByMsCode(ms_code);
+        if (realList != null && realList.size() > 0) { 
+            for (RealData rd : realList) {
+                if (rd.getDev_code()!= null && rd.getDev_code() != "") {
+                    Dict devObject = dictMapper.loadByDevType(Integer.parseInt(rd.getDev_code().substring(3, 4)));
+                    Dict devType = dictMapper.loadByDevType1(Integer.parseInt(rd.getDev_code().substring(3, 6)));
+                    if (devObject == null || devType == null) {
+                        rd.setDev_code_value("无此类型设备");
+                    }else {
+                        rd.setDev_code_value(devType.getData_name());
+                    }
+                }
+            }
+            listAll.addAll(realList);
+        }
+        if (realMeteorologicalList != null && realMeteorologicalList.size() > 0) {
+            for (RealMeteorological rm : realMeteorologicalList) {
+                if (rm.getDev_code()!= null && rm.getDev_code() != "") {
+                    Dict devObject = dictMapper.loadByDevType(Integer.parseInt(rm.getDev_code().substring(3, 4)));
+                    Dict devType = dictMapper.loadByDevType1(Integer.parseInt(rm.getDev_code().substring(3, 6)));
+                    if (devObject == null || devType == null) {
+                        rm.setDev_code_value("无此类型设备");
+                    }else {
+                        rm.setDev_code_value(devType.getData_name());
+                    }
+                }
+            }
+            listAll.addAll(realMeteorologicalList);
+        }
+        if (listAll == null || listAll.size() <= 0) {
+            throw new RuntimeException("暂无数据");
+        }
+        return listAll;
     }
 }

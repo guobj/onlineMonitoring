@@ -6,10 +6,12 @@
  **/
 package com.nz.onlineMonitoring.deviceInfo.mapper;
 
-import com.nz.onlineMonitoring.deviceInfo.model.Device;
-
 import java.util.List;
 import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.nz.onlineMonitoring.deviceInfo.model.Device;
 
 public interface DeviceMapper {
     /**
@@ -75,4 +77,13 @@ public interface DeviceMapper {
      *
      **/
     Integer count(Map<String, Object> map);
+    /**
+     * 
+     * 方法描述：通过监测站的编码,查询该监测站下的孢子捕捉仪和测报灯的编码
+     * @param map
+     * @return
+     * @author ssh
+     * @date 2018年6月18日 下午1:55:09
+     */
+    List<String> listDevCodeByMsCode(@Param("ms_code")String ms_code);
 }

@@ -3,8 +3,6 @@ package com.nz.onlineMonitoring.realData.service;
 import java.util.List;
 import java.util.Map;
 
-import com.nz.onlineMonitoring.realData.model.RealData;
-
 public interface RealDataService {
     /**
      * 
@@ -15,7 +13,7 @@ public interface RealDataService {
      * @author ssh
      * @date 2018年6月3日 下午2:36:02
      */
-    List<RealData> listReal(Map<String, Object> map);
+    List listReal(Map<String, Object> map);
 
     /**
      * 方法描述：通过ms_code和dev_code查询实时数据
@@ -26,4 +24,15 @@ public interface RealDataService {
      * @date 2018年6月16日
      */
     void loadByMsCodeAndDevCode(Map<String, Object> map);
+    /**
+     * 
+     * 方法描述：通过监测站的编码，查询监测站下所有设备的数据，包括图片信息，数据信息，气象信息
+     * @param map
+     * @return
+     * @author ssh
+     * @date 2018年6月18日 下午2:00:12
+     */
+    List listDataByMsCode(String ms_code);
+
+    
 }

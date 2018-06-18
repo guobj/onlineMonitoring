@@ -162,4 +162,14 @@
         where
         ms_code = #{ms_code} and dev_code = #{dev_code}
     </select>
+    <select id="listRealByMsCode" resultMap="BaseResultMap" parameterType="map">
+        select 
+        <include refid="t_real_data_columns" />
+        from t_real_data
+        <where>
+            <if test="ms_code != null and ms_code != ''" >
+                ms_code= #{ms_code}
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -300,4 +300,14 @@
         where
         ms_code = #{ms_code} and dev_code = #{dev_code}
     </select>
+    <select id="listMeteorologicalByMsCode" resultMap="BaseResultMap" parameterType="map">
+        select 
+        <include refid="t_real_meteorological_columns" />
+        from t_real_meteorological
+        <where>
+            <if test="ms_code != null and ms_code != ''" >
+                ms_code = #{ms_code}
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -7,10 +7,12 @@
  **/
 package com.nz.onlineMonitoring.realData.mapper;
 
-import com.nz.onlineMonitoring.realData.model.RealMeteorological;
-
 import java.util.List;
 import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.nz.onlineMonitoring.realData.model.RealMeteorological;
 
 public interface RealMeteorologicalMapper {
     /**
@@ -86,4 +88,13 @@ public interface RealMeteorologicalMapper {
      * @date 2018年6月16日
      */
     List<RealMeteorological> loadByMsCodeAndDevCode(Map<String, Object> map);
+    /**
+     * 
+     * 方法描述：查询一个监测站下所有设备的气象数据
+     * @param ms_code
+     * @return
+     * @author ssh
+     * @date 2018年6月18日 下午3:37:16
+     */
+    List<RealMeteorological> listMeteorologicalByMsCode(@Param("ms_code")String ms_code);
 }
