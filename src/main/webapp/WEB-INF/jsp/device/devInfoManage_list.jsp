@@ -12,7 +12,7 @@
 <head lang="en">
     <base href="${basePath }">
     <meta charset="UTF-8">
-    <title></title>
+    <title>设备信息管理</title>
     <link href="css/sbxxgl.css" rel="stylesheet" type="text/css">
     <link href="css/page.css" rel="stylesheet" type="text/css">
     <script src="js/jquery.js"></script>
@@ -113,7 +113,7 @@
 
         </form>
     </div>
-    <h5>信息列表</h5>
+    <%--<h5>信息列表</h5>--%>
     <br/>
     <table id="xx">
         <thead>

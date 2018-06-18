@@ -12,7 +12,7 @@ pageContext.setAttribute("basePath", basePath);
 <head lang="en">
     <base href="${basePath }">
     <meta charset="UTF-8">
-    <title></title>
+    <title>站点配置管理</title>
     <link href="css/xinxi.css" rel="stylesheet" type="text/css">
     <link href="css/page.css" rel="stylesheet" type="text/css">
     <script src="js/jquery.js"></script>

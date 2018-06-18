@@ -12,7 +12,7 @@
 <head lang="en">
     <base href="${basePath }">
     <meta charset="UTF-8">
-    <title></title>
+    <title>设备状态查看</title>
     <link href="css/sbzt.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script src="js/cascading.js" ></script>
@@ -62,7 +62,7 @@
 
         </form>
     </div>
-    <h5>信息列表</h5>
+    <%--<h5>信息列表</h5>--%>
     <br/>
         <table>
             <thead>

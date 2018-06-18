@@ -89,7 +89,7 @@
 
         </form>
     </div>
-    <span class="title">查询列表</span>
+    <%--<span class="title">查询列表</span>--%>
     <table>
         <thead>
         <tr>

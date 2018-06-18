@@ -1,21 +1,6 @@
-﻿@charset "utf-8";
-*{ list-style:none; text-decoration:none; padding:0; margin:0; border:none;}
+﻿*{ list-style:none; text-decoration:none; padding:0; margin:0; border:none; font-size: 12px;}
 a{ text-decoration: none;}
 body{ background:#1c8914;}
-
-#tip_1{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip_2{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip_3{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip_4{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip_5{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip_6{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tj_tip_1{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tj_tip_2{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tj_tip_3{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tj_tip_4{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tj_tip_5{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tj_tip_6{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-
 
 #tit{ width:100%; height:93px; background:url(../img/tit.jpg) no-repeat; background-size:cover; border-bottom:7px #1bb11c solid;}
 #tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:2.1em; margin-left:3%;color:#006600; font-weight:bold;  font-family: '宋体';}
@@ -27,7 +12,7 @@ body{ background:#1c8914;}
 #tit ul li .three a:hover{ color:#F00;}
 
 
-#caidan{ width:15%; height:1020px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
+#caidan{ width:15%; height:600px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
 #caidan ul{ width:100%;}
 #caidan ul .tit{ height:30px; background:url(../img/gl.jpg) no-repeat; font-size:0.8em; color:#FFF; line-height:30px;}
 #caidan ul .tit img{ margin-left:4.6%; margin-top:9px; float:left; max-width: 100%;}
@@ -46,7 +31,7 @@ body{ background:#1c8914;}
 #caidan ul .cd_4 .zdgl .ul .a_3{ width:100%; height:27px; background:#eaeaea; display:block;}
 
 
-#content_r{ width:84%;  margin-left:16%; background:#eaeaea; height:1022px;}
+#content_r{ width:84%;  margin-left:16%; background:#eaeaea; height:600px;}
 #content_r .tit{ width:100%; height:40px; border-bottom: 1px solid #cccccc;}
 #content_r .tit .xx{ float:left; margin-top:8px; margin-left:1%; font-size:12px; height:20px; line-height:20px;}
 #content_r .tit .xx img{ margin-top:0px; float:left;}
@@ -60,7 +45,7 @@ background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(246,246,246,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */}
 #content_r .gn form .span1{width: 11%; font-size: 12px; color: #595959;margin-top:10px; margin-left: 1%;
 }
-#content_r .gn form input{width: 8%; height: 20px; border: 1px solid #bfbfbf;margin-top:10px; border-radius: 5px;}
+#content_r .gn form input{width: 10%; height: 20px; border: 1px solid #bfbfbf;margin-top:10px; border-radius: 5px;}
 #content_r .gn form select{
    width: 10% !important ;  border: 1px solid #cccccc; height: 20px; border-radius: 3px; margin-top:10px;
 }
@@ -74,7 +59,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
   position: absolute;
   top: 0px;
   left: 83%;
- height: 20px;
+ height: 30px;
 
 }
 #content_r .gn form .reset{width: 8%; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
@@ -96,9 +81,7 @@ top: 0px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 #content_r .gn span select{width: 25% !important ; margin-right: 1%; border: 1px solid #bfbfbf; height: 40px;}
-#content_r h4{margin-top:30px; margin-left:1%; !important;}
 #content_r #bg{margin-left: 3%; margin-top: 10px;background: url("../img/bg3.jpg") repeat-x;border: 1px solid #bfbfbf;width: 90%;}
-
 #content_r .input1{background: none; color:#269dc9; }
 #content_r .input2{background: none; color:#da0000; }
 #content_r table{margin-left: 2%; width: 98%; font-size: 0.75em;}
@@ -126,12 +109,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', end
 #content_r table .t9{width: 10%;}
 #content_r h5{
     margin-left: 2%;
-    margin-top: 50px;
+    margin-top: 20px;
     margin-bottom: 10px;
     color:#707d83;
 }
 #bg {
-    margin-top:50px;
+    margin-top:10px;
     margin-left:20px;
     margin-right:20px;
     margin-bottom:5px;
@@ -141,22 +124,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', end
 }
 
 
-#chakan{width: 70%; margin-left: 3%;float: left; display: none; height: 800px;}
-#content_r #bg1{margin-left: 15%; margin-top: 10px;background: url("../img/bg3.jpg") repeat-x;border: 1px solid #bfbfbf;width: 100%; border-right:1px #b9b9b9 solid; box-shadow: 10px 10px 5px #888888; }
-#chakan .s1{height: 50px; width: 30%; text-align: center;  color:#383838; border-bottom: 1px solid #bfbfbf;}
-#chakan .s2{height: 50px; width: 70%; text-align: center; border-bottom: 1px solid #bfbfbf;}
-#content_r #bg1 caption{
-    height: 50px;
-    line-height: 50px;
-    /*font:bold 2em;*/
-    background: #f0f7ff;
-    border:1px solid #bfbfbf;
-    box-shadow: 10px 10px 5px #888888;
-    border-bottom: none;
-    margin-bottom: -1px;
-}
-#chakan form{margin-left: 35%;float: left; margin-top: 20px; width: 100%;}
-#chakan form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 44px; margin-left: 19%;}
+#chakan{width: 70%; margin-left: 3%;float: left; display: none; height: 400px;}
+#content_r #bg1{margin-left: 15%; margin-top: 7px;background: url("../img/bg3.jpg") repeat-x;border: 1px solid #bfbfbf;width: 100%; border-right:1px #b9b9b9 solid; box-shadow: 10px 10px 5px #888888; height: 400px;}
+#chakan .s1{height: 30px; width: 30%; text-align: center;  color:#383838; border-bottom: 1px solid #bfbfbf;}
+#chakan .s2{height: 30px; width: 70%; text-align: center; border-bottom: 1px solid #bfbfbf;}
+
+#chakan form{margin-left: 35%;float: left;  width: 100%;}
+#chakan form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 44px; margin-left: 25%;}
 
 
 #bg {
@@ -203,24 +177,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', end
 }
 #xiugai{ width: 80%; 
         margin-left: 8%;
-        height: 800px;
+        height: 440px;
 background: rgb(248,248,248); 
 box-shadow: 10px 0 10px -10px rgba(0,0,0,.6),-10px 0  10px -10px rgba(0,0,0,.6);
 border-radius: 8px;
 }
 #xiugai h5{
-    height: 30px;
-    line-height: 30px;
+    height: 20px;
+    line-height: 20px;
     padding-top: 10px;
     width: 100%;
     text-align: center;
-    font-size: 15px;
+    font-size: 12px;
 }
-#xiugai span{margin-left: 20%;margin-top: 10px;}
-#xiugai input{margin-left: 1%;width: 40%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 15px; border-radius: 4px;}
-#xiugai .lxfs{width: 40%; margin-right: 0;}
-#xiugai textarea{width: 50%; height: 90px; border: 1px solid #bfbfbf; margin-left: 30%; resize: none;}
-#xiugai select{width: 15%;height: 30px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 15px;
+#xiugai span{margin-left: 15%; font-size: 12px;}
+#xiugai input{margin-left: 1%;width: 40%; height: 20px;  border: 1px solid #bfbfbf; margin-top: 5px; border-radius: 4px;}
+#xiugai .lxfs{width: 40%; margin-right: 0; font-size: 12px;}
+#xiugai textarea{width: 50%; height: 80px; border: 1px solid #bfbfbf;resize: none;margin-left:25%;}
+#xiugai select{width: 15%;height: 20px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 5px;font-size: 12px;
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e5e5e5+100;White+3D */
 background: rgb(255,255,255); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
@@ -230,34 +204,35 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 }
 
-#xiugai .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 15px;}
-#xiugai .xg{width: 80px; height: 40px; line-height: 40px; margin-left: 40%; background:#ffffff;}
+#xiugai .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 5px; font-size: 12px;}
+#xiugai .xg{width: 80px; height: 25px; line-height: 20px; margin-left: 48%; background:#ffffff; font-size: 12px;}
 #nature{width: 100%; height: 60px; !important; display: block;}
-#tianjia{ width: 80%; background: #e4ecef; height: 830px; padding-top: 50px; border: 1px solid #cccccc; border-radius: 8px; margin-left: 5%;}
+#tianjia{ width: 80%; background: #e4ecef; height: 450px; padding-top: 10px; border: 1px solid #cccccc; border-radius: 8px; margin-left: 5%;}
 #tianjia form{
     background: #fffffd;
     width: 90%;
     margin-left:5%;
-    padding-bottom: 40px;
-    padding-top:40px;
+    padding-bottom: 10px;
+    padding-top:10px;
     border: 6px solid #ecf5f4; 
     outline: solid 1px #ccd6d8;
     border-radius: 8px;
+    font-size: 12px;
 }
-#tianjia span{margin-left: 15%;margin-top: 10px; }
-#tianjia input{margin-left: 1%;width: 30%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 15px; border-radius: 4px;}
+#tianjia span{margin-left: 10%;margin-top: 5px; }
+#tianjia input{margin-left: 1%;width: 30%; height: 20px;  border: 1px solid #bfbfbf; margin-top: 5px; border-radius: 4px;}
 #tianjia .lxfs{width: 40%; margin-right: 0;}
 #tianjia textarea{width: 50%; height: 80px; border: 1px solid #bfbfbf; margin-top: 5px; resize: none; margin-left:26%;}
-#tianjia select{width: 15%;height: 30px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 5px;}
+#tianjia select{width: 15%;height: 20px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 5px;}
 #tianjia .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 5px;}
-#tianjia .tj{width: 80px; height: 40px; line-height: 40px; margin-left: 40%; background: #ffffff; border-radius: 4px; }
+#tianjia .tj{width: 80px; height: 40px; line-height: 40px; margin-left: 50%; background: #ffffff; border-radius: 4px; }
 #ts{
     width: 30%;height: 30%;
 }
 #peizhi{
     width: 60%;margin-left: 16%;
     border: 1px solid #bfbfbf;
-    height: 600px;
+    height: 450px;
     border-radius: 8px;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcfff4+0,e9e9ce+100;Wax+3D+%232 */
 background: rgb(252,255,244); /* Old browsers */
@@ -270,15 +245,15 @@ margin-bottom: 20px;
 margin-top: 10px;
 }
 #peizhi h5{
-    height: 30px;
-    line-height: 30px;
+    height: 20px;
+    line-height: 20px;
     padding-top: 10px;
     width: 100%;
     text-align: center;
-    font-size: 15px;
+    font-size: 12px;
 }
-#peizhi span{margin-left: 20%;margin-top: 10px; }
-#peizhi input{margin-left: 1%;width: 40%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 30px; border-radius: 4px;}
+#peizhi span{margin-left: 20%;margin-top: 15px; }
+#peizhi input{margin-left: 1%;width: 40%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 15px; border-radius: 4px;}
 #peizhi .pz{width: 80px; height: 40px; line-height: 40px; margin-left: 35%; background:#ffffff; border-radius: 4px; float: left;}
 #peizhi .pz1{
     float: left;
@@ -366,11 +341,3 @@ margin-top: 10px;
     background-color: #d7dce2!important;
     
 }
-#tip1{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip2{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip3{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip4{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#tip5{margin-left: 2px!important;  color: #da0000; font-size: 12px;}
-#ms_dev{width:80%; margin-left:20%; display:block; margin-top:10px; !important;}
-#ms_dev1{width:80%; margin-left:20%; display:block; margin-top:10px; !important;}
-

@@ -243,10 +243,7 @@
             <input type="submit"  value="查询" class="cx"> <input type="button" value="添加监测站" class="cx" onclick="tianjia()"/>
         </form>
     </div>
-
-
-    <h5>数据列表：</h5>
-
+    <%--<h5>数据列表：</h5>--%>
     <div id="xq">
         <table  id="bg">
             <thead>

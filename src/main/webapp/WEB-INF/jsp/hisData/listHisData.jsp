@@ -16,7 +16,8 @@
 <script src="js/jquery.js"></script>
     <link href="css/xinxi.css" rel="stylesheet" type=text/css>
     <link href="css/page.css" rel="stylesheet" type="text/css">
-    <link href="css/sjck.css" rel="stylesheet" type="text/css">
+    <link href="css/lssjcx.css" rel="stylesheet" type="text/css">
+    <%--<link href="css/sjck.css" rel="stylesheet" type="text/css">--%>
     <script src="js/pageNav.js" type="text/javascript"></script>
     <script src="js/sjck.js" type="text/javascript"></script>
     <script src="js/jilian.js" type="text/javascript"></script>
@@ -50,7 +51,7 @@
 		            $("#m_soil_h3").html(data.soil_h3);
 		            $("#m_soil_ec").html(data.soil_ec);
 		            $("#m_data_time").html(data.data_time);
-		            $("#m_dev_status").html(data.dev_status);
+		            $("#m_dev_status").html(data.dataDevStatus.data_name);
 		        }
 		    });
 		}
@@ -173,80 +174,96 @@
             <tr>
                 <td>监测站名称</td>
                 <td id="m_ms_code_value"></td>
-            </tr>
-            <tr>
                 <td>监测站编码</td>
                 <td id="m_ms_code"></td>
             </tr>
+            <%--<tr>--%>
+                <%--<td>监测站编码</td>--%>
+                <%--<td id="m_ms_code"></td>--%>
+            <%--</tr>--%>
             <tr>
                 <td>设备名称</td>
                 <td id="m_dev_code_value"></td>
-            </tr>
-            <tr>
                 <td>设备编码</td>
                 <td id="m_dev_code"></td>
             </tr>
+            <%--<tr>--%>
+                <%--<td>设备编码</td>--%>
+                <%--<td id="m_dev_code"></td>--%>
+            <%--</tr>--%>
             <tr>
                 <td>空气温度</td>
                 <td id="m_air_t"></td>
-            </tr>
-            <tr>
                 <td>空气湿度</td>
                 <td id="m_air_h"></td>
             </tr>
+            <%--<tr>--%>
+                <%--<td>空气湿度</td>--%>
+                <%--<td id="m_air_h"></td>--%>
+            <%--</tr>--%>
             <tr>
                 <td>风速</td>
                 <td id="m_wind_s"></td>
-            </tr>
-            <tr>
                 <td>风向</td>
                 <td id="m_wind_d"></td>
             </tr>
+            <%--<tr>--%>
+                <%--<td>风向</td>--%>
+                <%--<td id="m_wind_d"></td>--%>
+            <%--</tr>--%>
             <tr>
                 <td>露点温度</td>
                 <td id="m_dew_p"></td>
-            </tr>
-            <tr>
                 <td>降雨量</td>
                 <td id="m_rain_f"></td>
             </tr>
+            <%--<tr>--%>
+                <%--<td>降雨量</td>--%>
+                <%--<td id="m_rain_f"></td>--%>
+            <%--</tr>--%>
             <tr>
                 <td>日照时数</td>
                 <td id="m_sunshine_h"></td>
-            </tr>
-            <tr>
                 <td>大气压</td>
                 <td id="m_atmo_s"></td>
             </tr>
+            <%--<tr>--%>
+                <%--<td>大气压</td>--%>
+                <%--<td id="m_atmo_s"></td>--%>
+            <%--</tr>--%>
             <tr>
                 <td>土壤温度1</td>
                 <td id="m_soil_t1"></td>
-            </tr>
-            <tr>
                 <td>土壤温度2</td>
                 <td id="m_soil_t2"></td>
             </tr>
+            <%--<tr>--%>
+                <%--<td>土壤温度2</td>--%>
+                <%--<td id="m_soil_t2"></td>--%>
+            <%--</tr>--%>
             <tr>
                 <td>土壤温度3</td>
                 <td id="m_soil_t3"></td>
-            </tr>
-            <tr>
                 <td>土壤湿度1</td>
                 <td id="m_soil_h1"></td>
             </tr>
+            <%--<tr>--%>
+                <%--<td>土壤湿度1</td>--%>
+                <%--<td id="m_soil_h1"></td>--%>
+            <%--</tr>--%>
             <tr>
                 <td>土壤湿度2</td>
                 <td id="m_soil_h2"></td>
-            </tr>
-            <tr>
                 <td>土壤湿度3</td>
                 <td id="m_soil_h3"></td>
             </tr>
+            <%--<tr>--%>
+                <%--<td>土壤湿度3</td>--%>
+                <%--<td id="m_soil_h3"></td>--%>
+            <%--</tr>--%>
             <tr>
                 <td>土壤EC值</td>
                 <td id="m_soil_ec"></td>
-            </tr>
-            <tr>
                 <td>时间</td>
                 <td id="m_data_time"></td>
             </tr>
@@ -254,6 +271,10 @@
                 <td>设备状态</td>
                 <td id="m_dev_status"></td>
             </tr>
+            <%--<tr>--%>
+                <%--<td>设备状态</td>--%>
+                <%--<td id="m_dev_status"></td>--%>
+            <%--</tr>--%>
         </table>
         <form>
             <input type="button" value="关闭" onclick="clo()"/>
