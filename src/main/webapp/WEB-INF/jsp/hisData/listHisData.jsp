@@ -109,7 +109,7 @@
                     </c:forEach>
                 </select>
             <span>数据时间：</span>
-                <input type="datetime-local" name="data_time_begin1">--<input type="datetime-local" name="data_time_end1">
+                <input type="datetime-local" name="data_time_begin1" width="100px">--<input type="datetime-local" name="data_time_end1">
                 
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
@@ -122,7 +122,7 @@
             <td class="t2">监测站编码</td>
             <td class="t3">监测设备编码</td>
             <td class="t5">采集时间</td>
-            <td class="t6">数据查看</td>
+            <td class="t6">数据/气象查看</td>
         </tr>
         </thead>
         <tbody>

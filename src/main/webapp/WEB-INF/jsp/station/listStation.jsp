@@ -115,7 +115,7 @@
                         }
                     } 
                     
-                    
+                    alert(1);
                     for (let i = 0, n = data.data.msDev.length; i < n; i++) {
                         $("#ms_dev").append("<input name='ms_dev' type='checkbox' id='msDev"+data.data.msDev[i].data_value+"' class='gn' value='"+data.data.msDev[i].data_value+"'>"+data.data.msDev[i].data_name+"");
                         if(i!=0&&i%3==0) {

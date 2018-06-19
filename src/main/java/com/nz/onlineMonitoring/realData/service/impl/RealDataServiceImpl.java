@@ -168,43 +168,107 @@ public class RealDataServiceImpl implements RealDataService {
         String dev_code_object = dev_code.substring(3,4);
         String dev_code_type = dev_code.substring(3,6);
         //如果第4位是5，则是查气象表，查出来一条数据，然后编码解析
-        if(dev_code.charAt(3) == '5'){
+        if(dev_code_object.equals("5")){
             listRealMeteorological = realMeteorologicalMapper.loadByMsCodeAndDevCode(map);
-            if (listRealMeteorological != null && listRealMeteorological.size() == 1) {
+            if (listRealMeteorological != null && listRealMeteorological.size() > 0) {
+                String dev_code_value = "";
                 Dict devObject = dictMapper.loadByDevType(Integer.parseInt(dev_code_object));
                 Dict devType = dictMapper.loadByDevType1(Integer.parseInt(dev_code_type));
                 if (devObject == null || devType == null) {
-                    throw new RuntimeException("暂无数据");
+                    dev_code_value = "编码无法解析！";
                 }else {
-                    listRealMeteorological.get(0).setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+listRealMeteorological.get(0).getDev_code().substring(6, 8)+"个");
+                    dev_code_value = devObject.getData_name()+devType.getData_name()+"第"+dev_code.substring(6, 8)+"个";
                 }
+                for (RealMeteorological realMeteorological : listRealMeteorological) {
+                    realMeteorological.setDev_code_value(dev_code_value);
+                }
+            }else {
+                throw new RuntimeException("暂无数据");
             }
         } else if (dev_code_type.equals("101") || dev_code_type.equals("201")) {
             RealData rd = new RealData();
             rd.setDev_code(dev_code);
             rd.setMs_code(ms_code);
-            listRealData.add(rd);
             Dict devObject = dictMapper.loadByDevType(Integer.parseInt(dev_code_object));
             Dict devType = dictMapper.loadByDevType1(Integer.parseInt(dev_code_type));
             if (devObject == null || devType == null) {
-                throw new RuntimeException("暂无数据");
+                rd.setDev_code_value("编码无法解析！");
             }else {
-                listRealData.get(0).setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+listRealData.get(0).getDev_code().substring(6, 8)+"个");
+                rd.setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+dev_code.substring(6, 8)+"个");
             }
+            
+            File file = new File("E:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
+            if (file.exists()) {
+                File[] files = file.listFiles();
+                if (files.length != 0) {
+                    //最新的时间
+                    String maxTime = "";
+                    SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
+                    //孢子仪和测报灯图片的命名不同，分开解析
+                    if (dev_code.startsWith("dev101")) {
+                        for (File file2 : files) {
+                            if (!file2.isDirectory()) {
+                                String t = file2.getName();
+                                int index = t.lastIndexOf(".");
+                                maxTime = maxTime.compareTo(t.substring(index-16, index-2)) < 0 ? t.substring(index-16, index-2) : maxTime;
+                            }
+                        }
+                        StringBuffer s = new StringBuffer(maxTime);
+                        s.insert(12, ":");
+                        s.insert(10, ":");
+                        s.insert(8, " ");
+                        s.insert(6, "-");
+                        s.insert(4, "-");
+                        maxTime = s.toString();
+                    }else {
+                        for (File file2 : files) {
+                            if (!file2.isDirectory()) {
+                                String t = file2.getName();
+                                int index = t.lastIndexOf(".");
+                                maxTime = maxTime.compareTo(t.substring(index-19, index-2)) < 0 ? t.substring(index-19, index-2) : maxTime;
+                            }
+                        }
+                        StringBuffer s = new StringBuffer(maxTime);
+                        s.replace(14, 15, ":");
+                        s.replace(11, 12, ":");
+                        s.replace(8, 9, " ");
+                        s.insert(0, "20");
+                        maxTime = s.toString();
+                    }
+                    try {
+                        rd.setData_time(formatter.parse(maxTime));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }else {
+                    throw new RuntimeException("暂无数据");
+                }
+            }else {
+                throw new RuntimeException("暂无数据");
+            }
+            listRealData.add(rd);
         }else {
             listRealData = realDataMapper.loadByMsCodeAndDevCode(map);
-            if (listRealData != null && listRealData.size() == 1) {
+            if (listRealData != null && listRealData.size() > 0) {
+                String dev_code_value = "";
                 Dict devObject = dictMapper.loadByDevType(Integer.parseInt(dev_code_object));
                 Dict devType = dictMapper.loadByDevType1(Integer.parseInt(dev_code_type));
                 if (devObject == null || devType == null) {
-                    throw new RuntimeException("暂无数据");
+                    dev_code_value = "编码无法解析！";
                 }else {
-                    listRealData.get(0).setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+listRealData.get(0).getDev_code().substring(6, 8)+"个");
+                    dev_code_value = devObject.getData_name()+devType.getData_name()+"第"+dev_code.substring(6, 8)+"个";
                 }
+                for (RealData realData : listRealData) {
+                    realData.setDev_code_value(dev_code_value);
+                }
+            }else {
+                throw new RuntimeException("暂无数据");
             }
         }
-        map.put("listRealMeteorological", listRealMeteorological);
-        map.put("listRealData", listRealData);
+        List list = new ArrayList<>();
+        list.addAll(listRealMeteorological);
+        list.addAll(listRealData);
+        map.put("listRealData", list);
     }
 
 
@@ -247,7 +311,10 @@ public class RealDataServiceImpl implements RealDataService {
                                 list.add(t);
                                 int index = t.lastIndexOf(".");
                                 sum++;
-                                maxTime = maxTime.compareTo(t.substring(index-16, index-2)) < 0 ? t.substring(index-16, index-2) : maxTime;
+                                if (index >= 16) {
+                                    maxTime = maxTime.compareTo(t.substring(index-16, index-2)) < 0 ? t.substring(index-16, index-2) : maxTime;
+                                } 
+                                
                             }
                         }
                         StringBuffer s = new StringBuffer(maxTime);
@@ -264,7 +331,9 @@ public class RealDataServiceImpl implements RealDataService {
                                 list.add(t);
                                 int index = t.lastIndexOf(".");
                                 sum++;
-                                maxTime = maxTime.compareTo(t.substring(index-19, index-2)) < 0 ? t.substring(index-19, index-2) : maxTime;
+                                if (index >= 19) {
+                                    maxTime = maxTime.compareTo(t.substring(index-19, index-2)) < 0 ? t.substring(index-19, index-2) : maxTime;
+                                }
                             }
                         }
                         StringBuffer s = new StringBuffer(maxTime);
