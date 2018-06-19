@@ -8,6 +8,7 @@ import com.nz.onlineMonitoring.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -31,6 +32,9 @@ public class DeviceController {
 								  @RequestParam(required=false,name="city")String[] citys,
 								  String dev_object,HttpServletRequest request) {
 
+		if(dev_object != null && !dev_object.equals("")){
+			device.setDev_code("dev"+dev_object);
+		}
 		try {
 			AuthorityUtil.getInstance().assignPermissions(citys, request, device);
 			//存储前端传来的数据
@@ -81,7 +85,7 @@ public class DeviceController {
 	}
 
 	//修改设备信息和配置设备信息共用次接口。
-	@RequestMapping(value = "/updateById")
+	@RequestMapping(value = "/updateById",method = RequestMethod.POST)
 	@ResponseBody
 	public JacksonData updateById(Device device){
 		JacksonData jacksonData = new JacksonData();

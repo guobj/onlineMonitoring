@@ -171,9 +171,6 @@
             <if test="dev_desc != null" >
                 dev_desc = #{dev_desc,jdbcType=VARCHAR},
             </if>
-            <if test="dr != null" >
-                dr = #{dr},
-            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
