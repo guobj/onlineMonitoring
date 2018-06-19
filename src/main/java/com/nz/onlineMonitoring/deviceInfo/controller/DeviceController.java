@@ -1,10 +1,12 @@
 package com.nz.onlineMonitoring.deviceInfo.controller;
 
-import com.nz.onlineMonitoring.deviceInfo.model.Device;
-import com.nz.onlineMonitoring.deviceInfo.service.DeviceService;
-import com.nz.onlineMonitoring.utils.AuthorityUtil;
-import com.nz.onlineMonitoring.utils.JacksonData;
-import com.nz.onlineMonitoring.utils.PageBean;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.nz.onlineMonitoring.deviceInfo.model.Device;
+import com.nz.onlineMonitoring.deviceInfo.service.DeviceService;
+import com.nz.onlineMonitoring.utils.AuthorityUtil;
+import com.nz.onlineMonitoring.utils.JacksonData;
+import com.nz.onlineMonitoring.utils.PageBean;
 
 @Controller
 @RequestMapping("/device")
@@ -123,22 +125,17 @@ public class DeviceController {
 		if (file.exists()) {
 			File[] files = file.listFiles();
 			if (files.length == 0) {
-				System.out.println("文件夹是空的!");
 				return null;
 			} else {
 				for (File file2 : files) {
 					if (file2.isDirectory()) {
-						System.out.println("文件夹:" + file2.getAbsolutePath());
 //						traverseFolder2(file2.getAbsolutePath());
 					} else {
-						System.out.println("文件:" + file2.getAbsolutePath());
 						list.add(file2.getName());
 					}
 				}
 			}
-		} else {
-			System.out.println("文件不存在!");
-		}
+		} 
 		jacksonData.success(list);
 		return jacksonData;
 	}

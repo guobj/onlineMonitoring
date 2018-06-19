@@ -80,21 +80,16 @@ public class RealDataController {
 		if (file.exists()) {
 			File[] files = file.listFiles();
 			if (files.length == 0) {
-				System.out.println("文件夹是空的!");
-				return null;
+				jacksonData.failure("暂无数据");
 			} else {
 				for (File file2 : files) {
 					if (file2.isDirectory()) {
-						System.out.println("文件夹:" + file2.getAbsolutePath());
 					} else {
-						System.out.println("文件:" + file2.getAbsolutePath());
 						list.add(file2.getName());
 					}
 				}
 			}
-		} else {
-			System.out.println("文件不存在!");
-		}
+		} 
 		jacksonData.success(list);
 		return jacksonData;
 	}
