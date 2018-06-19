@@ -180,7 +180,7 @@
         <div id="imga"></div>
         <form>
             
-            <input type="button" value="关闭" onclick="clos()" style="margin-left:20%; float:left"/>
+            <input type="button" value="关闭" onclick="clos()" style="margin-left:40%; float:left"/>
             
         </form>
     </div>

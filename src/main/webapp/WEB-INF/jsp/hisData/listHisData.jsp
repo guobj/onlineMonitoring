@@ -109,7 +109,7 @@
                     </c:forEach>
                 </select>
             <span>数据时间：</span>
-                <input type="datetime-local" name="data_time_begin1" width="100px">--<input type="datetime-local" name="data_time_end1">
+                <input type="datetime-local" name="data_time_begin1" style="width:13%;">--<input type="datetime-local" name="data_time_end1" style="width:13%;">
                 
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 

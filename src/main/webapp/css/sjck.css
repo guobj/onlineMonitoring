@@ -189,9 +189,10 @@ background: -moz-linear-gradient(top,  rgba(249,252,247,1) 0%, rgba(245,249,240,
 background: -webkit-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* Chrome10-25,Safari5.1-6 */
 background: linear-gradient(to bottom,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9fcf7', endColorstr='#f5f9f0',GradientType=0 ); /* IE6-9 */
- width: 70%; height: 700px;box-shadow: 10px 10px 5px #888888; border: 1px solid #cccccc;}
-#content_r #img #imga{ width: 65%;margin-left: 3%;margin-top: 20px; height: 600px;}
+ width: 75%; height: 480px;box-shadow: 10px 10px 5px #888888; border: 1px solid #cccccc;}
+#content_r #img #imga{ width: 95%;margin-left: 3%;margin-top: 20px; height: 400px;  overflow-y:scroll;}
 #content_r #img input{margin-left: 45%; width: 10%; height: 30px; margin-top: 10px; border: 1px solid #bfbfbf; border-radius: 5px; }
+#content_r #img img{width:27%; margin-left:2%; margin-top:5px;}
 #weather table tr td{width: 25%; height: 33px; line-height: 33px; }
 
 #weather{width: 70%; margin-left: 3%;float: left; display: none; }
@@ -199,4 +200,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9fcf7', end
 
 
 #weather form{margin-left: 35%;float: left; margin-top: 15px; width: 100%;}
-#weather form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 32px; margin-left:25%;}
+#weather form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 32px;}

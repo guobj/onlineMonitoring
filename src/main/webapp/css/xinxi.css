@@ -175,12 +175,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', end
     background: #F8F8F8 none repeat-x scroll center left;
     color:#000;
 }
+#ms_dev{margin-left:15%; width:75%; display:block;}
 #xiugai{ width: 80%; 
         margin-left: 8%;
-        height: 440px;
+        height: 480px;
 background: rgb(248,248,248); 
 box-shadow: 10px 0 10px -10px rgba(0,0,0,.6),-10px 0  10px -10px rgba(0,0,0,.6);
 border-radius: 8px;
+
 }
 #xiugai h5{
     height: 20px;
@@ -193,7 +195,7 @@ border-radius: 8px;
 #xiugai span{margin-left: 15%; font-size: 12px;}
 #xiugai input{margin-left: 1%;width: 40%; height: 20px;  border: 1px solid #bfbfbf; margin-top: 5px; border-radius: 4px;}
 #xiugai .lxfs{width: 40%; margin-right: 0; font-size: 12px;}
-#xiugai textarea{width: 50%; height: 80px; border: 1px solid #bfbfbf;resize: none;margin-left:25%;}
+#xiugai textarea{width: 50%; height: 40px; border: 1px solid #bfbfbf;resize: none;}
 #xiugai select{width: 15%;height: 20px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 5px;font-size: 12px;
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e5e5e5+100;White+3D */
 background: rgb(255,255,255); /* Old browsers */
@@ -207,7 +209,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 #xiugai .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 5px; font-size: 12px;}
 #xiugai .xg{width: 80px; height: 25px; line-height: 20px; margin-left: 48%; background:#ffffff; font-size: 12px;}
 #nature{width: 100%; height: 60px; !important; display: block;}
-#tianjia{ width: 80%; background: #e4ecef; height: 450px; padding-top: 10px; border: 1px solid #cccccc; border-radius: 8px; margin-left: 5%;}
+#tianjia{ width: 80%; background: #e4ecef; height: 502px; padding-top: 10px; border: 1px solid #cccccc; border-radius: 8px; margin-left: 5%;}
 #tianjia form{
     background: #fffffd;
     width: 90%;
@@ -222,10 +224,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 #tianjia span{margin-left: 10%;margin-top: 5px; }
 #tianjia input{margin-left: 1%;width: 30%; height: 20px;  border: 1px solid #bfbfbf; margin-top: 5px; border-radius: 4px;}
 #tianjia .lxfs{width: 40%; margin-right: 0;}
-#tianjia textarea{width: 50%; height: 80px; border: 1px solid #bfbfbf; margin-top: 5px; resize: none; margin-left:26%;}
+#ms_dev1{margin-left:15%; width:75%; display:block; margin-bottom:5px;}
+#tianjia textarea{width: 50%; height: 80px; border: 1px solid #bfbfbf; margin-top: 5px; resize: none; }
 #tianjia select{width: 15%;height: 20px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 5px;}
 #tianjia .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 5px;}
-#tianjia .tj{width: 80px; height: 40px; line-height: 40px; margin-left: 50%; background: #ffffff; border-radius: 4px; }
+#tianjia .tj{width: 80px; height: 40px; line-height: 40px; margin-left: 40%; background: #ffffff; border-radius: 4px; }
 #ts{
     width: 30%;height: 30%;
 }

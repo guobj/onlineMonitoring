@@ -115,7 +115,6 @@
                         }
                     } 
                     
-                    alert(1);
                     for (let i = 0, n = data.data.msDev.length; i < n; i++) {
                         $("#ms_dev").append("<input name='ms_dev' type='checkbox' id='msDev"+data.data.msDev[i].data_value+"' class='gn' value='"+data.data.msDev[i].data_value+"'>"+data.data.msDev[i].data_name+"");
                         if(i!=0&&i%3==0) {
@@ -391,8 +390,9 @@
                 </select>
                 <br/>
                 <span id="ms_dev1" >建设内容:
-                    <c:forEach items="${msDev }" var="dev" >
-                       <input type="checkbox" name="ms_dev" class="gn" value="${dev.data_value }">${dev.data_name }
+                    <c:forEach items="${msDev }" var="dev" varStatus="i">
+                        <c:if test="${i.index % 4 == 0 and i.index != 0}"><br/></c:if>
+                        <input type="checkbox" name="ms_dev" class="gn" value="${dev.data_value }">${dev.data_name }
                     </c:forEach>
                 </span>
                     
