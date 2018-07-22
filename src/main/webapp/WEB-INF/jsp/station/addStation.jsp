@@ -10,7 +10,7 @@
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>监测站信息</title>
+<title>站点信息新增</title>
     <link href="css/xinxi.css" rel="stylesheet" type=text/css>
     <link href="css/page.css" rel="stylesheet" type=text/css>
     <script src="js/jquery.js"></script>
@@ -60,9 +60,9 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点信息管理</span></p></li>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点信息新增</span></p></li>
     
-        <div id="tianjia" style="display:block;">
+        <div id="tianjia" style="display:block;!important;" >
             <form id="addForm">
                 <span>监测站名称:</span>
                 <input type="text" id="tj_text_1" name="ms_name">

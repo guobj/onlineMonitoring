@@ -12,7 +12,7 @@ body{ background:#1c8914;}
 #tit ul li .three a:hover{ color:#F00;}
 
 
-#caidan{ width:15%; height:600px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
+#caidan{ width:15%; height:880px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
 #caidan ul{ width:100%;}
 #caidan ul .tit{ height:30px; background:url(../img/gl.jpg) no-repeat; font-size:0.8em; color:#FFF; line-height:30px;}
 #caidan ul .tit img{ margin-left:4.6%; margin-top:9px; float:left; max-width: 100%;}
@@ -34,7 +34,7 @@ body{ background:#1c8914;}
 #caidan ul .cd_4 ul li .zdgl .a_4:hover{ background:#d7dce2;}
 #caidan ul .cd_4 ul li .zdgl .a_4 img{ margin-left:7%; margin-top:9px; float:left;}
 
-#content_r{ width:84%;  margin-left:16%; background:#eaeaea; height:600px;margin-top: 3px;}
+#content_r{ width:84%;  margin-left:16%; background:#eaeaea; height:880px;margin-top: 3px;}
 #content_r .tit{ width:100%; height:40px; border-bottom: 1px solid #cccccc;}
 #content_r .tit .xx{ float:left; margin-top:8px; margin-left:1%; font-size:12px; height:20px; line-height:20px;}
 #content_r .tit .xx img{ margin-top:0px; float:left;}
@@ -212,26 +212,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 #xiugai .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 5px; font-size: 12px;}
 #xiugai .xg{width: 80px; height: 25px; line-height: 20px; margin-left: 48%; background:#ffffff; font-size: 12px;}
 #nature{width: 100%; height: 60px; !important; display: block;}
-#tianjia{ width: 80%; background: #e4ecef; height: 502px; padding-top: 10px; border: 1px solid #cccccc; border-radius: 8px; margin-left: 5%;}
+
+#tianjia{ width: 80%; background: #e4ecef; height:730px; padding-top: 50px; border: 1px solid #cccccc; border-radius: 8px; margin-left: 5%; margin-top:20px; }
 #tianjia form{
     background: #fffffd;
     width: 90%;
     margin-left:5%;
-    padding-bottom: 10px;
-    padding-top:10px;
+    padding-bottom: 20px;
+    padding-top:20px;
     border: 6px solid #ecf5f4; 
     outline: solid 1px #ccd6d8;
     border-radius: 8px;
-    font-size: 12px;
 }
-#tianjia span{margin-left: 10%;margin-top: 5px; }
-#tianjia input{margin-left: 1%;width: 30%; height: 20px;  border: 1px solid #bfbfbf; margin-top: 5px; border-radius: 4px;}
+#tianjia span{margin-left: 15%;margin-top: 15px;display: inline-block; }
+#tianjia input{margin-left: 1%;width: 30%; height: 30px;  border: 1px solid #bfbfbf; margin-top: 15px; border-radius: 4px;}
 #tianjia .lxfs{width: 40%; margin-right: 0;}
-#ms_dev1{margin-left:15%; width:75%; display:block; margin-bottom:5px;}
 #tianjia textarea{width: 50%; height: 80px; border: 1px solid #bfbfbf; margin-top: 5px; resize: none; }
-#tianjia select{width: 15%;height: 20px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 5px;}
-#tianjia .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 5px;}
+#tianjia select{width: 15%;height: 30px; border: 1px solid #bfbfbf; margin-left: 2.5%; margin-top: 15px;}
+#tianjia .gn{width: 3%; height: 15px; margin-left: 0; margin-right: 0; margin-top: 15px;}
 #tianjia .tj{width: 80px; height: 40px; line-height: 40px; margin-left: 40%; background: #ffffff; border-radius: 4px; }
+
 #ts{
     width: 30%;height: 30%;
 }
@@ -275,75 +275,16 @@ margin-top: 10px;
     margin-left: 55%;
     margin-top: 10px;
 }
-.page {
-    text-align: center;
-}
-.fl {
-    float: left;
-}
-.fr {
-    float: right;
-}
-.pagingUl {
-    float: right;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    height: 30px;
-}
-.pagingUl li {
-    float: left;
-    width: 30px;
-    height: 30px;
-    background: #fff;
-    text-align: center;
-    margin-right: 5px;
-    border-radius: 5px
-}
-.pagingUl li a {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 28px;
-    color: #666;
-    font-size: 12px;
-    border-radius: 5px
-}
-.prv,
-.next {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    cursor: pointer;
-    background: #fff;
-    padding: 0 5px;
-    border-radius: 5px;
-}
-.prv {
-    margin-right: 10px;
-}
-.first,
-.last {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
-    text-align: center;
-    line-height: 30px;
-    /*border: 1px solid #ddd;*/
-    cursor: pointer;
-    background: #fff;
-    padding: 0 5px;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-.prv:hover,
-.next:hover,
-.first:hover,
-.last:hover,
-.pagingUl li a:hover,
-.activP {
-    background-color: #d7dce2!important;
-    
-}
+#tip_1{color:#F00; font-size:12px; margin-left:1% !important;}
+#tip_2{color:#F00;font-size:12px; margin-left:1% !important;}
+#tip_3{color:#F00; font-size:12px; margin-left:1% !important;}
+#tip_4{color:#F00; font-size:12px; margin-left:1% !important;}
+#tip_5{color:#F00; font-size:12px; margin-left:1% !important;}
+#tip_6{color:#F00;font-size:12px; margin-left:1% !important;}
+#tj_tip_1{color:#F00;font-size:12px; margin-left:1% !important;}
+#tj_tip_2{color:#F00; font-size:12px; margin-left:1% !important;}
+#tj_tip_3{color:#F00; font-size:12px; margin-left:1% !important;}
+#tj_tip_4{color:#F00; font-size:12px; margin-left:1% !important;}
+
+#tj_tip_5{color:#F00; font-size:12px; margin-left:1% !important;}
+#tj_tip_6{color:#F00; font-size:12px; margin-left:1% !important;}

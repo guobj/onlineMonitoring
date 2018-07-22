@@ -1,10 +1,10 @@
 ﻿/**
  * Created by DELL on 2018/6/2.
  */
-var height=$("#content_r").height();
+
 
 $(function(){
-    var height=$("#content_r").height();
+
     //日期
     var date=new Date();
     $("#year").html(date.getFullYear());
@@ -66,7 +66,7 @@ $(function(){
         $(this).css("background","#EEF4F9");
     })
     $("#xiugai").hide();
-    $("#tianjia").hide()
+
     $("#peizhi").hide();
 })
 $(function(){
@@ -84,7 +84,7 @@ $(function(){
         $(this).css("background","#EEF4F9");
     })
     $("#xiugai").hide();
-    $("#tianjia").hide()
+
     $("#peizhi").hide();
 })
 function chakan(obj){
@@ -117,22 +117,8 @@ function xg(){
     $("#caidan").css("height",height);
     $("#page").show();
 }
-function tianjia(){
-    $("#bg").hide();
-    $("#tianjia").show();
-    $("#Paging").hide();
-    $("h4").html("添加监测站");
-    $("#page").hide();
-    $("#xiugai").hide();
-    $("#Paging").hide();
 
-}
-function tj(){
-    $("#tianjia").hide();
-    $("#bg").show();
-    $("#page").show();
-    $("h4").html("数据列表");
-}
+
 function peizhi(obj,id){
     $(obj).parent().parent().parent().parent().hide();
     $("#manageId").val(id);
