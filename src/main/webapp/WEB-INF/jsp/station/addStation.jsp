@@ -53,7 +53,6 @@
       function realData(ms_code){
     	  window.location.href="realData/listByMsCode?ms_code="+ms_code;
       }
-   
     </script>
 </head>
 <body>

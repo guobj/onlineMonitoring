@@ -186,7 +186,12 @@ public class StationController {
      * @date 2018年6月11日 下午3:26:58
      */
     @GetMapping("/addStation")
-    public String jumpAddStation() {
+    public String jumpAddStation(Map<String, Object> map) {
+        map.put("msType", dictService.listMsType());
+        map.put("msFp", dictService.listMsFp());
+        map.put("msGate", dictService.listMsGate());
+        map.put("msNet", dictService.listMsNet());
+        map.put("msDev", dictService.analysisMsDev());
         return "station/addStation";
     }
     /**
