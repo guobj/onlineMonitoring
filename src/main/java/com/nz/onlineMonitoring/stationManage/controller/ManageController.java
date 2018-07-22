@@ -24,7 +24,7 @@ public class ManageController {
 
 	@Autowired
 	private ManageService manageService;
-
+ 
 	@RequestMapping(value = "/queryStationInfo")
 	public String queryStationInfo(Map<String, Object> map, Manage manage,
 										@RequestParam(required=false,defaultValue="1")Integer pages,
