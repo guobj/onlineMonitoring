@@ -51,8 +51,10 @@ public class Station {
     private Integer ms_gate;
     /**监测站描述,所属表字段为 t_station.ms_desc  */
     private String ms_desc;
-
-
+    /**按监测站的建站时间查询，此为开始时间  */
+    private String date_begin;
+    /**按监测站的建站时间查询，此为结束时间  */
+    private String date_end;
 	//是否删除 1删除0未删除
 	private Boolean dr = false;
 
@@ -451,4 +453,45 @@ public class Station {
     public void setMs_code_value(String ms_code_value) {
         this.ms_code_value = ms_code_value;
     }
+    /**
+     * 
+     * 方法描述：按监测站的建站时间查询，此为开始时间  
+     * @return
+     * @author ssh
+     * @date 2018年7月22日 上午10:47:08
+     */
+    public String getDate_begin() {
+        return date_begin;
+    }
+    /**
+     * 
+     * 方法描述：按监测站的建站时间查询，此为开始时间  
+     * @return
+     * @author ssh
+     * @date 2018年7月22日 上午10:47:08
+     */
+    public void setDate_begin(String date_begin) {
+        this.date_begin = date_begin;
+    }
+    /**
+     * 
+     * 方法描述：按监测站的建站时间查询，此为结束时间  
+     * @return
+     * @author ssh
+     * @date 2018年7月22日 上午10:47:08
+     */
+    public String getDate_end() {
+        return date_end;
+    }
+    /**
+     * 
+     * 方法描述：按监测站的建站时间查询，此为结束时间  
+     * @return
+     * @author ssh
+     * @date 2018年7月22日 上午10:47:08
+     */
+    public void setDate_end(String date_end) {
+        this.date_end = date_end;
+    }
+    
 }

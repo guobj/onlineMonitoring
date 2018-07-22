@@ -211,9 +211,9 @@
             <if test="station.ms_type != null and station.ms_type != ''" >
                 and ms_type = #{station.ms_type}
             </if>
-            <!-- 网关类型 -->
-            <if test="station.ms_gate != null and station.ms_gate != ''" >
-                and ms_gate = #{station.ms_gate}
+            <!-- 按建站时间查询 -->
+            <if test="station.date_begin != null and station.date_begin != '' and station.date_end != null and station.date_end != ''" >
+                and ms_date between #{station.date_begin} and #{station.date_end}
             </if>
         </where>
         limit #{record},10
@@ -241,9 +241,9 @@
             <if test="station.ms_type != null and station.ms_type != ''" >
                 and ms_type = #{station.ms_type}
             </if>
-            <!-- 网关类型 -->
-            <if test="station.ms_gate != null and station.ms_gate != ''" >
-                and ms_gate = #{station.ms_gate}
+            <!-- 按建站时间查询 -->
+            <if test="station.date_begin != null and station.date_begin != '' and station.date_end != null and station.date_end != ''" >
+                and ms_date between #{station.date_begin} and #{station.date_end}
             </if>
         </where>
     </select>

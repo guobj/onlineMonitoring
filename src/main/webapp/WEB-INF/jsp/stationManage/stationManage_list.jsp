@@ -164,10 +164,9 @@ pageContext.setAttribute("basePath", basePath);
                 <select id="s_area" name="city">
                     <option value="">区县</option>
                 </select>
-            <span class="span1">网关类型：</span>
-                <select id="ms_gate" name="station.ms_gate">
-                    <option value="">不限</option>
-                </select>
+           <span class="span1">建站时间： </span>
+                <input type="date" name="date_begin1" style="width:13%;">--<input type="date" name="date_end1" style="width:13%;">
+           
             <input type="button"  value="查询" class="search" onclick="submit()">
         </form>
     </div>

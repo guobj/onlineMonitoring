@@ -47,8 +47,8 @@ public class StationController {
                                     @RequestParam(required=false,defaultValue="1900-01-01")String date_begin1,
                                     @RequestParam(required=false,defaultValue="9999-01-01")String date_end1) {
         List<Station> listStation = null;
-        //station.setDate_begin(date_begin1);
-       // station.setDate_end(date_end1);
+        station.setDate_begin(date_begin1);
+        station.setDate_end(date_end1);
         try {
             AuthorityUtil.getInstance().assignPermissions(citys, request, station);
             map = PageBean.serverMap(map , station , pages);
