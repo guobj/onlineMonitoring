@@ -210,14 +210,13 @@
     <div class="gn">
         <form action="station/listStation" method="post">
            <!--  <span class="span1">监测站名称：</span><input type="text" name="ms_name" placeholder="不限" > -->
-            <span class="span1">资金来源：</span>
-                <select class="select1" name="ms_fp">
-                    <option value="">不限</option>
-                    <c:forEach items="${msFp }" var="fp">
-                        <option value="${fp.data_value }">${fp.data_name }</option>
-                    </c:forEach>
-                </select>
-            
+            <span  class="span1">监测站区域：</span>
+               <select id="s_city" name="city">
+                  <option value="">市区</option>
+               </select>
+               <select id="s_area" name="city" >
+                   <option value="">区县</option>
+               </select>
             <span class="span1">监测站类型：</span>
                 <select class="select1" name="ms_type">
                     <option value="">不限</option>
@@ -225,18 +224,18 @@
                         <option value="${type.data_value }">${type.data_name }</option>
                     </c:forEach>
                 </select>
-            <span  class="span1">监测站区域：</span>
-                <select id="s_city" name="city">
-                    <option value="">市区</option>
+          
+            <span class="span1">资金来源：</span>
+                <select class="select1" name="ms_fp">
+                    <option value="">不限</option>
+                    <c:forEach items="${msFp }" var="fp">
+                        <option value="${fp.data_value }">${fp.data_name }</option>
+                    </c:forEach>
                 </select>
-                <select id="s_area" name="city" >
-                    <option value="">区县</option>
-                </select>
-           
+ 
             <span class="span1 wg">建站时间： </span>
                 <input type="date" name="date_begin1" style="width:13%;">--<input type="date" name="date_end1" style="width:13%;">
-           
-
+         
             <input type="submit"  value="查询" class="cx"> <input type="button" value="添加监测站" class="cx" onclick="tianjia()"/>
         </form>
     </div>
@@ -506,89 +505,7 @@
 
     })
 
-    $(function(){
-    	$("#add").attr("disabled", true);
-        $("#tj_text_1").change(function(){
-            var str1 = reg1.test($("#tj_text_1").val());
-            if (str1 == true) {
-                $("#tj_tip_1").html("格式正确")
-            } else {
-                $("#tj_tip_1").html("请输入2-50位字符");
-                $("#add").attr("disabled", true);
-            }
-            
-        })
-        var temp = 0;
-        $("#tj_text_2").change(function(){
-            var str2 = reg2.test($("#tj_text_2").val());
-            if (str2 == true) {
-            	var code = $("#tj_text_2").val();
-                $.post("station/existMsCode",{ms_code:code},function(data){
-                    if (data > 0) {
-                        $("#tj_tip_2").html("编码已重复")
-                        temp = 1;
-                        $("#add").attr("disabled", true);
-                    }else {
-                        $("#tj_tip_2").html("格式正确")
-                        temp = 0;
-                    }
-                    if(temp==0&&reg1.test($("#tj_text_1").val())==true&&reg2.test($("#tj_text_2").val())==true&&reg3.test($("#tj_text_3").val())==true&&reg4.test($("#tj_text_4").val())==true&&reg5.test($("#tj_text_5").val())==true&&reg6.test($("#tj_text_6").val())==true){
-                        $("#add").removeAttr("disabled", true);
-                    }
-                });
-            } else {
-                $("#tj_tip_2").html("请输入8位数字");
-                $("#add").attr("disabled", true);
-            }
-            
-        })
-        $("#tj_text_3").change(function(){
-            var str3 = reg3.test($("#tj_text_3").val());
-            if (str3 == true) {
-                $("#tj_tip_3").html("格式正确")
-            } else {
-                $("#tj_tip_3").html("请输入0-100位字符");
-                $("#add").attr("disabled", true);
-            }
-            
-        })
-        $("#tj_text_4").change(function(){
-            var str4 = reg4.test($("#tj_text_4").val());
-            if (str4 == true) {
-                $("#tj_tip_4").html("格式正确")
-            } else {
-                $("#tj_tip_4").html("请输入0-100位字符");
-                $("#add").attr("disabled", true);
-            }
-            
-        })
-        $("#tj_text_5").change(function(){
-            var str5 = reg5.test($("#tj_text_5").val());
-            if (str5 == true) {
-                $("#tj_tip_5").html("格式正确")
-            } else {
-                $("#tj_tip_5").html("请输入0-300位字符");
-                $("#add").attr("disabled", true);
-            }
-            
-        })
-        $("#tj_text_6").change(function(){
-            var str6 = reg5.test($("#tj_text_6").val());
-            if (str6 == true) {
-                $("#tj_tip_6").html("格式正确")
-            } else {
-                $("#tj_tip_6").html("请输入0-300位字符");
-                $("#add").attr("disabled", true);
-            }
-            
-        })
-        $("#tianjia").children().children().change(function(){
-            if(temp==0&&reg1.test($("#tj_text_1").val())==true&&reg2.test($("#tj_text_2").val())==true&&reg3.test($("#tj_text_3").val())==true&&reg4.test($("#tj_text_4").val())==true&&reg5.test($("#tj_text_5").val())==true&&reg6.test($("#tj_text_6").val())==true){
-                $("#add").removeAttr("disabled", true);
-            }
-        })
 
-    })
 </script>
 
 </body>
