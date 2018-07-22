@@ -39,6 +39,5 @@ public class VDevStatusController {
 			map.put("message", e.getMessage());
 		}
 		return "device/deviceStatus_list";
-//		return jacksonData;
 	}
 }
