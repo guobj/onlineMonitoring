@@ -185,6 +185,19 @@ public class StationController {
      * @author ssh
      * @date 2018年6月11日 下午3:26:58
      */
+    @GetMapping("/addStation")
+    public String jumpAddStation() {
+        return "station/addStation";
+    }
+    /**
+     * 
+     * 方法描述：添加监测站
+     * @param id
+     * @param map
+     * @return
+     * @author ssh
+     * @date 2018年6月11日 下午3:26:58
+     */
     @PostMapping("/addStation")
     @ResponseBody
     public JacksonData addStation(Station station,Map<String , Object> map,String ms_date1) {
