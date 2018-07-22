@@ -129,7 +129,7 @@
                 <br/>
                 <span id="ms_dev1" >建设内容:
                     <c:forEach items="${msDev }" var="dev" varStatus="i">
-                        <c:if test="${i.index % 4 == 0 and i.index != 0}"><br/></c:if>
+                       
                         <input type="checkbox" name="ms_dev" class="gn" value="${dev.data_value }">${dev.data_name }
                     </c:forEach>
                 </span>

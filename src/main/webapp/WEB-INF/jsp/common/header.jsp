@@ -36,14 +36,9 @@
                 <a href="javascript:;" class="a_1"> <img src="img/xt3.png">&nbsp;站点管理</a>
                 <ul class="zdgl" id="c1">
                     <li><a href="station/listStation" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;监测站点管理</a>
-                    	 <ul>
-                         	<li><a href="station/addStation" class="a_4"><img src="img/xxtb.jpg">&nbsp;站点信息新增</a></li>
-                            <li><a href="#" class="a_4"><img src="img/xxtb.jpg">&nbsp;站点信息修改</a></li>
-                            <li><a href="#" class="a_4"><img src="img/xxtb.jpg">&nbsp;站点信息配置</a></li>
-                          </ul>
                     </li>
                     <li><a href="manage/queryStationInfo" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;监测站点查询</a></li>
-                    
+                    <li><a href="station/addStation" class="a_2"><img src="img/xxtb.jpg">&nbsp;站点信息新增</a></li>
                 </ul>
             </li>
             <li>

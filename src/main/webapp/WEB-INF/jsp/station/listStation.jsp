@@ -156,31 +156,7 @@
             $("#page").show();
             $("#Paging").show();
         }
-        //添加
-        function tj(){
-            var form = new FormData(document.getElementById("addForm"));
-            $.ajax({
-                type:"post",
-                url:"station/addStation",
-                data:form,
-                processData:false,
-                contentType:false,
-                dataType:'json',
-                success:function (data) {
-                    if(data.data >= 0){
-                        alert("添加成功");
-                        window.location.reload();
-                    }
-                }
-            });
-        }
-        function tj1(){
-            $("#tianjia").hide();
-            $("#bg").show();
-            $("#page").show();
-            $("h4").html("数据列表");
-            $("#Paging").show();
-        }
+      
       //删除方法
         function delStation(id){
             $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () {
@@ -211,10 +187,10 @@
         <form action="station/listStation" method="post">
            <!--  <span class="span1">监测站名称：</span><input type="text" name="ms_name" placeholder="不限" > -->
             <span  class="span1">监测站区域：</span>
-               <select id="s_city" name="city">
+               <select id="s_city" name="city" style="width:5%">
                   <option value="">市区</option>
                </select>
-               <select id="s_area" name="city" >
+               <select id="s_area" name="city" style="width:5%" >
                    <option value="">区县</option>
                </select>
             <span class="span1">监测站类型：</span>
@@ -236,7 +212,7 @@
             <span class="span1 wg">建站时间： </span>
                 <input type="date" name="date_begin1" style="width:13%;">--<input type="date" name="date_end1" style="width:13%;">
          
-            <input type="submit"  value="查询" class="cx"> <input type="button" value="添加监测站" class="cx" onclick="tianjia()"/>
+            <input type="submit"  value="查询" class="cx"> 
         </form>
     </div>
     <%--<h5>数据列表：</h5>--%>
@@ -248,10 +224,10 @@
                     <td class="t2">监测站编码</td>
                     <td class="t4">建设内容</td>
                     <td class="t5">监测站类型</td>
-                    <td class="t6">查看</td>
                     <td class="t8">实时数据</td>
+                    <td class="t6">查看</td>
+                     <td class="t9">修改</td>
                     <td class="t7">删除</td>
-                    <td class="t9">修改</td>
                 </tr>
             </thead>
                 <tbody>
@@ -265,10 +241,11 @@
                                 <td class="t2">${station.ms_code }</td>
                                 <td class="t4">${station.ms_dev_value }</td>
                                 <td class="t5">${station.ms_type_value.data_name }</td>
-                                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this,${station.id})"></td>
                                 <td class="t8"><input type="button" value="查看" class="input1" onclick="realData(${station.ms_code})"></td>
-                                <td class="t7"><input type="button" value="删除"  class="input2" onclick="delStation(${station.id})" ></td>
+                                <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this,${station.id})"></td>
                                 <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this,${station.id})"></td>
+                                <td class="t7"><input type="button" value="删除"  class="input2" onclick="delStation(${station.id})" ></td>
+                                
                             </tr>
                         </c:forEach>
                      </c:if>
@@ -319,6 +296,7 @@
         </div>
        
 
+	</div>
 </div>
 <div id="footer">
     <li>山东省植物保护总站</li>
