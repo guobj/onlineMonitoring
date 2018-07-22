@@ -55,12 +55,12 @@ public class StationServiceImpl implements StationService{
                     StringBuffer sb = new StringBuffer();
                     Dict devObject = dictMapper.loadByDevType(Integer.parseInt(temp[i].substring(3, 4)));
                     Dict devType = dictMapper.loadByDevType1(Integer.parseInt(temp[i].substring(3, 6)));
-                    if (devObject == null || devType == null) {
-                        throw new RuntimeException("暂无数据"); 
+                    if (devObject != null && devType != null) {
+                         sb.append(devObject.getData_name());
+                         sb.append(devType.getData_name());
+                         temp[i] = sb.toString();
                     }
-                    sb.append(devObject.getData_name());
-                    sb.append(devType.getData_name());
-                    temp[i] = sb.toString();
+                    
                 }
                 s.setMs_dev_value(String.join(",", temp));
             }

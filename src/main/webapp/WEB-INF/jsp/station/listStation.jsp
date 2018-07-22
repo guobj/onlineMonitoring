@@ -233,13 +233,8 @@
                     <option value="">区县</option>
                 </select>
            
-            <span class="span1 wg">网关类型： </span>
-                <select class="select1" name="ms_gate">
-                    <option value="">不限</option>
-                    <c:forEach items="${msGate }" var="gate">
-                        <option value="${gate.data_value }">${gate.data_name }</option>
-                    </c:forEach>
-                </select>
+            <span class="span1 wg">建站时间： </span>
+                <input type="date" name="date_begin1" style="width:13%;">--<input type="date" name="date_end1" style="width:13%;">
            
 
             <input type="submit"  value="查询" class="cx"> <input type="button" value="添加监测站" class="cx" onclick="tianjia()"/>

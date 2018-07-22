@@ -30,6 +30,12 @@
         <c:if test="${manage.station != null and manage.station.ms_net != null }">
             <input type="hidden" id="station.ms_net" name="station.ms_net" value="${manage.station.ms_net }">
         </c:if>
+        <c:if test="${manage.station != null and manage.station.date_begin != null }">
+            <input type="hidden" id="date_begin1" name="date_begin1" value="${manage.station.date_begin }">
+        </c:if>
+        <c:if test="${manage.station != null and manage.station.date_end != null }">
+            <input type="hidden" id="date_end1" name="date_end1" value="${manage.station.date_end }">
+        </c:if>
         <!--  监测的查询 -->
         <c:if test="${station != null and station.ms_name != null }">
             <input type="hidden" id="ms_name" name="ms_name" value="${station.ms_name }">
@@ -45,6 +51,12 @@
         </c:if>
         <c:if test="${station != null and station.ms_gate != null }">
             <input type="hidden" id="ms_gate" name="ms_gate" value="${station.ms_gate }">
+        </c:if>
+        <c:if test="${station != null and station.date_begin != null }">
+            <input type="hidden" id="date_begin1" name="date_begin1" value="${station.date_begin }">
+        </c:if>
+        <c:if test="${station != null and station.date_end != null }">
+            <input type="hidden" id="date_end1" name="date_end1" value="${station.date_end }">
         </c:if>
        <!--  实时数据查询 -->
        <c:if test="${realData != null and realData.device_type != null }">
