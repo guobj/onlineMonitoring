@@ -86,6 +86,10 @@
             <if test="manage.station != null and manage.station.ms_net != null">
                 AND ts.ms_net = #{manage.station.ms_net}
             </if>
+            <!-- 按建站时间查询 -->
+            <if test="manage.station != null and manage.station.date_begin != null and manage.station.date_begin != '' and manage.station.date_end != null and manage.station.date_end != ''" >
+                and ts.ms_date between #{manage.station.date_begin} and #{manage.station.date_end}
+            </if>
         </where>
     </select>
    <delete id="deleteById" parameterType="java.lang.Integer" >-->
