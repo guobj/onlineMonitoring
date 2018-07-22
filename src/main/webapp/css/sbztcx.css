@@ -32,6 +32,9 @@ a{ text-decoration: none;}
 #caidan ul .cd_4 ul li .zdgl .a_2 img{ margin-left:7%; margin-top:9px; float:left;}
 #caidan ul .cd_4 .zdgl .ul .a_3{ width:100%; height:27px; background:#eaeaea; display:block;}
 
+#caidan ul .cd_4 ul li .zdgl .a_4{ padding-left: 8%; width:92%; height:27px; font-size:12px; line-height:27px; display:block; margin-top:0px; color:#000; background:#eaeaea; overflow:hidden;}
+#caidan ul .cd_4 ul li .zdgl .a_4:hover{ background:#d7dce2;}
+#caidan ul .cd_4 ul li .zdgl .a_4 img{ margin-left:7%; margin-top:9px; float:left;}
 
 #content_r{ width:84%;  margin-left:16%; position: relative;}
 #content_r .tit{ width:100%; height:40px; background:#bfd1c3;}
