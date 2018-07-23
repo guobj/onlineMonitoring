@@ -76,7 +76,7 @@
                     </span>
                 <br/>
                 <span>建设时间:</span>
-                <input type="date" style="margin-left: 28px;" name="ms_date1">
+                <input type="date" style="margin-left: 2.2%;" name="ms_date1">
     
                 <br/>
                 <span>监测站位置:</span>

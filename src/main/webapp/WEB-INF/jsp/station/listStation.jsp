@@ -245,7 +245,6 @@
                                 <td class="t6"><input type="button" value="查看" class="input1" onclick="chakan(this,${station.id})"></td>
                                 <td class="t9"><input type="button" value="修改"  class="input1"  onclick="xiugai(this,${station.id})"></td>
                                 <td class="t7"><input type="button" value="删除"  class="input2" onclick="delStation(${station.id})" ></td>
-                                
                             </tr>
                         </c:forEach>
                      </c:if>
