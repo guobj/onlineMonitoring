@@ -90,8 +90,14 @@
     <!-- 查询数据 -->
     <select id="listHisData" resultMap="BaseResultMap" parameterType="map">
         select 
-        <include refid="t_his_data_columns" />
-        from t_his_data
+            <!-- 一开始查询的是历史数据中的设备，然后根据设备编码查询该设备下全部的历史数据 -->
+	        <if test="hisData.dev_code == null or hisData.dev_code == ''">
+	            dev_code
+	        </if>
+	        <if test="hisData.dev_code != null and hisData.dev_code != ''">
+	            <include refid="t_his_data_columns" />
+	        </if>
+            from t_his_data
         <where>
             <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
@@ -118,13 +124,21 @@
                 and data_time between  #{hisData.data_time_begin} and #{hisData.data_time_end}
             </if>
         </where>
+        <if test="hisData.dev_code == null or hisData.dev_code == ''">
+            group by dev_code      
+        </if>
         limit #{record},10
     </select>
      <!-- 查询数据的数量 -->
     <select id="countHisData" resultType ="int" parameterType="map">
         select 
-            count(*)
-        from t_his_data
+	        <if test="hisData.dev_code == null or hisData.dev_code == ''">
+	            count(distinct dev_code)
+	        </if>
+	        <if test="hisData.dev_code != null and hisData.dev_code != ''">
+	            count(*)
+	        </if>
+	        from t_his_data
         <where>
             <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                

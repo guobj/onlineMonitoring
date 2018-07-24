@@ -23,7 +23,16 @@ public class HisDataServiceImpl implements HisDataService{
     @Autowired
     private HisMeteorologicalMapper hisMeteorologicalMapper;
     
-    
+    /**
+     * 
+     * 方法描述：查询历史数据，根据监测站名称、监测站编码（见数据字典中行政区划代码，输入市、县代码则显示全市、全县的监测站列表）、
+     * 设备类型、监测对象、设备状态
+     * 包括数据设备和气象设备
+     * @param map
+     * @return
+     * @author ssh
+     * @date 2018年6月3日 下午2:36:02
+     */
     @Override
     public List listHisData(Map<String, Object> map) {
         //用于气象表字段中查询的数量，会根据数据表查出的数量，与之互补
@@ -34,7 +43,7 @@ public class HisDataServiceImpl implements HisDataService{
         HisData hisData = (HisData) map.get("hisData");
         //建立一个HisMeteorological类，用于mapper.xml里的查数据时用
         HisMeteorological hisMeteorological = new HisMeteorological();
-        //不管ms_code,dev_status用没有值，赋给HisMeteorological就行，他们不决定查询哪个表
+        //不管ms_code,dev_status有没有值，赋给HisMeteorological就行，他们不决定查询哪个表
         hisMeteorological.setMs_code(hisData.getMs_code());
         hisMeteorological.setDev_status(hisData.getDev_status());
         hisMeteorological.setData_time_begin(hisData.getData_time_begin());
@@ -132,5 +141,7 @@ public class HisDataServiceImpl implements HisDataService{
         }
         return list;
     }
+
+
 
 }

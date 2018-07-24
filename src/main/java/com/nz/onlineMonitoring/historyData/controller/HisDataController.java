@@ -35,7 +35,8 @@ public class HisDataController {
      * @date 2018年6月3日 下午4:18:48
      */
     @RequestMapping("/listHisData")
-    public String listHisData(Map<String, Object> map,HisData hisData,HttpServletRequest request,@RequestParam(required=false,defaultValue="1") int pages,
+    public String listHisData(Map<String, Object> map,HisData hisData,HttpServletRequest request,
+                                @RequestParam(required=false,defaultValue="1") int pages,
                                 @RequestParam(required=false,name="city")String[] citys,
                                 @RequestParam(required=false,defaultValue="1900-01-01T00:00")String data_time_begin1,
                                 @RequestParam(required=false,defaultValue="9999-01-01T00:00")String data_time_end1){

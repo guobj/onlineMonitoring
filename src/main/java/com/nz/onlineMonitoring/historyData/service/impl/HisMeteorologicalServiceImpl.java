@@ -15,7 +15,15 @@ public class HisMeteorologicalServiceImpl implements HisMeteorologicalService {
     private DictMapper dictMapper;
     @Autowired
     private HisMeteorologicalMapper hisMeteorologicalMapper;
-    
+    /**
+     * 
+     * 方法描述：根据id，查询气象表中的一条数据
+     * @param id
+     * @param map
+     * @return
+     * @author ssh
+     * @date 2018年6月17日 下午7:32:09
+     */
     @Override
     public HisMeteorological load(Integer id) {
         HisMeteorological hisMeteorological = hisMeteorologicalMapper.load(id);
@@ -62,5 +70,6 @@ public class HisMeteorologicalServiceImpl implements HisMeteorologicalService {
         }
         return hisMeteorological;
     }
+
 
 }
