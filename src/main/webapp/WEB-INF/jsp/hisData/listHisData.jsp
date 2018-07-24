@@ -109,7 +109,9 @@
                 </select>
             <span>数据时间：</span>
                 <input type="datetime-local" name="data_time_begin1" style="width:13%;">--<input type="datetime-local" name="data_time_end1" style="width:13%;">
-                
+                <c:if test="${hisData != null and hisData.dev_code != null }">
+                    <input type="hidden" name="dev_code" value="${hisData.dev_code }"> 
+                </c:if>
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>
@@ -190,7 +192,7 @@
                            <td class="t3">${his.dev_code_value }</td>
                            <td class="t6">
                                 <form action="hisData/listHisData" method="post">
-                                    <input type="hidden" name="dev_code" value="${his.dev_code }">
+                                    <input type="hidden" id="dev_code" name="dev_code" value="${his.dev_code }">
                                     <input type="submit" value="查看设备历史数据">
                                 </form>   
                             </td>                        
