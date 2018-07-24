@@ -48,6 +48,7 @@ public class HisDataServiceImpl implements HisDataService{
         hisMeteorological.setDev_status(hisData.getDev_status());
         hisMeteorological.setData_time_begin(hisData.getData_time_begin());
         hisMeteorological.setData_time_end(hisData.getData_time_end());
+        hisMeteorological.setDev_code(hisData.getDev_code());
         //建立两个list，用于装两个表中返回的数据，不一定都会装东西，可能只查一个表
         List<HisMeteorological> hisMeteorologicalList = null;
         List<HisData> hisList = null;

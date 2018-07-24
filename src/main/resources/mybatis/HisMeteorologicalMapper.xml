@@ -264,6 +264,10 @@
             <if test="hisMeteorological.data_time_begin != null and hisMeteorological.data_time_begin != '' and hisMeteorological.data_time_end != null and hisMeteorological.data_time_end != ''  " >
                 and data_time between  #{hisMeteorological.data_time_begin} and #{hisMeteorological.data_time_end}
             </if>
+            <!-- 如果设备编码不为空，那么选择设备，根据设备的编码查出该设备下的所有历史数据 -->
+            <if test="hisMeteorological.dev_code != null and hisMeteorological.dev_code != ''" >
+                and dev_code = #{hisMeteorological.dev_code}
+            </if>
         </where>
         <if test="hisData.dev_code == null or hisData.dev_code == ''">
             group by dev_code      
@@ -304,6 +308,10 @@
             </if>
             <if test="hisMeteorological.data_time_begin != null and hisMeteorological.data_time_begin != '' and hisMeteorological.data_time_end != null and hisMeteorological.data_time_end != ''  " >
                 and data_time between  #{hisMeteorological.data_time_begin} and #{hisMeteorological.data_time_end}
+            </if>
+            <!-- 如果设备编码不为空，那么选择设备，根据设备的编码查出该设备下的所有历史数据 -->
+            <if test="hisMeteorological.dev_code != null and hisMeteorological.dev_code != ''" >
+                and dev_code = #{hisMeteorological.dev_code}
             </if>
         </where>
     </select>
