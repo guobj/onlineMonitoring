@@ -4,6 +4,7 @@ body{ background:#1c8914;}
 
 #tit{ width:100%; height:93px; background:url(../img/tit.jpg) no-repeat; background-size:cover; border-bottom:7px #1bb11c solid;}
 #tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:2.1em; margin-left:3%;color:#006600; font-weight:bold;  font-family: '宋体';}
+
 #tit ul{ width:28%; height:93px; float:left; margin-left:24%;}
 #tit ul li{ width:91%; height:30px; margin-top:20px; line-height:30px; font-size:0.75em; color:#FFF; float:left; overflow:hidden;}
 #tit ul li .three{ width:90%; margin-left:5%; height:32px;}
@@ -12,7 +13,7 @@ body{ background:#1c8914;}
 #tit ul li .three a:hover{ color:#F00;}
 
 
-#caidan{ width:15%; height:600px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
+#caidan{ width:15%; height:880px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
 #caidan ul{ width:100%;}
 #caidan ul .tit{ height:30px; background:url(../img/gl.jpg); font-size:0.8em; color:#FFF; line-height:30px;}
 #caidan ul .tit img{ margin-left:4.6%; margin-top:9px; float:left; max-width: 100%;}
@@ -33,7 +34,6 @@ body{ background:#1c8914;}
 #caidan ul .cd_4 ul li .zdgl .a_4{ padding-left: 8%; width:92%; height:27px; font-size:12px; line-height:27px; display:block; margin-top:0px; color:#000; background:#eaeaea; overflow:hidden;}
 #caidan ul .cd_4 ul li .zdgl .a_4:hover{ background:#d7dce2;}
 #caidan ul .cd_4 ul li .zdgl .a_4 img{ margin-left:7%; margin-top:9px; float:left;}
-
 #content_r{ width:84%; height:600px; margin-left:16%; position: relative; background:#eaeaea; margin-top: 3px}
 #content_r h5{
     margin-left: 2%;
@@ -82,7 +82,7 @@ body{ background:#1c8914;}
     left: 92%;
 }
 
-#content_r .menu  select{width: 8% !important ;  border: 1px solid #cccccc; height: 20px; border-radius: 3px; margin-top: 3px; }
+#content_r .menu  select{width: 8% !important ;  border: 1px solid #cccccc; height: 20px; border-radius: 3px; margin-top: 13px; }
 #content_r .title{font-size: 16px; margin-left: 2%;color: #646464;}
 /*#content_r .search{ background:#d6e3d2; width:18%; height:33px; border-radius:6px; outline:none; margin-top:10px; margin-left:2%; color:#33b652;}*/
 #content_r table{margin-left: 2%; width: 95%; font-size: 0.75em;}

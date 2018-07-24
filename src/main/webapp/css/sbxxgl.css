@@ -13,7 +13,7 @@ body{ background:#1c8914;}
 #tit ul li .three a:hover{ color:#F00;}
 
 
-#caidan{ width:15%; height:600px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
+#caidan{ width:15%; height:880px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
 #caidan ul{ width:100%;}
 #caidan ul .tit{ height:30px; background:url(../img/gl.jpg); font-size:0.8em; color:#FFF; line-height:30px;}
 #caidan ul .tit img{ margin-left:4.6%; margin-top:9px; float:left; max-width: 100%;}
@@ -35,7 +35,7 @@ body{ background:#1c8914;}
 #caidan ul .cd_4 ul li .zdgl .a_4:hover{ background:#d7dce2;}
 #caidan ul .cd_4 ul li .zdgl .a_4 img{ margin-left:7%; margin-top:9px; float:left;}
 
-#content_r{ width:84%; height:600px; margin-left:16%; position: relative; background:#eaeaea;margin-top: 3px}
+#content_r{ width:84%;  margin-left:16%; background:#eaeaea; height:880px; margin-top: 3px; }
 #content_r .tit{ width:100%; height:40px; 
     border-bottom:1px solid #cccccc;
 }
@@ -86,7 +86,7 @@ body{ background:#1c8914;}
     left: 92%;
 }
 #content_r .title{font-size: 12px; margin-left: 2%;color: #646464; margin-top: 10px;}
-#content_r .menu  select{width: 8% !important ;  border: 1px solid #cccccc; height: 20px; border-radius: 3px; margin-top: 3px; }
+#content_r .menu  select{width: 8% !important ;  border: 1px solid #cccccc; height: 20px; border-radius: 3px; margin-top: 13px; }
 
 #content_r table thead tr{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f5f6+0,e3eaed+37,c8d7dc+100;Grey+3D+%234 */
 background: rgb(242,245,246); /* Old browsers */
@@ -96,19 +96,22 @@ background: linear-gradient(to bottom,  rgba(242,245,246,1) 0%,rgba(227,234,237,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 ); /* IE6-9 */
  color:#707d83;height: 35px;text-align: center; }
 #content_r table thead tr td{
+	height:50px;
     border-collapse: separate;
     border: 1px solid #ffffff;
+    font-sizi:14px;
+    color:#454545;
 }
-#content_r table tr{color:#707d83;height: 30px;text-align: center;}
+#content_r table tr{color:#707d83;height: 40px;text-align: center;}
 #content_r table tr td{
     border-collapse: separate;
     border: 1px solid #ffffff;
-	height:40px;
+	height: 50px;
 }
-#content_r table{width: 97%;float: left;  margin-left: 2%;  margin-bottom: 10px; border-collapse:collapse;}
-#content_r table tbody .tr1{ border-bottom: 1px solid #adadad; width: 100%; height: 48px; }
+#content_r table{width: 90%;float: left;  margin-left: 5%;  margin-bottom: 10px; border-collapse:collapse; box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); margin-top:20px; }
+#content_r table tbody tr{ border-bottom: 1px solid #adadad; width: 100%; height: 50px; }
 #content_r table tbody{font-size: 12px; line-height: 3em; color: #4e4f4f;}
-#content_r table tbody td{height:40px;}
+#content_r table tbody td{height:50px;}
 
 #content_r .name{ width:100%; margin-top:10px; height:48px; background:#bee2f4; margin-left:2%; font-size:12px; color:#4e4f4f; text-align:center; line-height:48px; overflow:hidden; !important;}
 
@@ -125,93 +128,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', end
     height: 30px;
     display: table;
     margin-left: 55%;
-    margin-top: 10px;
-}
-.page {
-    text-align: center;
-}
-.fl {
-    float: left;
-}
-.fr {
-    float: right;
-}
-.pagingUl {
-    float: right;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    height: 30px;
-}
-.pagingUl li {
-    float: left;
-    width: 30px;
-    height: 30px;
-    background: #fff;
-    text-align: center;
-    margin-right: 5px;
-    border-radius: 5px
-}
-.pagingUl li a {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 28px;
-    color: #666;
-    font-size: 12px;
-    border-radius: 5px
-}
-.prv,
-.next {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    cursor: pointer;
-    background: #fff;
-    padding: 0 5px;
-    border-radius: 5px;
-}
-.prv {
-    margin-right: 10px;
-}
-.first,
-.last {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
-    text-align: center;
-    line-height: 30px;
-    /*border: 1px solid #ddd;*/
-    cursor: pointer;
-    background: #fff;
-    padding: 0 5px;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-.prv:hover,
-.next:hover,
-.first:hover,
-.last:hover,
-.pagingUl li a:hover,
-.activP {
-    background-color: #d7dce2!important;
+    margin-top: 25px;
 }
 
-#detail{width:50%; margin-left: 13%;float: left; display: none;  }
-#detail #bg1{margin-left: 15%; margin-top: 10px;border: 1px solid #bfbfbf;width: 100%; border-right:1px #b9b9b9 solid; box-shadow: 10px 10px 5px #888888; }
-#detail .s1{height: 30px; width: 30%; text-align: center;  color:#383838; border-bottom: 1px solid #bfbfbf;}
-#detail .s2{height:30px; width: 70%; text-align: center; border-bottom: 1px solid #bfbfbf;}
+#detail{width:60%; margin-left: 13%;float: left; display: none;  }
+#detail #bg1{margin-left: 15%; margin-top: 10px;border: 1px solid #bfbfbf;width: 100%; border-right:1px #b9b9b9 solid; box-shadow: 10px 10px 5px #888888; height:600px; font-size:14px; }
+#detail .s1{height: 40px; width: 30%; text-align: center;  color:#383838; border-bottom: 1px solid #bfbfbf; font-size:14px;}
+#detail .s2{height:40px; width: 70%; text-align: center; border-bottom: 1px solid #bfbfbf; font-size:14px;}
+#detail .s2 span{float:right; color:#FF0000; font-size:8px;}
 #detail #bg1 caption{
     height: 50px;
     line-height: 50px;
-    font:bold 2em;
+    font:bold 14px;
     background: #f0f7ff;
     border:1px solid #bfbfbf;
     box-shadow: 10px 10px 5px #888888;
     border-bottom: none;
     margin-bottom: -1px;
 }
-#detail form{margin-left: 35%;float: left; margin-top: 20px; width: 100%;}
-#detail form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 24px; margin-left: 10%;}
+#detail form{margin-left: 35%;float: left; margin-top: 20px; width: 100%; height:50px;}
+#detail form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 50px; margin-left: 10%;}
+#detail .s3{height:50px; width:80%;}

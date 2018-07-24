@@ -58,15 +58,13 @@ function clos(){
 }
 
 $(function(){
-    $(" tbody tr").mouseover(function(){
-        $(this).css("background","#fff4e5");
-    })
-    $(" tbody tr").mouseout(function(){
-        $(this).css("background","#EEF4F9");
-    })
-
-
+	$("tbody tr:even").css("background","#fff4e5");
+	$("tbody tr:odd").css("background","#EEF4F9");
 })
+
+
+
+
 $(function () {
     // $("#imga").children().click(function(){
     //     console.log("aaa");

@@ -1,5 +1,6 @@
-*{ list-style:none; text-decoration:none; padding:0; margin:0; border:none; font-size: 12px;}
-body{ background:#1c8914; overflow: auto;}
+
+*{ list-style:none; text-decoration:none; padding:0; margin:0; border:none;}
+body{ background:#1c8914;}
 
 #tit{ width:100%; height:93px; background:url(../img/tit.jpg) no-repeat; background-size:cover; border-bottom:7px #1bb11c solid;}
 #tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:2.1em; margin-left:3%;color:#006600; font-weight:bold;  font-family: '宋体';}
@@ -12,7 +13,7 @@ body{ background:#1c8914; overflow: auto;}
 #tit ul li .three a:hover{ color:#F00;}
 
 
-#caidan{ width:15%; height:620px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
+#caidan{ width:15%; height:880px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
 #caidan ul{ width:100%;}
 #caidan ul .tit{ height:30px; background:url(../img/gl.jpg); font-size:0.8em; color:#FFF; line-height:30px;}
 #caidan ul .tit img{ margin-left:4.6%; margin-top:9px; float:left; max-width: 100%;}

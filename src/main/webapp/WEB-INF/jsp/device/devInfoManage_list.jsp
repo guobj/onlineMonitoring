@@ -118,14 +118,15 @@
     <table id="xx">
         <thead>
             <tr>
-                <td class="t1">监测站名称</td>
-                <td class="t2">监测站编码</td>
-                <td class="t3">设备编码</td>
-                <td class="t4">通信协议</td>
-                <td class="t5">通讯接口</td>
-                <td class="t6">从机地址</td>
-                <td class="t7">IP地址</td>
-                <td class="t8">更多</td>
+                <td style="width:13%">监测站名称</td>
+                <td style="width:8%">监测站编码</td>
+                <td style="width:10%">设备编码</td>
+                <td style="width:10%">通信协议</td>
+                <td style="width:7%">通讯接口</td>
+                <td style="width:7%">从机地址</td>
+                <td style="width:10%">IP地址</td>
+                <td style="width:7%">通信端口</td>
+                <td style="width:10%">更多</td>
             </tr>
         </thead>
         <tbody>
@@ -134,14 +135,15 @@
             </c:if>
             <c:forEach var="list" items="${list}">
                 <tr style="height: 30px;">
-                    <td class="t1">${list.station.ms_name}</td>
-                    <td class="t2">${list.ms_code}</td>
-                    <td class="t3">${list.dev_code}</td>
-                    <td class="t4">${list.dataProtocol.data_name}</td>
-                    <td class="t5">${list.dataInterface.data_name}</td>
-                    <td class="t6">${list.dev_regad}</td>
-                    <td class="t7"> ${list.dev_ip}</td>
-                    <td class="t8"><input type="button" onclick="moreInfo(${list.id})" value="更多"/></td>
+                    <td style="width:13%">${list.station.ms_name}</td>
+                    <td style="width:8%">${list.ms_code}</td>
+                    <td style="width:8%">${list.dev_code}</td>
+                    <td style="width:10%">${list.dataProtocol.data_name}</td>
+                    <td style="width:7%">${list.dataInterface.data_name}</td>
+                    <td style="width:7%">${list.dev_regad}</td>
+                    <td style="width:10%"> ${list.dev_ip}</td>
+                    <td style="width:7%"> ${list.dev_interface}</td>
+                    <td style="width:10%"><input type="button" onclick="moreInfo(${list.id})" value="更多"/></td>
                 </tr>
             </c:forEach>
         </tbody>
@@ -233,7 +235,7 @@
         $("#update").click(function(){
             var tr=document.getElementById("zbqx")
             con=tr.innerHTML;
-            con="<input type='text' autofocus id='in' value='"+con+"' class='s3'>";
+            con="<input type='text' autofocus id='in' value='"+con+"' autofocus class='s3'>";
             tr.innerHTML=con;
             var tr1=document.getElementById("sbcj")
             con1=tr1.innerHTML;

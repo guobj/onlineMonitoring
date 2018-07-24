@@ -151,14 +151,11 @@
 });
 
 
-$(function(){
-    $(" tbody tr").mouseover(function(){
-        $(this).css("background","#fff4e5");
-    })
-    $(" tbody tr").mouseout(function(){
-        $(this).css("background","#EEF4F9");
-    })
-})
+ $(function(){
+		$("tbody tr:even").css("background","#fff4e5");
+		$("tbody tr:odd").css("background","#EEF4F9");
+	})
+
 
 
 </script>

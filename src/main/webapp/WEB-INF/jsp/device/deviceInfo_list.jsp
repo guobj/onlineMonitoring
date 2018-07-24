@@ -120,12 +120,12 @@
         </tbody>
     </table>
     <jsp:include page="../common/pages.jsp"></jsp:include>
-    <div id="img" style="overflow-x: scroll;overflow-x: hidden;">
+    <%--<div id="img" style="overflow-x: scroll;overflow-x: hidden;">
         <div id="imga"></div>
-        <%--<div id="clo">--%>
+        <div id="clo">
             <input type="button" value="关闭" onclick="clos()"/>
-        <%--</div>--%>
-    </div>
+        </div>
+    </div>--%>
 </div>
 <div id="footer">
     <li>山东省植物保护总站</li>
