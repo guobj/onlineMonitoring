@@ -178,7 +178,7 @@
 	                              </tr>
 	                          </c:otherwise>
 	                    </c:choose>
-	                </c:forEach> 
+	                </c:forEach>  
 	            </c:if>
             </c:if>
             <c:if test="${hisData == null or hisData.dev_code == null }">
