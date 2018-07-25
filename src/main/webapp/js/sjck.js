@@ -62,9 +62,9 @@ $(function(){
         $(this).css("background","#EEF4F9");
     })
 
-
 })
 
+ 
 
 function weather(){
     $("#weather").show();
