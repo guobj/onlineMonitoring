@@ -1,0 +1,41 @@
+*{ list-style:none; text-decoration:none; padding:0; margin:0; border:none; font-size: 12px;}
+a{ text-decoration: none;}
+body{ background:#1c8914;}
+
+#tit{ width:100%; height:93px; background:url(../img/tit.jpg) no-repeat; background-size:cover; border-bottom:7px #1bb11c solid;}
+#tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:2.1em; margin-left:3%;color:#006600; font-weight:bold;  font-family: '宋体';}
+#tit ul{ width:28%; height:93px; float:left; margin-left:24%;}
+#tit ul li{ width:91%; height:30px; margin-top:20px; line-height:30px; font-size:0.75em; color:#FFF; float:left; overflow:hidden;}
+#tit ul li .three{ width:90%; margin-left:5%; height:32px;}
+#tit ul li .three a{ width:23%; float:left; margin-top:0px; height:32px; line-height:32px; color:#FFF;}
+#tit ul li .three a img{ margin-top:5px; float:left; max-width: 100%;}
+#tit ul li .three a:hover{ color:#F00;}
+
+
+#caidan{ width:15%; height:880px; background:#eaeaea; margin-top:3px; margin-left:0.5%; float:left;}
+#caidan ul{ width:100%;}
+#caidan ul .tit{ height:30px; background:url(../img/gl.jpg) no-repeat; font-size:0.8em; color:#FFF; line-height:30px;}
+#caidan ul .tit img{ margin-left:4.6%; margin-top:9px; float:left; max-width: 100%;}
+
+#caidan ul .cdq{ height:37px; width:100%; background:url(../img/cdq.jpg);}
+#caidan ul .cdq img{ margin-left:2.9%; margin-top:9px; width:8.4%; float:left; max-width: 100%;}
+#caidan ul .cdq a{ line-height:37px; width:63%; float:left; margin-left:4%; color:#5a5a5b; font-size:0.75em;}
+
+#caidan ul .cd_4{ width:100%;}
+#caidan ul .cd_4 ul li .a_1{ height:33px; background:url(../img/cdbg.jpg) no-repeat; display:block; margin-top:3px; font-size:0.75em; color:#FFF; line-height:33px; overflow:hidden;}
+#caidan ul .cd_4 ul li .a_1 img{ margin-left:6.3%; margin-top:8px; float:left; max-width: 100%;}
+#caidan ul .cd_4 ul li .zdgl{ width:100%; background:#FFF;}
+#caidan ul .cd_4 ul li .zdgl .a_2{ width:100%; height:27px; font-size:12px; line-height:27px; display:block; margin-top:0px; color:#000; background:#eaeaea; overflow:hidden;}
+#caidan ul .cd_4 ul li .zdgl .a_2:hover{ background:#d7dce2;}
+#caidan ul .cd_4 ul li .zdgl .a_2 img{ margin-left:7%; margin-top:9px; float:left;}
+#caidan ul .cd_4 .zdgl .ul .a_3{ width:100%; height:27px; background:#eaeaea; display:block;}
+
+
+#content_r{ width:84%;  margin-left:16%; background:#eaeaea; height:880px;}
+#content_r .tit{ width:100%; height:40px; border-bottom: 1px solid #cccccc;}
+#content_r .tit .xx{ float:left; margin-top:8px; margin-left:1%; font-size:12px; height:20px; line-height:20px;}
+#content_r .tit .xx img{ margin-top:0px; float:left;}
+form{margin-top: 15px; margin-left: 10%;}
+form select{width: 10%; height: 30px; line-height: 30px; font-size: 14px; color: #000000; font-weight: bolder; }
+form option{width: 10%; height: 30px; line-height: 30px; font-size: 14px; color: #000000; font-weight: bolder;  }
+#content_r #xq {width: 95%; height: 500px; float: left; margin-top: 50px; margin-left: 0%; color: #FF0000}
