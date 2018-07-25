@@ -1,3 +1,4 @@
+
 /**
  * Created by DELL on 2018/6/2.
  */
@@ -53,8 +54,6 @@ $(function(){
 });
 $(function() {
     var myChart = echarts.init(document.getElementById('xq'));
-
-
     option = {
         dataZoom: [
             {

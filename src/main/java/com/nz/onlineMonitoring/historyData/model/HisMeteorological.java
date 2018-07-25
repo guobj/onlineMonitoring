@@ -78,6 +78,10 @@ public class HisMeteorological {
     private String data_time_begin;
     /**查询时结束时间 */
     private String data_time_end;
+    /**在前台根据设备查询的时候，如果是气象设备，会出现温度，湿度等的下拉框，hisData作为传到后台的对象，加这个字段传递次参数
+     * 而hisMeteorological加上这个字段，用来在mapper.xml中查询
+     *  */
+    private String weather;
     public String getDevice_type() {
         return device_type;
     }
@@ -493,4 +497,13 @@ public class HisMeteorological {
     public void setMs_code_value(String ms_code_value) {
         this.ms_code_value = ms_code_value;
     }
+
+    public String getWeather() {
+        return weather;
+    }
+
+    public void setWeather(String weather) {
+        this.weather = weather;
+    }
+    
 }

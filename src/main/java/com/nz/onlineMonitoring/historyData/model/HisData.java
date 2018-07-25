@@ -48,6 +48,8 @@ public class HisData {
     private String data_time_begin;
     /**查询时结束时间 */
     private String data_time_end;
+    /**在前台根据设备查询的时候，如果是气象设备，会出现温度，湿度等的下拉框，hisData作为传到后台的对象，加这个字段传递次参数 */
+    private String weather;
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_his_data.id
      *
@@ -203,5 +205,14 @@ public class HisData {
     public void setData_time_end(String data_time_end) {
         this.data_time_end = data_time_end;
     }
+
+    public String getWeather() {
+        return weather;
+    }
+
+    public void setWeather(String weather) {
+        this.weather = weather;
+    }
+    
     
 }

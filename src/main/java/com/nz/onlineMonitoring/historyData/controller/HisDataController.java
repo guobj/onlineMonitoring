@@ -38,10 +38,8 @@ public class HisDataController {
     public String listHisData(Map<String, Object> map,HisData hisData,HttpServletRequest request,
                                 @RequestParam(required=false,defaultValue="1") int pages,
                                 @RequestParam(required=false,name="city")String[] citys,
-                                @RequestParam(required=false,defaultValue="1900-01-01T00:00")String data_time_begin1,
-                                @RequestParam(required=false,defaultValue="9999-01-01T00:00")String data_time_end1){
-        data_time_begin1 = data_time_begin1.replace('T', ' ');
-        data_time_end1 = data_time_end1.replace('T', ' ');
+                                @RequestParam(required=false,defaultValue="1900-01-01 00:00")String data_time_begin1,
+                                @RequestParam(required=false,defaultValue="9999-01-01 00:00")String data_time_end1){
         hisData.setData_time_begin(data_time_begin1);
         hisData.setData_time_end(data_time_end1);
         List<HisData> listHisData = null;
@@ -57,6 +55,9 @@ public class HisDataController {
             map.put("devStauts", dictService.listDevStauts());
             map.put("devObject", dictService.listDevType());
             map.put("devType", dictService.listDevType1());
+        }
+        if (hisData != null && hisData.getWeather() != null && hisData.getWeather() != "") {
+            return "echarts/echarts";
         }
         return "hisData/listHisData";
     }

@@ -232,12 +232,17 @@
     <select id="listHisMeteorological" resultMap="BaseResultMap" parameterType="map">
         select 
         <!-- 一开始查询的是历史数据中的设备，然后根据设备编码查询该设备下全部的历史数据 -->
-            <if test="hisMeteorological.dev_code == null or hisMeteorological.dev_code == ''">
-                dev_code
-            </if>
-            <if test="hisMeteorological.dev_code != null and hisMeteorological.dev_code != ''">
-                <include refid="t_his_meteorological_columns" />
-            </if>
+            <choose>
+                <!-- <when test="hisMeteorological.weather != null and hisMeteorological.weather != ''">
+                    #{hisMeteorological.weather}
+                </when> -->
+                <when test="hisMeteorological.dev_code == null or hisMeteorological.dev_code == ''">
+                    dev_code
+                </when>
+                <otherwise>
+                    <include refid="t_his_meteorological_columns" />
+                </otherwise>
+            </choose>
         from t_his_meteorological
         <where>
             <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
