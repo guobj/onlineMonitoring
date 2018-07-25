@@ -191,7 +191,12 @@
                     <c:forEach items="${listHisData }" var="his">
                          <tr style="border-bottom: 1px solid #adadad;">
                            <td class="t3">${his.dev_code_value }</td>
-                           <td class="t6"><input type="button" value="查看设备历史数据" onclick="see(${his.dev_code })"></td>
+                          <td class="t6">
+                                <form action="hisData/listHisData" method="post">
+                                    <input type="hidden" id="dev_code" name="dev_code" value="${his.dev_code }">
+                                    <input type="submit" value="查看设备历史数据">
+                                </form>   
+                            </td>   
                          </tr>
                     </c:forEach>
                 </c:if>

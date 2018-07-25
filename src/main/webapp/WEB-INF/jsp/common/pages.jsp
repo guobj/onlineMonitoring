@@ -74,9 +74,12 @@
        <!--  历史数据查询 -->
         <c:if test="${hisData != null and hisData.device_type != null }">
             <input type="hidden" id="device_type" name="device_type" value="${hisData.device_type }">
-        </c:if>
+        </c:if> 
         <c:if test="${hisData != null and hisData.dev_status != null }">
             <input type="hidden" id="dev_status" name="dev_status" value="${hisData.dev_status }">
+        </c:if>
+        <c:if test="${hisData != null and hisData.dev_code != null }">
+            <input type="hidden" id="dev_code" name="dev_code" value="${hisData.dev_code }">
         </c:if>
         <c:if test="${hisData != null and hisData.device_object != null }">
             <input type="hidden" id="device_object" name="device_object" value="${hisData.device_object }">
