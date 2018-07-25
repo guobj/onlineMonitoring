@@ -123,7 +123,7 @@
                 }
             },
             calculable: true,
-            
+             
             xAxis: [
                 {
                     type: 'category',
