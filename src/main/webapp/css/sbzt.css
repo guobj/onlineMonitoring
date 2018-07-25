@@ -90,7 +90,7 @@ top: 0px;
 #content_r .menu  select{width: 8% !important ;  border: 1px solid #cccccc; height: 20px; border-radius: 3px; margin-top: 13px; }
 
 
-#content_r table{margin-left: 3%; width: 70%; font-size: 0.75em; margin-left:15%;box-shadow: 10px 10px 5px #888888;}
+#content_r table{margin-left: 3%; width: 90%; font-size: 0.75em; margin-left:5%;box-shadow: 10px 10px 5px #888888;}
 #content_r table thead tr{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f5f6+0,e3eaed+37,c8d7dc+100;Grey+3D+%234 */
 background: rgb(242,245,246); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(242,245,246,1) 0%, rgba(227,234,237,1) 37%, rgba(200,215,220,1) 100%); /* FF3.6-15 */

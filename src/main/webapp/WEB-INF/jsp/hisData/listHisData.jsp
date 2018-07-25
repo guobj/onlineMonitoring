@@ -13,15 +13,17 @@
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>历史数据</title>
-<script src="js/jquery.js"></script>
     <link href="css/xinxi.css" rel="stylesheet" type=text/css>
     <link href="css/page.css" rel="stylesheet" type="text/css">
     <link href="css/lssjcx.css" rel="stylesheet" type="text/css">
+	
     <%--<link href="css/sjck.css" rel="stylesheet" type="text/css">--%>
+    <script src="js/jquery.js" type="text/javascript"></script>
     <script src="js/pageNav.js" type="text/javascript"></script>
     <script src="js/sjck.js" type="text/javascript"></script>
     <script src="js/jilian.js" type="text/javascript"></script>
     <script src="js/cascading.js"  type="text/javascript"></script>
+  
     <script type="text/javascript">
         var account = ${sessionScope.user.account};
 		function weather(obj,id){
@@ -109,7 +111,7 @@
                     </c:forEach>
                 </select>
             <span>数据时间：</span>
-                <input type="datetime-local" name="data_time_begin1" style="width:13%;">--<input type="datetime-local" name="data_time_end1" style="width:13%;">
+              <input type="text" />--
                 
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
@@ -320,6 +322,16 @@
 <div id="footer">
     <li>山东省植物保护总站</li>
 </div>
-
+<script type="text/javascript">
+	$(function(){
+		angular.module('app',[]).controller('controller',function($scope){
+		$('#datetimepicker').datetimepicker({
+			lang:'ch',
+				format:'Y-m-d H:00:00',
+			});
+		});
+		})
+			
+</script>
 </body>
 </html>
