@@ -84,7 +84,7 @@ top: 0px;
 #content_r .title{font-size: 12px; margin-left: 2%;color: #646464; margin-top: 10px;}
 #content_r .menu  select{width: 8% !important ;  border: 1px solid #cccccc; height: 20px; border-radius: 3px; margin-top: 13px; }
 
-#content_r table{margin-left: 2%; width: 90%; font-size: 0.75em; margin-top:20px; border:1px solid #cccccc; box-shadow: 10px 10px 5px #888888;}
+#content_r table{margin-left: 5%; width: 90%; font-size: 0.75em; margin-top:20px; border:1px solid #cccccc; box-shadow: 10px 10px 5px #888888; }
 /*#content_r table{margin-left: 2%; width: 98%; font-size: 0.75em;}*/
 #content_r table thead tr{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f5f6+0,e3eaed+37,c8d7dc+100;Grey+3D+%234 */
 background: rgb(242,245,246); /* Old browsers */

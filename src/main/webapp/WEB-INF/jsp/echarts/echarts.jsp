@@ -72,10 +72,34 @@
     });
     $(function() {
         var myChart = echarts.init(document.getElementById('xq'));
-
-
         option = {
-            color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+            dataZoom: [
+                {
+                    type: 'slider',
+                    show: true,
+                    start: 80,
+                    end: 100,
+                    handleSize: 8
+                },
+                {
+                    type: 'inside',
+                    start: 94,
+                    end: 100
+                },
+                {
+                    type: 'slider',
+                    show: true,
+                    yAxisIndex: 0,
+                    filterMode: 'empty',
+                    width: 12,
+                    height: '70%',
+                    handleSize: 8,
+                    showDataShadow: false,
+                    left: '93%'
+                }
+            ],
+
+            color: ['#003366'],
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
@@ -83,7 +107,7 @@
                 }
             },
             legend: {
-                data: ['Forest', 'Steppe', 'Desert', 'Wetland']
+                data: ['空气温度']
             },
             toolbox: {
                 show: true,
@@ -99,11 +123,12 @@
                 }
             },
             calculable: true,
+             
             xAxis: [
                 {
                     type: 'category',
                     axisTick: {show: false},
-                    data: ['2012', '2013', '2014', '2015', '2016','2012', '2013', '2014', '2015', '2016']
+                    data : new Array(),
                 }
             ],
             yAxis: [
@@ -114,20 +139,20 @@
             series: [
 
                 {
-                    name: 'Wetland',
+                    name: '空气温度',
                     type: 'line',
-                    data: [0,0,0,0,0,0,0,0,0,0]
+                    data: [98, 77, 101, 99, 40]
                 }
             ]
         };
+          
+        myChart.setOption(option);
             
            var listHisData = document.getElementsByName("hisData1");
              for (var i = 0,n = listHisData.length; i < n; i++) {
             	option.series[0].data[i] = listHisData[i].value;
             	
             }  
-            myChart.setOption(option);
-            
             
     });
 
@@ -137,8 +162,8 @@
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点信息查询</span></p></li>
-    <c:set var="weather" value="${hisData.weather}" scope="page"></c:set>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">气象设备查询</span></p></li>
+   <c:set var="weather" value="${hisData.weather}" scope="page"></c:set>
     <c:forEach items="${listHisData }" var="his">
         <input type="hidden" name="hisData1" id="hisData1" value="${his[weather] }">
     </c:forEach>
