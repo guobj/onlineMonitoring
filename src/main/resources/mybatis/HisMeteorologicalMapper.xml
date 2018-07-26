@@ -265,7 +265,7 @@
             <!-- 设备运行状态 -->
             <if test="hisMeteorological.dev_status != null and hisMeteorological.dev_status != ''" >
                 and dev_status = #{hisMeteorological.dev_status}
-            </if>
+            </if> 
             <if test="hisMeteorological.data_time_begin != null and hisMeteorological.data_time_begin != '' and hisMeteorological.data_time_end != null and hisMeteorological.data_time_end != ''  " >
                 and data_time between  #{hisMeteorological.data_time_begin} and #{hisMeteorological.data_time_end}
             </if>
