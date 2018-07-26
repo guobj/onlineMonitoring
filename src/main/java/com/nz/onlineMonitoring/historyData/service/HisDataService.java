@@ -15,5 +15,5 @@ public interface HisDataService {
      * @author ssh
      * @date 2018年6月3日 下午2:36:02
      */
-    List<HisData> listHisData(Map<String, Object> map);
+    List<HisData> listHisData(Map<String, Object> map) throws Exception;
 }

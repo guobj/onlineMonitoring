@@ -1,9 +1,9 @@
 package com.nz.onlineMonitoring.view.model;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nz.onlineMonitoring.dict.model.Dict;
-
-import java.util.Date;
 
 public class VDevStatus {
 
@@ -12,7 +12,7 @@ public class VDevStatus {
 	private String dev_code;
 	private Integer dev_type;
 	private Integer dev_factory;
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date data_time;
 	private Integer dev_status;
 

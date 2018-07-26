@@ -57,7 +57,7 @@ public class RealMeteorological {
     /**土壤EC值,所属表字段为 t_meteorological.soil_ec  */
     private Double soil_ec;
     /**时间,所属表字段为 t_meteorological.time  */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date data_time;
     /**设备状态-关联表，见数据字典,所属表字段为 t_meteorological.dev_status  */
     private Integer dev_status;

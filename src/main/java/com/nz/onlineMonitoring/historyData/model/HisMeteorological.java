@@ -59,7 +59,7 @@ public class HisMeteorological {
     /**土壤EC值,所属表字段为 t_his_meteorological.soil_ec  */
     private Double soil_ec;
     /**数据时间,所属表字段为 t_his_meteorological.data_time  */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date data_time;
     /**设备状态-关联表，见数据字典,所属表字段为 t_his_meteorological.dev_status  */
     private Integer dev_status;
@@ -82,6 +82,27 @@ public class HisMeteorological {
      * 而hisMeteorological加上这个字段，用来在mapper.xml中查询
      *  */
     private String weather;
+    /**气象条件的平均值 */
+    private double avg;
+    /**echarts下方显示的时间 */
+    private String date_time;
+    
+    public double getAvg() {
+        return avg;
+    }
+
+    public void setAvg(double avg) {
+        this.avg = avg;
+    }
+
+    public String getDate_time() {
+        return date_time;
+    }
+
+    public void setDate_time(String date_time) {
+        this.date_time = date_time;
+    }
+
     public String getDevice_type() {
         return device_type;
     }
@@ -505,5 +526,25 @@ public class HisMeteorological {
     public void setWeather(String weather) {
         this.weather = weather;
     }
+
+    @Override
+    public String toString() {
+        return "HisMeteorological [id=" + id + ", ms_code=" + ms_code
+                + ", dev_code=" + dev_code + ", air_t=" + air_t + ", air_h="
+                + air_h + ", wind_s=" + wind_s + ", wind_d=" + wind_d
+                + ", dew_p=" + dew_p + ", rain_f=" + rain_f + ", sunshine_h="
+                + sunshine_h + ", atmo_s=" + atmo_s + ", soil_t1=" + soil_t1
+                + ", soil_t2=" + soil_t2 + ", soil_t3=" + soil_t3 + ", soil_h1="
+                + soil_h1 + ", soil_h2=" + soil_h2 + ", soil_h3=" + soil_h3
+                + ", soil_ec=" + soil_ec + ", data_time=" + data_time
+                + ", dev_status=" + dev_status + ", device_type=" + device_type
+                + ", device_object=" + device_object + ", dev_code_value="
+                + dev_code_value + ", ms_code_value=" + ms_code_value
+                + ", dataDevStatus=" + dataDevStatus + ", data_time_begin="
+                + data_time_begin + ", data_time_end=" + data_time_end
+                + ", weather=" + weather + ", avg=" + avg + ", date_time="
+                + date_time + "]";
+    }
+    
     
 }

@@ -128,7 +128,7 @@
                 {
                     type: 'category',
                     axisTick: {show: false},
-                    data : ['2012', '2013', '2014', '2015', '2016','2012', '2013', '2014', '2015', '2016']
+                    data : []
                 }
             ],
             yAxis: [
@@ -141,18 +141,20 @@
                 {
                     name: '空气温度',
                     type: 'line',
-                    data: [0,0,0,0,0,0,0,0,0,0]
+                    data: []
                 }
             ]
         };
           
         
             
-           var listHisData = document.getElementsByName("hisData1");
-             for (var i = 0,n = listHisData.length; i < n; i++) {
-            	option.series[0].data[i] = listHisData[i].value;
-            }  
-             myChart.setOption(option);
+           var hisAvg1 = document.getElementsByName("hisAvg1");
+           var hisDate1 = document.getElementsByName("hisDate1");
+           for (var i = 0,n = hisAvg1.length; i < n; i++) {
+        	    option.series[0].data[i] = hisAvg1[i].value;
+        	    option.xAxis[0].data[i] = hisDate1[i].value;
+           }  
+           myChart.setOption(option);
     });
 
 
@@ -162,9 +164,9 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">气象设备查询</span></p></li>
-   <c:set var="weather" value="${hisData.weather}" scope="page"></c:set>
     <c:forEach items="${listHisData }" var="his">
-        <input type="text" name="hisData1" id="hisData1" value="${his[weather] }">
+        <input type="hidden" name="hisAvg1" id="hisAvg1" value="${his.avg }">
+        <input type="hidden" name="hisDate1" id="hisDate1" value="${his.date_time }">
     </c:forEach>
     
     <div id="xq">

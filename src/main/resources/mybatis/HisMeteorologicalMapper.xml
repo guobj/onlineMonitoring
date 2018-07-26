@@ -237,7 +237,7 @@
                     #{hisMeteorological.weather}
                 </when> -->
                 <when test="hisMeteorological.dev_code == null or hisMeteorological.dev_code == ''">
-                    dev_code
+                    ms_code,dev_code
                 </when>
                 <otherwise>
                     <include refid="t_his_meteorological_columns" />
@@ -276,7 +276,7 @@
         </where>
         <choose>
             <when test="hisMeteorological.dev_code == null or hisMeteorological.dev_code == ''">
-                group by dev_code limit #{record},#{num}    
+                group by ms_code,dev_code limit #{record},#{num}    
             </when>
             <!--  如果是按气象条件查询，全部查出来，不用分组，所以啥也不用写 -->
             <when test="hisMeteorological.weather != null and hisMeteorological.weather != ''">
