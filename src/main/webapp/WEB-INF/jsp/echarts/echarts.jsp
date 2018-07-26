@@ -148,14 +148,11 @@
           
         myChart.setOption(option);
             
-            var weather = "${hisData.weather}";
-            var listHisData = $("#listHisData").val();
-            var i = 0;
-            for (var hisData1 in listHisData) {
-            	option.xAxis.data[i] = hisData1.weather;
-            	i++;
-            }
-            
+           var listHisData = document.getElementsByName("hisData1");
+             for (var i = 0,n = listHisData.length; i < n; i++) {
+            	option.series[0].data[i] = listHisData[i].value;
+            	
+            }  
             
     });
 
@@ -166,7 +163,11 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">气象设备查询</span></p></li>
-    <input type="hidden" id="listHisData" value="${listHisData }">
+   <c:set var="weather" value="${hisData.weather}" scope="page"></c:set>
+    <c:forEach items="${listHisData }" var="his">
+        <input type="text" name="hisData1" id="hisData1" value="${his[weather] }">
+    </c:forEach>
+    
     <div id="xq">
 
     </div>

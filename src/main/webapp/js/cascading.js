@@ -1,6 +1,5 @@
 ﻿$(function () {
     var res = parseInt(account / 100);
-    console.log("account1:"+account);
     // 判断是否为省级账号
     if(!account.toString().endsWith("0000")){
         // 判断是否为市级账号
