@@ -146,14 +146,13 @@
             ]
         };
           
-        myChart.setOption(option);
-            
+     
            var listHisData = document.getElementsByName("hisData1");
              for (var i = 0,n = listHisData.length; i < n; i++) {
             	option.series[0].data[i] = listHisData[i].value;
             	
             }  
-            
+             myChart.setOption(option);    
     });
 
 
