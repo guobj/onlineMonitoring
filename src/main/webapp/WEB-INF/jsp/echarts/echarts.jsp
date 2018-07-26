@@ -99,7 +99,7 @@
                 }
             ],
 
-            color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+            color: ['#003366'],
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
@@ -107,7 +107,7 @@
                 }
             },
             legend: {
-                data: ['Forest', 'Steppe', 'Desert', 'Wetland']
+                data: ['空气温度']
             },
             toolbox: {
                 show: true,
@@ -139,13 +139,14 @@
             series: [
 
                 {
-                    name: 'Wetland',
+                    name: '空气温度',
                     type: 'line',
                     data: [98, 77, 101, 99, 40]
                 }
             ]
         };
-            myChart.setOption(option);
+          
+        myChart.setOption(option);
             
             var weather = "${hisData.weather}";
             var listHisData = $("#listHisData").val();
@@ -164,7 +165,7 @@
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点信息查询</span></p></li>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">气象设备查询</span></p></li>
     <input type="hidden" id="listHisData" value="${listHisData }">
     <div id="xq">
 
