@@ -274,10 +274,18 @@
                 and dev_code = #{hisMeteorological.dev_code}
             </if>
         </where>
-        <if test="hisData.dev_code == null or hisData.dev_code == ''">
-            group by dev_code      
-        </if>
-        limit #{record},#{num}
+        <choose>
+            <when test="hisMeteorological.dev_code == null or hisMeteorological.dev_code == ''">
+                group by dev_code limit #{record},#{num}    
+            </when>
+            <!--  如果是按气象条件查询，全部查出来，不用分组，所以啥也不用写 -->
+            <when test="hisMeteorological.weather != null and hisMeteorological.weather != ''">
+            
+            </when>
+            <otherwise>
+                limit #{record},#{num}
+            </otherwise>
+        </choose>
     </select>
      <!-- 查询数据的数量 -->
     <select id="countHisMeteorological" resultType ="int" parameterType="map">

@@ -140,7 +140,7 @@
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点信息查询</span></p></li>
     <c:set var="weather" value="${hisData.weather}" scope="page"></c:set>
     <c:forEach items="${listHisData }" var="his">
-        <input type="text" name="hisData1" id="hisData1" value="${his[weather] }">
+        <input type="hidden" name="hisData1" id="hisData1" value="${his[weather] }">
     </c:forEach>
     
     <div id="xq">
