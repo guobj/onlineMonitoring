@@ -117,6 +117,9 @@
 			    <c:if test="${hisData != null and hisData.dev_code != null }">
                     <input type="hidden" name="dev_code" value="${hisData.dev_code }"> 
                 </c:if>
+                <c:if test="${hisData != null and hisData.ms_code != null }">
+                    <input type="hidden" name="ms_code" value="${hisData.ms_code }"> 
+                </c:if>
 				<c:if test="${hisData != null and hisData.dev_code != null and fn:startsWith(hisData.dev_code,'dev5')}">
 	                <span>气象条件：</span> <select class="select1" name="weather">
 	                    <option value="air_t">空气温度</option>
@@ -136,8 +139,8 @@
 	                    <option value="soil_ec">土壤EC值</option>
 	                </select> 
 				</c:if>
-				<input type="submit" value="查找" class="search"><input
-					type="reset" value="重置" class="reset">
+				<input type="submit" value="查找" class="search">
+				<input type="reset" value="重置" class="reset">
 
 			</form>
 
@@ -165,8 +168,9 @@
 				</c:if>
 				<c:if test="${hisData == null or hisData.dev_code == null }">
 					<tr>
-						<td class="t3">监测设备编码</td>
-						<td class="t6"></td>
+					    <td class="t2">监测站编码</td>
+						<td class="t3">监测设备</td>
+						<td class="t6">查看</td>
 					</tr>
 				</c:if>
 			</thead>
@@ -174,8 +178,7 @@
 				<c:if test="${hisData != null and hisData.dev_code != null }">
 					<c:if test="${listHisData eq null}">
 						<tr>
-							<td colspan="8" style="text-align: center;"><font
-								color="red" size="4">${message }</font></td>
+							<td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font></td>
 						</tr>
 					</c:if>
 					<c:if test="${listHisData != null}">
@@ -218,19 +221,21 @@
 				<c:if test="${hisData == null or hisData.dev_code == null }">
 					<c:if test="${listHisData eq null}">
 						<tr>
-							<td colspan="8" style="text-align: center;"><font
-								color="red" size="4">${message }</font></td>
+							<td colspan="8" style="text-align: center;">
+							     <font color="red" size="4">${message }</font>
+							</td>
 						</tr>
 					</c:if>
 					<c:if test="${listHisData != null}">
 						<c:forEach items="${listHisData }" var="his">
 							<tr style="border-bottom: 1px solid #adadad;">
+							    <td class="t2">${his.ms_code }</td>
 								<td class="t3">${his.dev_code_value }</td>
 								<td class="t6">
 									<form action="hisData/listHisData" method="post">
-										<input type="hidden" id="dev_code" name="dev_code"
-											value="${his.dev_code }"> <input type="submit"
-											value="查看设备历史数据">
+										<input type="hidden" id="dev_code" name="dev_code" value="${his.dev_code }"> 
+										<input type="hidden" id="ms_code" name="ms_code" value="${his.ms_code }"> 
+										<input type="submit" value="查看设备历史数据">
 									</form>
 								</td>
 							</tr>

@@ -1,6 +1,13 @@
 package com.nz.onlineMonitoring.historyData.service.impl;
 
+import java.lang.reflect.Method;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,7 +41,7 @@ public class HisDataServiceImpl implements HisDataService{
      * @date 2018年6月3日 下午2:36:02
      */
     @Override
-    public List listHisData(Map<String, Object> map) {
+    public List listHisData(Map<String, Object> map) throws Exception{
         //用于气象表字段中查询的数量，会根据数据表查出的数量，与之互补
         map.put("num", 10);
         //返回前台的list，泛型
@@ -49,6 +56,7 @@ public class HisDataServiceImpl implements HisDataService{
         hisMeteorological.setData_time_begin(hisData.getData_time_begin());
         hisMeteorological.setData_time_end(hisData.getData_time_end());
         hisMeteorological.setDev_code(hisData.getDev_code());
+        hisMeteorological.setWeather(hisData.getWeather());
         //建立两个list，用于装两个表中返回的数据，不一定都会装东西，可能只查一个表
         List<HisMeteorological> hisMeteorologicalList = null;
         List<HisData> hisList = null;
@@ -137,7 +145,57 @@ public class HisDataServiceImpl implements HisDataService{
                         }
                     }
                 }
-                list.addAll(hisMeteorologicalList);
+                //如果weather有值，表示按气象条件查询
+                String weather = hisData.getWeather();
+                if (weather != null && weather != "") {
+                    //用来传到前台，只装一个气象条件和时间
+                    List<HisMeteorological> hisMeteorologicalList1 = new ArrayList<>();
+                    //气象条件的安小时分段的总和
+                    Map<String, Double> sumMap = new HashMap<>();
+                    //气象条件的安小时分段的总个数
+                    Map<String, Integer> numberMap = new HashMap<>();
+                    SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
+                    Date date = null;
+                    String dateStr = "";
+                    Method m = null;
+                    for (HisMeteorological rm : hisMeteorologicalList) {
+                        //取时间的前13位
+                        date = rm.getData_time();
+                        dateStr = formatter.format(date).substring(0, 13);
+                        weather = weather.substring(0, 1).toUpperCase() + weather.substring(1);
+                        //动态获取要查询的气象条件的get方法
+                        m = HisMeteorological.class.getMethod("get"+weather);
+                        Double value = (Double) m.invoke(rm, null);
+                        if (sumMap.containsKey(dateStr)) {
+                            sumMap.put(dateStr, sumMap.get(dateStr)+value);
+                            numberMap.put(dateStr, numberMap.get(dateStr)+1);
+                        }else {
+                            sumMap.put(dateStr, value);
+                            numberMap.put(dateStr, 1);
+                        }
+                    }
+                    //将map中各个时间段的总值，以及数量的总和获取，取平均,保留两位小数点
+                    DecimalFormat df = new DecimalFormat("######0.00");   
+                    for (String key : sumMap.keySet()) {
+                        HisMeteorological hm = new HisMeteorological();
+                        Double sum = sumMap.get(key);
+                        Integer number = numberMap.get(key);
+                        hm.setAvg(df.format(sum/number));
+                        hm.setDate_time(key);
+                        hisMeteorologicalList1.add(hm);
+                    }
+                    //因为加入到map中，顺序乱了，进行重新排序
+                    Collections.sort(hisMeteorologicalList1, new Comparator<HisMeteorological>() {
+                        @Override
+                        public int compare(HisMeteorological o1, HisMeteorological o2) {
+                            return o1.getDate_time().compareTo(o2.getDate_time());
+                        }
+                    });
+                    list.addAll(hisMeteorologicalList1);
+                }else {
+                    list.addAll(hisMeteorologicalList);
+                }
+                
             }
         }
         return list;

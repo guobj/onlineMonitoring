@@ -107,7 +107,7 @@
                 }
             },
             legend: {
-                data: ['空气温度']
+                data: ['']
             },
             toolbox: {
                 show: true,
@@ -128,7 +128,7 @@
                 {
                     type: 'category',
                     axisTick: {show: false},
-                    data : new Array(),
+                    data : []
                 }
             ],
             yAxis: [
@@ -139,20 +139,25 @@
             series: [
 
                 {
-                    name: '空气温度',
+                    name: '',
                     type: 'line',
-                    data: [98, 77, 101, 99, 40]
+                    data: []
                 }
             ]
         };
           
-     
-           var listHisData = document.getElementsByName("hisData1");
-             for (var i = 0,n = listHisData.length; i < n; i++) {
-            	option.series[0].data[i] = listHisData[i].value;
-            	
-            }  
-             myChart.setOption(option);    
+        
+            
+           var hisAvg1 = document.getElementsByName("hisAvg1");
+           var hisDate1 = document.getElementsByName("hisDate1");
+           var weather = document.getElementById("weather").value;
+           for (var i = 0,n = hisAvg1.length; i < n; i++) {
+        	    option.series[0].data[i] = hisAvg1[i].value;
+        	    option.xAxis[0].data[i] = hisDate1[i].value;
+           }  
+           option.series[0].name = weather;
+           option.legend.data[0] = weather;
+           myChart.setOption(option);
     });
 
 
@@ -162,11 +167,55 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">气象设备查询</span></p></li>
-   <c:set var="weather" value="${hisData.weather}" scope="page"></c:set>
     <c:forEach items="${listHisData }" var="his">
-        <input type="hidden" name="hisData1" id="hisData1" value="${his[weather] }">
+        <input type="hidden" name="hisAvg1" id="hisAvg1" value="${his.avg }">
+        <input type="hidden" name="hisDate1" id="hisDate1" value="${his.date_time }">
     </c:forEach>
-    
+    <c:if test="${hisData.weather eq 'air_t'}">
+        <input type="hidden" name="weather" id="weather" value="空气温度">
+    </c:if>
+    <c:if test="${hisData.weather eq 'air_h'}">
+        <input type="hidden" name="weather" id="weather" value="空气湿度">
+    </c:if>
+    <c:if test="${hisData.weather eq 'wind_s'}">
+        <input type="hidden" name="weather" id="weather" value="风速">
+    </c:if>
+    <c:if test="${hisData.weather eq 'wind_d'}">
+        <input type="hidden" name="weather" id="weather" value="风向">
+    </c:if>
+    <c:if test="${hisData.weather eq 'dew_p'}">
+        <input type="hidden" name="weather" id="weather" value="露点温度">
+    </c:if>
+    <c:if test="${hisData.weather eq 'rain_f'}">
+        <input type="hidden" name="weather" id="weather" value="降雨量">
+    </c:if>
+    <c:if test="${hisData.weather eq 'sunshine_h'}">
+        <input type="hidden" name="weather" id="weather" value="日照时数">
+    </c:if>
+    <c:if test="${hisData.weather eq 'atmo_s'}">
+        <input type="hidden" name="weather" id="weather" value="大气压">
+    </c:if>
+    <c:if test="${hisData.weather eq 'soil_t1'}">
+        <input type="hidden" name="weather" id="weather" value="土壤温度1">
+    </c:if>
+    <c:if test="${hisData.weather eq 'soil_t2'}">
+        <input type="hidden" name="weather" id="weather" value="土壤温度2">
+    </c:if>
+    <c:if test="${hisData.weather eq 'soil_t3'}">
+        <input type="hidden" name="weather" id="weather" value="土壤温度3">
+    </c:if>
+    <c:if test="${hisData.weather eq 'soil_h1'}">
+        <input type="hidden" name="weather" id="weather" value="土壤湿度1">
+    </c:if>
+    <c:if test="${hisData.weather eq 'soil_h2'}">
+        <input type="hidden" name="weather" id="weather" value="土壤湿度2">
+    </c:if>
+    <c:if test="${hisData.weather eq 'soil_h3'}">
+        <input type="hidden" name="weather" id="weather" value="土壤湿度3">
+    </c:if>
+    <c:if test="${hisData.weather eq 'soil_ec'}">
+        <input type="hidden" name="weather" id="weather" value="土壤EC值">
+    </c:if>
     <div id="xq">
 
     </div>

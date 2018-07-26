@@ -92,7 +92,7 @@
         select 
             <!-- 一开始查询的是历史数据中的设备，然后根据设备编码查询该设备下全部的历史数据 -->
 	        <if test="hisData.dev_code == null or hisData.dev_code == ''">
-	            dev_code
+	            ms_code,dev_code
 	        </if>
 	        <if test="hisData.dev_code != null and hisData.dev_code != ''">
 	            <include refid="t_his_data_columns" />
@@ -129,7 +129,7 @@
             </if>
         </where>
         <if test="hisData.dev_code == null or hisData.dev_code == ''">
-            group by dev_code      
+            group by ms_code,dev_code      
         </if>
         limit #{record},10
     </select>
@@ -137,7 +137,7 @@
     <select id="countHisData" resultType ="int" parameterType="map">
         select 
 	        <if test="hisData.dev_code == null or hisData.dev_code == ''">
-	            count(distinct dev_code)
+	            count(distinct ms_code,dev_code)
 	        </if>
 	        <if test="hisData.dev_code != null and hisData.dev_code != ''">
 	            count(*)
@@ -171,6 +171,10 @@
             <!-- 如果设备编码不为空，那么选择设备，根据设备的编码查出该设备下的所有历史数据 -->
             <if test="hisData.dev_code != null and hisData.dev_code != ''" >
                 and dev_code = #{hisData.dev_code}
+            </if>
+            <!-- 如果监测站编码不为空，那么选择监测站，根据监测站编码查出该监测站下的所有历史数据 -->
+            <if test="hisData.ms_code != null and hisData.ms_code != ''" >
+                and ms_code = #{hisData.ms_code}
             </if>
         </where>
     </select>
