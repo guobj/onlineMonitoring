@@ -114,7 +114,7 @@
         </form>
     </div>
     <%--<h5>信息列表</h5>--%>
-    <br/>
+
     <table id="xx">
         <thead>
             <tr>
