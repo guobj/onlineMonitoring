@@ -27,7 +27,7 @@ public class Station {
     /**监测站编码-按照规范命名,所属表字段为 t_station.ms_code  */
     private String ms_code;
     /**建设时间,所属表字段为 t_station.ms_date  */
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     private Date ms_date;
     /**建设内容-关联表，见数据字典(设备类型，包含哪些设备),所属表字段为 t_station.ms_dev  */
     private String ms_dev;

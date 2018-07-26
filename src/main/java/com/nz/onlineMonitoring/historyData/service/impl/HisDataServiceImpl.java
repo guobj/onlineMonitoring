@@ -1,8 +1,11 @@
 package com.nz.onlineMonitoring.historyData.service.impl;
 
 import java.lang.reflect.Method;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -141,7 +144,6 @@ public class HisDataServiceImpl implements HisDataService{
                             rm.setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+rm.getDev_code().substring(6, 8)+"个");
                         }
                     }
-                    System.out.println(rm.toString());
                 }
                 //如果weather有值，表示按气象条件查询
                 String weather = hisData.getWeather();
@@ -172,20 +174,28 @@ public class HisDataServiceImpl implements HisDataService{
                             numberMap.put(dateStr, 1);
                         }
                     }
-                    
+                    //将map中各个时间段的总值，以及数量的总和获取，取平均,保留两位小数点
+                    DecimalFormat df = new DecimalFormat("######0.00");   
                     for (String key : sumMap.keySet()) {
-                        System.out.println("key="+key);
                         HisMeteorological hm = new HisMeteorological();
                         Double sum = sumMap.get(key);
                         Integer number = numberMap.get(key);
-                        hm.setAvg(sum/number);
-                        hm.setDate_time(dateStr);
+                        hm.setAvg(df.format(sum/number));
+                        hm.setDate_time(key);
                         hisMeteorologicalList1.add(hm);
-                        System.out.println(hm.toString());
                     }
+                    //因为加入到map中，顺序乱了，进行重新排序
+                    Collections.sort(hisMeteorologicalList1, new Comparator<HisMeteorological>() {
+                        @Override
+                        public int compare(HisMeteorological o1, HisMeteorological o2) {
+                            return o1.getDate_time().compareTo(o2.getDate_time());
+                        }
+                    });
                     list.addAll(hisMeteorologicalList1);
+                }else {
+                    list.addAll(hisMeteorologicalList);
                 }
-                list.addAll(hisMeteorologicalList);
+                
             }
         }
         return list;

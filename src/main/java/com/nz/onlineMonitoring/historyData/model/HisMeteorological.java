@@ -59,7 +59,7 @@ public class HisMeteorological {
     /**土壤EC值,所属表字段为 t_his_meteorological.soil_ec  */
     private Double soil_ec;
     /**数据时间,所属表字段为 t_his_meteorological.data_time  */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date data_time;
     /**设备状态-关联表，见数据字典,所属表字段为 t_his_meteorological.dev_status  */
     private Integer dev_status;
@@ -83,15 +83,15 @@ public class HisMeteorological {
      *  */
     private String weather;
     /**气象条件的平均值 */
-    private double avg;
+    private String avg;
     /**echarts下方显示的时间 */
     private String date_time;
     
-    public double getAvg() {
+    public String getAvg() {
         return avg;
     }
 
-    public void setAvg(double avg) {
+    public void setAvg(String avg) {
         this.avg = avg;
     }
 

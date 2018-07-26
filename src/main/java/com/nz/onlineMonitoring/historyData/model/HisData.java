@@ -31,7 +31,7 @@ public class HisData {
     /**数据值,所属表字段为 t_his_data.data_value  */
     private String data_value;
     /**数据时间,所属表字段为 t_his_data.data_time  */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date data_time;
     /**设备状态-关联表，见数据字典,所属表字段为 t_his_data.dev_status  */
     private Integer dev_status;
