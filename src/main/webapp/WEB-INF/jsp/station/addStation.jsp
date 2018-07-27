@@ -59,7 +59,7 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">站点信息新增</span></p></li>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点管理</span> > <span id="zb3">站点信息新增</span></p></li>
     
         <div id="tianjia" style="display:block;!important;" >
             <form id="addForm">

@@ -12,7 +12,7 @@
 <head lang="en">
     <base href="${basePath }">
     <meta charset="UTF-8">
-    <title>设备状态查看</title>
+    <title>设备状态查询</title>
     <link href="css/sbzt.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script src="js/cascading.js" ></script>
@@ -39,7 +39,7 @@
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">监测设备管理</span> > <span id="zb3">设备状态查看</span></p></li>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">监测设备管理</span> > <span id="zb3">设备状态查询</span></p></li>
     <div class="menu">
         <form action="vDevStatus/devcieStatusList" method="post">
             <%--<span>监测站名称：<input type="text"/></span>--%>

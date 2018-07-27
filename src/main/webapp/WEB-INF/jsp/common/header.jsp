@@ -35,9 +35,9 @@
             <li>
                 <a href="javascript:;" class="a_1"> <img src="img/xt3.png">&nbsp;站点管理</a>
                 <ul class="zdgl" id="c1">
-                    <li><a href="station/listStation" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;监测站点管理</a>
+                    <li><a href="station/listStation" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;监测站点查询</a>
                     </li>
-                    <li><a href="manage/queryStationInfo" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;监测站点查询</a></li>
+                    <li><a href="manage/queryStationInfo" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;站点信息配置</a></li>
                     <li><a href="station/addStation" class="a_2"><img src="img/xxtb.jpg">&nbsp;站点信息新增</a></li>
                 </ul>
             </li>
@@ -45,15 +45,15 @@
                 <a href="javascript:;" class="a_1"><img src="img/xt3.png">&nbsp;监测设备管理</a>
                 <ul class="zdgl" id="c2">
                     <li><a href="device/queryDeviceInfo" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备信息管理</a></li>
-                    <li><a href="vDevStatus/devcieStatusList" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备状态查看</a></li>
+                    <li><a href="vDevStatus/devcieStatusList" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备状态查询</a></li>
                     <li><a href="device/queryDeviceInfoList" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;设备信息查询</a></li>
                 </ul>
             </li>
             <li>
                 <a href="javascript:;" class="a_1"><img src="img/xt3.png">&nbsp;监测数据管理</a>
                 <ul class="zdgl" id="c3">
-                    <li><a href="realData/listRealData" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;实时数据查看</a></li>
-                    <li><a href="hisData/listHisData" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;历史数据查询功能</a></li>
+                    <li><a href="realData/listRealData" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;实时数据查询</a></li>
+                    <li><a href="hisData/listHisData" target="_self" class="a_2"><img src="img/xxtb.jpg">&nbsp;历史数据查询</a></li>
                 </ul>
             </li>
         </ul>
