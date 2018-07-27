@@ -152,7 +152,7 @@
 
 
  $(function(){
-		$("tbody tr:even").css("background","#fff4e5");
+		$("tbody tr:even").css("background","#fff2f2");
 		$("tbody tr:odd").css("background","#EEF4F9");
 	})
 
