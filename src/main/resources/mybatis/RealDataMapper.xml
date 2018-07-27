@@ -120,7 +120,7 @@
                 and dev_status = #{realData.dev_status}
             </if>
         </where>
-        limit #{record},10
+        limit #{record},15
     </select>
      <!-- 查询数据的数量 -->
     <select id="countReal" resultType ="int" parameterType="map">

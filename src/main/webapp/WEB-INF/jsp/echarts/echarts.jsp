@@ -151,6 +151,10 @@
            var hisAvg1 = document.getElementsByName("hisAvg1");
            var hisDate1 = document.getElementsByName("hisDate1");
            var weather = document.getElementById("weather").value;
+           var color = document.getElementById("color");
+           if (color != null) {
+        	   option.color[0] = color.value;
+           }
            for (var i = 0,n = hisAvg1.length; i < n; i++) {
         	    option.series[0].data[i] = hisAvg1[i].value;
         	    option.xAxis[0].data[i] = hisDate1[i].value;
@@ -173,9 +177,11 @@
     </c:forEach>
     <c:if test="${hisData.weather eq 'air_t'}">
         <input type="hidden" name="weather" id="weather" value="空气温度">
+        <input type="hidden" name="color" id="color" value="#eb0808">
     </c:if>
     <c:if test="${hisData.weather eq 'air_h'}">
         <input type="hidden" name="weather" id="weather" value="空气湿度">
+        <input type="hidden" name="color" id="color" value="#283dde">
     </c:if>
     <c:if test="${hisData.weather eq 'wind_s'}">
         <input type="hidden" name="weather" id="weather" value="风速">
@@ -188,6 +194,7 @@
     </c:if>
     <c:if test="${hisData.weather eq 'rain_f'}">
         <input type="hidden" name="weather" id="weather" value="降雨量">
+        <input type="hidden" name="color" id="color" value="#283dde">
     </c:if>
     <c:if test="${hisData.weather eq 'sunshine_h'}">
         <input type="hidden" name="weather" id="weather" value="日照时数">

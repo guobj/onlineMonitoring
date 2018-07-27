@@ -216,7 +216,7 @@
                 and ms_date between #{station.date_begin} and #{station.date_end}
             </if>
         </where>
-        limit #{record},10
+        limit #{record},15
     </select>
     <select id="countStation" resultType ="int" parameterType="map">
         select 

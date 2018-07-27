@@ -56,7 +56,7 @@
             </if>
             order by tm.id desc
         </where>
-        LIMIT #{record},10
+        LIMIT #{record},15
     </select>
     <!--关联查询 查询共有多少条记录--> 
     <select id="count" resultType="integer" parameterType="map">

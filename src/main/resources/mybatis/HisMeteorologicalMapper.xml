@@ -233,9 +233,6 @@
         select 
         <!-- 一开始查询的是历史数据中的设备，然后根据设备编码查询该设备下全部的历史数据 -->
             <choose>
-                <!-- <when test="hisMeteorological.weather != null and hisMeteorological.weather != ''">
-                    #{hisMeteorological.weather}
-                </when> -->
                 <when test="hisMeteorological.dev_code == null or hisMeteorological.dev_code == ''">
                     ms_code,dev_code
                 </when>

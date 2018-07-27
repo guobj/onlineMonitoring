@@ -131,7 +131,7 @@
         <if test="hisData.dev_code == null or hisData.dev_code == ''">
             group by ms_code,dev_code      
         </if>
-        limit #{record},10
+        limit #{record},15
     </select>
      <!-- 查询数据的数量 -->
     <select id="countHisData" resultType ="int" parameterType="map">
