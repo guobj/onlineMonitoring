@@ -135,7 +135,7 @@
                 {
                     type: 'value'
                 }
-            ],
+            ], 
             series: [
 
                 {
