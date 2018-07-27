@@ -280,12 +280,7 @@
                        <option value="${net.data_value }">${net.data_name }</option>
                     </c:forEach>
                 </select><br/>
-                <span>网关类型:</span>
-                <select name="ms_gate" id="ms_gate">
-                    <c:forEach items="${msGate }" var="gate">
-                       <option value="${gate.data_value }">${gate.data_name }</option>
-                    </c:forEach>
-                </select><br/>
+               
                 <span id="ms_dev">建设内容:</span>
                 <span >监测站描述:</span>
                     <textarea name="ms_desc" id="ms_desc"></textarea><span id="tip_5">格式正确</span>
