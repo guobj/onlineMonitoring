@@ -35,7 +35,7 @@ body{ background:#1c8914;}
 #caidan ul .cd_4 ul li .zdgl .a_4:hover{ background:#d7dce2;}
 #caidan ul .cd_4 ul li .zdgl .a_4 img{ margin-left:7%; margin-top:9px; float:left;}
 
-#content_r{ width:84%; height:620px; margin-left:16%; position: relative; background:#eaeaea;margin-top: 3px;}
+#content_r{ width:84%; height:880px; margin-left:16%; position: relative; background:#eaeaea;margin-top: 3px;}
 #content_r h5{
     margin-left: 2%;
     margin-top: 20px;
@@ -44,7 +44,7 @@ body{ background:#1c8914;}
     float: left;
 ;}
 
-#content_r #main{width: 95%; float: left; margin-left: 3%; height: 550px; overflow-y: scroll; overflow-x: hidden}
+#content_r #main{width: 95%; float: left; margin-left: 3%; height: 750px; overflow-y: scroll; overflow-x: hidden}
 #content_r #main #meeq{width: 95%; float: left; border: 1px solid #cccccc; padding-top: 15px; padding-left: 2%;
  background: rgb(255,255,255);  
  padding-bottom: 10px;
