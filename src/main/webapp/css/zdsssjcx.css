@@ -73,10 +73,10 @@ box-shadow:2px 2px 3px #aaaaaa;
 
 #content_r #main #picture p{ float: left; margin-right:10%; font-weight: bolder;}
 #content_r #main #picture p span{ font-weight: normal;}
-#content_r #main #picture .con{margin-top: 20px; float: left; width: 80%;  height:500px;}
-
-#content_r #main #picture .show{width:20%; float:left; overflow-y: scroll;height:500px;margin-top: 20px;}
-#content_r #main #picture .show img{width:100%; float:left; margin-top:10px;}
+#content_r #main #picture .con{margin-top: 20px; float: left; width: 70%;  height:650px;}
+#content_r #main #picture .con img{width:90%; margin-top:5px; margin-left:15px; height:650px;}
+#content_r #main #picture .show{width:30%; float:left; overflow-y: scroll;height:650px;margin-top: 20px;}
+#content_r #main #picture .show img{width:100%; float:left; margin-top:10px; }
 
 
 #footer{ width:100%; height:26px; float:left; background:#1b8a14; margin-top: 3px;}
