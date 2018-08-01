@@ -62,6 +62,9 @@
 				               
 				            </div>
 				            <div class="show">
+				                <c:forTokens items="${list.data_value }" delims="," var="photo" begin="0" end="0">
+                                      <img src="/upload/${list.ms_code }/${list.dev_code}/${photo}" />
+                                </c:forTokens>
 				            	<c:forTokens items="${list.data_value }" delims="," var="photo">
 				                      <img src="/upload/${list.ms_code }/${list.dev_code}/${photo}" />
 				                </c:forTokens>
