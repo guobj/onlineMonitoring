@@ -60,11 +60,11 @@ $(function(){
     //})
     
 })
-function preview(img){
-	$("#picture .con img").attr("src",$(img).attr("src"));
-	$("#picture .con img").attr("jqimg",$(img).attr("bimg"));
-	var url=$("#picture .con img").attr("src");
-}
+ function preview(img){
+        $("#picture .con img").attr("src",$(img).attr("src"));
+        $("#picture .con img").attr("jqimg",$(img).attr("bimg"));
+        var url=$("#picture .con img").attr("src");
+    }
 $(function(){
 	var url=$("")
 })

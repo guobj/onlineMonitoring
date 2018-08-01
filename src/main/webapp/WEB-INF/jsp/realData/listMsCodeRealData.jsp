@@ -17,6 +17,9 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.page.js"></script>
     <script type="text/javascript" src="js/sssj.js"></script>
+    <script type="text/javascript">
+   
+    </script>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
@@ -59,23 +62,16 @@
 			            <p>设备类型：<span>${list.dev_code_value }</span></p>
 			            <p>数据上报时间：<span><fmt:formatDate value="${list.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></span></p>
 				            <div class="con">
-				               <img src="img/bg2.png">
+				               <c:forTokens items="${list.data_value }" delims="," var="photo" begin="0" end="">
+                                      <img class="min" src="/upload/${list.ms_code }/${list.dev_code}/${photo}" />
+                                </c:forTokens>
 				            </div>
 				            <div class="show">
-				              <ul>
-						          <li><img  bimg="img/an.png" src="img/an.png" onmousemove="preview(this);"></li>
-						          <li><img  bimg="img/an1.png" src="img/an1.png" onmousemove="preview(this);"></li>
-						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
-						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
-						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
-						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
-						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
-						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
-						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
-						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
-						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
-						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
-        						</ul>
+					            <ul>
+					                <c:forTokens items="${list.data_value }" delims="," var="photo">
+	                                      <li><img onmousemove="preview(this);" class="min" bimg="/upload/${list.ms_code }/${list.dev_code}/${photo}" src="/upload/${list.ms_code }/${list.dev_code}/${photo}" /></li>
+	                                </c:forTokens>
+					            </ul>  
 				            </div>
 		            </div>
 	            </c:when> 
