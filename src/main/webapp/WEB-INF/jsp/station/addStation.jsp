@@ -90,7 +90,7 @@
     
                 <input type="text" class="lxfs" id="tj_text_3" name="ms_user">
                  <span id="tj_tip_3">
-                        请输入0-100位字符
+                        请输入0-100位字符 
                     </span>
                 <br/>
                 <span>施工单位，联系人，联系方式:</span>
