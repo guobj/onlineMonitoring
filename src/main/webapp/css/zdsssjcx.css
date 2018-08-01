@@ -35,7 +35,7 @@ body{ background:#1c8914;}
 #caidan ul .cd_4 ul li .zdgl .a_4:hover{ background:#d7dce2;}
 #caidan ul .cd_4 ul li .zdgl .a_4 img{ margin-left:7%; margin-top:9px; float:left;}
 
-#content_r{ width:84%; height:880px; margin-left:16%; position: relative; background:#eaeaea;margin-top: 3px;}
+#content_r{ width:84%; height:880px; margin-left:16%; background:#eaeaea;margin-top: 3px; position:relative;}
 #content_r h5{
     margin-left: 2%;
     margin-top: 20px;
@@ -71,12 +71,17 @@ box-shadow:2px 2px 3px #aaaaaa;
  padding-top: 15px; padding-bottom: 10px; background: rgb(255,255,255); border-radius: 6px; box-shadow:2px 2px 3px #aaaaaa;
 }
 
-#content_r #main #picture p{ float: left; margin-right:10%; font-weight: bolder;}
+#content_r #main #picture p{ float: left; margin-right:7%; font-weight: bolder;}
 #content_r #main #picture p span{ font-weight: normal;}
-#content_r #main #picture .con{margin-top: 20px; float: left; width: 70%;  height:650px;}
-#content_r #main #picture .con img{width:90%; margin-top:5px; margin-left:15px; height:650px;}
-#content_r #main #picture .show{width:30%; float:left; overflow-y: scroll;height:650px;margin-top: 20px;}
-#content_r #main #picture .show img{width:100%; float:left; margin-top:10px; }
+#content_r #main #picture .con{margin-top: 20px; float: left; width: 90%;  }
+#content_r #main #picture .con img{width:100%;}
+
+#content_r #imga{width:90%; height:700px; background:#c4c4c4; position:fixed;top:5%;left:5%; z-index:8; display:none;}
+#imga .title{height:40px; background:#5cd31b; color:#ffffff;}
+#imga .title h3{margin:10px 0 0 3%; float:left;}
+#imga span{float:right; margin-right:3%;  display:inline-block; font-size:28px;}
+
+#imga .con_txt{height:650px;}
 
 
 #footer{ width:100%; height:26px; float:left; background:#1b8a14; margin-top: 3px;}

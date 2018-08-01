@@ -61,18 +61,13 @@
 			            <p>设备编号：<span>${list.dev_code }</span></p>
 			            <p>设备类型：<span>${list.dev_code_value }</span></p>
 			            <p>数据上报时间：<span><fmt:formatDate value="${list.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></span></p>
+				        <p><input type="button" value="点击查看更多图片" style="background:none; float:left; color:#1d4dff" id="open-btn"></p>
 				            <div class="con">
 				               <c:forTokens items="${list.data_value }" delims="," var="photo" begin="0" end="">
                                       <img class="min" src="/upload/${list.ms_code }/${list.dev_code}/${photo}" />
                                 </c:forTokens>
 				            </div>
-				            <div class="show">
-					            <ul>
-					                <c:forTokens items="${list.data_value }" delims="," var="photo">
-	                                      <li><img onmousemove="preview(this);" class="min" bimg="/upload/${list.ms_code }/${list.dev_code}/${photo}" src="/upload/${list.ms_code }/${list.dev_code}/${photo}" /></li>
-	                                </c:forTokens>
-					            </ul>  
-				            </div>
+				            
 		            </div>
 	            </c:when> 
 	            <c:otherwise>
@@ -88,6 +83,13 @@
 	        </c:choose>
 	    </c:forEach>
     </c:if>
+    <div id="imga">
+		<div class="title">
+			<span id="close_btn">×</span>
+			<h3>更多图片</h3>
+		</div>           	
+		<div class="con_txt"></div>
+	</div>
     </div>
 </div>
 <div id="footer">

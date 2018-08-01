@@ -48,7 +48,7 @@ $(function(){
     })
 
     $("#img").hide();
-  
+    
     //$("#picture .con").children().on("click",".min",function(){
     //    $(this).toggleClass("min");
     //    $(this).toggleClass("max");
@@ -60,11 +60,38 @@ $(function(){
     //})
     
 })
- function preview(img){
-        $("#picture .con img").attr("src",$(img).attr("src"));
-        $("#picture .con img").attr("jqimg",$(img).attr("bimg"));
-        var url=$("#picture .con img").attr("src");
-    }
+// function preview(img){
+//        $("#picture .con img").attr("src",$(img).attr("src"));
+//        $("#picture .con img").attr("jqimg",$(img).attr("bimg"));
+//        var url=$("#picture .con img").attr("src");
+//    }
+/*图片弹窗*/
 $(function(){
-	var url=$("")
+
+	var btn = document.getElementById('open-btn');
+
+	var div = document.getElementById('imga');
+
+	var close = document.getElementById('close_btn');
+	btn.onclick = function show() {
+
+		div.style.display = "block";
+
+	}
+
+	close.onclick = function close() {
+
+		div.style.display = "none";
+
+	}
+
+	window.onclick = function close(e) {
+
+		if (e.target == div) {
+
+			div.style.display = "none";
+
+		}
+
+	}
 })
