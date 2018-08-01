@@ -59,15 +59,23 @@
 			            <p>设备类型：<span>${list.dev_code_value }</span></p>
 			            <p>数据上报时间：<span><fmt:formatDate value="${list.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></span></p>
 				            <div class="con">
-				               
+				               <img src="img/bg2.png">
 				            </div>
 				            <div class="show">
-				                <c:forTokens items="${list.data_value }" delims="," var="photo" begin="0" end="0">
-                                      <img src="/upload/${list.ms_code }/${list.dev_code}/${photo}" />
-                                </c:forTokens>
-				            	<c:forTokens items="${list.data_value }" delims="," var="photo">
-				                      <img src="/upload/${list.ms_code }/${list.dev_code}/${photo}" />
-				                </c:forTokens>
+				              <ul>
+						          <li><img  bimg="img/an.png" src="img/an.png" onmousemove="preview(this);"></li>
+						          <li><img  bimg="img/an1.png" src="img/an1.png" onmousemove="preview(this);"></li>
+						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
+						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
+						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
+						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
+						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
+						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
+						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
+						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
+						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
+						          <li><img  bimg="img/bg2.png" src="img/bg2.png" onmousemove="preview(this);"></li>
+        						</ul>
 				            </div>
 		            </div>
 	            </c:when> 

@@ -73,9 +73,9 @@ box-shadow:2px 2px 3px #aaaaaa;
 
 #content_r #main #picture p{ float: left; margin-right:10%; font-weight: bolder;}
 #content_r #main #picture p span{ font-weight: normal;}
-#content_r #main #picture .con{margin-top: 20px; float: left; width: 80%; background:red; height:500px;}
+#content_r #main #picture .con{margin-top: 20px; float: left; width: 80%;  height:500px;}
 
-#content_r #main #picture .show{width:20%; float:left; background:black;  overflow-y: scroll;height:500px;margin-top: 20px;}
+#content_r #main #picture .show{width:20%; float:left; overflow-y: scroll;height:500px;margin-top: 20px;}
 #content_r #main #picture .show img{width:100%; float:left; margin-top:10px;}
 
 

@@ -48,9 +48,7 @@ $(function(){
     })
 
     $("#img").hide();
-    $("#picture .show").children().click( function(){
-       $("#pincture .con").append("<img src='img/bg2.png'>");
-    })
+  
     //$("#picture .con").children().on("click",".min",function(){
     //    $(this).toggleClass("min");
     //    $(this).toggleClass("max");
@@ -61,4 +59,12 @@ $(function(){
     //    $(this).toggleClass("max");
     //})
     
+})
+function preview(img){
+	$("#picture .con img").attr("src",$(img).attr("src"));
+	$("#picture .con img").attr("jqimg",$(img).attr("bimg"));
+	var url=$("#picture .con img").attr("src");
+}
+$(function(){
+	var url=$("")
 })
