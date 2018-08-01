@@ -70,7 +70,7 @@
 				                </c:forTokens>
 				            </div>
 		            </div>
-	            </c:when>
+	            </c:when> 
 	            <c:otherwise>
 	                <div id="detyp">
 			            <p>设备编号：<span>${list.dev_code }</span></p>
