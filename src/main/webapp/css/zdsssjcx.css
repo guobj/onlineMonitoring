@@ -70,11 +70,15 @@ box-shadow:2px 2px 3px #aaaaaa;
 #content_r #main #picture{width: 95%; float: left; border: 1px solid #cccccc; margin-top: 20px; padding-left: 2%; margin-bottom: 7px;
  padding-top: 15px; padding-bottom: 10px; background: rgb(255,255,255); border-radius: 6px; box-shadow:2px 2px 3px #aaaaaa;
 }
+
 #content_r #main #picture p{ float: left; margin-right:10%; font-weight: bolder;}
 #content_r #main #picture p span{ font-weight: normal;}
-#content_r #main #picture .con{margin-top: 20px; float: left; width: 100%;}
-#content_r #main #picture .con .min {width: 17.5%; float: left; margin-left: 2%; margin-bottom: 10px;}
-#content_r #main #picture .con .max {width: 70%; float: left; margin-left: 2%; margin-bottom: 10px;}
+#content_r #main #picture .con{margin-top: 20px; float: left; width: 80%; background:red; height:500px;}
+
+#content_r #main #picture .show{width:20%; float:left; background:black;  overflow-y: scroll;height:500px;margin-top: 20px;}
+#content_r #main #picture .show img{width:100%; float:left; margin-top:10px;}
+
+
 #footer{ width:100%; height:26px; float:left; background:#1b8a14; margin-top: 3px;}
 #footer li{ text-align:center; line-height:26px; font-size:0.75em;}
 #footer li a{ color:#000;}

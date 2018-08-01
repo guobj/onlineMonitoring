@@ -59,8 +59,11 @@
 			            <p>设备类型：<span>${list.dev_code_value }</span></p>
 			            <p>数据上报时间：<span><fmt:formatDate value="${list.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></span></p>
 				            <div class="con">
-				                <c:forTokens items="${list.data_value }" delims="," var="photo">
-				                      <img class="min" src="/upload/${list.ms_code }/${list.dev_code}/${photo}" />
+				               
+				            </div>
+				            <div class="show">
+				            	<c:forTokens items="${list.data_value }" delims="," var="photo">
+				                      <img src="/upload/${list.ms_code }/${list.dev_code}/${photo}" />
 				                </c:forTokens>
 				            </div>
 		            </div>
@@ -83,5 +86,8 @@
 <div id="footer">
     <li>山东省植物保护总站</li>
 </div>
+<script>
+
+</script>
 </body>
 </html>

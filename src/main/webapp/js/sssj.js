@@ -48,9 +48,8 @@ $(function(){
     })
 
     $("#img").hide();
-    $("#picture .con").children().click( function(){
-        $(this).toggleClass("min");
-        $(this).toggleClass("max");
+    $("#picture .show").children().click( function(){
+       $("#pincture .con").append("<img src='img/bg2.png'>");
     })
     //$("#picture .con").children().on("click",".min",function(){
     //    $(this).toggleClass("min");
@@ -61,5 +60,5 @@ $(function(){
     //    $(this).toggleClass("min");
     //    $(this).toggleClass("max");
     //})
-
+    
 })
