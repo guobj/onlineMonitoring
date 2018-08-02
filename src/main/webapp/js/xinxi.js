@@ -110,7 +110,7 @@ function guanbi(){
 
 }
 function xg(){
-    alert("修改成功")
+	 $.MsgBox.Confirm("温馨提示", "确认修改？温馨提示", function () {  $.MsgBox.Alert("消息", "修改成功");});
     $("#xiugai").hide();
     $("#bg").show();
     $("h4").html("数据列表");
@@ -136,7 +136,7 @@ function pz(){
 
 }
 function del(){
-    $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () { alert("删除成功"); });
+    $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示",function () {   $.MsgBox.Alert("消息", "删除成功");});
 }
 
 function close1()

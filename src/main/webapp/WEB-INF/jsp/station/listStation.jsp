@@ -134,6 +134,7 @@
         //修改
         function xg(){
             var form = new FormData(document.getElementById("updateForm"));
+            $.MsgBox.Confirm("温馨提示", "确认修改？温馨提示", function () {  $.MsgBox.Alert("消息", "修改成功");});
             $.ajax({
                 type:"post",
                 url:"station/updateStation",
@@ -143,11 +144,12 @@
                 dataType:'json',
                 success:function (data) {
                     if(data.data >= 0){
-                        alert("更新成功");
+                    	
                         window.location.href="station/listStation";
                     }
                 }
             });
+            $.MsgBox.Confirm("消息", "更新成功");
         }
         function xg1(){
             $("#xiugai").hide();
@@ -169,7 +171,7 @@
                     }
                 })
             });
-            confirm("温馨提示", "删除成功");
+            $.MsgBox.confirm("温馨提示", "删除成功");
         }
       function realData(ms_code){
     	  window.location.href="realData/listByMsCode?ms_code="+ms_code;

@@ -27,6 +27,7 @@
         //添加
         function tj(){
             var form = new FormData(document.getElementById("addForm"));
+            $.MsgBox.Confirm("消息", "添加成功");
             $.ajax({
                 type:"post",
                 url:"station/addStation",
@@ -36,7 +37,7 @@
                 dataType:'json',
                 success:function (data) {
                     if(data.data >= 0){
-                        alert("添加成功");
+                    	 $.MsgBox.Confirm("消息", "添加成功");
                         window.location.reload();
                     }
                 }
