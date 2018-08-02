@@ -128,10 +128,18 @@
                 and dev_code = #{hisData.dev_code}
             </if>
         </where>
-        <if test="hisData.dev_code == null or hisData.dev_code == ''">
-            group by ms_code,dev_code      
-        </if>
-        limit #{record},15
+        <choose>
+            <when test="hisData.dev_code == null or hisData.dev_code == ''">
+                group by ms_code,dev_code limit #{record},15    
+            </when>
+            <when test="view == 'chart'">
+            
+            </when>
+            <otherwise>
+                limit #{record},15
+            </otherwise>
+        </choose>
+        
     </select>
      <!-- 查询数据的数量 -->
     <select id="countHisData" resultType ="int" parameterType="map">

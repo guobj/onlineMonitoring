@@ -120,6 +120,12 @@
                 <c:if test="${hisData != null and hisData.ms_code != null }">
                     <input type="hidden" name="ms_code" value="${hisData.ms_code }"> 
                 </c:if>
+                <c:if test="${hisData != null and hisData.ms_code != null }">
+                    <select class="select1" name="view">
+                        <option value="table">表格</option>
+                        <option value="chart">折线图</option>
+                    </select>
+                </c:if>
 				<c:if test="${hisData != null and hisData.dev_code != null and fn:startsWith(hisData.dev_code,'dev5')}">
 	                <span>气象条件：</span> <select class="select1" name="weather">
 	                    <option value="air_t">空气温度</option>
@@ -139,6 +145,7 @@
 	                    <option value="soil_ec">土壤EC值</option>
 	                </select> 
 				</c:if>
+				
 				<input type="submit" value="查找" class="search">
 				<input type="reset" value="重置" class="reset">
 

@@ -30,7 +30,7 @@
          <p  style="margin-top:250px; color:#ff0000;font-size:40px; margin-left:40%; ">${message }</p> 
     </c:if>
     <c:if test="${listAll != null}" >
-	    <c:forEach items="${listAll }" var="list">
+	    <c:forEach items="${listAll }" var="list"  varStatus="vs">
 	        <c:choose>
 	            <c:when test="${fn:startsWith(list.dev_code,'dev5')}">
 	                <div id="meeq">
@@ -61,11 +61,14 @@
 			            <p>设备编号：<span>${list.dev_code }</span></p>
 			            <p>设备类型：<span>${list.dev_code_value }</span></p>
 			            <p>数据上报时间：<span><fmt:formatDate value="${list.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></span></p>
-				        <p><input type="button" value="点击查看更多图片" style="background:none; float:left; color:#1d4dff" id="open-btn"></p>
+				        <p><input type="button" value="点击查看更多图片" style="background:none; float:left; color:#1d4dff" onclick="con(${vs.count })" id="open-btn"></p>
 				            <div class="con">
-				               <c:forTokens items="${list.data_value }" delims="," var="photo" begin="0" end="">
+				               <c:forTokens items="${list.data_value }" delims="," var="photo" begin="0" end="0">
                                       <img class="min" src="/upload/${list.ms_code }/${list.dev_code}/${photo}" />
-                                </c:forTokens>
+                               </c:forTokens>
+                               <c:forTokens items="${list.data_value }" delims="," var="photo">
+                                      <input type="hidden" id="con${vs.count }" value="/upload/${list.ms_code }/${list.dev_code}/${photo}">
+		                       </c:forTokens>
 				            </div>
 				            
 		            </div>
@@ -87,8 +90,10 @@
 		<div class="title">
 			<span id="close_btn">×</span>
 			<h3>更多图片</h3>
-		</div>           	
-		<div class="con_txt"></div>
+		</div>          	
+		<div class="con_txt">
+		      
+		</div>
 	</div>
     </div>
 </div>
@@ -96,7 +101,29 @@
     <li>山东省植物保护总站</li>
 </div>
 <script>
+/*图片弹窗*/
 
+function con(vs) {
+	document.getElementById('imga').style.display = "block";
+	$(".con_txt").html("");
+	$("[id=con"+vs+"]").each(function(i) {
+		$(".con_txt").append("<img src='"+$(this).val()+"'>");
+	});
+}
+$(function(){
+    var div = document.getElementById('imga');
+
+    var close = document.getElementById('close_btn');
+   
+    close.onclick = function close() {
+        div.style.display = "none";
+    }
+    window.onclick = function close(e) {
+        if (e.target == div) {
+            div.style.display = "none";
+        }
+    }
+})
 </script>
 </body>
 </html>

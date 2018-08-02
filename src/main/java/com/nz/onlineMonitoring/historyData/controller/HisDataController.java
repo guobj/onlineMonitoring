@@ -39,10 +39,13 @@ public class HisDataController {
                                 @RequestParam(required=false,defaultValue="1") int pages,
                                 @RequestParam(required=false,name="city")String[] citys,
                                 @RequestParam(required=false,defaultValue="1900-01-01 00:00")String data_time_begin1,
-                                @RequestParam(required=false,defaultValue="9999-01-01 00:00")String data_time_end1){
+                                @RequestParam(required=false,defaultValue="9999-01-01 00:00")String data_time_end1,
+                                @RequestParam(required=false,defaultValue="table")String view){
         hisData.setData_time_begin(data_time_begin1);
         hisData.setData_time_end(data_time_end1);
         List<HisData> listHisData = null;
+        //用view来控制，显示的是表格，还是折线图
+        map.put("view", view);
         try {
             AuthorityUtil.getInstance().assignPermissions(citys, request, hisData);
             map = PageBean.serverMap(map , hisData , pages);
@@ -56,7 +59,7 @@ public class HisDataController {
             map.put("devObject", dictService.listDevType());
             map.put("devType", dictService.listDevType1());
         }
-        if (hisData != null && hisData.getWeather() != null && hisData.getWeather() != "") {
+        if (view.equals("chart")) {
             return "echarts/echarts";
         }
         return "hisData/listHisData";

@@ -66,31 +66,3 @@ $(function(){
 //        var url=$("#picture .con img").attr("src");
 //    }
 
-/*图片弹窗*/
-$(function(){
-	
-	var btn = document.getElementById('open-btn');
-	
-	var div = document.getElementById('imga');
-	
-	var close = document.getElementById('close_btn');
-	
-	btn.onclick = function show() {
-		
-		div.style.display = "block";
-		
-	}
-	close.onclick = function close() {
-		
-		div.style.display = "none";
-		
-	}
-	window.onclick = function close(e) {
-		
-		if (e.target == div) {
-			
-			div.style.display = "none";
-			
-		}
-	}
-})

@@ -175,6 +175,10 @@
         <input type="hidden" name="hisAvg1" id="hisAvg1" value="${his.avg }">
         <input type="hidden" name="hisDate1" id="hisDate1" value="${his.date_time }">
     </c:forEach>
+    <c:if test="${hisData.weather == null or hisData.weather == ''}">
+        <input type="hidden" name="weather" id="weather" value="害虫数量">
+        <input type="hidden" name="color" id="color" value="#283dde">
+    </c:if>
     <c:if test="${hisData.weather eq 'air_t'}">
         <input type="hidden" name="weather" id="weather" value="空气温度">
         <input type="hidden" name="color" id="color" value="#eb0808">
