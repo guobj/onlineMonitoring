@@ -48,18 +48,24 @@ $(function(){
     })
 
     $("#img").hide();
+
+//    console.log($("#imga .con_txt").children(".min"))
+//    $("#imga .con_txt").children("img").on("click",".min",function(){
+//        $(this).toggleClass("min");
+//        $(this).toggleClass("max");
+//    })
     
-    //$("#picture .con").children().on("click",".min",function(){
-    //    $(this).toggleClass("min");
-    //    $(this).toggleClass("max");
-    //})
-    //
-    //$("#picture .con").children().on("click",".max",function(){
-    //    $(this).toggleClass("min");
-    //    $(this).toggleClass("max");
-    //})
-    
+//    $("#imga .con_txt").children().on("click",".max",function(){
+//        $(this).toggleClass("min");
+//        $(this).toggleClass("max");
+//    })
+//    
 })
+
+function change(obj){
+	 $(obj).toggleClass("min");
+     $(obj).toggleClass("max");
+}
 // function preview(img){
 //        $("#picture .con img").attr("src",$(img).attr("src"));
 //        $("#picture .con img").attr("jqimg",$(img).attr("bimg"));

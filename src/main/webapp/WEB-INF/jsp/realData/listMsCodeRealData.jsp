@@ -92,7 +92,7 @@
 			<h3>更多图片</h3>
 		</div>          	
 		<div class="con_txt">
-		      
+
 		</div>
 	</div>
     </div>
@@ -107,7 +107,7 @@ function con(vs) {
 	document.getElementById('imga').style.display = "block";
 	$(".con_txt").html("");
 	$("[id=con"+vs+"]").each(function(i) {
-		$(".con_txt").append("<img src='"+$(this).val()+"'>");
+		$(".con_txt").append("<img src='"+$(this).val()+" ' onclick='change(this)' class='min'>");
 	});
 }
 $(function(){
@@ -123,6 +123,7 @@ $(function(){
             div.style.display = "none";
         }
     }
+    
 })
 </script>
 </body>
