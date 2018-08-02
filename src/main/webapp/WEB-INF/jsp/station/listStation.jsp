@@ -259,8 +259,8 @@
                 <span>监测站编码:</span><input name="ms_code" type="text" id="ms_code" value=""><span id="tip_2">格式正确</span><br/>
                 <span>建设时间:</span><input name="ms_date1" type="date" id="ms_date1" value="" style="margin-left: 28px;"><br/>
                 <span>监测站位置:</span><input name="ms_place" type="text" id="ms_place" value=""><span id="tip_6">格式正确</span><br/>
-                <span>使用单位，联系人，联系方式:</span><input name="ms_user" type="text" id="ms_user" value="" class="lxfs"><span id="tip_3">请输入0-100位字符</span><br/>
-                <span>施工单位，联系人，联系方式:</span><input name="ms_builder" type="text" id="ms_builder" value="" class="lxfs"><span id="tip_4">请输入0-100位字符</span><br/>
+                <span>使用单位，联系人，联系方式:</span><input name="ms_user" type="text" id="ms_user" value="" class="lxfs"><span id="tip_3">格式正确</span><br/>
+                <span>施工单位，联系人，联系方式:</span><input name="ms_builder" type="text" id="ms_builder" value="" class="lxfs"><span id="tip_4">格式正确</span><br/>
                 <span >监测站类型:</span>
                 <select name="ms_type" id="ms_type" style="margin-left: 1%;">
                     <c:forEach items="${msType }" var="type">
@@ -282,7 +282,7 @@
                
                 <span id="ms_dev">建设内容:</span>
                 <span >监测站描述:</span>
-                    <textarea name="ms_desc" id="ms_desc"></textarea><span id="tip_5">请输入0-300位字符</span>
+                    <textarea name="ms_desc" id="ms_desc"></textarea><span id="tip_5">格式正确</span>
                 <input class="xg" type="button" value="修改" id="mdi" onclick="xg()">
                 <input class="xg" type="button" value="取消"  onclick="xg1()" style="margin-left: 5%;">
             </form>
@@ -302,6 +302,7 @@
     var reg4=/^.{0,100}$/;
     var reg5=/^.{0,300}$/;
     var reg6=/^.{0,100}$/;
+
     $(function(){
     	$("#mdi").attr("disabled", true);
         $("#ms_name").change(function(){
@@ -345,8 +346,10 @@
         })
         $("#ms_user").change(function(){
             var str3 = reg3.test($("#ms_user").val());
+           
                 if (str3 == true) {
                     $("#tip_3").html("格式正确")
+                    console.log(str3);
                 } else {
                     $("#tip_3").html("请输入0-100位字符");
                     $("#mdi").attr("disabled", true);
@@ -384,6 +387,7 @@
             $("#mdi").attr("disabled", true);
         }
     })
+
     $("#xiugai").children().children().change(function(){
         if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true){
             $("#mdi").removeAttr("disabled", true);
