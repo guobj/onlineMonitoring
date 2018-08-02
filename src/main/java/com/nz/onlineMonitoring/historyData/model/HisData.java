@@ -50,6 +50,26 @@ public class HisData {
     private String data_time_end;
     /**在前台根据设备查询的时候，如果是气象设备，会出现温度，湿度等的下拉框，hisData作为传到后台的对象，加这个字段传递次参数 */
     private String weather;
+    /**气象条件的平均值 */
+    private String avg;
+    /**echarts下方显示的时间 */
+    private String date_time;
+    public String getAvg() {
+        return avg;
+    }
+
+    public void setAvg(String avg) {
+        this.avg = avg;
+    }
+
+    public String getDate_time() {
+        return date_time;
+    }
+
+    public void setDate_time(String date_time) {
+        this.date_time = date_time;
+    }
+
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_his_data.id
      *

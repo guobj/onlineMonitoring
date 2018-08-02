@@ -42,6 +42,7 @@ public class HisDataServiceImpl implements HisDataService{
      */
     @Override
     public List listHisData(Map<String, Object> map) throws Exception{
+        String view = map.get("view").toString();
         //用于气象表字段中查询的数量，会根据数据表查出的数量，与之互补
         map.put("num", 15);
         //返回前台的list，泛型
@@ -56,7 +57,9 @@ public class HisDataServiceImpl implements HisDataService{
         hisMeteorological.setData_time_begin(hisData.getData_time_begin());
         hisMeteorological.setData_time_end(hisData.getData_time_end());
         hisMeteorological.setDev_code(hisData.getDev_code());
-        hisMeteorological.setWeather(hisData.getWeather());
+        if (view.equals("chart")) {
+            hisMeteorological.setWeather(hisData.getWeather());
+        }
         //建立两个list，用于装两个表中返回的数据，不一定都会装东西，可能只查一个表
         List<HisMeteorological> hisMeteorologicalList = null;
         List<HisData> hisList = null;
@@ -131,7 +134,47 @@ public class HisDataServiceImpl implements HisDataService{
                         }
                     }
                 }
-                list.addAll(hisList);
+                if (view.equals("chart")) {
+                    //用来传到前台，每天害虫的数量的平均值
+                    List<HisData> hisList1 = new ArrayList<>();
+                    //害虫条件的按天分段的总和
+                    Map<String, Long> sumMap = new HashMap<>();
+                    //害虫条件的按天分段的总个数
+                    Map<String, Integer> numberMap = new HashMap<>();
+                    SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
+                    Date date = null;
+                    String dateStr = "";
+                    for (HisData hd : hisList) {
+                        //取时间的前10位
+                        date = hd.getData_time();
+                        dateStr = formatter.format(date).substring(0, 10);
+                        if (sumMap.containsKey(dateStr)) {
+                            sumMap.put(dateStr, sumMap.get(dateStr)+Integer.parseInt(hd.getData_value()));
+                            numberMap.put(dateStr, numberMap.get(dateStr)+1);
+                        }else {
+                            sumMap.put(dateStr, Long.parseLong(hd.getData_value()));
+                            numberMap.put(dateStr, 1);
+                        }
+                    }
+                    for (String key : sumMap.keySet()) {
+                        HisData hd = new HisData();
+                        Long sum = sumMap.get(key);
+                        Integer number = numberMap.get(key);
+                        hd.setAvg(String.valueOf(sum/number));
+                        hd.setDate_time(key);
+                        hisList1.add(hd);
+                    }
+                    //因为加入到map中，顺序乱了，进行重新排序
+                    Collections.sort(hisList1, new Comparator<HisData>() {
+                        @Override
+                        public int compare(HisData o1, HisData o2) {
+                            return o1.getDate_time().compareTo(o2.getDate_time());
+                        }
+                    });
+                    list.addAll(hisList1);
+                }else {
+                    list.addAll(hisList);
+                }
             }
             if (hisMeteorologicalList != null && hisMeteorologicalList.size() > 0) {
                 for (HisMeteorological rm : hisMeteorologicalList) {
@@ -145,10 +188,10 @@ public class HisDataServiceImpl implements HisDataService{
                         }
                     }
                 }
-                //如果weather有值，表示按气象条件查询
+                //如果view等于chart，表示折线展示
                 String weather = hisData.getWeather();
-                if (weather != null && weather != "") {
-                    //用来传到前台，只装一个气象条件和时间
+                if (view.equals("chart") && weather != null && weather != "") {
+                    //用来传到前台，装天气条件按小时的平均值和时间
                     List<HisMeteorological> hisMeteorologicalList1 = new ArrayList<>();
                     //气象条件的安小时分段的总和
                     Map<String, Double> sumMap = new HashMap<>();
