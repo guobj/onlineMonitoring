@@ -43,16 +43,16 @@
     <div class="menu">
         <form action="vDevStatus/devcieStatusList" method="post">
             <%--<span>监测站名称：<input type="text"/></span>--%>
-            <span>设备类型： </span>
-                <select class="select1" name="dev_type" id="dev_type">
-                    <option value="">设备类型</option>
-                </select>
-            <span>监测区域：</span>
+            <span>设备区域：</span>
                  <select id="s_city" name="city">
                     <option value="">市区</option>
                 </select>
                 <select id="s_area" name="city" >
                     <option value="">区县</option>
+                </select>
+            <span>设备类型： </span>
+                <select class="select1" name="dev_type" id="dev_type">
+                    <option value="">设备类型</option>
                 </select>
             <span>监测对象：</span>
                 <select class="select1" name="dev_object" id="dev_object">

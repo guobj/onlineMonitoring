@@ -158,9 +158,9 @@
             <if test="ms_date != null" >
                 ms_date = #{ms_date,jdbcType=DATE},
             </if>
-            <if test="ms_dev != null" >
+            
                 ms_dev = #{ms_dev,jdbcType=VARCHAR},
-            </if>
+            
             <if test="ms_type != null" >
                 ms_type = #{ms_type,jdbcType=INTEGER},
             </if>

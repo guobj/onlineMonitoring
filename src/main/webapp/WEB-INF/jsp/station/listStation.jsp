@@ -168,9 +168,8 @@
                         window.location.reload();
                     }
                 })
-                alert("删除成功");
             });
-
+            confirm("温馨提示", "删除成功");
         }
       function realData(ms_code){
     	  window.location.href="realData/listByMsCode?ms_code="+ms_code;
@@ -187,10 +186,10 @@
         <form action="station/listStation" method="post">
            <!--  <span class="span1">监测站名称：</span><input type="text" name="ms_name" placeholder="不限" > -->
             <span  class="span1">监测站区域：</span>
-               <select id="s_city" name="city" style="width:5%">
+               <select id="s_city" name="city" style="width:6%">
                   <option value="">市区</option>
                </select>
-               <select id="s_area" name="city" style="width:5%" >
+               <select id="s_area" name="city" style="width:6%" >
                    <option value="">区县</option>
                </select>
             <span class="span1">监测站类型：</span>

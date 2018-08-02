@@ -141,7 +141,7 @@
                         请输入0-300位字符
                     </span>
                 <input class="tj" type="button" value="添加" id="add" onclick="tj()">
-                <input class="tj" type="button" value="取消"  onclick="tj1()" style="margin-left: 3%;">
+                <!-- <input class="tj" type="button" value="取消"  onclick="tj1()" style="margin-left: 3%;"> -->
             </form>
         </div>   
        

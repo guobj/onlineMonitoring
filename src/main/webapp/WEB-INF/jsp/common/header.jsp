@@ -13,7 +13,7 @@
         <li>欢迎您，Admin. 今天是<span id="year"></span>年<span id="month"></span>月<span id="dat"></span>日，星期<span id="day"></span>.</li>
         <li style=" margin-top:11px; width:100%; background:url(img/sbg.png) no-repeat; height:32px;">
             <ul class="three">
-                <a href="#"><img src="img/fz.png">&nbsp;返回首页</a>
+                <a href="station/listStation"><img src="img/fz.png">&nbsp;返回首页</a>
                 <a href="#"><img src="img/bg2.png">&nbsp;个人信息</a>
                 <a href="loginOut"><img src="img/gb.png" style="margin-top:7px;">&nbsp;退出系统</a>
             </ul>

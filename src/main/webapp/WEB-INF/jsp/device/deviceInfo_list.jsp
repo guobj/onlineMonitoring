@@ -67,24 +67,23 @@
     <div class="menu">
         <form action="device/queryDeviceInfoList" method="post">
             <%--<span>监测站名称：<input name="ms_name" type="text"/></span>--%>
-            <span>设备类型： <select class="select1" name="dev_type" id="dev_type">
-                <option value="">不限</option>
-
-            </select></span>
-            <span>监测站编码：
+           <span>设备区域：</span>
                 <select id="s_city" name="city" style="margin-left: 0.5%;">
                     <option value="">市区</option>
                 </select>
                 <select id="s_area" name="city" style="margin-left: 0.5%;">
                     <option value="">区县</option>
                 </select>
-            </span>
-            <span style="margin-left: 4.1%;">监测对象：
+            
+            <span>设备类型： </span>
+	            <select class="select1" name="dev_type" id="dev_type">
+	                <option value="">不限</option>
+	            </select>
+            <span style="margin-left: 4.1%;">监测对象：</span>
                 <select class="select1" name="dev_object" id="dev_object">
                     <option value="">不限</option>
-
                 </select>
-            </span>
+            
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>

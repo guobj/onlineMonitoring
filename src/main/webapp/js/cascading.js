@@ -29,13 +29,11 @@
                 "json"
             )
         }else{
-            console.log("account2:"+account);
             $.post(
                 "data/listCity",
                 function(data) {
-                    console.log(data);
                     for(var city in data){
-                        debugger
+                        /*debugger*/
                         $("#s_city").append("<option value="+data[city].data_value+">"+data[city].data_name+"</option>");
                         if(res == data[city].data_value){
                             console.log(data[city].data_value);
@@ -67,7 +65,6 @@
             "data/listCity",
             function(data) {
                 for(var city in data){
-                    console.log(data[city].data_value);
                     $("#s_city").append("<option value="+data[city].data_value+">"+data[city].data_name+"</option>");
                 }
             },

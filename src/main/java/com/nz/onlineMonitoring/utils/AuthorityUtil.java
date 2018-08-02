@@ -12,12 +12,13 @@
  */
 package com.nz.onlineMonitoring.utils;
 
-import com.nz.onlineMonitoring.login.model.Login;
-import com.nz.onlineMonitoring.realData.model.RealData;
+import java.lang.reflect.Field;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Field;
+
+import com.nz.onlineMonitoring.login.model.Login;
+import com.nz.onlineMonitoring.realData.model.RealData;
 
 public class AuthorityUtil {
 
@@ -65,7 +66,7 @@ public class AuthorityUtil {
 					}
 				}
 			}else if(account.endsWith("00")){
-				if (citys != null) {
+				if (citys != null && citys.length > 0) {
 					if (citys[0] != null && citys[0] != "") {
 						field.set(object, citys[0]);
 					}

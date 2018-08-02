@@ -149,20 +149,20 @@ pageContext.setAttribute("basePath", basePath);
     <div class="gn">
         <form id="like" method="post">
             <%--<span class="span1">监测站名称：</span><input name="ms_name" type="text" placeholder="不限" >--%>
-            <span class="span1">资金来源：</span>
-                <select id="ms_fp" name="station.ms_fp">
-                    <option value="">不限</option>
-                </select>
-            <span class="span1">监测站类型：</span>
-                <select id="ms_type" name="station.ms_type">
-                    <option value="">不限</option>
-                </select>
-           <span class="span1">监测站区域：</span>
+            <span class="span1">监测站区域：</span>
                 <select id="s_city" name="city">
                     <option value="">市区</option>
                 </select>
                 <select id="s_area" name="city">
                     <option value="">区县</option>
+                </select>
+            <span class="span1">监测站类型：</span>
+                <select id="ms_type" name="station.ms_type">
+                    <option value="">不限</option>
+                </select>
+            <span class="span1">资金来源：</span>
+                <select id="ms_fp" name="station.ms_fp">
+                    <option value="">不限</option>
                 </select>
            <span class="span1">建站时间： </span>
                 <input type="date" name="date_begin1" style="width:13%;">--<input type="date" name="date_end1" style="width:13%;">

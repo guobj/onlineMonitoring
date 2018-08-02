@@ -76,6 +76,13 @@
 			</p></li>
 		<div class="menu">
 			<form action="hisData/listHisData" method="post">
+			    <span>监测站区域： </span> 
+			         <select id="s_city" name="city">
+                             <option value="">市区</option>
+                       </select> 
+                       <select id="s_area" name="city">
+                             <option value="">区县</option>
+                      </select>
 				<span>设备类型：</span> <select class="select1" name="device_type">
 					<option value="">不限</option>
 					<c:forEach items="${devType }" var="type">
@@ -92,40 +99,27 @@
 						</c:choose>
 					</c:forEach>
 				</select> 
-				<span>设备状态：</span> <select class="select1" name="dev_status">
-					<option value="">不限</option>
-					<c:forEach items="${devStauts }" var="status">
-						<option value="${status.data_value }">${status.data_name }</option>
-					</c:forEach>
-				</select> 
-				<span>监测站编码： </span> <select id="s_city" name="city">
-											<option value="">市区</option>
-									  </select> 
-									  <select id="s_area" name="city">
-											<option value="">区县</option>
-									 </select> <br /> 
-				<span>监测对象：</span> <select class="select1"
-					name="device_object">
-					<option value="">不限</option>
-					<c:forEach items="${devObject }" var="ob">
-						<option value="${ob.data_value }">${ob.data_name }</option>
-					</c:forEach>
-				</select> 
-				<span>数据时间：</span> <input type="text" name="data_time_begin1"
-					id="datetimepicker" />-- <input type="text" name="data_time_end1"
-					id="datetimepicker1" />
+				<span>监测对象：</span> <select class="select1" name="device_object">
+                    <option value="">不限</option>
+                    <c:forEach items="${devObject }" var="ob">
+                        <option value="${ob.data_value }">${ob.data_name }</option>
+                    </c:forEach>
+                </select> 
+				<br /> 
+				<span>数据时间：</span> <input type="text" name="data_time_begin1" id="datetimepicker" />
+				                  -- <input type="text" name="data_time_end1" id="datetimepicker1" />
 			    <c:if test="${hisData != null and hisData.dev_code != null }">
                     <input type="hidden" name="dev_code" value="${hisData.dev_code }"> 
                 </c:if>
                 <c:if test="${hisData != null and hisData.ms_code != null }">
                     <input type="hidden" name="ms_code" value="${hisData.ms_code }"> 
                 </c:if>
-                <c:if test="${hisData != null and hisData.ms_code != null }">
-                    <select class="select1" name="view">
-                        <option value="table">表格</option>
-                        <option value="chart">折线图</option>
-                    </select>
-                </c:if>
+                <span>设备状态：</span> <select class="select1" name="dev_status">
+                    <option value="">不限</option>
+                    <c:forEach items="${devStauts }" var="status">
+                        <option value="${status.data_value }">${status.data_name }</option>
+                    </c:forEach>
+                </select> 
 				<c:if test="${hisData != null and hisData.dev_code != null and fn:startsWith(hisData.dev_code,'dev5')}">
 	                <span>气象条件：</span> <select class="select1" name="weather">
 	                    <option value="air_t">空气温度</option>
@@ -145,7 +139,12 @@
 	                    <option value="soil_ec">土壤EC值</option>
 	                </select> 
 				</c:if>
-				
+				<c:if test="${hisData != null and hisData.ms_code != null }">
+                    <span>显示形式：</span><select class="select1" name="view">
+                        <option value="table">表格</option>
+                        <option value="chart">折线图</option>
+                    </select>
+                </c:if>
 				<input type="submit" value="查找" class="search">
 				<input type="reset" value="重置" class="reset">
 

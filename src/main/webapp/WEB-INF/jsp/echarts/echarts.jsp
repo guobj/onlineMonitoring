@@ -170,13 +170,13 @@
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
-    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">站点信息</span> > <span id="zb3">气象设备查询</span></p></li>
+    <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">监测数据管理</span> > <span id="zb3">历史数据查询</span></p></li>
     <c:forEach items="${listHisData }" var="his">
         <input type="hidden" name="hisAvg1" id="hisAvg1" value="${his.avg }">
         <input type="hidden" name="hisDate1" id="hisDate1" value="${his.date_time }">
     </c:forEach>
     <c:if test="${hisData.weather == null or hisData.weather == ''}">
-        <input type="hidden" name="weather" id="weather" value="害虫数量">
+        <input type="hidden" name="weather" id="weather" value="数量">
         <input type="hidden" name="color" id="color" value="#283dde">
     </c:if>
     <c:if test="${hisData.weather eq 'air_t'}">
