@@ -76,7 +76,7 @@
                     </span>
                 <br/>
                 <span>建设时间:</span>
-                <input type="date" style="margin-left: 2.2%;" name="ms_date1" id="ms_date1">
+                <input type="date" style="margin-left: 2.2%;" name="ms_date1" id="ms_date1" value="2018-08-02">
     
                 <br/>
                 <span>监测站位置:</span>
@@ -140,7 +140,7 @@
                  <span id="tj_tip_5">
                         请输入0-300位字符
                     </span>
-                <input class="tj" type="button" value="添加" id="add" onclick="tj()">
+                <input class="tj" type="button" value="添加"  onclick="tj()" id="mdi">
                 <!-- <input class="tj" type="button" value="取消"  onclick="tj1()" style="margin-left: 3%;"> -->
             </form>
         </div>   
@@ -159,20 +159,24 @@
     var reg4=/^.{0,100}$/;
     var reg5=/^.{0,300}$/;
     var reg6=/^.{0,100}$/;
-    var reg7=$("#ms_date1").val();
+    var x = document.getElementById("ms_date1").value;
+    
     $(function(){
+    	
     	$("#mdi").attr("disabled", true);
         $("#ms_name").change(function(){
                     var str1=reg1.test($("#ms_name").val());
                     if(str1==true){
                         $("#tj_tip_1").html("格式正确")
+                        temp = 0;
                     }else{
                         $("#tj_tip_1").html("请输入2-50位字符");
                         $("#mdi").attr("disabled", true);
+                        temp = 1;
                     }
                 })
-         var temp = 0;
-        console.log(reg7);
+
+		var temp = 0;
         $("#ms_code").change(function(){
             var str2=reg2.test($("#ms_code").val());
             if(str2==true){
@@ -194,7 +198,7 @@
                     });
             	}else {
             		$("#tj_tip_2").html("格式正确")
-                    temp = 0;
+                  
             	}
             }else{
                 $("#tj_tip_2").html("请输入8位数字");
@@ -203,14 +207,16 @@
             
         })
         $("#ms_date1").change(function(){
-        	console.log(reg7)
+        	console.log(x)
         })
         $("#ms_user").change(function(){
             var str3 = reg3.test($("#ms_user").val());
                 if (str3 == true) {
                     $("#tj_tip_3").html("格式正确")
+               
                 } else {
                     $("#tj_tip_3").html("请输入0-100位字符");
+              
                     $("#mdi").attr("disabled", true);
                 }
             
@@ -222,6 +228,7 @@
                     }else{
                         $("#tj_tip_4").html("请输入0-100位字符"); 
                         $("#mdi").attr("disabled", true); 
+
                     }
                     
                 })
@@ -232,6 +239,7 @@
                     } else {
                         $("#tj_tip_5").html("请输入0-300位字符");
                         $("#mdi").attr("disabled", true);
+
                     }
                     
                 }
@@ -247,9 +255,10 @@
         }
     })
     $("#tianjia").children().children().change(function(){
-        if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true&&reg7==" "){
+        if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true){
             $("#mdi").removeAttr("disabled", true);
         }
+        console.log(temp)
     })
 
     })
