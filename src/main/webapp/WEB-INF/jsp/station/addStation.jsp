@@ -215,7 +215,7 @@
                     if(str4==true){
                         $("#tip_4").html("格式正确")
                     }else{
-                        $("#tip_4").html("请输入0-100位字符");
+                        $("#tip_4").html("请输入0-100位字符"); 
                         $("#mdi").attr("disabled", true);
                     }
                     
