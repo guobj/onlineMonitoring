@@ -27,7 +27,7 @@
         //添加
         function tj(){
             var form = new FormData(document.getElementById("addForm"));
-            $.MsgBox.Confirm("消息", "添加成功");
+            $.MsgBox.Confirm("温馨提示", "确定添加吗？温馨提示", function () {
             $.ajax({
                 type:"post",
                 url:"station/addStation",
@@ -42,6 +42,7 @@
                     }
                 }
             });
+        });
         }
         function tj1(){
             $("#tianjia").hide();

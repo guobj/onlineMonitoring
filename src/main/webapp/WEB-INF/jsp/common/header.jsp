@@ -63,16 +63,80 @@
 <div id="change_psw">
 		<div class="title"><h3>修改密码</h3></div>
 		<form id="mdiPassword">
-			<label>请输入原密码：</label><input type="password" name="old_password" id="old_password"><br/>
-			<label>请输入新密码：</label><input type="password" id="new_password1"><br/>
-			<label>请确认新密码：</label><input type="password" name="password" id="new_password2"><br/>
-			<input type="button" onclick="mdiPassword()" value="确定" class="sure"><input type="button" value="取消" class="cancel" id="cancel">
+			<label>请输入原密码：</label><input type="password" name="old_password" id="old_password"><span style="color:red; font-size:12px;" id="pwd_tip1">与原密码不一致</span><br/>
+			<label>请输入新密码：</label><input type="password" id="new_password1"><span style="color:red; font-size:10px;" id="pwd_tip3">请输入6-16位数字或字母</span><br/>
+			<label>请确认新密码：</label><input type="password" name="password" id="new_password2"><span style="color:red; font-size:12px;" id="pwd_tip2">两次密码不一致</span><br/>
+			<input type="button" onclick="mdiPassword()" value="确定" class="sure" id="add"><input type="button" value="取消" class="cancel" id="cancel">
 		</form>
 </div>
 <script type="text/javascript">
+var psw=${sessionScope.user.password};
+
 $(function(){
-	console.log("${sessionScope.user.password}")
+	$("#add").attr("disabled", true);
+	var reg = /^[a-zA-Z0-9_-]{6,16}$/;
+	var temp=0;
+
+	$("#old_password").change(function(){
+		var old_password=document.getElementById('old_password').value;
+	
+		if(old_password!=psw){
+			$("#pwd_tip1").html("请重新输入旧密码")
+			temp=1;
+		}else{
+			$("#pwd_tip1").html("原密码正确")
+			temp=0;
+		}
+	})
+	$("#new_password1").change(function(){
+		var new_password1=document.getElementById('new_password1').value;
+
+		if(reg.test(new_password1)==true&& new_password1 != psw)
+		{
+
+			$("#pwd_tip3").html("格式正确");
+			temp=0
+		}else if(new_password1 == psw){
+			$("#pwd_tip3").html("与原密码一致,请重新输入");
+			temp=1;
+		}else{
+			$("#pwd_tip3").html("请输入6-16位数字或字母");
+			temp=1
+			};
+			
+		var new_password2=document.getElementById('new_password2').value;
+		if(new_password1 !=new_password2){
+			$("#pwd_tip2").html("两次密码不一致")
+			temp=1;
+		}else{
+			$("#pwd_tip2").html("两次密码一致")
+			temp=0;
+		}
+		var old_password=document.getElementById('old_password').value;
+	})
+	$("#new_password2").change(function(){
+		var new_password1=document.getElementById('new_password1').value;
+		var new_password2=document.getElementById('new_password2').value;
+		if(new_password1 !=new_password2){
+			$("#pwd_tip2").html("两次密码不一致")
+			temp=1;
+		}else{
+			$("#pwd_tip2").html("两次密码一致")
+			temp=0;
+		}
+	})
+
+	$("#mdiPassword").children("input").change(function(){
+
+		var new_password1=document.getElementById('new_password1').value;
+		if(temp==0&&reg.test(new_password1)==true){
+
+			 $("#add").removeAttr("disabled", true);
+		
+		}
+	})
 })
+
 //修改
         function mdiPassword(){
             var form = new FormData(document.getElementById("mdiPassword"));
@@ -89,6 +153,7 @@ $(function(){
 	                }
 	            });
             });
+            
         }
     
 

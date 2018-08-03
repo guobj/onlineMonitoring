@@ -138,6 +138,9 @@ function pz(){
 function del(){
     $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示",function () {   $.MsgBox.Alert("消息", "删除成功");});
 }
+function tj(){
+    $.MsgBox.Confirm("温馨提示", "确定添加吗？温馨提示",function () {   $.MsgBox.Alert("消息", "添加成功");});
+}
 
 function close1()
 {
