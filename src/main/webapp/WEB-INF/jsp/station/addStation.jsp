@@ -161,15 +161,17 @@
     var reg5=/^.{0,300}$/;
     var reg6=/^.{0,100}$/;
     var x = document.getElementById("ms_date1").value;
-    
+	
     
     $(function(){
     	$("#ms_date1").change(function(){
             $("#ms_date1").attr("value",$(this).val());
+  
         });
-        
+			
         $("#mdi").attr("disabled", true);
         $("#ms_name").change(function(){
+
                     var str1=reg1.test($("#ms_name").val());
                     if(str1==true){
                         $("#tj_tip_1").html("格式正确")
@@ -197,7 +199,7 @@
                             $("#tj_tip_2").html("格式正确")
                             temp = 0;
                         }
-                        if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true){
+                        if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true&&x!=""){
                             $("#mdi").removeAttr("disabled", true);
                         }
                     });
@@ -213,6 +215,7 @@
         })
         $("#ms_date1").change(function(){
             console.log(document.getElementById("ms_date1").value)
+            x=document.getElementById("ms_date1").value;
         })
         $("#ms_user").change(function(){
             var str3 = reg3.test($("#ms_user").val());
@@ -260,10 +263,12 @@
         }
     })
     $("#tianjia").children().children().change(function(){
-        if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true){
+	
+
+        if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true&&x!="" ){
             $("#mdi").removeAttr("disabled", true);
         }
-        console.log(temp)
+
     })
 
     })

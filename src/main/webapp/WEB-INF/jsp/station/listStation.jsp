@@ -134,7 +134,7 @@
         //修改
         function xg(){
             var form = new FormData(document.getElementById("updateForm"));
-            $.MsgBox.Confirm("温馨提示", "确认修改？温馨提示", function () {  $.MsgBox.Alert("消息", "修改成功");});
+            $.MsgBox.Confirm("温馨提示", "确认修改？温馨提示", function () {  $.MsgBox.Alert("消息", "修改成功");
             $.ajax({
                 type:"post",
                 url:"station/updateStation",
@@ -149,7 +149,8 @@
                     }
                 }
             });
-            $.MsgBox.Confirm("消息", "更新成功");
+            
+            });
         }
         function xg1(){
             $("#xiugai").hide();
