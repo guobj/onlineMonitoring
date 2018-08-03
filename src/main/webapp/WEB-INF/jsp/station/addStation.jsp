@@ -37,7 +37,7 @@
                 dataType:'json',
                 success:function (data) {
                     if(data.data >= 0){
-                        $.MsgBox.Confirm("消息", "添加成功");
+                         $.MsgBox.Confirm("消息", "添加成功");
                         window.location.reload();
                     }
                 }
@@ -52,7 +52,7 @@
         }
       
       function realData(ms_code){
-    	  window.location.href="realData/listByMsCode?ms_code="+ms_code;
+          window.location.href="realData/listByMsCode?ms_code="+ms_code;
       }
     </script>
 </head>
@@ -65,37 +65,37 @@
         <div id="tianjia" style="display:block;!important;" >
             <form id="addForm">
                 <span>监测站名称:</span>
-                <input type="text" id="ms_name" name="ms_name" >
+                <input type="text" id="ms_name" name="ms_name">
                 <span id="tj_tip_1">
                         请输入2-50位字符
                     </span>
                 <br/>
                 <span>监测站编码:</span>
-                <input type="text" id="ms_code" name="ms_code">
+                <input type="text" id="ms_code" name="ms_code" maxlength="8">
                 <span id="tj_tip_2">
                         请输入8位数字
                     </span>
                 <br/>
                 <span>建设时间:</span>
-                <input type="date" style="margin-left: 2.2%;" name="ms_date1">
+                <input type="date" style="margin-left: 2.2%;" name="ms_date1" id="ms_date1" >
     
                 <br/>
                 <span>监测站位置:</span>
     
-                <input type="text" class="lxfs" id="tj_text_6" name="ms_place">
+                <input type="text" class="lxfs" id="ms_place" name="ms_place">
                  <span id="tj_tip_6">
                         请输入0-100位字符
                     </span>
                 <br/>
                 <span>使用单位，联系人，联系方式:</span>
     
-                <input type="text" class="lxfs" id="tj_text_3" name="ms_user">
+                <input type="text" class="lxfs" id="ms_user" name="ms_user">
                  <span id="tj_tip_3">
                         请输入0-100位字符 
                     </span>
                 <br/>
                 <span>施工单位，联系人，联系方式:</span>
-                <input type="text" class="lxfs" id="tj_text_4" name="ms_builder">
+                <input type="text" class="lxfs" id="ms_builder" name="ms_builder">
                  <span id="tj_tip_4">
                         请输入0-100位字符
                     </span>
@@ -137,11 +137,11 @@
                     
                 <br/>
                 <span >监测站描述:</span>
-                <textarea id="tj_text_5" name="ms_desc"></textarea>
+                <textarea id="ms_desc" name="ms_desc"></textarea>
                  <span id="tj_tip_5">
                         请输入0-300位字符
                     </span>
-                <input class="tj" type="button" value="添加" id="add" onclick="tj()">
+                <input class="tj" type="button" value="添加"  onclick="tj()" id="mdi">
                 <!-- <input class="tj" type="button" value="取消"  onclick="tj1()" style="margin-left: 3%;"> -->
             </form>
         </div>   
@@ -154,95 +154,121 @@
 </div>
 
 <script>
-var reg2 =/^(\d{8})$/;
-var reg1=/^.{2,50}$/;
-var reg3=/^.{0,100}$/;
-var reg4=/^.{0,100}$/;
-var reg5=/^.{0,300}$/;
-var reg6=/^.{0,100}$/;
-$(function(){
-    $("#add").attr("disabled", true);
-    $("#tj_text_1").change(function(){
-        var str1 = reg1.test($("#tj_text_1").val());
-        if (str1 == true) {
-            $("#tj_tip_1").html("格式正确")
-        } else {
-            $("#tj_tip_1").html("请输入2-50位字符");
-            $("#add").attr("disabled", true);
-        }
+    var reg2 =/^(\d{8})$/;
+    var reg1=/^.{2,50}$/;
+    var reg3=/^.{0,100}$/;
+    var reg4=/^.{0,100}$/;
+    var reg5=/^.{0,300}$/;
+    var reg6=/^.{0,100}$/;
+    var x = document.getElementById("ms_date1").value;
+    
+    
+    $(function(){
+    	$("#ms_date1").change(function(){
+            $("#ms_date1").attr("value",$(this).val());
+        });
         
-    })
-    var temp = 0;
-    $("#tj_text_2").change(function(){
-        var str2 = reg2.test($("#tj_text_2").val());
-        if (str2 == true) {
-            var code = $("#tj_text_2").val();
-            $.post("station/existMsCode",{ms_code:code},function(data){
-                if (data > 0) {
-                    $("#tj_tip_2").html("编码已重复")
-                    temp = 1;
-                    $("#add").attr("disabled", true);
+        $("#mdi").attr("disabled", true);
+        $("#ms_name").change(function(){
+                    var str1=reg1.test($("#ms_name").val());
+                    if(str1==true){
+                        $("#tj_tip_1").html("格式正确")
+                        temp = 0;
+                    }else{
+                        $("#tj_tip_1").html("请输入2-50位字符");
+                        $("#mdi").attr("disabled", true);
+                        temp = 1;
+                    }
+                })
+
+        var temp = 0;
+        $("#ms_code").change(function(){
+            var str2=reg2.test($("#ms_code").val());
+            if(str2==true){
+                var code = $("#ms_code").val();
+                var code11 = $("#ms_code11").val();
+                if (code != code11) {
+                    $.post("station/existMsCode",{ms_code:code},function(data){
+                        if (data > 0) {
+                            $("#tj_tip_2").html("编码已重复")
+                            temp = 1;
+                            $("#mdi").attr("disabled", true);
+                        }else {
+                            $("#tj_tip_2").html("格式正确")
+                            temp = 0;
+                        }
+                        if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true){
+                            $("#mdi").removeAttr("disabled", true);
+                        }
+                    });
                 }else {
                     $("#tj_tip_2").html("格式正确")
-                    temp = 0;
+                  
                 }
-                if(temp==0&&reg1.test($("#tj_text_1").val())==true&&reg2.test($("#tj_text_2").val())==true&&reg3.test($("#tj_text_3").val())==true&&reg4.test($("#tj_text_4").val())==true&&reg5.test($("#tj_text_5").val())==true&&reg6.test($("#tj_text_6").val())==true){
-                    $("#add").removeAttr("disabled", true);
+            }else{
+                $("#tj_tip_2").html("请输入8位数字");
+                $("#mdi").attr("disabled", true);
+            }
+            
+        })
+        $("#ms_date1").change(function(){
+            console.log(document.getElementById("ms_date1").value)
+        })
+        $("#ms_user").change(function(){
+            var str3 = reg3.test($("#ms_user").val());
+                if (str3 == true) {
+                    $("#tj_tip_3").html("格式正确")
+               
+                } else {
+                    $("#tj_tip_3").html("请输入0-100位字符");
+              
+                    $("#mdi").attr("disabled", true);
                 }
-            });
-        } else {
-            $("#tj_tip_2").html("请输入8位数字");
-            $("#add").attr("disabled", true);
-        }
-        
-    })
-    $("#tj_text_3").change(function(){
-        var str3 = reg3.test($("#tj_text_3").val());
-        if (str3 == true) {
-            $("#tj_tip_3").html("格式正确")
-        } else {
-            $("#tj_tip_3").html("请输入0-100位字符");
-            $("#add").attr("disabled", true);
-        }
-        
-    })
-    $("#tj_text_4").change(function(){
-        var str4 = reg4.test($("#tj_text_4").val());
-        if (str4 == true) {
-            $("#tj_tip_4").html("格式正确")
-        } else {
-            $("#tj_tip_4").html("请输入0-100位字符");
-            $("#add").attr("disabled", true);
-        }
-        
-    })
-    $("#tj_text_5").change(function(){
-        var str5 = reg5.test($("#tj_text_5").val());
-        if (str5 == true) {
-            $("#tj_tip_5").html("格式正确")
-        } else {
-            $("#tj_tip_5").html("请输入0-300位字符");
-            $("#add").attr("disabled", true);
-        }
-        
-    })
-    $("#tj_text_6").change(function(){
-        var str6 = reg5.test($("#tj_text_6").val());
+            
+        })
+        $("#ms_builder").change(function(){
+                    var str4=reg4.test($("#ms_builder").val());
+                    if(str4==true){
+                        $("#tj_tip_4").html("格式正确")
+                    }else{
+                        $("#tj_tip_4").html("请输入0-100位字符"); 
+                        $("#mdi").attr("disabled", true); 
+
+                    }
+                    
+                })
+        $("#ms_desc").change(function() {
+                    var str5 = reg5.test($("#ms_desc").val());
+                    if (str5 == true) {
+                        $("#tj_tip_5").html("格式正确")
+                    } else {
+                        $("#tj_tip_5").html("请输入0-300位字符");
+                        $("#mdi").attr("disabled", true);
+
+                    }
+                    
+                }
+        )
+
+    $("#ms_place").change(function() {
+        var str6 = reg6.test($("#ms_place").val());
         if (str6 == true) {
             $("#tj_tip_6").html("格式正确")
         } else {
             $("#tj_tip_6").html("请输入0-300位字符");
-            $("#add").attr("disabled", true);
+            $("#mdi").attr("disabled", true);
         }
-        
     })
     $("#tianjia").children().children().change(function(){
-        if(temp==0&&reg1.test($("#tj_text_1").val())==true&&reg2.test($("#tj_text_2").val())==true&&reg3.test($("#tj_text_3").val())==true&&reg4.test($("#tj_text_4").val())==true&&reg5.test($("#tj_text_5").val())==true&&reg6.test($("#tj_text_6").val())==true){
-            $("#add").removeAttr("disabled", true);
+        if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true){
+            $("#mdi").removeAttr("disabled", true);
         }
+        console.log(temp)
     })
 
-})
+    })
+
+
 </script>
 
 </body>
