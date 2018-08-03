@@ -189,7 +189,7 @@
                     }else {
                     	$.post("station/existMsCode",{ms_code:code},function(data){
                             if (data > 0) {
-                                $("#tj_tip_2").html("编码已重复")
+                                $("#tj_tip_2").html("编码已重复") 
                                 temp = 1;
                                 $("#add").attr("disabled", true);
                             }else {
