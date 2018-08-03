@@ -27,6 +27,7 @@
         //添加
         function tj(){
             var form = new FormData(document.getElementById("addForm"));
+            $.MsgBox.Confirm("消息", "添加成功");
             $.ajax({
                 type:"post",
                 url:"station/addStation",
@@ -36,7 +37,7 @@
                 dataType:'json',
                 success:function (data) {
                     if(data.data >= 0){
-                        alert("添加成功");
+                        $.MsgBox.Confirm("消息", "添加成功");
                         window.location.reload();
                     }
                 }
@@ -64,13 +65,13 @@
         <div id="tianjia" style="display:block;!important;" >
             <form id="addForm">
                 <span>监测站名称:</span>
-                <input type="text" id="tj_text_1" name="ms_name">
+                <input type="text" id="ms_name" name="ms_name" >
                 <span id="tj_tip_1">
                         请输入2-50位字符
                     </span>
                 <br/>
                 <span>监测站编码:</span>
-                <input type="text" id="tj_text_2" name="ms_code">
+                <input type="text" id="ms_code" name="ms_code">
                 <span id="tj_tip_2">
                         请输入8位数字
                     </span>
