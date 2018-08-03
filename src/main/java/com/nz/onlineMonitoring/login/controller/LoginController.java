@@ -8,9 +8,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nz.onlineMonitoring.login.model.Login;
 import com.nz.onlineMonitoring.login.service.LoginService;
+import com.nz.onlineMonitoring.utils.JacksonData;
 
 @Controller
 public class LoginController {
@@ -43,4 +45,22 @@ public class LoginController {
 		session.invalidate();
 		return "login/login";
 	}
+	
+	@RequestMapping("mdiPassword")
+	@ResponseBody
+	public JacksonData mdiPassword(String password, HttpServletRequest request) {
+	    HttpSession session = request.getSession();
+	    Login login = (Login)session.getAttribute("user");
+	    login.setPassword(password);
+	    JacksonData jd = new JacksonData();
+        try {
+            String result = loginService.mdiPassword(login);
+            jd.success(result);
+        } catch (Exception e) {
+            jd.failure(e.getMessage());
+        }
+        return jd;
+	}
+	
+	
 }

@@ -1,10 +1,11 @@
 package com.nz.onlineMonitoring.login.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.nz.onlineMonitoring.login.mapper.LoginMapper;
 import com.nz.onlineMonitoring.login.model.Login;
 import com.nz.onlineMonitoring.login.service.LoginService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -20,4 +21,13 @@ public class LoginServiceImpl implements LoginService {
 		}
 		return loginUser;
 	}
+
+    @Override
+    public String mdiPassword(Login login) {
+        int n = loginMapper.mdiPassword(login);
+        if (n < 0) {
+            throw new RuntimeException("密码修改失败");
+        }
+        return "密码修改成功";
+    }
 }

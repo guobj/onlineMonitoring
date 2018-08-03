@@ -62,10 +62,35 @@
 </div>
 <div id="change_psw">
 		<div class="title"><h3>修改密码</h3></div>
-		<form>
-			<label>请输入原密码：</label><input type="password"><br/>
-			<label>请输入新密码：</label><input type="password"><br/>
-			<label>请确认新密码：</label><input type="password"><br/>
-			<input type="button" value="确定" class="sure"><input type="button" value="取消" class="cancel" id="cancel">
+		<form id="mdiPassword">
+			<label>请输入原密码：</label><input type="password" name="old_password" id="old_password"><br/>
+			<label>请输入新密码：</label><input type="password" id="new_password1"><br/>
+			<label>请确认新密码：</label><input type="password" name="password" id="new_password2"><br/>
+			<input type="button" onclick="mdiPassword()" value="确定" class="sure"><input type="button" value="取消" class="cancel" id="cancel">
 		</form>
 </div>
+<script type="text/javascript">
+$(function(){
+	console.log("${sessionScope.user.password}")
+})
+//修改
+        function mdiPassword(){
+            var form = new FormData(document.getElementById("mdiPassword"));
+            $.MsgBox.Confirm("温馨提示", "确认修改？温馨提示", function () {  
+	            $.ajax({
+	                type:"post",
+	                url:"mdiPassword",
+	                data:form,
+	                processData:false,
+	                contentType:false,
+	                dataType:'json',
+	                success:function (data) {
+	                	$.MsgBox.Alert("消息", data.data);
+	                }
+	            });
+            });
+        }
+    
+
+
+</script>

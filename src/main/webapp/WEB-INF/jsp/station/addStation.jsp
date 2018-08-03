@@ -141,7 +141,7 @@
                  <span id="tj_tip_5">
                         请输入0-300位字符
                     </span>
-                <input class="tj" type="button" value="添加"  onclick="tj()" id="mdi">
+                <input class="tj" type="button" value="添加"  onclick="tj()" id="add">
                 <!-- <input class="tj" type="button" value="取消"  onclick="tj1()" style="margin-left: 3%;"> -->
             </form>
         </div>   
@@ -161,24 +161,16 @@
     var reg5=/^.{0,300}$/;
     var reg6=/^.{0,100}$/;
     var x = document.getElementById("ms_date1").value;
-	
-    
     $(function(){
-    	$("#ms_date1").change(function(){
-            $("#ms_date1").attr("value",$(this).val());
-  
-        });
-			
-        $("#mdi").attr("disabled", true);
+        $("#add").attr("disabled", true);
         $("#ms_name").change(function(){
-
                     var str1=reg1.test($("#ms_name").val());
                     if(str1==true){
                         $("#tj_tip_1").html("格式正确")
                         temp = 0;
                     }else{
                         $("#tj_tip_1").html("请输入2-50位字符");
-                        $("#mdi").attr("disabled", true);
+                        $("#add").attr("disabled", true);
                         temp = 1;
                     }
                 })
@@ -188,31 +180,38 @@
             var str2=reg2.test($("#ms_code").val());
             if(str2==true){
                 var code = $("#ms_code").val();
-                var code11 = $("#ms_code11").val();
-                if (code != code11) {
-                    $.post("station/existMsCode",{ms_code:code},function(data){
-                        if (data > 0) {
-                            $("#tj_tip_2").html("编码已重复")
-                            temp = 1;
-                            $("#mdi").attr("disabled", true);
-                        }else {
-                            $("#tj_tip_2").html("格式正确")
-                            temp = 0;
-                        }
-                        if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true&&x!=""){
-                            $("#mdi").removeAttr("disabled", true);
-                        }
-                    });
-                }else {
-                    $("#tj_tip_2").html("格式正确")
-                  
-                }
+                
+                $.post("station/permissionMsCode",{ms_code:code},function(data){
+                    if (data < 0) {
+                        $("#tj_tip_2").html("权限不够，无法添加此编码")
+                        temp = 1;
+                        $("#add").attr("disabled", true);
+                    }else {
+                    	$.post("station/existMsCode",{ms_code:code},function(data){
+                            if (data > 0) {
+                                $("#tj_tip_2").html("编码已重复")
+                                temp = 1;
+                                $("#add").attr("disabled", true);
+                            }else {
+                                $("#tj_tip_2").html("格式正确")
+                                temp = 0;
+                            }
+                            if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true&&x!=""){
+                                $("#add").removeAttr("disabled", true);
+                            }
+                        });
+                    }
+                });
+                
             }else{
                 $("#tj_tip_2").html("请输入8位数字");
-                $("#mdi").attr("disabled", true);
+                $("#add").attr("disabled", true);
             }
             
         })
+        $("#ms_date1").change(function(){
+            $("#ms_date1").attr("value",$(this).val());
+        });
         $("#ms_date1").change(function(){
             console.log(document.getElementById("ms_date1").value)
             x=document.getElementById("ms_date1").value;
@@ -225,7 +224,7 @@
                 } else {
                     $("#tj_tip_3").html("请输入0-100位字符");
               
-                    $("#mdi").attr("disabled", true);
+                    $("#add").attr("disabled", true);
                 }
             
         })
@@ -235,7 +234,7 @@
                         $("#tj_tip_4").html("格式正确")
                     }else{
                         $("#tj_tip_4").html("请输入0-100位字符"); 
-                        $("#mdi").attr("disabled", true); 
+                        $("#add").attr("disabled", true); 
 
                     }
                     
@@ -246,7 +245,7 @@
                         $("#tj_tip_5").html("格式正确")
                     } else {
                         $("#tj_tip_5").html("请输入0-300位字符");
-                        $("#mdi").attr("disabled", true);
+                        $("#add").attr("disabled", true);
 
                     }
                     
@@ -259,14 +258,12 @@
             $("#tj_tip_6").html("格式正确")
         } else {
             $("#tj_tip_6").html("请输入0-300位字符");
-            $("#mdi").attr("disabled", true);
+            $("#add").attr("disabled", true);
         }
     })
     $("#tianjia").children().children().change(function(){
-	
-
         if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true&&x!="" ){
-            $("#mdi").removeAttr("disabled", true);
+            $("#add").removeAttr("disabled", true);
         }
 
     })

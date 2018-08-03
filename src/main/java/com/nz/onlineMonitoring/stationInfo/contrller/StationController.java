@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nz.onlineMonitoring.dict.service.DictService;
+import com.nz.onlineMonitoring.login.model.Login;
 import com.nz.onlineMonitoring.stationInfo.model.Station;
 import com.nz.onlineMonitoring.stationInfo.service.StationService;
 import com.nz.onlineMonitoring.utils.AuthorityUtil;
@@ -176,6 +178,36 @@ public class StationController {
     public Integer existMsCode(String ms_code) {
         return stationService.existMsCode(ms_code);
     }
+    @PostMapping("/permissionMsCode")
+    @ResponseBody
+    public Integer permissionMsCode(String ms_code, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Login login = (Login) session.getAttribute("user");
+        //获取登陆的账号
+        int userMsCode1 = login.getAccount();
+        String userMsCode2 = String.valueOf(userMsCode1);
+        //如果登陆的账号是省级，直接返回1
+        if (userMsCode2.startsWith("0000", 2)) {
+            return 1; 
+        }else if (userMsCode2.startsWith("00", 4)) {
+            //如果账号是市级，判断前4位，相等返回1
+            if (userMsCode2.substring(0, 4).equals(ms_code.substring(0, 4))) {
+                return 1;
+            }else {
+                return -1;
+            }
+        }else {
+            //如果是地级，判断前6位
+            if (ms_code.startsWith(userMsCode2)) {
+                return 1;
+            }else {
+                return -1;
+            }
+        }
+    }
+    
+    
+    
     /**
      * 
      * 方法描述：添加监测站

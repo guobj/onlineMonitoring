@@ -9,4 +9,14 @@
     <select id="login" parameterType="com.nz.onlineMonitoring.login.model.Login" resultType="com.nz.onlineMonitoring.login.model.Login">
         select * from t_login tl where tl.account = #{account} and tl.password = #{password}
     </select>
+    <update id="mdiPassword" parameterType="com.nz.onlineMonitoring.login.model.Login">
+        update t_login
+        <set >
+            <if test="password != null" >
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where account = #{account,jdbcType=INTEGER}
+    </update>
+    
 </mapper>
