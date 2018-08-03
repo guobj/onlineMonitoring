@@ -46,6 +46,24 @@ $(function(){
     })
 });
 
+$(function(){
+	$("#change-pwd").click(function(){
+		   var div = document.getElementById("change_psw");
+
+		    var close = document.getElementById('cancel');
+		  
+		    div.style.display="block";
+		    
+		    close.onclick = function close() {
+		        div.style.display = "none";
+		    }
+		    window.onclick = function close(e) {
+		        if (e.target == div) {
+		            div.style.display = "none";
+		        }
+		    }
+	})
+})
 
 
 

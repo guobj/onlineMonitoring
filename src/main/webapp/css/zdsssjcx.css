@@ -89,3 +89,9 @@ box-shadow:2px 2px 3px #aaaaaa;
 #footer li{ text-align:center; line-height:26px; font-size:0.75em;}
 #footer li a{ color:#000;}
 #footer li a:hover{ color:#F00;}
+
+#change_psw{width:400px;height:180px; position:fixed; top:300px; left:40%; background:#3d3d3d;  z-index:5; color:#dcdcdc; display:none;}
+#change_psw lable{margin-top:15px;}
+#change_psw input{margin-top:15px; margin-left:15px; width:200px; border:1px solid #fee2e2;border-radius:5px;}
+#change_psw .sure{width:50px; margin-left:130px;}
+#change_psw .cancel{width:50px;}

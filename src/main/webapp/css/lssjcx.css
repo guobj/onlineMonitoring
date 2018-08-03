@@ -1,6 +1,6 @@
 ﻿
 *{ list-style:none; text-decoration:none; padding:0; margin:0; border:none;}
-body{ background:#1c8914;}
+body{ background:#1c8914;position:relative;}
 
 #tit{ width:100%; height:93px; background:url(../img/tit.jpg) no-repeat; background-size:cover; border-bottom:7px #1bb11c solid;}
 #tit p{ width:41%; height:93px; float:left; line-height:93px; font-size:2.1em; margin-left:3%;color:#006600; font-weight:bold;  font-family: '宋体';}
@@ -207,4 +207,10 @@ body{ background:#1c8914;}
 
 
 #weather form{margin-left: 35%;float: left; margin-top: 15px; width: 100%;}
-#weather form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 32px; margin-left:25%;}F
+#weather form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 32px; margin-left:25%;}
+
+#change_psw{width:400px;height:180px; position:fixed; top:300px; left:40%; background:#3d3d3d; color:#dcdcdc; display:none;  z-index:5}
+#change_psw lable{margin-top:15px;}
+#change_psw input{margin-top:15px; margin-left:15px; width:200px; border:1px solid #fee2e2;border-radius:5px;}
+#change_psw .sure{width:50px; margin-left:130px;}
+#change_psw .cancel{width:50px;}

@@ -14,7 +14,7 @@
         <li style=" margin-top:11px; width:100%; background:url(img/sbg.png) no-repeat; height:32px;">
             <ul class="three">
                 <a href="station/listStation"><img src="img/fz.png">&nbsp;返回首页</a>
-                <a href="#"><img src="img/bg2.png">&nbsp;个人信息</a>
+                <a id="change-pwd"><img src="img/bg2.png">&nbsp;修改密码</a>
                 <a href="loginOut"><img src="img/gb.png" style="margin-top:7px;">&nbsp;退出系统</a>
             </ul>
         </li>
@@ -59,4 +59,13 @@
         </ul>
     </div>
     </ul>
+</div>
+<div id="change_psw">
+		<div class="title"><h3>修改密码</h3></div>
+		<form>
+			<label>请输入原密码：</label><input type="password"><br/>
+			<label>请输入新密码：</label><input type="password"><br/>
+			<label>请确认新密码：</label><input type="password"><br/>
+			<input type="button" value="确定" class="sure"><input type="button" value="取消" class="cancel" id="cancel">
+		</form>
 </div>

@@ -161,7 +161,7 @@
       
       //删除方法
         function delStation(id){
-            $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () {
+            $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () {$.MsgBox.Confirm("温馨提示", "删除成功");
                 $.ajax({
                     type:"get",
                     url:"station/deleteStation",
@@ -171,7 +171,7 @@
                     }
                 })
             });
-            $.MsgBox.confirm("温馨提示", "删除成功");
+            
         }
       function realData(ms_code){
     	  window.location.href="realData/listByMsCode?ms_code="+ms_code;
