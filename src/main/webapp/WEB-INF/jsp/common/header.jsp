@@ -70,9 +70,10 @@
 		</form>
 </div>
 <script type="text/javascript">
-var psw=${sessionScope.user.password};
+var psw="${sessionScope.user.password}";
 
 $(function(){
+
 	$("#add").attr("disabled", true);
 	var reg = /^[a-zA-Z0-9_-]{6,16}$/;
 	var temp=0;
