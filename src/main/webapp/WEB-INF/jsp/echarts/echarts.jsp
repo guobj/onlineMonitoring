@@ -18,7 +18,6 @@
     <link href="css/echarts.css" rel="stylesheet" type="text/css">
     <script src="js/jquery.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-
 	<script type="text/javascript" src="js/jquery-ui.js"></script>
 	<script src="js/angular.min.js" type="text/javascript"></script>
 	<script src="js/jquery.datetimepicker.js" type="text/javascript"></script>
@@ -174,9 +173,21 @@
     });
 
 
+    angular.module('app',[]).controller('controller',function($scope){
+        $('#datetimepicker').datetimepicker({
+            lang:'ch',
+            format:'Y-m-d H:00:00',
+        });
+        $('#datetimepicker1').datetimepicker({
+            lang:'ch',
+            format:'Y-m-d H:00:00',
+        });
+       
+    });
+    
     </script>
 </head>
-<body>
+<body  ng-app='app' ng-controller='controller'>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">监测数据管理</span> > <span id="zb3">历史数据查询</span></p></li>
