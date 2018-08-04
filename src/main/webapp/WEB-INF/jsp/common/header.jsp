@@ -75,9 +75,9 @@ var psw="${sessionScope.user.password}";
 $(function(){
 
 	$("#add").attr("disabled", true);
-	var reg = /^[a-zA-Z0-9_-]{6,16}$/;
+	var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;
 	var temp=0;
-
+	
 	$("#old_password").change(function(){
 		var old_password=document.getElementById('old_password').value;
 	
@@ -91,7 +91,7 @@ $(function(){
 	})
 	$("#new_password1").change(function(){
 		var new_password1=document.getElementById('new_password1').value;
-
+		console.log(reg.test(new_password1))
 		if(reg.test(new_password1)==true&& new_password1 != psw)
 		{
 
