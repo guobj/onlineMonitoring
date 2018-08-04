@@ -16,7 +16,7 @@
     <link href="css/index.css" type="text/css" rel="stylesheet">
 </head>
 
-<body>
+<body> 
 <img src="img/title.png" id="tit">
 
 <div id="content">
