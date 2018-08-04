@@ -134,7 +134,7 @@
         //修改
         function xg(){
             var form = new FormData(document.getElementById("updateForm"));
-            $.MsgBox.Confirm("温馨提示", "确认修改？", function () {$.MsgBox.Alert("消息", "修改成功");  
+            $.MsgBox.Confirm("温馨提示", "确认修改？", function () {  
             $.ajax({
                 type:"post",
                 url:"station/updateStation",
@@ -144,8 +144,13 @@
                 dataType:'json',
                 success:function (data) {
                     if(data.data >= 0){
-                    	
-                        window.location.href="station/listStation";
+                    	$.MsgBox.Alert("消息", "修改成功");
+                    	 
+                        $(window).on('click', function() {
+                        	
+                        	 window.location.href="station/listStation";
+                        })
+                       
                     }
                 }
             });
@@ -162,14 +167,18 @@
       
       //删除方法
         function delStation(id){
-            $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？", function () { $.MsgBox.Alert("温馨提示", "删除成功");
+            $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？", function () {
                 $.ajax({
                     type:"get",
                     url:"station/deleteStation",
                     data:{id:id},
                     success:function (data) {
-                    	
-                        window.location.reload();
+                    	 $.MsgBox.Alert("温馨提示", "删除成功");
+                        
+                        $(window).on('click', function() {
+                        	
+                        	window.location.reload();
+                        })
                     }
                 })
             });
