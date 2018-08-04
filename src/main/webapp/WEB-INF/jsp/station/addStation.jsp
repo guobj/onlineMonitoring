@@ -142,7 +142,7 @@
                  <span id="tj_tip_5">
                         请输入0-300位字符
                     </span>
-                <input class="tj" type="button" value="添加"  onclick="tj()" id="add">
+                <input class="tj" type="button" value="添加"  onclick="tj()" id="add1" disabled >
                 <!-- <input class="tj" type="button" value="取消"  onclick="tj1()" style="margin-left: 3%;"> -->
             </form>
         </div>   
@@ -163,7 +163,7 @@
     var reg6=/^.{0,100}$/;
     var x = document.getElementById("ms_date1").value;
     $(function(){
-        $("#add").attr("disabled", true);
+        $("#add1").attr("disabled", true);
         $("#ms_name").change(function(){
                     var str1=reg1.test($("#ms_name").val());
                     if(str1==true){
@@ -171,7 +171,7 @@
                         temp = 0;
                     }else{
                         $("#tj_tip_1").html("请输入2-50位字符");
-                        $("#add").attr("disabled", true);
+                        $("#add1").attr("disabled", true);
                         temp = 1;
                     }
                 })
@@ -186,7 +186,7 @@
                     if (data < 0) {
                         $("#tj_tip_2").html("权限不够，无法添加此编码")
                         temp = 1;
-                        $("#add").attr("disabled", true);
+                        $("#add1").attr("disabled", true);
                     }else {
                     	$.post("station/existMsCode",{ms_code:code},function(data){
                             if (data > 0) {
@@ -198,7 +198,7 @@
                                 temp = 0;
                             }
                             if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true&&x!=""){
-                                $("#add").removeAttr("disabled", true);
+                                $("#add1").removeAttr("disabled", true);
                             }
                         });
                     }
@@ -206,7 +206,7 @@
                 
             }else{
                 $("#tj_tip_2").html("请输入8位数字");
-                $("#add").attr("disabled", true);
+                $("#add1").attr("disabled", true);
             }
             
         })
@@ -259,12 +259,12 @@
             $("#tj_tip_6").html("格式正确")
         } else {
             $("#tj_tip_6").html("请输入0-300位字符");
-            $("#add").attr("disabled", true);
+            $("#add1").attr("disabled", true);
         }
     })
     $("#tianjia").children().children().change(function(){
         if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true&&x!="" ){
-            $("#add").removeAttr("disabled", true);
+            $("#add1").removeAttr("disabled", true);
         }
 
     })

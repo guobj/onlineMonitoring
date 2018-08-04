@@ -151,6 +151,8 @@ $(function(){
 	                dataType:'json',
 	                success:function (data) {
 	                	$.MsgBox.Alert("消息", data.data);
+	                	 var div = document.getElementById("change_psw");
+	                	 div.style.display = "none";
 	                }
 	            });
             });
