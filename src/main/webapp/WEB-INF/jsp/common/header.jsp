@@ -141,7 +141,7 @@ $(function(){
 //修改
         function mdiPassword(){
             var form = new FormData(document.getElementById("mdiPassword"));
-            $.MsgBox.Confirm("温馨提示", "确认修改？温馨提示", function () {  
+            $.MsgBox.Confirm("温馨提示", "确认修改？", function () {  
 	            $.ajax({
 	                type:"post",
 	                url:"mdiPassword",

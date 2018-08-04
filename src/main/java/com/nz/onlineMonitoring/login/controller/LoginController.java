@@ -35,6 +35,7 @@ public class LoginController {
 			url = "redirect:/station/listStation";
 		} catch (Exception e) {
 			map.put("message", e.getMessage());
+			url="login/login";
 		}
 		return url;
 	}

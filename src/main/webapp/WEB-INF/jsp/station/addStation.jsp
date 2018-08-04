@@ -27,7 +27,7 @@
         //添加
         function tj(){
             var form = new FormData(document.getElementById("addForm"));
-            $.MsgBox.Confirm("温馨提示", "确定添加吗？温馨提示", function () {
+            $.MsgBox.Confirm("温馨提示", "确定添加吗？", function () {
             $.ajax({
                 type:"post",
                 url:"station/addStation",

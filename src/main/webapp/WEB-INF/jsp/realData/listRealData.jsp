@@ -17,7 +17,6 @@
     <link href="css/xinxi.css" rel="stylesheet" type=text/css>
     <link href="css/page.css" rel="stylesheet" type="text/css">
     <link href="css/sjck.css" rel="stylesheet" type="text/css">
-    <script src="js/pageNav.js" type="text/javascript"></script>
     <script src="js/sjck.js" type="text/javascript"></script>
     <script src="js/jilian.js" type="text/javascript"></script>
     <script src="js/cascading.js"  type="text/javascript"></script>

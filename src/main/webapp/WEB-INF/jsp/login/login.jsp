@@ -16,14 +16,14 @@
     <link href="css/index.css" type="text/css" rel="stylesheet">
 </head>
 
-<body>
+<body> 
 <img src="img/title.png" id="tit">
 
 <div id="content">
     <div class="tit">
         <p>登陆界面</p>
     </div>
-    
+    <c:if test="${message!=null }">${message }</c:if>
     <div class="tou">
         <form action="loginDo" method="post">
             <p>用户名：<input type="text" id="name" name="account"></p>
