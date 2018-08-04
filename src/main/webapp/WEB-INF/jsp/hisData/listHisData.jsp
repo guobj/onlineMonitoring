@@ -60,7 +60,7 @@
                     $("#m_dev_status").html(data.dataDevStatus.data_name);
                 }
             });
-        }
+        } 
 
 </script>
 </head>
