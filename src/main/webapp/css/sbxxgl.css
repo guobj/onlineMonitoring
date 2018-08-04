@@ -150,7 +150,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', end
 #detail form input{background: #FFFFFF; border:1px solid #bfbfbf; border-radius: 4px; width:10%;height: 50px; margin-left: 10%;}
 #detail .s3{height:50px; width:80%;}
 
-#change_psw{width:400px;height:180px; position:fixed; top:300px; left:40%; background:#3d3d3d; color:#dcdcdc; display:none;  z-index:5}
+#change_psw{width:430px;height:180px; position:fixed; top:300px; left:40%; background:#3d3d3d; color:#dcdcdc; display:none;  z-index:5}
 #change_psw lable{margin-top:15px;}
 #change_psw input{margin-top:15px; margin-left:15px; width:150px; border:1px solid #fee2e2;border-radius:5px;}
 #change_psw .sure{width:50px; margin-left:130px;}
