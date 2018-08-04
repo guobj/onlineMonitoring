@@ -16,12 +16,10 @@
 <link href="css/xinxi.css" rel="stylesheet" type=text/css>
 <link href="css/page.css" rel="stylesheet" type="text/css">
 <link href="css/lssjcx.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css"
-    href="css/jquery.datetimepicker.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css" />
 <%--<link href="css/sjck.css" rel="stylesheet" type="text/css">--%>
 
 <script src="js/jquery.js"></script>
-
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script src="js/angular.min.js" type="text/javascript"></script>
 <script src="js/jquery.datetimepicker.js" type="text/javascript"></script>

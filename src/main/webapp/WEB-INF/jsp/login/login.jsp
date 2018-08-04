@@ -14,6 +14,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>登陆</title>
     <link href="css/index.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function(){
+        	var message = "${message}";
+        	if (message != null && message != "") {
+        		alert(message);
+        	}
+        })
+    
+    </script>
 </head>
 
 <body> 
@@ -23,7 +33,6 @@
     <div class="tit">
         <p>登陆界面</p>
     </div>
-    <c:if test="${message!=null }">${message }</c:if>
     <div class="tou">
         <form action="loginDo" method="post">
             <p>用户名：<input type="text" id="name" name="account"></p>
