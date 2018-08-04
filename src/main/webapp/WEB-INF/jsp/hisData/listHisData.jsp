@@ -13,7 +13,7 @@
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>历史数据</title>
-<link href="css/xinxi.css" rel="stylesheet" type=text/css>
+
 <link href="css/page.css" rel="stylesheet" type="text/css">
 <link href="css/lssjcx.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css" />
@@ -103,6 +103,12 @@
                         <option value="${ob.data_value }">${ob.data_name }</option>
                     </c:forEach>
                 </select> 
+                  <span>设备状态：</span> <select class="select1" name="dev_status">
+                    <option value="">不限</option>
+                    <c:forEach items="${devStauts }" var="status">
+                        <option value="${status.data_value }">${status.data_name }</option>
+                    </c:forEach>
+                </select> 
                 <br /> 
                 <span>数据时间：</span> <input type="text" name="data_time_begin1" id="datetimepicker" />
                                   -- <input type="text" name="data_time_end1" id="datetimepicker1" />
@@ -112,12 +118,13 @@
                 <c:if test="${hisData != null and hisData.ms_code != null }">
                     <input type="hidden" name="ms_code" value="${hisData.ms_code }"> 
                 </c:if>
-                <span>设备状态：</span> <select class="select1" name="dev_status">
-                    <option value="">不限</option>
-                    <c:forEach items="${devStauts }" var="status">
-                        <option value="${status.data_value }">${status.data_name }</option>
-                    </c:forEach>
-                </select> 
+                
+                <c:if test="${hisData != null and hisData.ms_code != null }">
+                    <span>显示形式：</span><select class="select1" name="view">
+                        <option value="table">表格</option>
+                        <option value="chart">折线图</option>
+                    </select>
+                </c:if>
                 <c:if test="${hisData != null and hisData.dev_code != null and fn:startsWith(hisData.dev_code,'dev5')}">
                     <span>气象条件：</span> <select class="select1" name="weather">
                         <option value="air_t">空气温度</option>
@@ -137,14 +144,9 @@
                         <option value="soil_ec">土壤EC值</option>
                     </select> 
                 </c:if>
-                <c:if test="${hisData != null and hisData.ms_code != null }">
-                    <span>显示形式：</span><select class="select1" name="view">
-                        <option value="table">表格</option>
-                        <option value="chart">折线图</option>
-                    </select>
-                </c:if>
-                <input type="submit" value="查找" class="search">
-                <input type="reset" value="重置" class="reset">
+              
+                <input type="submit" value="查找" class="search" style="left:73%; top: 30px;">
+                <input type="reset" value="重置" class="reset"  style="left:80%; top: 30px;">
 
             </form>
 
