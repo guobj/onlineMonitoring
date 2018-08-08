@@ -145,12 +145,11 @@
                 success:function (data) {
                     if(data.data >= 0){
                     	$.MsgBox.Alert("消息", "修改成功");
-                    	 
                         $(window).on('click', function() {
-                        	
                         	 window.location.href="station/listStation";
                         })
-                       
+                    }else{
+                    	$.MsgBox.Alert("消息", "修改失败");
                     }
                 }
             });
@@ -159,6 +158,7 @@
         }
         function xg1(){
             $("#xiugai").hide();
+            $("#ms_dev").html("建设内容:");
             $("#bg").show();
             $("h4").html("数据列表");
             $("#page").show();
@@ -173,12 +173,15 @@
                     url:"station/deleteStation",
                     data:{id:id},
                     success:function (data) {
-                    	 $.MsgBox.Alert("温馨提示", "删除成功");
-                        
-                        $(window).on('click', function() {
-                        	
-                        	window.location.reload();
-                        })
+                    	if (data.data > 0) {
+                    		$.MsgBox.Alert("温馨提示", "删除成功");
+                            $(window).on('click', function() {
+                                window.location.reload();
+                            })
+                    	}else{
+                    		$.MsgBox.Alert("温馨提示", "删除失败");
+                    	}
+                    	
                     }
                 })
             });
@@ -238,7 +241,7 @@
                     <td class="t5">监测站类型</td>
                     <td class="t8">实时数据</td>
                     <td class="t6">查看</td>
-                     <td class="t9">修改</td>
+                    <td class="t9">修改</td>
                     <td class="t7">删除</td>
                 </tr>
             </thead>
@@ -334,19 +337,27 @@
             	var code = $("#ms_code").val();
             	var code11 = $("#ms_code11").val();
             	if (code != code11) {
-            		$.post("station/existMsCode",{ms_code:code},function(data){
-                        if (data > 0) {
-                            $("#tip_2").html("编码已重复")
-                            temp = 1;
-                            $("#mdi").attr("disabled", true);
-                        }else {
-                            $("#tip_2").html("格式正确")
-                            temp = 0;
-                        }
-                        if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true){
-                            $("#mdi").removeAttr("disabled", true);
-                        }
-                    });
+            		$.post("station/permissionMsCode",{ms_code:code},function(data){
+            			  if (data < 0) {
+            				  $("#tip_2").html("权限不够，无法使用此编码")
+                              temp = 1;
+                              $("#mdi").attr("disabled", true);
+            			  }else {
+            				  $.post("station/existMsCode",{ms_code:code},function(data){
+                                  if (data > 0) {
+                                      $("#tip_2").html("编码已重复")
+                                      temp = 1;
+                                      $("#mdi").attr("disabled", true);
+                                  }else {
+                                      $("#tip_2").html("格式正确")
+                                      temp = 0;
+                                  }
+                                  if(temp==0&&reg1.test($("#ms_name").val())==true&&reg2.test($("#ms_code").val())==true&&reg3.test($("#ms_user").val())==true&&reg4.test($("#ms_builder").val())==true&&reg5.test($("#ms_desc").val())==true&&reg6.test($("#ms_place").val())==true){
+                                      $("#mdi").removeAttr("disabled", true);
+                                  }
+                              });
+            			  }
+            		});
             	}else {
             		$("#tip_2").html("格式正确")
                     temp = 0;

@@ -89,6 +89,15 @@ public interface RealDataMapper {
     List<RealData> loadByMsCodeAndDevCode(Map<String, Object> map);
     /**
      * 
+     * 方法描述：通过ms_code和dev_code查询实时数据的数量
+     * @param map
+     * @return
+     * @author ssh
+     * @date 2018年8月8日 下午1:15:40
+     */
+    Integer countLoadByMsCodeAndDevCode(Map<String, Object> map);
+    /**
+     * 
      * 方法描述：查询一个监测站下所有设备的数据
      * @param ms_code
      * @return

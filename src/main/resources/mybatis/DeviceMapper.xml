@@ -34,7 +34,16 @@
 
     <!--设备信息查询-->
     <select id="queryDeviceInfo" resultMap="BaseResultMap" parameterType="map">
-        SELECT * FROM t_device td
+        SELECT 
+            <choose>
+                <when test="device.controller_ms_code == null or device.controller_ms_code == ''">
+                    ms_code
+                </when>
+                <otherwise>
+                    * 
+                </otherwise>
+            </choose>
+        FROM t_device td
         <where>
             <if test="device.ms_code!=null and device.ms_code!=''">
                 AND td.ms_code LIKE concat("%",#{device.ms_code},"%")
@@ -45,19 +54,44 @@
             <if test="device.dev_type!=null and device.dev_type!=''">
                 AND td.dev_type = #{device.dev_type}
             </if>
+            <if test="device.controller_ms_code!=null and device.controller_ms_code!=''">
+                AND td.ms_code = #{device.controller_ms_code}
+            </if>
         </where>
-        LIMIT #{record},15
+        <choose>
+            <when test="device.controller_ms_code == null or device.controller_ms_code == ''">
+                group by ms_code LIMIT #{record},15
+            </when>
+            <otherwise>
+                LIMIT #{record},15
+            </otherwise>
+        </choose>
     </select>
 
     <!--设备信息查询，记录总数-->
     <select id="count" resultType="integer" parameterType="map">
-        SELECT count(*) FROM t_device td
+        SELECT 
+        <choose>
+            <when test="device.controller_ms_code == null or device.controller_ms_code == ''">
+                count(distinct ms_code)
+            </when>
+            <otherwise>
+                count(*) 
+            </otherwise>
+        </choose>
+        FROM t_device td
         <where>
             <if test="device.ms_code!=null and device.ms_code.trim()!=''">
                 AND td.ms_code LIKE concat("%",#{device.ms_code},"%")
             </if>
             <if test="device.dev_code!=null and device.dev_code.trim()!=''">
                 AND td.dev_code LIKE concat("%",#{device.dev_code},"%")
+            </if>
+            <if test="device.dev_type!=null and device.dev_type!=''">
+                AND td.dev_type = #{device.dev_type}
+            </if>
+            <if test="device.controller_ms_code!=null and device.controller_ms_code!=''">
+                AND td.ms_code = #{device.controller_ms_code}
             </if>
         </where>
     </select>

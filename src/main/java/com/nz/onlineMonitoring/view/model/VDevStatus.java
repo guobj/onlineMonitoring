@@ -20,7 +20,11 @@ public class VDevStatus {
 	private Dict dataDevType;
 
 	private Dict dataDevStatus;
-
+	/**解析监测站编码的具体值*/
+	private String ms_code_value;
+	/** 通过这个是否为空来判断进入设备时，显示的界面  */
+	private String controller_ms_code;
+	
 	public Dict getDataDevStatus() {
 		return dataDevStatus;
 	}
@@ -110,4 +114,21 @@ public class VDevStatus {
 	public void setDev_status(Integer dev_status) {
 		this.dev_status = dev_status;
 	}
+
+    public String getMs_code_value() {
+        return ms_code_value;
+    }
+
+    public void setMs_code_value(String ms_code_value) {
+        this.ms_code_value = ms_code_value;
+    }
+
+    public String getController_ms_code() {
+        return controller_ms_code;
+    }
+
+    public void setController_ms_code(String controller_ms_code) {
+        this.controller_ms_code = controller_ms_code;
+    }
+	
 }

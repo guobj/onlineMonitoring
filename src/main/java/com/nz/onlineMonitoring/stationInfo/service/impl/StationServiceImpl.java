@@ -127,8 +127,8 @@ public class StationServiceImpl implements StationService{
         String ms_code = station.getMs_code();
         String code01 = ms_code.substring(0, 6);
         String code02 = ms_code.substring(4, 6);
-        
         String code2 = ms_code.substring(6, 8);
+        //当5,6位是00的时候，不论是山东省，还是济南市这样的编码，都不会再往下加地级市了。所以从字典表中拿出数据，然后解析一下
         if (code02.equals("00")) {
             Dict city = dictMapper.loadCity(Integer.parseInt(code01));
             if (city != null) {
@@ -139,9 +139,11 @@ public class StationServiceImpl implements StationService{
             }
             
         }else {
+            //先取前四位加上00，取到市的具体值
             String code03 = ms_code.substring(0, 4);
             code03 += "00";
             Dict city1 = dictMapper.loadCity(Integer.parseInt(code03));
+            //然后取地级市的具体值
             Dict city2 = dictMapper.loadCity(Integer.parseInt(code01));
             if (city1 != null && city2 != null) {
                 String name2= city1.getData_name();

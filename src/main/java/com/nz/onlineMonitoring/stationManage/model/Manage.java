@@ -38,9 +38,6 @@ public class Manage {
     //存储t_station相关字段
     private Station station;
 
-    //是否删除 1删除0未删除
-    private Boolean dr = false;
-
     //数据字典的字段
     private Dict data;
 
@@ -167,25 +164,5 @@ public class Manage {
      */
     public void setData_storage(Integer data_storage) {
         this.data_storage = data_storage;
-    }
-    /**
-     * 
-     * 方法描述：是否删除 默认为0未删除，1为已删除
-     * @return
-     * @author ssh
-     * @date 2018年6月3日 下午1:12:03
-     */
-    public Boolean getDr() {
-        return dr;
-    }
-    /**
-     * 
-     * 方法描述：是否删除 默认为0未删除，1为已删除
-     * @return
-     * @author ssh
-     * @date 2018年6月3日 下午1:12:03
-     */
-    public void setDr(Boolean dr) {
-        this.dr = dr;
     }
 }

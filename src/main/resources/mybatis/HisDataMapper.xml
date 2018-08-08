@@ -91,10 +91,10 @@
     <select id="listHisData" resultMap="BaseResultMap" parameterType="map">
         select 
             <!-- 一开始查询的是历史数据中的设备，然后根据设备编码查询该设备下全部的历史数据 -->
-	        <if test="hisData.dev_code == null or hisData.dev_code == ''">
+	        <if test="hisdata.dev_code == null or hisdata.dev_code == ''">
 	            ms_code,dev_code
 	        </if>
-	        <if test="hisData.dev_code != null and hisData.dev_code != ''">
+	        <if test="hisdata.dev_code != null and hisdata.dev_code != ''">
 	            <include refid="t_his_data_columns" />
 	        </if>
             from t_his_data
@@ -102,34 +102,34 @@
             <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
              -->
-            <if test="hisData.ms_code != null and hisData.ms_code != ''" >
-                ms_code like concat(#{hisData.ms_code},"%")
+            <if test="hisdata.ms_code != null and hisdata.ms_code != ''" >
+                ms_code like concat(#{hisdata.ms_code},"%")
             </if>
             <!-- 设备类型，即设备编码第5-6位 
                  hisData.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
                                                     前面3个，后面两个下划线
             -->
-            <if test="hisData.device_type != null and hisData.device_type != ''" >
-                and dev_code like concat("___",#{hisData.device_type},"__")
+            <if test="hisdata.device_type != null and hisdata.device_type != ''" >
+                and dev_code like concat("___",#{hisdata.device_type},"__")
             </if>
            <!--  设备监测对象，即设备编码第4位 ,传过来的是1位，例如1，后面4个下划线-->
-            <if test="hisData.device_object != null and hisData.device_object != ''" >
-                and dev_code like concat("___",#{hisData.device_object},"____")
+            <if test="hisdata.device_object != null and hisdata.device_object != ''" >
+                and dev_code like concat("___",#{hisdata.device_object},"____")
             </if>
             <!-- 设备运行状态 -->
-            <if test="hisData.dev_status != null and hisData.dev_status != ''" >
-                and dev_status = #{hisData.dev_status}
+            <if test="hisdata.dev_status != null and hisdata.dev_status != ''" >
+                and dev_status = #{hisdata.dev_status}
             </if>
-            <if test="hisData.data_time_begin != null and hisData.data_time_begin != '' and hisData.data_time_end != null and hisData.data_time_end != ''  " >
-                and data_time between  #{hisData.data_time_begin} and #{hisData.data_time_end}
+            <if test="hisdata.data_time_begin != null and hisdata.data_time_begin != '' and hisdata.data_time_end != null and hisdata.data_time_end != ''  " >
+                and data_time between  #{hisdata.data_time_begin} and #{hisdata.data_time_end}
             </if>
             <!-- 如果设备编码不为空，那么选择设备，根据设备的编码查出该设备下的所有历史数据 -->
-            <if test="hisData.dev_code != null and hisData.dev_code != ''" >
-                and dev_code = #{hisData.dev_code}
+            <if test="hisdata.dev_code != null and hisdata.dev_code != ''" >
+                and dev_code = #{hisdata.dev_code}
             </if>
         </where>
         <choose>
-            <when test="hisData.dev_code == null or hisData.dev_code == ''">
+            <when test="hisdata.dev_code == null or hisdata.dev_code == ''">
                 group by ms_code,dev_code limit #{record},15    
             </when>
             <when test="view == 'chart'">
@@ -144,10 +144,10 @@
      <!-- 查询数据的数量 -->
     <select id="countHisData" resultType ="int" parameterType="map">
         select 
-	        <if test="hisData.dev_code == null or hisData.dev_code == ''">
+	        <if test="hisdata.dev_code == null or hisdata.dev_code == ''">
 	            count(distinct ms_code,dev_code)
 	        </if>
-	        <if test="hisData.dev_code != null and hisData.dev_code != ''">
+	        <if test="hisdata.dev_code != null and hisdata.dev_code != ''">
 	            count(*)
 	        </if>
 	        from t_his_data
@@ -155,34 +155,34 @@
             <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
              -->
-            <if test="hisData.ms_code != null and hisData.ms_code != ''" >
-                and ms_code like concat(#{hisData.ms_code},"%")
+            <if test="hisdata.ms_code != null and hisdata.ms_code != ''" >
+                and ms_code like concat(#{hisdata.ms_code},"%")
             </if>
             <!-- 设备类型，即设备编码第5-6位 
                  hisData.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
                                                     前面3个，后面两个下划线
             -->
-           <if test="hisData.device_type != null and hisData.device_type != ''" >
-                and dev_code like concat("___",#{hisData.device_type},"__")
+           <if test="hisdata.device_type != null and hisdata.device_type != ''" >
+                and dev_code like concat("___",#{hisdata.device_type},"__")
             </if>
            <!--  设备监测对象，即设备编码第4位 ,传过来的是4位，例如dev1，后面4个下划线-->
-            <if test="hisData.device_object != null and hisData.device_object != ''" >
-                and dev_code like concat("___",#{hisData.device_object},"____")
+            <if test="hisdata.device_object != null and hisdata.device_object != ''" >
+                and dev_code like concat("___",#{hisdata.device_object},"____")
             </if>
             <!-- 设备运行状态 -->
-            <if test="hisData.dev_status != null and hisData.dev_status != ''" >
-                and dev_status = #{hisData.dev_status}
+            <if test="hisdata.dev_status != null and hisdata.dev_status != ''" >
+                and dev_status = #{hisdata.dev_status}
             </if>
-            <if test="hisData.data_time_begin != null and hisData.data_time_begin != '' and hisData.data_time_end != null and hisData.data_time_end != ''  " >
-                and data_time between  #{hisData.data_time_begin} and #{hisData.data_time_end}
+            <if test="hisdata.data_time_begin != null and hisdata.data_time_begin != '' and hisdata.data_time_end != null and hisdata.data_time_end != ''  " >
+                and data_time between  #{hisdata.data_time_begin} and #{hisdata.data_time_end}
             </if>
             <!-- 如果设备编码不为空，那么选择设备，根据设备的编码查出该设备下的所有历史数据 -->
-            <if test="hisData.dev_code != null and hisData.dev_code != ''" >
-                and dev_code = #{hisData.dev_code}
+            <if test="hisdata.dev_code != null and hisdata.dev_code != ''" >
+                and dev_code = #{hisdata.dev_code}
             </if>
             <!-- 如果监测站编码不为空，那么选择监测站，根据监测站编码查出该监测站下的所有历史数据 -->
-            <if test="hisData.ms_code != null and hisData.ms_code != ''" >
-                and ms_code = #{hisData.ms_code}
+            <if test="hisdata.ms_code != null and hisdata.ms_code != ''" >
+                and ms_code = #{hisdata.ms_code}
             </if>
         </where>
     </select>

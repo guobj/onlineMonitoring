@@ -44,22 +44,10 @@ public class Device {
     private String dev_mfrs;
     /**设备描述,所属表字段为 t_device.dev_desc  */
     private String dev_desc;
-
-    //存储解析的dev_code;
-
-	public String getDev_value() {
-		return dev_value;
-	}
-
-	public void setDev_value(String dev_value) {
-		this.dev_value = dev_value;
-	}
-
+    /**解析设备编码的具体值*/
 	private String dev_value;
-
-	//是否删除 1删除0未删除
-	private Boolean dr = false;
-
+	/**解析监测站编码的具体值*/
+	private String ms_code_value;
 	//存储站点信息 与t_station关联
 	private Station station;
 
@@ -74,7 +62,24 @@ public class Device {
 
 	//存储设备厂家
 	private Dict dataDevfactory;
+	/** 通过这个是否为空来判断进入设备时，显示的界面  */
+	private String controller_ms_code;
+	
+    public String getController_ms_code() {
+        return controller_ms_code;
+    }
 
+    public void setController_ms_code(String controller_ms_code) {
+        this.controller_ms_code = controller_ms_code;
+    }
+
+    public String getDev_value() {
+        return dev_value;
+    }
+
+    public void setDev_value(String dev_value) {
+        this.dev_value = dev_value;
+    }
 	public Dict getDataType() {
 		return dataType;
 	}
@@ -115,13 +120,6 @@ public class Device {
 		this.dataInterface = dataInterface;
 	}
 
-	public Boolean getDr() {
-		return dr;
-	}
-
-	public void setDr(Boolean dr) {
-		this.dr = dr;
-	}
     /**
      * 获取 序号-主键、自增、界面不可见 字段:t_device.id
      *
@@ -360,4 +358,13 @@ public class Device {
     public void setDev_desc(String dev_desc) {
         this.dev_desc = dev_desc == null ? null : dev_desc.trim();
     }
+
+    public String getMs_code_value() {
+        return ms_code_value;
+    }
+
+    public void setMs_code_value(String ms_code_value) {
+        this.ms_code_value = ms_code_value;
+    }
+    
 }

@@ -1,17 +1,19 @@
 package com.nz.onlineMonitoring.view.controller;
 
-import com.nz.onlineMonitoring.utils.AuthorityUtil;
-import com.nz.onlineMonitoring.utils.PageBean;
-import com.nz.onlineMonitoring.view.model.VDevStatus;
-import com.nz.onlineMonitoring.view.service.VDevStatusService;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.Map;
+import com.nz.onlineMonitoring.utils.AuthorityUtil;
+import com.nz.onlineMonitoring.utils.PageBean;
+import com.nz.onlineMonitoring.view.model.VDevStatus;
+import com.nz.onlineMonitoring.view.service.VDevStatusService;
 
 @Controller
 @RequestMapping("/vDevStatus")

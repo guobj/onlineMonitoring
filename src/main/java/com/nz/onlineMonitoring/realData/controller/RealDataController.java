@@ -59,15 +59,24 @@ public class RealDataController {
 
     //设备信息查询设备采集数据（查询）按钮调用接口，需区分气象设备调用气象表，蝗虫和性诱调用t_real_data,包子和测报灯无数据
 	@RequestMapping("/loadByMsCodeAndDevCode")
-	public String loadByMsCodeAndDevCode(Map<String, Object> map, String ms_code,String dev_code){
+	public String loadByMsCodeAndDevCode(Map<String, Object> map, String ms_code,String dev_code,HttpServletRequest request,@RequestParam(required=false,defaultValue="1") int pages){
 		try {
-//			String dev_type = dev_code.substring(3, 6);
 			map.put("ms_code", ms_code);
 			map.put("dev_code", dev_code);
+			RealData rd = new RealData();
+			rd.setMs_code(ms_code);
+			rd.setDev_code(dev_code);
+			PageBean.serverMap(map, rd, pages);
 			realDataService.loadByMsCodeAndDevCode(map);
+			PageBean.clientMap(map, pages, request);
 		} catch (Exception e) {
 			map.put("message", e.getMessage());
-		}
+		}finally {
+		    map.put("controller_form", 0);
+		    map.put("devStatus", dictService.listDevStauts());
+            map.put("devObject", dictService.listDevType());
+            map.put("devType", dictService.listDevType1());
+        }
 		return "realData/listRealData";
 	}
 

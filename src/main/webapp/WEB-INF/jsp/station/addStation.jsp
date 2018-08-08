@@ -36,12 +36,14 @@
                 contentType:false,
                 dataType:'json',
                 success:function (data) {
-                	 $.MsgBox.Alert("消息", "添加成功");
+                	$.MsgBox.Alert("消息", "添加成功");
                     if(data.data >= 0){
                     	 $.MsgBox.Alert("消息", "添加成功");
                     	 $(window).on('click', function() {
                     		  window.location.reload();
                          })      
+                    }else{
+                    	$.MsgBox.Alert("消息", "添加失败");
                     }
                 }
             });

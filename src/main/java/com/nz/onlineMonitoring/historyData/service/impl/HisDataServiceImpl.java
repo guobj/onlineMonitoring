@@ -21,6 +21,7 @@ import com.nz.onlineMonitoring.historyData.mapper.HisMeteorologicalMapper;
 import com.nz.onlineMonitoring.historyData.model.HisData;
 import com.nz.onlineMonitoring.historyData.model.HisMeteorological;
 import com.nz.onlineMonitoring.historyData.service.HisDataService;
+import com.nz.onlineMonitoring.utils.AnalyseCode;
 @Service
 public class HisDataServiceImpl implements HisDataService{
     @Autowired
@@ -48,7 +49,7 @@ public class HisDataServiceImpl implements HisDataService{
         //返回前台的list，泛型
         List list = new ArrayList<>();
         //获取前台查询的值
-        HisData hisData = (HisData) map.get("hisData");
+        HisData hisData = (HisData) map.get("hisdata");
         //建立一个HisMeteorological类，用于mapper.xml里的查数据时用
         HisMeteorological hisMeteorological = new HisMeteorological();
         //不管ms_code,dev_status有没有值，赋给HisMeteorological就行，他们不决定查询哪个表
@@ -76,7 +77,7 @@ public class HisDataServiceImpl implements HisDataService{
                 throw new RuntimeException("暂无数据");
             }else if (dev_object.equals("5")) {
                 hisMeteorological.setDevice_type(dev_type);
-                map.put("hisMeteorological", hisMeteorological);
+                map.put("hismeteorological", hisMeteorological);
                 hisMeteorologicalList = hisMeteorologicalMapper.listHisMeteorological(map);
                 countHisMeteorological = hisMeteorologicalMapper.countHisMeteorological(map);
             }else {
@@ -87,7 +88,7 @@ public class HisDataServiceImpl implements HisDataService{
             //两个字段中如果只有一个字段有数据，判断是否为5，是则气象表，否则数据表
             if (dev_object.equals("5")) {
                 hisMeteorological.setDevice_object(dev_object);
-                map.put("hisMeteorological", hisMeteorological);
+                map.put("hismeteorological", hisMeteorological);
                 hisMeteorologicalList = hisMeteorologicalMapper.listHisMeteorological(map);
                 countHisMeteorological = hisMeteorologicalMapper.countHisMeteorological(map);
             }else {
@@ -97,7 +98,7 @@ public class HisDataServiceImpl implements HisDataService{
         }else if (dev_type != null && dev_type != "") {
             if (dev_type.charAt(0) == '5') {
                 hisMeteorological.setDevice_type(dev_type);
-                map.put("hisMeteorological", hisMeteorological);
+                map.put("hismeteorological", hisMeteorological);
                 hisMeteorologicalList = hisMeteorologicalMapper.listHisMeteorological(map);
                 countHisMeteorological = hisMeteorologicalMapper.countHisMeteorological(map);
             }else {
@@ -107,7 +108,7 @@ public class HisDataServiceImpl implements HisDataService{
         }else {
             hisList = hisDataMapper.listHisData(map);
             countData = hisDataMapper.countHisData(map);
-            map.put("hisMeteorological", hisMeteorological);
+            map.put("hismeteorological", hisMeteorological);
             if (hisList.size() < 15) {
                 //一开始，record是0，countData为6大于它，此时从气象表的第0条记录开始拿数据，然后下一页record是15，需要从第9条记录拿数据，因为前4条已经在上一页显示了
                 map.put("record", countData >= Integer.parseInt(map.get("record").toString()) ? 0 : Integer.parseInt(map.get("record").toString())-countData);
@@ -124,7 +125,7 @@ public class HisDataServiceImpl implements HisDataService{
         }else {
             if (hisList != null && hisList.size() > 0) { 
                 for (HisData rd : hisList) {
-                    if (rd.getDev_code()!= null && rd.getDev_code() != "") {
+                    if (rd.getDev_code()!= null && rd.getDev_code() != "" && rd.getMs_code() != null && rd.getMs_code() != "") {
                         Dict devObject = dictMapper.loadByDevType(Integer.parseInt(rd.getDev_code().substring(3, 4)));
                         Dict devType = dictMapper.loadByDevType1(Integer.parseInt(rd.getDev_code().substring(3, 6)));
                         if (devObject == null || devType == null) {
@@ -132,7 +133,9 @@ public class HisDataServiceImpl implements HisDataService{
                         }else {
                             rd.setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+rd.getDev_code().substring(6, 8)+"个");
                         }
+                        AnalyseCode.msCode(rd, rd.getMs_code());
                     }
+                    
                 }
                 if (view.equals("chart")) {
                     //用来传到前台，每天害虫的数量的平均值
@@ -178,7 +181,7 @@ public class HisDataServiceImpl implements HisDataService{
             }
             if (hisMeteorologicalList != null && hisMeteorologicalList.size() > 0) {
                 for (HisMeteorological rm : hisMeteorologicalList) {
-                    if (rm.getDev_code()!= null && rm.getDev_code() != "") {
+                    if (rm.getDev_code()!= null && rm.getDev_code() != "" && rm.getMs_code() != null && rm.getMs_code() != "") {
                         Dict devObject = dictMapper.loadByDevType(Integer.parseInt(rm.getDev_code().substring(3, 4)));
                         Dict devType = dictMapper.loadByDevType1(Integer.parseInt(rm.getDev_code().substring(3, 6)));
                         if (devObject == null || devType == null) {
@@ -186,6 +189,7 @@ public class HisDataServiceImpl implements HisDataService{
                         }else {
                             rm.setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+rm.getDev_code().substring(6, 8)+"个");
                         }
+                        AnalyseCode.msCode(rm, rm.getMs_code());
                     }
                 }
                 //如果view等于chart，表示折线展示

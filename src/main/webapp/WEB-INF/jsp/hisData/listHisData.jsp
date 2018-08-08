@@ -155,6 +155,7 @@
             <thead class="name">
                 <c:if test="${hisData != null and hisData.dev_code != null }">
                     <tr>
+                        <td class="t1">监测站</td>
                         <td class="t2">监测站编码</td>
                         <td class="t3">监测设备编码</td>
                         <td class="t5">采集时间</td>
@@ -174,6 +175,7 @@
                 </c:if>
                 <c:if test="${hisData == null or hisData.dev_code == null }">
                     <tr>
+                        <td class="t1">监测站</td>
                         <td class="t2">监测站编码</td>
                         <td class="t3">监测设备</td>
                         <td class="t6">查看</td>
@@ -193,6 +195,7 @@
                                 <c:when
                                     test="${fn:startsWith(his.dev_code,'dev101') or fn:startsWith(his.dev_code,'dev201')}">
                                     <tr style="border-bottom: 1px solid #adadad;">
+                                        <td class="t1">${his.ms_code_value }</td>
                                         <td class="t2">${his.ms_code }</td>
                                         <td class="t3">${his.dev_code_value }</td>
                                         <td class="t5"><fmt:formatDate value="${his.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
@@ -201,6 +204,7 @@
                                 </c:when>
                                 <c:when test="${fn:startsWith(his.dev_code,'dev5')}">
                                     <tr style="border-bottom: 1px solid #adadad;">
+                                        <td class="t1">${his.ms_code_value }</td>
                                         <td class="t2">${his.ms_code }</td>
                                         <td class="t3">${his.dev_code_value }</td>
                                         <td class="t5"><fmt:formatDate value="${his.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
@@ -209,6 +213,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <tr style="border-bottom: 1px solid #adadad;">
+                                        <td class="t1">${his.ms_code_value }</td>
                                         <td class="t2">${his.ms_code }</td>
                                         <td class="t3">${his.dev_code_value }</td>
                                         <td class="t5"><fmt:formatDate value="${his.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
@@ -230,6 +235,7 @@
                     <c:if test="${listHisData != null}">
                         <c:forEach items="${listHisData }" var="his">
                             <tr style="border-bottom: 1px solid #adadad;">
+                                <td class="t1">${his.ms_code_value }</td>
                                 <td class="t2">${his.ms_code }</td>
                                 <td class="t3">${his.dev_code_value }</td>
                                 <td class="t6">

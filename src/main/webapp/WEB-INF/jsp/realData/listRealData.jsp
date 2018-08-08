@@ -80,53 +80,60 @@
 <div id="content_r">
     <li class="tit"><p class="xx"><img src="img/zb.png">&nbsp;当前位置&nbsp;:&nbsp;<span id="zb1">首页</span> > <span id="zb2">数据管理</span> > <span id="zb3">实时数据查询</span></p></li>
     <div class="menu">
-        <form action="realData/listRealData" method="post">
-            <span>监测站区域： </span>
-                <select id="s_city" name="city">
-                    <option value="">市区</option>
-                </select>
-                <select id="s_area" name="city" >
-                    <option value="">区县</option>
-                </select>
-            <span>设备类型：</span>
-	            <select class="select1" name="device_type">
-	                <option value="">不限</option>
-	                <c:forEach items="${devType }" var="type">
-	                    <c:choose>
-	                        <c:when test="${type.data_value < 10 }">
-	                            <option value="00${type.data_value }">${type.data_name }</option>
-	                        </c:when>
-	                        <c:when test="${type.data_value < 100 }">
-                                <option value="0${type.data_value }">${type.data_name }</option>
-                            </c:when>
-	                        <c:otherwise>
-	                            <option value="${type.data_value }">${type.data_name }</option>
-	                        </c:otherwise>
-	                    </c:choose>
-	                </c:forEach>
-	            </select>
-            <span>监测对象：</span>
-                <select class="select1" name="device_object">
-                    <option value="">不限</option>
-                    <c:forEach items="${devObject }" var="ob">
-                        <option value="${ob.data_value }">${ob.data_name }</option>
-                    </c:forEach>
-                </select>
-            <span>设备状态：</span>
-                <select class="select1" name="dev_status">
-                    <option value="">不限</option>
-                    <c:forEach items="${devStatus }" var="status">
-                        <option value="${status.data_value }">${status.data_name }</option>
-                    </c:forEach>
-                </select>
-            <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
-
-        </form>
-
+        <c:choose>
+            <c:when test="${controller_form != null and controller_form == 0}">
+            
+            </c:when>
+            <c:otherwise>
+                <form action="realData/listRealData" method="post">
+		            <span>监测站区域： </span>
+		                <select id="s_city" name="city">
+		                    <option value="">市区</option>
+		                </select>
+		                <select id="s_area" name="city" >
+		                    <option value="">区县</option>
+		                </select>
+		            <span>设备类型：</span>
+		                <select class="select1" name="device_type">
+		                    <option value="">不限</option>
+		                    <c:forEach items="${devType }" var="type">
+		                        <c:choose>
+		                            <c:when test="${type.data_value < 10 }">
+		                                <option value="00${type.data_value }">${type.data_name }</option>
+		                            </c:when>
+		                            <c:when test="${type.data_value < 100 }">
+		                                <option value="0${type.data_value }">${type.data_name }</option>
+		                            </c:when>
+		                            <c:otherwise>
+		                                <option value="${type.data_value }">${type.data_name }</option>
+		                            </c:otherwise>
+		                        </c:choose>
+		                    </c:forEach>
+		                </select>
+		            <span>监测对象：</span>
+		                <select class="select1" name="device_object">
+		                    <option value="">不限</option>
+		                    <c:forEach items="${devObject }" var="ob">
+		                        <option value="${ob.data_value }">${ob.data_name }</option>
+		                    </c:forEach>
+		                </select>
+		            <span>设备状态：</span>
+		                <select class="select1" name="dev_status">
+		                    <option value="">不限</option>
+		                    <c:forEach items="${devStatus }" var="status">
+		                        <option value="${status.data_value }">${status.data_name }</option>
+		                    </c:forEach>
+		                </select>
+		            <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
+		
+		        </form>
+            </c:otherwise>
+        </c:choose>
     </div>
     <table id="main">
         <thead class="name">
         <tr>
+            <td class="t1">监测站</td>
             <td class="t2">监测站编码</td>
             <td class="t3">监测设备</td>
             <td class="t5">采集时间</td>
@@ -142,6 +149,7 @@
 		            <c:choose>
 		                  <c:when test="${fn:startsWith(real.dev_code,'dev101') or fn:startsWith(real.dev_code,'dev201')}">
 		                      <tr style="border-bottom: 1px solid #adadad;">
+		                        <td class="t1">${real.ms_code_value }</td>
 	                            <td class="t2">${real.ms_code }</td>
 	                            <td class="t3">${real.dev_code_value }</td>
 	                            <td class="t5"><fmt:formatDate value="${real.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
@@ -150,6 +158,7 @@
 		                  </c:when>
 		                  <c:when test="${fn:startsWith(real.dev_code,'dev5')}">
                               <tr style="border-bottom: 1px solid #adadad;">
+                                <td class="t1">${real.ms_code_value }</td>
                                 <td class="t2">${real.ms_code }</td>
                                 <td class="t3">${real.dev_code_value }</td>
                                 <td class="t5"><fmt:formatDate value="${real.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
@@ -158,6 +167,7 @@
                           </c:when>
 		                  <c:otherwise>
 		                      <tr style="border-bottom: 1px solid #adadad;">
+		                        <td class="t1">${real.ms_code_value }</td>
 		                        <td class="t2">${real.ms_code }</td>
 		                        <td class="t3">${real.dev_code_value }</td>
 		                        <td class="t5"><fmt:formatDate value="${real.data_time }" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
