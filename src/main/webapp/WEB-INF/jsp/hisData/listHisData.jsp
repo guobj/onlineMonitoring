@@ -365,7 +365,7 @@
                 <%--<td>设备状态</td>--%>
                 <%--<td id="m_dev_status"></td>--%>
                 <%--</tr>--%>
-            </table>
+            </table> 
             <form>
                 <input type="button" value="关闭" onclick="clo()" />
             </form>
