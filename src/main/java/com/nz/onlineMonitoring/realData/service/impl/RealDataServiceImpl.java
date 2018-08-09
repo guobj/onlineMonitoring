@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,7 +67,7 @@ public class RealDataServiceImpl implements RealDataService {
         String dev_object = realData.getDevice_object();
         String dev_type = realData.getDevice_type();
         //如果这两个是空的话，就是两个表一块查
-        if (dev_object != null && dev_object != "" && dev_type != null && dev_type!= "") {
+        if (dev_object != null && !Objects.equals(dev_object, "") && dev_type != null && !Objects.equals(dev_type, "")) {
             //如果两个字段不相等，例如对象是害虫监测，而设备是气象设备，那就直接返回空，若果相等并且等于5，说明查气象表，否则数据表
             if (!dev_object.equals(String.valueOf(dev_type.charAt(0)))) {
                 throw new RuntimeException("暂无数据");
@@ -79,7 +80,7 @@ public class RealDataServiceImpl implements RealDataService {
                 realList = realDataMapper.listReal(map);
                 countData = realDataMapper.countReal(map);
             }
-        }else if (dev_object != null && dev_object != "") {
+        }else if (dev_object != null && !Objects.equals(dev_object, "")) {
             //两个字段中如果只有一个字段有数据，判断是否为5，是则气象表，否则数据表
             if (dev_object.equals("5")) {
                 realMeteorological.setDevice_object(dev_object);
@@ -90,7 +91,7 @@ public class RealDataServiceImpl implements RealDataService {
                 realList = realDataMapper.listReal(map);
                 countData = realDataMapper.countReal(map);
             }
-        }else if (dev_type != null && dev_type != "") {
+        }else if (dev_type != null && !Objects.equals(dev_type, "")) {
             if (dev_type.charAt(0) == '5') {
                 realMeteorological.setDevice_type(dev_type);
                 map.put("realmeteorological", realMeteorological);
@@ -410,7 +411,7 @@ public class RealDataServiceImpl implements RealDataService {
         List<RealData> realList = realDataMapper.listRealByMsCode(ms_code);
         if (realList != null && realList.size() > 0) { 
             for (RealData rd : realList) {
-                if (rd.getDev_code()!= null && rd.getDev_code() != "") {
+                if (rd.getDev_code()!= null && !Objects.equals(rd.getDev_code(), "")) {
                     Dict devObject = dictMapper.loadByDevType(Integer.parseInt(rd.getDev_code().substring(3, 4)));
                     Dict devType = dictMapper.loadByDevType1(Integer.parseInt(rd.getDev_code().substring(3, 6)));
                     if (devObject == null || devType == null) {
@@ -424,7 +425,7 @@ public class RealDataServiceImpl implements RealDataService {
         }
         if (realMeteorologicalList != null && realMeteorologicalList.size() > 0) {
             for (RealMeteorological rm : realMeteorologicalList) {
-                if (rm.getDev_code()!= null && rm.getDev_code() != "") {
+                if (rm.getDev_code()!= null && !Objects.equals(rm.getDev_code(), "")) {
                     Dict devObject = dictMapper.loadByDevType(Integer.parseInt(rm.getDev_code().substring(3, 4)));
                     Dict devType = dictMapper.loadByDevType1(Integer.parseInt(rm.getDev_code().substring(3, 6)));
                     if (devObject == null || devType == null) {

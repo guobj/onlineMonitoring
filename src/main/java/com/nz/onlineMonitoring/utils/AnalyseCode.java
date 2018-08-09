@@ -1,6 +1,7 @@
 package com.nz.onlineMonitoring.utils;
 
 import java.lang.reflect.Field;
+import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
@@ -80,7 +81,7 @@ public class AnalyseCode {
         //获取设备编码进行解析
         char c = '0';
         Integer dev_type = 0;
-        if(dev_code != null && dev_code != ""){
+        if(dev_code != null && !Objects.equals(dev_code, "")){
             c = dev_code.charAt(3);
             String str = dev_code.substring(3, 6);
             dev_type = Integer.parseInt(str);

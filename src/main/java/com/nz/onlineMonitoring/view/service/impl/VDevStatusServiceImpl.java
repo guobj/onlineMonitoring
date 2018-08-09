@@ -2,6 +2,7 @@ package com.nz.onlineMonitoring.view.service.impl;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class VDevStatusServiceImpl implements VDevStatusService {
 		if(vDevStatusList == null || vDevStatusList.size() <= 0){
 			throw new RuntimeException("暂无数据");
 		}
-		if (vDevStatus.getController_ms_code() != null && vDevStatus.getController_ms_code() != "") {
+		if (vDevStatus.getController_ms_code() != null && !Objects.equals(vDevStatus.getController_ms_code(), "")) {
 		    for (VDevStatus vds : vDevStatusList) {
 		        //获取设备编码进行解析
 		        analysisDevCode(vds);
@@ -58,10 +59,10 @@ public class VDevStatusServiceImpl implements VDevStatusService {
         String dev_code = vDevStatus.getDev_code();
         char c = '0';
         Integer dev_type = 0;
-        if(dev_code != null && dev_code != ""){
+        if(dev_code != null && !Objects.equals(dev_code, "")){
             c = dev_code.charAt(3);
             String str = dev_code.substring(3, 6);
-            dev_type = Integer.parseInt(str);
+            dev_type = Integer.parseInt(str); 
         }
         StringBuilder sb = new StringBuilder();
         sb.append(dictMapper.loadByDevType(Character.getNumericValue(c)).getData_name());

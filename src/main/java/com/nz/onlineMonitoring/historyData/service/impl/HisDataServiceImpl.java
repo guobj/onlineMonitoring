@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,7 +72,7 @@ public class HisDataServiceImpl implements HisDataService{
         String dev_object = hisData.getDevice_object();
         String dev_type = hisData.getDevice_type();
         //如果这两个是空的话，就是两个表一块查
-        if (dev_object != null && dev_object != "" && dev_type != null && dev_type!= "") {
+        if (dev_object != null && !Objects.equals(dev_object, "") && dev_type != null && !Objects.equals(dev_type, "")) {
             //如果两个字段不相等，例如对象是害虫监测，而设备是气象设备，那就直接返回空，若果相等并且等于5，说明查气象表，否则数据表
             if (!dev_object.equals(String.valueOf(dev_type.charAt(0)))) {
                 throw new RuntimeException("暂无数据");
@@ -84,7 +85,7 @@ public class HisDataServiceImpl implements HisDataService{
                 hisList = hisDataMapper.listHisData(map);
                 countData = hisDataMapper.countHisData(map);
             }
-        }else if (dev_object != null && dev_object != "") {
+        }else if (dev_object != null && !Objects.equals(dev_object, "")) {
             //两个字段中如果只有一个字段有数据，判断是否为5，是则气象表，否则数据表
             if (dev_object.equals("5")) {
                 hisMeteorological.setDevice_object(dev_object);
@@ -95,7 +96,7 @@ public class HisDataServiceImpl implements HisDataService{
                 hisList = hisDataMapper.listHisData(map);
                 countData = hisDataMapper.countHisData(map);
             }
-        }else if (dev_type != null && dev_type != "") {
+        }else if (dev_type != null && !Objects.equals(dev_type, "")) {
             if (dev_type.charAt(0) == '5') {
                 hisMeteorological.setDevice_type(dev_type);
                 map.put("hismeteorological", hisMeteorological);
@@ -125,7 +126,7 @@ public class HisDataServiceImpl implements HisDataService{
         }else {
             if (hisList != null && hisList.size() > 0) { 
                 for (HisData rd : hisList) {
-                    if (rd.getDev_code()!= null && rd.getDev_code() != "" && rd.getMs_code() != null && rd.getMs_code() != "") {
+                    if (rd.getDev_code()!= null && !Objects.equals(rd.getDev_code(), "") && rd.getMs_code() != null && !Objects.equals(rd.getMs_code(), "")) {
                         Dict devObject = dictMapper.loadByDevType(Integer.parseInt(rd.getDev_code().substring(3, 4)));
                         Dict devType = dictMapper.loadByDevType1(Integer.parseInt(rd.getDev_code().substring(3, 6)));
                         if (devObject == null || devType == null) {
@@ -181,7 +182,7 @@ public class HisDataServiceImpl implements HisDataService{
             }
             if (hisMeteorologicalList != null && hisMeteorologicalList.size() > 0) {
                 for (HisMeteorological rm : hisMeteorologicalList) {
-                    if (rm.getDev_code()!= null && rm.getDev_code() != "" && rm.getMs_code() != null && rm.getMs_code() != "") {
+                    if (rm.getDev_code()!= null && !Objects.equals(rm.getDev_code(), "") && rm.getMs_code() != null && !Objects.equals(rm.getMs_code(), "")) {
                         Dict devObject = dictMapper.loadByDevType(Integer.parseInt(rm.getDev_code().substring(3, 4)));
                         Dict devType = dictMapper.loadByDevType1(Integer.parseInt(rm.getDev_code().substring(3, 6)));
                         if (devObject == null || devType == null) {
@@ -194,7 +195,7 @@ public class HisDataServiceImpl implements HisDataService{
                 }
                 //如果view等于chart，表示折线展示
                 String weather = hisData.getWeather();
-                if (view.equals("chart") && weather != null && weather != "") {
+                if (view.equals("chart") && weather != null && !Objects.equals(weather, "")) {
                     //用来传到前台，装天气条件按小时的平均值和时间
                     List<HisMeteorological> hisMeteorologicalList1 = new ArrayList<>();
                     //气象条件的安小时分段的总和

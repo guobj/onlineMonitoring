@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -148,7 +149,7 @@ public class StationController {
     @PostMapping("/updateStation")
     @ResponseBody
     public JacksonData updateStation(Station station,Map<String , Object> map,String ms_date1) {
-        if (ms_date1 != null && ms_date1 != "") {
+        if (ms_date1 != null && !Objects.equals(ms_date1, "")) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             try {
                 station.setMs_date(sdf.parse(ms_date1));
@@ -238,7 +239,7 @@ public class StationController {
     @PostMapping("/addStation")
     @ResponseBody
     public JacksonData addStation(Station station,Map<String , Object> map,String ms_date1) {
-        if (ms_date1 != null && ms_date1 != "") {
+        if (ms_date1 != null && !Objects.equals(ms_date1, "")) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             try {
                 station.setMs_date(sdf.parse(ms_date1));

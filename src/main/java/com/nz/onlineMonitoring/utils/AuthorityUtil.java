@@ -13,6 +13,7 @@
 package com.nz.onlineMonitoring.utils;
 
 import java.lang.reflect.Field;
+import java.util.Objects;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -57,17 +58,17 @@ public class AuthorityUtil {
 		if(account != null && !account.equals("")){
 			if(account.endsWith("0000")){
 				if (citys != null) {
-					if (citys[1] != null && citys[1] != "") {
+					if (citys[1] != null && !Objects.equals(citys[1], "")) {
 						//为成员变量ms_code赋值
 						field.set(object, citys[1]);
-					}else if (citys[0] != null && citys[0] != "") {
+					}else if (citys[0] != null && !Objects.equals(citys[0], "")) {
 						field.set(object, citys[0]);
 					}else {
 					}
 				}
 			}else if(account.endsWith("00")){
 				if (citys != null && citys.length > 0) {
-					if (citys[0] != null && citys[0] != "") {
+					if (citys[0] != null && !Objects.equals(citys[0], "")) {
 						field.set(object, citys[0]);
 					}
 				}else{
@@ -85,12 +86,12 @@ public class AuthorityUtil {
         HttpSession session = request.getSession();
         Login user = (Login) session.getAttribute("user");
         String  account = user.getAccount().toString();
-        if(account != null && !account.equals("")){
+        if(account != null && !Objects.equals(account, "")){
             if(account.endsWith("0000")){
                 if (citys != null) {
-                    if (citys[1] != null && citys[1] != "") {
+                    if (citys[1] != null && !Objects.equals(citys[1], "")) {
                         realData.setMs_code(citys[1]);
-                    }else if (citys[0] != null && citys[0] != "") {
+                    }else if (citys[0] != null && !Objects.equals(citys[0], "")) {
                         realData.setMs_code(citys[0]);
                     }else {
                         realData.setMs_code("37");
@@ -98,7 +99,7 @@ public class AuthorityUtil {
                 }
             }else if(account.endsWith("00")){
                 if (citys != null) {
-                    if (citys[0] != null && citys[0] != "") {
+                    if (citys[0] != null && !Objects.equals(citys[0], "")) {
                         realData.setMs_code(citys[0]);
                     }
                 }else{

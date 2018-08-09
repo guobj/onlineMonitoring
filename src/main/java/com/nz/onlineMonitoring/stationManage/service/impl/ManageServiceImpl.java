@@ -1,18 +1,18 @@
 package com.nz.onlineMonitoring.stationManage.service.impl;
 
-import com.nz.onlineMonitoring.dict.mapper.DictMapper;
-import com.nz.onlineMonitoring.dict.model.Dict;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.nz.onlineMonitoring.dict.mapper.DictMapper;
 import com.nz.onlineMonitoring.dict.model.Dict;
 import com.nz.onlineMonitoring.stationManage.mapper.ManageMapper;
 import com.nz.onlineMonitoring.stationManage.model.Manage;
 import com.nz.onlineMonitoring.stationManage.service.ManageService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Service
 public class ManageServiceImpl implements ManageService {
@@ -46,7 +46,7 @@ public class ManageServiceImpl implements ManageService {
 			}
 			//循环listStation,将ms_code中的值，一一取出，然后通过值去mapdev中比较，拿到具体的名字，然后拼接到ms_dev_value中
 			for (Manage manage : stationInfoList) {
-				if (manage.getStation().getMs_dev() != null && manage.getStation().getMs_dev() != "") {
+				if (manage.getStation().getMs_dev() != null && !Objects.equals(manage.getStation().getMs_dev(), "")) {
 					String[] temp = manage.getStation().getMs_dev().split(",");
 					for (int i = 0,n = temp.length; i < n; i++) {
 						temp[i] = mapDev.get(temp[i]);
@@ -121,7 +121,7 @@ public class ManageServiceImpl implements ManageService {
 			mapDev.put(String.valueOf(d.getData_value()), d.getData_name());
 		}
 		//因为ms_dev中的数据是用，分开的多个数据，所以没法用mapper直接查询，如果ms_dev不等于空，那么循环其中的数据，把从字典表中拿到的name值，拼接成字符串，传到ms_dev_value,用，隔开
-		if (manage.getStation().getMs_dev() != null && manage.getStation().getMs_dev() != "") {
+		if (manage.getStation().getMs_dev() != null && !Objects.equals(manage.getStation().getMs_dev(), "")) {
 			String[] temp = manage.getStation().getMs_dev().split(",");
 			for (int i = 0, n = temp.length; i < n; i++) {
 				temp[i] = mapDev.get(temp[i]);
