@@ -10,7 +10,7 @@ pageContext.setAttribute("basePath", basePath);
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <base href="${basePath }">
+    <base href="${basePath }"> 
     <meta charset="UTF-8">
     <title>站点信息配置</title>
     <link href="css/xinxi.css" rel="stylesheet" type="text/css">
