@@ -56,10 +56,10 @@ public class StationController {
             AuthorityUtil.getInstance().assignPermissions(citys, request, station);
             map = PageBean.serverMap(map , station , pages);
             listStation = stationService.listStation(map);
-            map = PageBean.clientMap(map ,pages,request);
         } catch (Exception e) {
             map.put("message", e.getMessage());
         }finally {
+            map = PageBean.clientMap(map ,pages,request);
             map.put("listStation", listStation);
             map.put("msType", dictService.listMsType());
             map.put("msFp", dictService.listMsFp());
@@ -123,17 +123,19 @@ public class StationController {
     @ResponseBody
     public JacksonData getStation(@RequestParam(required=false)Integer id,Map<String , Object> map) {
         JacksonData jd = new JacksonData();
+        Station station = null;
         try {
-            Station station = stationService.getStation(map,id);
+            station = stationService.getStation(map,id);
+            jd.success(map);
+        } catch (Exception e) {
+            jd.failure(e.getMessage());
+        }finally {
             map.put("msType", dictService.listMsType());
             map.put("msFp", dictService.listMsFp());
             map.put("msGate", dictService.listMsGate());
             map.put("msNet", dictService.listMsNet());
             map.put("msDev", dictService.analysisMsDev());
             map.put("station", station);
-            jd.success(map);
-        } catch (Exception e) {
-            jd.failure(e.getMessage());
         }
         return jd;
     }

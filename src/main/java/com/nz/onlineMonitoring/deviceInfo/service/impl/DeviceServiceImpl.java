@@ -37,7 +37,7 @@ public class DeviceServiceImpl implements DeviceService {
 		//记录总数
 		Integer count = deviceMapper.count(map);
 		if(queryList == null || queryList.size() <= 0){
-			throw new  RuntimeException("暂无数据！");
+			throw new  RuntimeException("暂无数据");
 		}
 	    if (device.getController_ms_code()!=null && !Objects.equals(device.getController_ms_code(), "")) {
 	        for (Device dev : queryList) {

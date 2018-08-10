@@ -35,11 +35,12 @@ public class VDevStatusController {
 			AuthorityUtil.getInstance().assignPermissions(citys, request, vDevStatus);
 			map = PageBean.serverMap(map, vDevStatus, pages);
 			List<VDevStatus> vDevStatusList = vDevStatusService.deviceStatusList(map,vDevStatus);
-			//返回给前端的数据
-			map = PageBean.clientMap(map, pages, request);
 		} catch (Exception e) {
 			map.put("message", e.getMessage());
-		}
+		}finally {
+		    //返回给前端的数据
+            map = PageBean.clientMap(map, pages, request);
+        }
 		return "device/deviceStatus_list";
 	}
 }

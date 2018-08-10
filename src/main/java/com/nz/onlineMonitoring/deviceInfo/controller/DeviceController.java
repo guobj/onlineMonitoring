@@ -42,11 +42,12 @@ public class DeviceController {
 			//存储前端传来的数据
 			map = PageBean.serverMap(map, device, pages);
 			List<Device> list = deviceService.queryDeviceInfo(map,device);
-			//返回给前端的数据
-			map = PageBean.clientMap(map, pages, request);
 		}catch (Exception e){
 			map.put("message", e.getMessage());
-		}
+		}finally {
+		  //返回给前端的数据
+            map = PageBean.clientMap(map, pages, request);
+        }
 		return  "device/devInfoManage_list";
 	}
 
@@ -64,11 +65,12 @@ public class DeviceController {
 			//存储前端传来的数据
 			map = PageBean.serverMap(map, device, pages);
 			List<Device> list = deviceService.queryDeviceInfo(map,device);
-			//返回给前端的数据
-			map = PageBean.clientMap(map, pages, request);
 		}catch (Exception e){
 			map.put("message", e.getMessage());
-		}
+		}finally {
+		  //返回给前端的数据
+            map = PageBean.clientMap(map, pages, request);
+        }
 		return  "device/deviceInfo_list";
 	}
 

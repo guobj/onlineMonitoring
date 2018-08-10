@@ -45,10 +45,10 @@ public class RealDataController {
             AuthorityUtil.getInstance().assignPermissions(citys, request, realData);
             map = PageBean.serverMap(map , realData , pages);
             listReal = realDataService.listReal(map);
-            map = PageBean.clientMap(map ,pages,request);
         } catch (Exception e) {
             map.put("message", e.getMessage());
         }finally {
+            map = PageBean.clientMap(map ,pages,request);
             map.put("listRealData", listReal);
             map.put("devStatus", dictService.listDevStauts());
             map.put("devObject", dictService.listDevType());
@@ -68,10 +68,10 @@ public class RealDataController {
 			rd.setDev_code(dev_code);
 			PageBean.serverMap(map, rd, pages);
 			realDataService.loadByMsCodeAndDevCode(map);
-			PageBean.clientMap(map, pages, request);
 		} catch (Exception e) {
 			map.put("message", e.getMessage());
 		}finally {
+		    PageBean.clientMap(map, pages, request);
 		    map.put("controller_form", 0);
 		    map.put("devStatus", dictService.listDevStauts());
             map.put("devObject", dictService.listDevType());

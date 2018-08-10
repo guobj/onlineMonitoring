@@ -36,7 +36,7 @@ public class ManageServiceImpl implements ManageService {
 		//查询记录总数
 		Integer count = manageMapper.count(map);
 		if(stationInfoList == null || stationInfoList.size() <= 0){
-			throw new RuntimeException("暂无相关数据！");
+			throw new RuntimeException("暂无数据");
 		}else{
 			List<Dict> listData = dictMapper.listMsDev();
 			Map<String, String> mapDev = new HashMap<>();

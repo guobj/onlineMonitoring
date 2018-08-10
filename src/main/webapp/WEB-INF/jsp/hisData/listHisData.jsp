@@ -119,7 +119,7 @@
                     <input type="hidden" name="ms_code" value="${hisData.ms_code }"> 
                 </c:if>
                 
-                <c:if test="${hisData != null and hisData.ms_code != null }">
+                <c:if test="${hisData != null and hisData.ms_code != null and hisData.dev_code != null}">
                     <span>显示形式：</span><select class="select1" name="view">
                         <option value="table">表格</option>
                         <option value="chart">折线图</option>
