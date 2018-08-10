@@ -16,7 +16,13 @@ public class PageBean {
         return map;
     }
     public static Map<String , Object> clientMap(Map<String , Object> map,Integer pages,HttpServletRequest request){
-        int count = Integer.parseInt(map.get("count").toString());
+        int count = 1;
+        if (map.get("count") != null) {
+            count = Integer.parseInt(map.get("count").toString());
+            if (count == 0) {
+                count = 1;
+            }
+        }
         int sumPage = (count%15==0)?(count/15):(count/15+1);
         map.put("pages" , pages);
         map.put("sumPage" , sumPage);

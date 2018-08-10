@@ -92,7 +92,7 @@
             </if>
         </where>
     </select>
-   <delete id="deleteById" parameterType="java.lang.Integer" >-->
+   <delete id="deleteById" parameterType="java.lang.Integer" >
         delete from t_manage
         where id = #{id,jdbcType=INTEGER}
     </delete>
@@ -167,9 +167,6 @@
             </if>
             <if test="data_storage != null" >
                 data_storage = #{data_storage,jdbcType=INTEGER},
-            </if>
-            <if test="dr != null" >
-                dr = #{dr},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}

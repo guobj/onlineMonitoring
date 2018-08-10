@@ -74,7 +74,6 @@
                 <select id="s_area" name="city" style="margin-left: 0.5%;">
                     <option value="">区县</option>
                 </select>
-            
             <span>设备类型： </span>
 	            <select class="select1" name="dev_type" id="dev_type">
 	                <option value="">不限</option>
@@ -83,7 +82,9 @@
                 <select class="select1" name="dev_object" id="dev_object">
                     <option value="">不限</option>
                 </select>
-            
+            <c:if test="${device.controller_ms_code != null and device.controller_ms_code != ''}">
+                <input type="hidden" name="controller_ms_code" value="${device.controller_ms_code }">
+            </c:if>
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>
@@ -91,18 +92,43 @@
     <%--<span class="title">查询列表</span>--%>
     <table>
         <thead>
-        <tr>
-            <td class="t2">监测站名称</td>
-            <td class="t3">监测站编码</td>
-            <td class="t4">设备类型</td>
-            <td class="t5">设备采集数据</td>
-            <%--<td class="t6">图片</td>--%>
-        </tr>
+        <c:choose>
+            <c:when test="${device.controller_ms_code == null or device.controller_ms_code == ''}">
+                <tr>
+                    <td class="t2">监测站名称</td>
+                    <td class="t3">监测站编码</td>
+                    <td class="t5">查看监测站下设备</td>
+                </tr>
+            </c:when>
+            <c:otherwise>
+	            <tr>
+		            <td class="t2">监测站名称</td>
+		            <td class="t3">监测站编码</td>
+		            <td class="t4">设备类型</td>
+		            <td class="t5">设备采集数据</td>
+	           </tr>
+            </c:otherwise>
+        </c:choose>
         </thead>
         <tbody>
         <c:choose>
             <c:when test="${list eq null}">
                 <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
+            </c:when>
+            <c:when test="${device.controller_ms_code == null or device.controller_ms_code == ''}">
+                <c:forEach var="list" items="${list}">
+                    <tr>
+                        <td class="t2">${list.ms_code_value}</td>
+                        <td class="t3">${list.ms_code}</td>
+                        <td class="t5">
+                            <form action="device/queryDeviceInfoList" method="post">
+                               <input type="hidden" name="controller_ms_code" value="${list.ms_code}">
+                               <input type="submit" value="查询">
+                            </form>
+                        <%-- <a href="device/queryDeviceInfoList?controller_ms_code=${list.ms_code}" class="input1">查询</a> --%>
+                        </td>
+                    </tr>
+                </c:forEach>            
             </c:when>
             <c:otherwise>
                 <c:forEach var="list" items="${list}">
@@ -110,7 +136,16 @@
                         <td class="t2">${list.station.ms_name}</td>
                         <td class="t3">${list.ms_code}</td>
                         <td class="t4">${list.dev_value}</td>
-                        <td class="t5"><a href="realData/loadByMsCodeAndDevCode?ms_code=${list.ms_code}&dev_code=${list.dev_code}" class="input1">查询</a></td>
+                        <td class="t5">
+                            <form action="realData/loadByMsCodeAndDevCode" method="post">
+                                <input type="hidden" name="ms_code" value="${list.ms_code}">
+                                <input type="hidden" name="dev_code" value="${list.dev_code}">
+                                <input type="submit" value="查询">
+                            </form>
+                        </td>
+                        <%-- <td class="t5">
+                            <a href="realData/loadByMsCodeAndDevCode?ms_code=${list.ms_code}&dev_code=${list.dev_code}" class="input1">查询</a>
+                        </td> --%>
                         <%--<td class="t6"><input type="button" value="查看" onclick="look(this)"/></td>--%>
                     </tr>
                 </c:forEach>

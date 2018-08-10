@@ -15,7 +15,14 @@
     </resultMap>
     <select id="deviceStatusList" parameterType="map" resultMap="BaseResultMap">
         select
-          *
+            <choose>
+                <when test="vdevstatus.controller_ms_code == null or vdevstatus.controller_ms_code == ''">
+                    ms_code
+                </when>
+                <otherwise>
+                    *
+                </otherwise>
+            </choose>
         from
           v_dev_status
         <where>
@@ -28,13 +35,30 @@
             <if test="vdevstatus.dev_type!=null and vdevstatus.dev_type!=''">
                 AND dev_type = #{vdevstatus.dev_type}
             </if>
+            <if test="vdevstatus.controller_ms_code != null and vdevstatus.controller_ms_code != ''">
+                AND ms_code = #{vdevstatus.controller_ms_code}
+            </if>
         </where>
-        LIMIT #{record},15
+        <choose>
+            <when test="vdevstatus.controller_ms_code == null or vdevstatus.controller_ms_code == ''">
+                group by ms_code LIMIT #{record},15
+            </when>
+            <otherwise>
+                LIMIT #{record},15
+            </otherwise>
+        </choose>
     </select>
     <!--共有多少记录-->
     <select id="count" parameterType="map" resultType="integer">
         select
-        count(*)
+        <choose>
+            <when test="vdevstatus.controller_ms_code == null or vdevstatus.controller_ms_code == ''">
+                count(distinct ms_code)
+            </when>
+            <otherwise>
+                count(*)
+            </otherwise>
+        </choose>
         from
           v_dev_status
         <where>
@@ -46,6 +70,9 @@
             </if>
             <if test="vdevstatus.dev_type!=null and vdevstatus.dev_type!=''">
                 AND dev_type = #{vdevstatus.dev_type}
+            </if>
+            <if test="vdevstatus.controller_ms_code != null and vdevstatus.controller_ms_code != ''">
+                AND ms_code = #{vdevstatus.controller_ms_code}
             </if>
         </where>
     </select>

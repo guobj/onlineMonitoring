@@ -50,10 +50,10 @@ public class HisDataController {
             AuthorityUtil.getInstance().assignPermissions(citys, request, hisData);
             map = PageBean.serverMap(map , hisData , pages);
             listHisData = hisDataService.listHisData(map);
-            map = PageBean.clientMap(map ,pages,request);
         } catch (Exception e) {
             map.put("message", e.getMessage());
         }finally {
+            map = PageBean.clientMap(map ,pages,request);
             map.put("listHisData", listHisData);
             map.put("devStauts", dictService.listDevStauts());
             map.put("devObject", dictService.listDevType());

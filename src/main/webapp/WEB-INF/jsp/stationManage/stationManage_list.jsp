@@ -51,7 +51,6 @@ pageContext.setAttribute("basePath", basePath);
                 url:"manage/load",
                 data:{id:id},
                 success:function (data) {
-                    console.log("测试："+data.data.station.ms_fp_value.data_name);
                     $("#ms_name").html(data.data.station.ms_name);
                     $("#ms_code").html(data.data.ms_code);
                     $("#ms_date").html(data.data.station.ms_date);
@@ -70,16 +69,26 @@ pageContext.setAttribute("basePath", basePath);
         }
         //删除方法
         function deleteById(id){
-            $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () {
+            $.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？", function () {
                 $.ajax({
                     type:"get",
                     url:"manage/deleteById",
                     data:{id:id},
                     success:function (data) {
-                        window.location.reload();
+                    	if (data.data>0) {
+                    		$.MsgBox.Alert("消息", "删除成功");
+                            $(window).on('click', function() {
+                                window.location.href="manage/queryStationInfo";
+                            })
+                    	}else {
+                    		$.MsgBox.Alert("消息", "删除失败");
+                            $(window).on('click', function() {
+                                window.location.href="manage/queryStationInfo";
+                            })
+                    	}
                     }
                 })
-                $.MsgBox.Alert("消息", "删除成功");
+                
             });
 
         }
@@ -96,6 +105,9 @@ pageContext.setAttribute("basePath", basePath);
                 success:function (data) {
                     if(data.data >= 1){
                         $.MsgBox.Alert("消息", "修改成功");
+                        $(window).on('click', function() {
+                            window.location.href="manage/queryStationInfo";
+                        })
                     }
                 }
             });
@@ -198,8 +210,8 @@ pageContext.setAttribute("basePath", basePath);
                         <td class="t5">${list.station.dict.data_name}</td>
                         <td class="t6"><input type="button" value="查看" class="input1" onclick="look(this,${list.id})"></td>
                         <td class="t7"><input type="button" value="删除"  class="input2" onclick="deleteById(${list.id})"></td>
-                        <td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this,${list.id})"></td>
-                        <%--<td class="t9"><input type="button" value="修改"  class="input1"  onclick="update(this,${list.id})"></td>--%>
+                        <%--<td class="t8"><input type="button" value="配置" class="input1" onclick="peizhi(this,${list.id})"></td>--%>
+                        <td class="t9"><input type="button" value="配置"  class="input1"  onclick="update(this,${list.id})"></td>
                     </tr>
                 </c:forEach>
             </c:if>
@@ -265,33 +277,28 @@ pageContext.setAttribute("basePath", basePath);
                 <input type="button" value="关闭" onclick="guanbi()" />
             </form>
         </div>
-        <%--<div id="peizhi">--%>
-
-            <%--<form method="post" id="update">--%>
-                <%--&lt;%&ndash;<span>监测站名称:</span><input type="text" name=""/>&ndash;%&gt;--%>
-                <%--&lt;%&ndash;<br/>&ndash;%&gt;--%>
-                <%--<input type="hidden" id="manageId" name="id">--%>
-                <%--<span>监测站编码:</span><input type="text" id="ms_code1" name="ms_code"/>--%>
-                <%--<br/>--%>
-                <%--<span style="margin-right: 16px;">上传地址:</span><input type="text" id="server_ip" name="server_ip"/>--%>
-                <%--<br/>--%>
-                <%--<span style="margin-right: 16px;">上传频率:</span><input type="text" id="data_upload" name="data_upload"/>--%>
-                <%--<br/>--%>
-                <%--<span style="margin-right: 28px;">端口号:</span> <input type="text" id="server_port" name="server_port"/>--%>
-                <%--<br/>--%>
-                <%--<span style="margin-right: 16px;">存储周期:</span><input type="text" id="data_storage" name="data_storage"/>--%>
-                <%--<br/>--%>
-                <%--<input class="pz" type="button" value="修改" onclick="updateById()">--%>
-                <%--<input  type="button" value="关闭" class="close" onclick="pz()">--%>
-
-            <%--</form>--%>
-        <%--</div>--%>
-
         <div id="peizhi">
+            <form method="post" id="update">
+                <input type="hidden" id="manageId" name="id">
+                <span style="margin-right: 16px;">上传地址:</span><input type="text" id="server_ip" name="server_ip"/>
+                <br/>
+                <span style="margin-right: 16px;">上传频率:</span><input type="text" id="data_upload" name="data_upload"/>
+                <br/>
+                <span style="margin-right: 28px;">端口号:</span> <input type="text" id="server_port" name="server_port"/>
+                <br/>
+                <span style="margin-right: 16px;">存储周期:</span><input type="text" id="data_storage" name="data_storage"/>
+                <br/>
+                <input class="pz" type="button" value="修改" onclick="updateById()">
+                <input type="button" value="关闭" class="close" onclick="pz()">
+
+            </form>
+        </div>
+
+       <!--  <div id="peizhi">
             <h5>配置信息</h5>
             <form method="post" id="conf">
-                <%--<span>监测站名称:</span><input type="text" name=""/>--%>
-                <%--<br/>--%>
+                <span>监测站名称:</span><input type="text" name=""/>
+                <br/>
                     <input type="hidden" id="manageId" name="id">
                 <span>监测站编码:</span><input type="text" id="ms_code1" placeholder="请输入以37开头的8位数字" name="ms_code"/><span id="tip1"></span>
                 <br/>
@@ -305,10 +312,10 @@ pageContext.setAttribute("basePath", basePath);
                 <br/>
                 <input id="confSubmit" class="pz" type="button" value="配置" onclick="conf()">
                 <input class="pz pz1" type="button" value="关闭" onclick="close1()">
-                <%--<input  type="button" value="关闭" class="close" onclick="pz()">--%>
+                <input  type="button" value="关闭" class="close" onclick="pz()">
             </form>
-        </div>
-
+            </div>
+        -->
     </div>
 
 </div>

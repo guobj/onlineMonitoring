@@ -54,6 +54,17 @@ public class HisData {
     private String avg;
     /**echarts下方显示的时间 */
     private String date_time;
+    /**解析监测站编码 */
+    private String ms_code_value;
+    
+    public String getMs_code_value() {
+        return ms_code_value;
+    }
+
+    public void setMs_code_value(String ms_code_value) {
+        this.ms_code_value = ms_code_value;
+    }
+
     public String getAvg() {
         return avg;
     }

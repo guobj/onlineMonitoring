@@ -44,10 +44,20 @@ public class RealData {
 	private String device_object;
 	/**设备编码 解析设备*/
 	private String dev_code_value;
+	/**监测站编码 解析监测站*/
+	private String ms_code_value;
 	//设备状态
 	private Dict dataDevStatus;
 
-	public Dict getDataDevStatus() {
+	public String getMs_code_value() {
+        return ms_code_value;
+    }
+
+    public void setMs_code_value(String ms_code_value) {
+        this.ms_code_value = ms_code_value;
+    }
+
+    public Dict getDataDevStatus() {
 		return dataDevStatus;
 	}
 

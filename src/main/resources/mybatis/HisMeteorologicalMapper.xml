@@ -233,7 +233,7 @@
         select 
         <!-- 一开始查询的是历史数据中的设备，然后根据设备编码查询该设备下全部的历史数据 -->
             <choose>
-                <when test="hisMeteorological.dev_code == null or hisMeteorological.dev_code == ''">
+                <when test="hismeteorological.dev_code == null or hismeteorological.dev_code == ''">
                     ms_code,dev_code
                 </when>
                 <otherwise>
@@ -245,38 +245,38 @@
             <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
              -->
-            <if test="hisMeteorological.ms_code != null and hisMeteorological.ms_code != ''" >
-                ms_code like concat(#{hisMeteorological.ms_code},"%")
+            <if test="hismeteorological.ms_code != null and hismeteorological.ms_code != ''" >
+                ms_code like concat(#{hismeteorological.ms_code},"%")
             </if>
             <!-- 设备类型，即设备编码第5-6位 
                  hisMeteorological.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
                                                     前面3个，后面两个下划线
             -->
-            <if test="hisMeteorological.device_type != null and hisMeteorological.device_type != ''" >
-                and dev_code like concat("___",#{hisMeteorological.device_type},"__")
+            <if test="hismeteorological.device_type != null and hismeteorological.device_type != ''" >
+                and dev_code like concat("___",#{hismeteorological.device_type},"__")
             </if>
            <!--  设备监测对象，即设备编码第4位 ,传过来的是1位，例如1，后面4个下划线-->
-            <if test="hisMeteorological.device_object != null and hisMeteorological.device_object != ''" >
-                and dev_code like concat("___",#{hisMeteorological.device_object},"____")
+            <if test="hismeteorological.device_object != null and hismeteorological.device_object != ''" >
+                and dev_code like concat("___",#{hismeteorological.device_object},"____")
             </if>
             <!-- 设备运行状态 -->
-            <if test="hisMeteorological.dev_status != null and hisMeteorological.dev_status != ''" >
-                and dev_status = #{hisMeteorological.dev_status}
+            <if test="hismeteorological.dev_status != null and hismeteorological.dev_status != ''" >
+                and dev_status = #{hismeteorological.dev_status}
             </if> 
-            <if test="hisMeteorological.data_time_begin != null and hisMeteorological.data_time_begin != '' and hisMeteorological.data_time_end != null and hisMeteorological.data_time_end != ''  " >
-                and data_time between  #{hisMeteorological.data_time_begin} and #{hisMeteorological.data_time_end}
+            <if test="hismeteorological.data_time_begin != null and hismeteorological.data_time_begin != '' and hismeteorological.data_time_end != null and hismeteorological.data_time_end != ''  " >
+                and data_time between  #{hismeteorological.data_time_begin} and #{hismeteorological.data_time_end}
             </if>
             <!-- 如果设备编码不为空，那么选择设备，根据设备的编码查出该设备下的所有历史数据 -->
-            <if test="hisMeteorological.dev_code != null and hisMeteorological.dev_code != ''" >
-                and dev_code = #{hisMeteorological.dev_code}
+            <if test="hismeteorological.dev_code != null and hismeteorological.dev_code != ''" >
+                and dev_code = #{hismeteorological.dev_code}
             </if>
         </where>
         <choose>
-            <when test="hisMeteorological.dev_code == null or hisMeteorological.dev_code == ''">
+            <when test="hismeteorological.dev_code == null or hismeteorological.dev_code == ''">
                 group by ms_code,dev_code limit #{record},#{num}    
             </when>
             <!--  如果是按气象条件查询，全部查出来，不用分组，所以啥也不用写 -->
-            <when test="hisMeteorological.weather != null and hisMeteorological.weather != ''">
+            <when test="hismeteorological.weather != null and hismeteorological.weather != ''">
             
             </when>
             <otherwise>
@@ -287,10 +287,10 @@
      <!-- 查询数据的数量 -->
     <select id="countHisMeteorological" resultType ="int" parameterType="map">
         select 
-            <if test="hisMeteorological.dev_code == null or hisMeteorological.dev_code == ''">
+            <if test="hismeteorological.dev_code == null or hismeteorological.dev_code == ''">
                 count(distinct dev_code)
             </if>
-            <if test="hisMeteorological.dev_code != null and hisMeteorological.dev_code != ''">
+            <if test="hismeteorological.dev_code != null and hismeteorological.dev_code != ''">
                 count(*)
             </if>
         from t_his_meteorological
@@ -298,30 +298,30 @@
             <!-- 监测站编码，例如输入济南，济南下所有监测站的实时数据都出来
                                                     传过来的位数不确定，看servic解析，然后与前面的匹配的就查出来                
              -->
-            <if test="hisMeteorological.ms_code != null and hisMeteorological.ms_code != ''" >
-                and ms_code like concat(#{hisMeteorological.ms_code},"%")
+            <if test="hismeteorological.ms_code != null and hismeteorological.ms_code != ''" >
+                and ms_code like concat(#{hismeteorological.ms_code},"%")
             </if>
             <!-- 设备类型，即设备编码第5-6位 
                  hisMeteorological.device_type传过来的数据是3位，包括一位对象，两位设备编码，以确保查询的准确性
                                                     前面3个，后面两个下划线
             -->
-           <if test="hisMeteorological.device_type != null and hisMeteorological.device_type != ''" >
-                and dev_code like concat("___",#{hisMeteorological.device_type},"__")
+           <if test="hismeteorological.device_type != null and hismeteorological.device_type != ''" >
+                and dev_code like concat("___",#{hismeteorological.device_type},"__")
             </if>
            <!--  设备监测对象，即设备编码第4位 ,传过来的是4位，例如dev1，后面4个下划线-->
-            <if test="hisMeteorological.device_object != null and hisMeteorological.device_object != ''" >
-                and dev_code like concat("___",#{hisMeteorological.device_object},"____")
+            <if test="hismeteorological.device_object != null and hismeteorological.device_object != ''" >
+                and dev_code like concat("___",#{hismeteorological.device_object},"____")
             </if>
             <!-- 设备运行状态 -->
-            <if test="hisMeteorological.dev_status != null and hisMeteorological.dev_status != ''" >
-                and dev_status = #{hisMeteorological.dev_status}
+            <if test="hismeteorological.dev_status != null and hismeteorological.dev_status != ''" >
+                and dev_status = #{hismeteorological.dev_status}
             </if>
-            <if test="hisMeteorological.data_time_begin != null and hisMeteorological.data_time_begin != '' and hisMeteorological.data_time_end != null and hisMeteorological.data_time_end != ''  " >
-                and data_time between  #{hisMeteorological.data_time_begin} and #{hisMeteorological.data_time_end}
+            <if test="hismeteorological.data_time_begin != null and hismeteorological.data_time_begin != '' and hismeteorological.data_time_end != null and hismeteorological.data_time_end != ''  " >
+                and data_time between  #{hismeteorological.data_time_begin} and #{hismeteorological.data_time_end}
             </if>
             <!-- 如果设备编码不为空，那么选择设备，根据设备的编码查出该设备下的所有历史数据 -->
-            <if test="hisMeteorological.dev_code != null and hisMeteorological.dev_code != ''" >
-                and dev_code = #{hisMeteorological.dev_code}
+            <if test="hismeteorological.dev_code != null and hismeteorological.dev_code != ''" >
+                and dev_code = #{hismeteorological.dev_code}
             </if>
         </where>
     </select>

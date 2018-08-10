@@ -42,11 +42,12 @@ public class ManageController {
 			map = PageBean.serverMap(map,manage,pages);
 			//将数据返回前端
 			List<Manage> list = manageService.queryStationInfo(map);
-			//返回前端页面的值
-			map = PageBean.clientMap(map,pages,request);
 		}catch (Exception e){
 			map.put("message",e.getMessage());
-		}
+		}finally {
+		    //返回前端页面的值
+            map = PageBean.clientMap(map,pages,request);
+        }
 
 		return "stationManage/stationManage_list";
 	}
@@ -67,7 +68,6 @@ public class ManageController {
 	@ResponseBody
 	public JacksonData updateById(Map<String, Object> map,Manage manage){
 		JacksonData jacksonData = new JacksonData();
-
 		try {
 			Integer res = manageService.updateById(map, manage);
 			jacksonData.success(res);

@@ -58,6 +58,9 @@
                 <select class="select1" name="dev_object" id="dev_object">
                     <option value="">监测对象</option>
                 </select>
+            <c:if test="${vdevstatus.controller_ms_code != null and vdevstatus.controller_ms_code != ''}">
+                <input type="hidden" name="controller_ms_code" value="${vdevstatus.controller_ms_code }">
+            </c:if>
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>
@@ -66,19 +69,48 @@
     <br/>
         <table>
             <thead>
-            <tr>
-            <td class="t2">监测站名称</td>
-            <td class="t3">监测站编码</td>
-            <td class="t4">设备类型</td>
-            <td class="t5">监测对象</td>
-            <td class="t6">设备状态</td>
-            </tr>
+            <c:choose>
+                <c:when test="${vdevstatus.controller_ms_code == null or vdevstatus.controller_ms_code == ''}">
+	                <tr>
+	                    <td class="t2">监测站名称</td>
+	                    <td class="t3">监测站编码</td>
+	                    <td class="t5">查看监测站下设备</td>
+	                </tr>
+                </c:when>
+                <c:otherwise>
+	                <tr>
+			            <td class="t2">监测站名称</td>
+			            <td class="t3">监测站编码</td>
+			            <td class="t4">设备类型</td>
+			            <td class="t5">监测对象</td>
+			            <td class="t6">设备状态</td>
+			        </tr>
+                </c:otherwise>
+            </c:choose>
+            
             </thead>
             <tbody>
                 <c:choose>
                     <c:when test="${list eq null}">
                         <tr><td colspan="8" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
                     </c:when>
+                    <c:when test="${vdevstatus.controller_ms_code == null or vdevstatus.controller_ms_code == ''}">
+		                <c:forEach var="list" items="${list}">
+		                    <tr>
+		                        <td class="t2">${list.ms_code_value}</td>
+		                        <td class="t3">${list.ms_code}</td>
+		                        <td class="t5">
+		                            <form action="vDevStatus/devcieStatusList" method="post">
+		                                <input type="hidden" name="controller_ms_code" value="${list.ms_code}">
+		                                <input type="submit" value="查询">
+		                            </form>
+		                        <%-- 
+		                        <a href="vDevStatus/devcieStatusList?controller_ms_code=${list.ms_code}" class="input1">查询</a> --%>
+		                        
+		                        </td>
+		                    </tr>
+		                </c:forEach>            
+		            </c:when>
                     <c:otherwise>
                         <c:forEach var="list" items="${list}">
                             <tr>

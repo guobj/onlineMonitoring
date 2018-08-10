@@ -3,6 +3,7 @@ package com.nz.onlineMonitoring.stationInfo.service.impl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,7 @@ public class StationServiceImpl implements StationService{
         }
         //循环listStation,将ms_code中的值，一一取出，然后通过值去mapdev中比较，拿到具体的名字，然后拼接到ms_dev_value中
         for (Station s : listStation) {
-            if (s.getMs_dev() != null && s.getMs_dev() != "") {
+            if (s.getMs_dev() != null && !Objects.equals("", s.getMs_dev())) {
                 String[] temp = s.getMs_dev().split(",");
                 for (int i = 0,n = temp.length; i < n; i++) {
                     temp[i] = mapDev.get(temp[i]);
@@ -110,7 +111,7 @@ public class StationServiceImpl implements StationService{
             mapDev.put(String.valueOf(d.getData_value()), d.getData_name());
         }
         //因为ms_dev中的数据是用，分开的多个数据，所以没法用mapper直接查询，如果ms_dev不等于空，那么循环其中的数据，把从字典表中拿到的name值，拼接成字符串，传到ms_dev_value,用，隔开
-        if (dev != null && dev != "") {
+        if (dev != null && !Objects.equals(dev, "")) {
             String[] temp = dev.split(",");
             for (int i = 0, n = temp.length; i < n; i++) {
                 temp[i] = mapDev.get(temp[i]);
@@ -127,8 +128,8 @@ public class StationServiceImpl implements StationService{
         String ms_code = station.getMs_code();
         String code01 = ms_code.substring(0, 6);
         String code02 = ms_code.substring(4, 6);
-        
         String code2 = ms_code.substring(6, 8);
+        //当5,6位是00的时候，不论是山东省，还是济南市这样的编码，都不会再往下加地级市了。所以从字典表中拿出数据，然后解析一下
         if (code02.equals("00")) {
             Dict city = dictMapper.loadCity(Integer.parseInt(code01));
             if (city != null) {
@@ -139,9 +140,11 @@ public class StationServiceImpl implements StationService{
             }
             
         }else {
+            //先取前四位加上00，取到市的具体值
             String code03 = ms_code.substring(0, 4);
             code03 += "00";
             Dict city1 = dictMapper.loadCity(Integer.parseInt(code03));
+            //然后取地级市的具体值
             Dict city2 = dictMapper.loadCity(Integer.parseInt(code01));
             if (city1 != null && city2 != null) {
                 String name2= city1.getData_name();
@@ -226,7 +229,7 @@ public class StationServiceImpl implements StationService{
                 mapDev.put(String.valueOf(d.getData_value()), d.getData_name());
             }
             //因为ms_dev中的数据是用，分开的多个数据，所以没法用mapper直接查询，如果ms_dev不等于空，那么循环其中的数据，把从字典表中拿到的name值，拼接成字符串，传到ms_dev_value,用，隔开
-            if (dev != null && dev != "") {
+            if (dev != null && !Objects.equals(dev, "")) {
                 String[] temp = dev.split(",");
                 for (int i = 0, n = temp.length; i < n; i++) {
                     temp[i] = mapDev.get(temp[i]);

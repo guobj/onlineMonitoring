@@ -13,7 +13,7 @@ public interface RealDataService {
      * @author ssh
      * @date 2018年6月3日 下午2:36:02
      */
-    List listReal(Map<String, Object> map);
+    List listReal(Map<String, Object> map) throws Exception;
 
     /**
      * 方法描述：通过ms_code和dev_code查询实时数据

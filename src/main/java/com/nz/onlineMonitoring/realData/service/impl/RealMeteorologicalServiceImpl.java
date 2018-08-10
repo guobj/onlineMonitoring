@@ -2,6 +2,7 @@ package com.nz.onlineMonitoring.realData.service.impl;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,7 +50,7 @@ public class RealMeteorologicalServiceImpl implements RealMeteorologicalService 
             throw new RuntimeException("暂无数据");
         }
         //解析检测设备编码
-        if (realMeteorological.getDev_code()!= null && realMeteorological.getDev_code() != "") {
+        if (realMeteorological.getDev_code()!= null && !Objects.equals(realMeteorological.getDev_code(), "")) {
             Dict devObject = dictMapper.loadByDevType(Integer.parseInt(realMeteorological.getDev_code().substring(3, 4)));
             Dict devType = dictMapper.loadByDevType1(Integer.parseInt(realMeteorological.getDev_code().substring(3, 6)));
             if (devObject == null || devType == null) {

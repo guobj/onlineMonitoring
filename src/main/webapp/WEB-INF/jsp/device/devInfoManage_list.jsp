@@ -109,7 +109,9 @@
                 <select class="select1" name="dev_object" id="dev_object">
                     <option value="">不限</option>
                 </select>
-            
+            <c:if test="${device.controller_ms_code != null and device.controller_ms_code != ''}">
+                <input type="hidden" name="controller_ms_code" value="${device.controller_ms_code }">
+            </c:if>
             <input type="submit" value="查找" class="search"><input type="reset" value="重置" class="reset">
 
         </form>
@@ -118,35 +120,66 @@
 
     <table id="xx">
         <thead>
-            <tr>
-                <td style="width:13%">监测站名称</td>
-                <td style="width:8%">监测站编码</td>
-                <td style="width:10%">设备编码</td>
-                <td style="width:10%">通信协议</td>
-                <td style="width:7%">通讯接口</td>
-                <td style="width:7%">从机地址</td>
-                <td style="width:10%">IP地址</td>
-                <td style="width:7%">通信端口</td>
-                <td style="width:10%">更多</td>
-            </tr>
+        <c:choose>
+            <c:when test="${device.controller_ms_code == null or device.controller_ms_code == ''}">
+                <tr>
+                    <td class="t2">监测站名称</td>
+                    <td class="t3">监测站编码</td>
+                    <td class="t5">查看监测站下设备</td>
+                </tr>
+            </c:when>
+            <c:otherwise>
+                <tr>
+	                <td style="width:13%">监测站名称</td>
+	                <td style="width:8%">监测站编码</td>
+	                <td style="width:10%">设备编码</td>
+	                <td style="width:10%">通信协议</td>
+	                <td style="width:7%">通讯接口</td>
+	                <td style="width:7%">从机地址</td>
+	                <td style="width:10%">IP地址</td>
+	                <td style="width:7%">通信端口</td>
+	                <td style="width:10%">更多</td>
+                </tr>
+            </c:otherwise>
+        </c:choose>
         </thead>
         <tbody>
-            <c:if test="${list eq null}">
+        <c:choose>
+            <c:when test="${list eq null}">
                 <tr><td colspan="11" style="text-align: center;"><font color="red" size="4">${message }</font> </td></tr>
-            </c:if>
-            <c:forEach var="list" items="${list}">
-                <tr style="height: 30px;">
-                    <td style="width:13%">${list.station.ms_name}</td>
-                    <td style="width:8%">${list.ms_code}</td>
-                    <td style="width:8%">${list.dev_code}</td>
-                    <td style="width:10%">${list.dataProtocol.data_name}</td>
-                    <td style="width:7%">${list.dataInterface.data_name}</td>
-                    <td style="width:7%">${list.dev_regad}</td>
-                    <td style="width:10%"> ${list.dev_ip}</td>
-                    <td style="width:7%"> ${list.dev_interface}</td>
-                    <td style="width:10%"><input type="button" onclick="moreInfo(${list.id})" value="更多"/></td>
-                </tr>
-            </c:forEach>
+            </c:when>
+            <c:when test="${device.controller_ms_code == null or device.controller_ms_code == ''}">
+                <c:forEach var="list" items="${list}">
+                    <tr>
+                        <td class="t2">${list.ms_code_value}</td>
+                        <td class="t3">${list.ms_code}</td>
+                        <td class="t5">
+	                        <form action="device/queryDeviceInfo" method="post">
+	                           <input type="hidden" name="controller_ms_code" value="${list.ms_code}">
+	                           <input type="submit" value="查询">
+	                        </form>
+                       <%--  <a href="device/queryDeviceInfo?controller_ms_code=${list.ms_code}" class="input1">查询</a> --%>
+                        
+                        </td>
+                    </tr>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+	            <c:forEach var="list" items="${list}">
+	                <tr style="height: 30px;">
+	                    <td style="width:13%">${list.station.ms_name}</td>
+	                    <td style="width:8%">${list.ms_code}</td>
+	                    <td style="width:8%">${list.dev_code}</td>
+	                    <td style="width:10%">${list.dataProtocol.data_name}</td>
+	                    <td style="width:7%">${list.dataInterface.data_name}</td>
+	                    <td style="width:7%">${list.dev_regad}</td>
+	                    <td style="width:10%"> ${list.dev_ip}</td>
+	                    <td style="width:7%"> ${list.dev_interface}</td>
+	                    <td style="width:10%"><input type="button" onclick="moreInfo(${list.id})" value="更多"/></td>
+	                </tr>
+	            </c:forEach>
+            </c:otherwise>
+        </c:choose>
         </tbody>
     </table>
     <jsp:include page="../common/pages.jsp"></jsp:include>

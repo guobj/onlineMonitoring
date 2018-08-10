@@ -1,5 +1,7 @@
 package com.nz.onlineMonitoring.historyData.service.impl;
 
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +33,7 @@ public class HisMeteorologicalServiceImpl implements HisMeteorologicalService {
             throw new RuntimeException("暂无数据");
         }
         //解析检测设备编码
-        if (hisMeteorological.getDev_code()!= null && hisMeteorological.getDev_code() != "") {
+        if (hisMeteorological.getDev_code()!= null && !Objects.equals(hisMeteorological.getDev_code(), "")) {
             Dict devObject = dictMapper.loadByDevType(Integer.parseInt(hisMeteorological.getDev_code().substring(3, 4)));
             Dict devType = dictMapper.loadByDevType1(Integer.parseInt(hisMeteorological.getDev_code().substring(3, 6)));
             if (devObject == null || devType == null) {

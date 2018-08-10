@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import com.nz.onlineMonitoring.realData.mapper.RealMeteorologicalMapper;
 import com.nz.onlineMonitoring.realData.model.RealData;
 import com.nz.onlineMonitoring.realData.model.RealMeteorological;
 import com.nz.onlineMonitoring.realData.service.RealDataService;
+import com.nz.onlineMonitoring.utils.AnalyseCode;
 @Service
 public class RealDataServiceImpl implements RealDataService {
     
@@ -39,16 +41,17 @@ public class RealDataServiceImpl implements RealDataService {
      * @param map
      * @return
      * @author ssh
+     * @throws Exception 
      * @date 2018年6月3日 下午2:36:02
      */
     @Override
-    public List listReal(Map<String, Object> map) {
+    public List listReal(Map<String, Object> map) throws Exception {
         //用于气象表字段中查询的数量，会根据数据表查出的数量，与之互补
         map.put("num", 10);
         //返回前台的list，泛型
         List list = new ArrayList<>();
         //获取前台查询的值
-        RealData realData = (RealData) map.get("realData");
+        RealData realData = (RealData) map.get("realdata");
         //建立一个RealMeteorological类，用于mapper.xml里的查数据时用
         RealMeteorological realMeteorological = new RealMeteorological();
         //不管ms_code,dev_status用没有值，赋给RealMeteorological就行，他们不决定查询哪个表
@@ -64,34 +67,34 @@ public class RealDataServiceImpl implements RealDataService {
         String dev_object = realData.getDevice_object();
         String dev_type = realData.getDevice_type();
         //如果这两个是空的话，就是两个表一块查
-        if (dev_object != null && dev_object != "" && dev_type != null && dev_type!= "") {
+        if (dev_object != null && !Objects.equals(dev_object, "") && dev_type != null && !Objects.equals(dev_type, "")) {
             //如果两个字段不相等，例如对象是害虫监测，而设备是气象设备，那就直接返回空，若果相等并且等于5，说明查气象表，否则数据表
             if (!dev_object.equals(String.valueOf(dev_type.charAt(0)))) {
                 throw new RuntimeException("暂无数据");
             }else if (dev_object.equals("5")) {
                 realMeteorological.setDevice_type(dev_type);
-                map.put("realMeteorological", realMeteorological);
+                map.put("realmeteorological", realMeteorological);
                 realMeteorologicalList = realMeteorologicalMapper.listMeteorological(map);
                 countMeteorological = realMeteorologicalMapper.countMeteorological(map);
             }else {
                 realList = realDataMapper.listReal(map);
                 countData = realDataMapper.countReal(map);
             }
-        }else if (dev_object != null && dev_object != "") {
+        }else if (dev_object != null && !Objects.equals(dev_object, "")) {
             //两个字段中如果只有一个字段有数据，判断是否为5，是则气象表，否则数据表
             if (dev_object.equals("5")) {
                 realMeteorological.setDevice_object(dev_object);
-                map.put("realMeteorological", realMeteorological);
+                map.put("realmeteorological", realMeteorological);
                 realMeteorologicalList = realMeteorologicalMapper.listMeteorological(map);
                 countMeteorological = realMeteorologicalMapper.countMeteorological(map);
             }else {
                 realList = realDataMapper.listReal(map);
                 countData = realDataMapper.countReal(map);
             }
-        }else if (dev_type != null && dev_type != "") {
+        }else if (dev_type != null && !Objects.equals(dev_type, "")) {
             if (dev_type.charAt(0) == '5') {
                 realMeteorological.setDevice_type(dev_type);
-                map.put("realMeteorological", realMeteorological);
+                map.put("realmeteorological", realMeteorological);
                 realMeteorologicalList = realMeteorologicalMapper.listMeteorological(map);
                 countMeteorological = realMeteorologicalMapper.countMeteorological(map);
             }else {
@@ -102,7 +105,7 @@ public class RealDataServiceImpl implements RealDataService {
             realList = realDataMapper.listReal(map);
             countData = realDataMapper.countReal(map);
             //获取此次数据表中查询出来的数量，如果小于10，就从气象表中拿数据
-            map.put("realMeteorological", realMeteorological);
+            map.put("realmeteorological", realMeteorological);
             if (realList.size() < 10) {
                 //一开始，record是0，countData为6大于它，此时从气象表的第0条记录开始拿数据，然后下一页record是10，需要从第4条记录拿数据，因为前4条已经在上一页显示了
                 map.put("record", countData >= Integer.parseInt(map.get("record").toString()) ? 0 : Integer.parseInt(map.get("record").toString())-countData);
@@ -119,37 +122,28 @@ public class RealDataServiceImpl implements RealDataService {
         }else {
             if (realList != null && realList.size() > 0) { 
                 for (RealData rd : realList) {
-                    if (rd.getDev_code()!= null && rd.getDev_code() != "") {
-                        Dict devObject = dictMapper.loadByDevType(Integer.parseInt(rd.getDev_code().substring(3, 4)));
-                        Dict devType = dictMapper.loadByDevType1(Integer.parseInt(rd.getDev_code().substring(3, 6)));
-                        if (devObject == null || devType == null) {
-                            throw new RuntimeException("暂无数据");
-                        }else {
-                            rd.setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+rd.getDev_code().substring(6, 8)+"个");
-                        }
-                    }
+                    //实时数据中解析监测设备编码
+                    AnalyseCode.devCode(rd, rd.getDev_code());
+                    //实时数据中解析监测站编码
+                    AnalyseCode.msCode(rd, rd.getMs_code());
                 }
                 list.addAll(realList);
             }
             if (realMeteorologicalList != null && realMeteorologicalList.size() > 0) {
                 for (RealMeteorological rm : realMeteorologicalList) {
-                    if (rm.getDev_code()!= null && rm.getDev_code() != "") {
-                        Dict devObject = dictMapper.loadByDevType(Integer.parseInt(rm.getDev_code().substring(3, 4)));
-                        Dict devType = dictMapper.loadByDevType1(Integer.parseInt(rm.getDev_code().substring(3, 6)));
-                        if (devObject == null || devType == null) {
-                            throw new RuntimeException("暂无数据");
-                        }else {
-                            rm.setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+rm.getDev_code().substring(6, 8)+"个");
-                        }
-                    }
+                    //实时气象数据中解析监测设备编码
+                    AnalyseCode.devCode(rm, rm.getDev_code());
+                    //实时气象数据中解析监测站编码
+                    AnalyseCode.msCode(rm, rm.getMs_code());
                 }
                 list.addAll(realMeteorologicalList);
             }
         }
         return list;
     }
-
     
+   
+   
     
     /**
      * 方法描述：通过ms_code和dev_code查询实时数据
@@ -165,11 +159,14 @@ public class RealDataServiceImpl implements RealDataService {
         List<RealMeteorological> listRealMeteorological = new ArrayList<>();
         String dev_code = map.get("dev_code").toString();
         String ms_code = map.get("ms_code").toString();
+        String ms_code_value = analyseMsCode(ms_code);
         String dev_code_object = dev_code.substring(3,4);
         String dev_code_type = dev_code.substring(3,6);
+        int count = 0;
         //如果第4位是5，则是查气象表，查出来一条数据，然后编码解析
         if(dev_code_object.equals("5")){
             listRealMeteorological = realMeteorologicalMapper.loadByMsCodeAndDevCode(map);
+            count = realMeteorologicalMapper.countLoadByMsCodeAndDevCode(map);
             if (listRealMeteorological != null && listRealMeteorological.size() > 0) {
                 String dev_code_value = "";
                 Dict devObject = dictMapper.loadByDevType(Integer.parseInt(dev_code_object));
@@ -181,6 +178,7 @@ public class RealDataServiceImpl implements RealDataService {
                 }
                 for (RealMeteorological realMeteorological : listRealMeteorological) {
                     realMeteorological.setDev_code_value(dev_code_value);
+                    realMeteorological.setMs_code_value(ms_code_value);
                 }
             }else {
                 throw new RuntimeException("暂无数据");
@@ -196,8 +194,9 @@ public class RealDataServiceImpl implements RealDataService {
             }else {
                 rd.setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+dev_code.substring(6, 8)+"个");
             }
-            
-            File file = new File("D:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
+            rd.setMs_code_value(ms_code_value);
+            count = 1;
+            File file = new File("E:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
             if (file.exists()) {
                 File[] files = file.listFiles();
                 if (files.length != 0) {
@@ -249,6 +248,7 @@ public class RealDataServiceImpl implements RealDataService {
             listRealData.add(rd);
         }else {
             listRealData = realDataMapper.loadByMsCodeAndDevCode(map);
+            count = realDataMapper.countLoadByMsCodeAndDevCode(map);
             if (listRealData != null && listRealData.size() > 0) {
                 String dev_code_value = "";
                 Dict devObject = dictMapper.loadByDevType(Integer.parseInt(dev_code_object));
@@ -260,6 +260,7 @@ public class RealDataServiceImpl implements RealDataService {
                 }
                 for (RealData realData : listRealData) {
                     realData.setDev_code_value(dev_code_value);
+                    realData.setMs_code_value(ms_code_value);
                 }
             }else {
                 throw new RuntimeException("暂无数据");
@@ -268,10 +269,40 @@ public class RealDataServiceImpl implements RealDataService {
         List list = new ArrayList<>();
         list.addAll(listRealMeteorological);
         list.addAll(listRealData);
+        map.put("count", count);
         map.put("listRealData", list);
     }
 
-
+    private String analyseMsCode(String ms_code) {
+      //解析监测站编码
+        String code01 = ms_code.substring(0, 6);
+        String code02 = ms_code.substring(4, 6);
+        String code2 = ms_code.substring(6, 8);
+        //当5,6位是00的时候，不论是山东省，还是济南市这样的编码，都不会再往下加地级市了。所以从字典表中拿出数据，然后解析一下
+        if (code02.equals("00")) {
+            Dict city = dictMapper.loadCity(Integer.parseInt(code01));
+            if (city != null) {
+                String name1= city.getData_name();
+                return name1 + "第" + code2 +"个";
+            }else {
+                return "无法解析编码";
+            }
+        }else {
+            //先取前四位加上00，取到市的具体值
+            String code03 = ms_code.substring(0, 4);
+            code03 += "00";
+            Dict city1 = dictMapper.loadCity(Integer.parseInt(code03));
+            //然后取地级市的具体值
+            Dict city2 = dictMapper.loadCity(Integer.parseInt(code01));
+            if (city1 != null && city2 != null) {
+                String name2= city1.getData_name();
+                String name1= city2.getData_name();
+                return name2+name1 + "第" + code2 +"个";
+            }else {
+                return "无法解析编码";
+            }
+        }
+    }
     /**
      * 
      * 方法描述：通过监测站的编码，查询监测站下所有设备的数据，包括图片信息，数据信息，气象信息
@@ -288,7 +319,7 @@ public class RealDataServiceImpl implements RealDataService {
         //拿图片数据
         //循环这些编码，并分别处理
         for (String dev_code : listDevCode) {
-            File file = new File("D:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
+            File file = new File("E:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
             if (file.exists()) {
                 File[] files = file.listFiles();
                 //判断里面是否有图片
@@ -380,7 +411,7 @@ public class RealDataServiceImpl implements RealDataService {
         List<RealData> realList = realDataMapper.listRealByMsCode(ms_code);
         if (realList != null && realList.size() > 0) { 
             for (RealData rd : realList) {
-                if (rd.getDev_code()!= null && rd.getDev_code() != "") {
+                if (rd.getDev_code()!= null && !Objects.equals(rd.getDev_code(), "")) {
                     Dict devObject = dictMapper.loadByDevType(Integer.parseInt(rd.getDev_code().substring(3, 4)));
                     Dict devType = dictMapper.loadByDevType1(Integer.parseInt(rd.getDev_code().substring(3, 6)));
                     if (devObject == null || devType == null) {
@@ -394,7 +425,7 @@ public class RealDataServiceImpl implements RealDataService {
         }
         if (realMeteorologicalList != null && realMeteorologicalList.size() > 0) {
             for (RealMeteorological rm : realMeteorologicalList) {
-                if (rm.getDev_code()!= null && rm.getDev_code() != "") {
+                if (rm.getDev_code()!= null && !Objects.equals(rm.getDev_code(), "")) {
                     Dict devObject = dictMapper.loadByDevType(Integer.parseInt(rm.getDev_code().substring(3, 4)));
                     Dict devType = dictMapper.loadByDevType1(Integer.parseInt(rm.getDev_code().substring(3, 6)));
                     if (devObject == null || devType == null) {
@@ -411,4 +442,6 @@ public class RealDataServiceImpl implements RealDataService {
         }
         return listAll;
     }
+    
+    
 }
