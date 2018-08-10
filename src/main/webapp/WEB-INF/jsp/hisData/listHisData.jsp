@@ -99,7 +99,7 @@
                 </select> 
                 <span>监测对象：</span> <select class="select1" name="device_object">
                     <option value="">不限</option>
-                    <c:forEach items="${devObject }" var="ob">
+                    <c:forEach items="${devObject }" var="ob"> 
                         <option value="${ob.data_value }">${ob.data_name }</option>
                     </c:forEach>
                 </select> 
