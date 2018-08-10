@@ -197,7 +197,7 @@ public class RealDataServiceImpl implements RealDataService {
                 rd.setDev_code_value(devObject.getData_name()+devType.getData_name()+"第"+dev_code.substring(6, 8)+"个");
             }
             
-            File file = new File("E:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
+            File file = new File("D:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
             if (file.exists()) {
                 File[] files = file.listFiles();
                 if (files.length != 0) {
@@ -288,7 +288,7 @@ public class RealDataServiceImpl implements RealDataService {
         //拿图片数据
         //循环这些编码，并分别处理
         for (String dev_code : listDevCode) {
-            File file = new File("E:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
+            File file = new File("D:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
             if (file.exists()) {
                 File[] files = file.listFiles();
                 //判断里面是否有图片
