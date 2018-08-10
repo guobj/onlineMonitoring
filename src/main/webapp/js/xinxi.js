@@ -99,7 +99,7 @@ function xiugai(obj){
     $(obj).parent().parent().parent().parent().hide();
     $("#xiugai").show();
     $("h4").html("");
-    $("#caidan").css("height",height)
+ 
     $("#page").hide();
 }
 
@@ -114,7 +114,7 @@ function xg(){
     $("#xiugai").hide();
     $("#bg").show();
     $("h4").html("数据列表");
-    $("#caidan").css("height",height);
+
     $("#page").show();
 }
 
