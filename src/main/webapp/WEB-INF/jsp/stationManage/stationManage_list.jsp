@@ -134,7 +134,7 @@ pageContext.setAttribute("basePath", basePath);
             $(obj).parent().parent().parent().parent().hide();
             $("#peizhi").show();
             $("h4").html("");
-            $("#caidan").css("height","700px");
+
             $("#page").hide();
             $("#Paging").hide();
             $.ajax({
@@ -280,16 +280,16 @@ pageContext.setAttribute("basePath", basePath);
         <div id="peizhi">
             <form method="post" id="update">
                 <input type="hidden" id="manageId" name="id">
-                <span style="margin-right: 16px;">上传地址:</span><input type="text" id="server_ip" name="server_ip"/>
+                <span style="margin-right: 16px;">上传地址:</span><input type="text" id="server_ip" name="server_ip"/><span id="tip1"></span>
                 <br/>
-                <span style="margin-right: 16px;">上传频率:</span><input type="text" id="data_upload" name="data_upload"/>
+                <span style="margin-right: 16px;">上传频率:</span><input type="text" id="data_upload" name="data_upload"/><span id="tip2"></span>
                 <br/>
-                <span style="margin-right: 28px;">端口号:</span> <input type="text" id="server_port" name="server_port"/>
+                <span style="margin-right: 28px;">端口号:</span> <input type="text" id="server_port" name="server_port"/><span id="tip3"></span>
                 <br/>
-                <span style="margin-right: 16px;">存储周期:</span><input type="text" id="data_storage" name="data_storage"/>
+                <span style="margin-right: 16px;">存储周期:</span><input type="text" id="data_storage" name="data_storage"/><span id="tip4"></span>
                 <br/>
-                <input class="pz" type="button" value="修改" onclick="updateById()">
-                <input type="button" value="关闭" class="close" onclick="pz()">
+                <input class="pz" type="button" value="修改" onclick="updateById()" id="confSubmit">
+                <input type="button" value="关闭" class="pz1" onclick="pz()">
 
             </form>
         </div>
@@ -300,13 +300,13 @@ pageContext.setAttribute("basePath", basePath);
                 <span>监测站名称:</span><input type="text" name=""/>
                 <br/>
                     <input type="hidden" id="manageId" name="id">
-                <span>监测站编码:</span><input type="text" id="ms_code1" placeholder="请输入以37开头的8位数字" name="ms_code"/><span id="tip1"></span>
+                <span>监测站编码:</span><input type="text" id="ms_code1" placeholder="请输入以37开头的8位数字" name="ms_code"/>
                 <br/>
-                <span style="margin-right: 16px;">上传地址:</span><input type="text" id="server_ip" placeholder="请输入IP地址" name="server_ip"/><span id="tip2"></span>
+                <span style="margin-right: 16px;">上传地址:</span><input type="text" id="server_ip" placeholder="请输入IP地址" name="server_ip"/>
                 <br/>
-                <span style="margin-right: 16px;">上传频率:</span><input type="text" id="data_upload" placeholder="请输入上传频率" name="data_upload"/><span id="tip3"></span>
+                <span style="margin-right: 16px;">上传频率:</span><input type="text" id="data_upload" placeholder="请输入上传频率" name="data_upload"/>
                 <br/>
-                <span style="margin-right: 28px;">端口号:</span> <input type="text" id="server_port" placeholder="请输入端口号" name="server_port"/><span id="tip4"></span>
+                <span style="margin-right: 28px;">端口号:</span> <input type="text" id="server_port" placeholder="请输入端口号" name="server_port"/>
                 <br/>
                 <span style="margin-right: 16px;">存储周期:</span><input type="text" id="data_storage" placeholder="请输入存储周期" name="data_storage"/><span id="tip5"></span>
                 <br/>
@@ -395,27 +395,20 @@ pageContext.setAttribute("basePath", basePath);
             $("#tj_tip_5").html("请输入0-300位字符");
         }
     })
+    
+    
     var pat1 = /^(37)\d{6}$/
     var ip= /^(?=(\b|\D))(((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))\.){3}((\d{1,2})|(1\d{1,2})|(2[0-4]\d)|(25[0-5]))(?=(\b|\D))$/;
     var port=/(^[0-9]\d{0,3}$)|(^[1-5]\d{4}$)|(^6[0-4]\d{3}$)|(^65[0-4]\d{2}$)|(^655[0-2]\d$)|(^6553[0-5]$)/;
     var reg=/^\d.*$/;
-    $("#ms_code1").change(function(){
-        var str1=pat1.test($("#ms_code1").val());
-        if(str1==true){
-            $("#tip1").html("格式正确");
-            $("#confSubmit").removeAttr('disabled');
-        }else{
-            $("#tip1").html("请输入以37开头的8位数字");
-            $("#confSubmit").attr("disabled",'disabled');
-        }
-    })
+  
     $("#server_ip").change(function(){
         var str2=ip.test($("#server_ip").val())
         if(str2==true){
-            $("#tip2").html("格式正确");
+            $("#tip1").html("格式正确");
             $("#confSubmit").removeAttr('disabled');
         }else{
-            $("#tip2").html("请输入正确的IP地址");
+            $("#tip1").html("请输入正确的IP地址");
             $("#confSubmit").attr("disabled",'disabled');
         }
     })
@@ -423,10 +416,10 @@ pageContext.setAttribute("basePath", basePath);
         var str3=reg.test($("#data_upload").val())
 
         if(str3==true){
-            $("#tip3").html("格式正确");
+            $("#tip2").html("格式正确");
             $("#confSubmit").removeAttr('disabled');
         }else{
-            $("#tip3").html("请输入整数");
+            $("#tip2").html("请输入整数");
             $("#confSubmit").attr("disabled",'disabled');
         }
     })
@@ -434,10 +427,10 @@ pageContext.setAttribute("basePath", basePath);
         var str3=port.test($("#server_port").val())
 
         if(str3==true){
-            $("#tip4").html("格式正确");
+            $("#tip3").html("格式正确");
             $("#confSubmit").removeAttr('disabled');
         }else{
-            $("#tip4").html("请输入0~65535");
+            $("#tip3").html("请输入0~65535");
             $("#confSubmit").attr("disabled",'disabled');
         }
     })
@@ -445,10 +438,10 @@ pageContext.setAttribute("basePath", basePath);
         var str3=reg.test($("#data_storage").val())
 
         if(str3==true){
-            $("#tip5").html("格式正确");
+            $("#tip4").html("格式正确");
             $("#confSubmit").removeAttr('disabled');
         }else{
-            $("#tip5").html("请输入整数");
+            $("#tip4").html("请输入整数");
             $("#confSubmit").attr("disabled",'disabled');
         }
     })
