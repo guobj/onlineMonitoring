@@ -84,7 +84,7 @@ public class RealDataController {
 	@ResponseBody
 	public JacksonData photo(String ms_code, String dev_code){
 		JacksonData jacksonData = new JacksonData();
-		File file = new File("D:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
+		File file = new File("E:\\gw_pictuces\\"+ms_code+"\\"+dev_code);
 		List list = new ArrayList();
 		if (file.exists()) {
 			File[] files = file.listFiles();
